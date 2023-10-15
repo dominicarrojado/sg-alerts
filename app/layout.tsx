@@ -1,9 +1,9 @@
-import { ThemeProvider } from "@/components/theme-provider";
-import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
+import { ThemeProvider } from "@/components/theme-provider";
+import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -12,7 +12,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "SG Alerts",
-  description: "Subscribe to all things Singapore.",
+  description: "Subscribe to all things Singapore. Save time. Stay updated.",
 };
 
 export default function RootLayout({

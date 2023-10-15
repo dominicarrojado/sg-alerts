@@ -20,10 +20,13 @@ export default function Header() {
             Alerts
           </PageHeaderHeading>
           <PageHeaderDescription>
-            Subscribe to all things Singapore. Save time. Stay updated.
+            Subscribe to all things Singapore. <br />
+            Save time. Stay updated.
           </PageHeaderDescription>
         </PageHeader>
-        <ModeToggle />
+        <div className="shrink-0">
+          <ModeToggle />
+        </div>
       </div>
     </Container>
   );
