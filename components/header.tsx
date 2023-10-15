@@ -20,7 +20,7 @@ export default function Header() {
             Alerts
           </PageHeaderHeading>
           <PageHeaderDescription>
-            Subscribe to all things Singapore.
+            Subscribe to all things Singapore. Save time. Stay updated.
           </PageHeaderDescription>
         </PageHeader>
         <ModeToggle />

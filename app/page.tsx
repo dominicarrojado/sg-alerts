@@ -1,5 +1,5 @@
-import * as React from "react";
-
+import React, { Fragment } from "react";
+import Balancer from "react-wrap-balancer";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,17 +13,92 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Container } from "@/components/ui/container";
 import { Switch } from "@/components/ui/switch";
+import { Divider } from "@/components/ui/divider";
+import { Anchor } from "@/components/ui/anchor";
+import { FIXED_DEPOSIT_BANKS } from "@/lib/constants";
 
 export default function Home() {
   const notificationSettings = [
     {
-      id: "japan-visa-slots",
-      title: "🇯🇵 Japan Tourist Visa Appointment Slots",
+      id: "japan-visa",
+      title: "🇯🇵 Japan Visa Appointment Slots (Tourism)",
       description: (
         <>
-          Receive email notifications when there are available appointment slots
-          from the Embassy of Japan in Singapore. <br />
-          (for foreigners who require a visa to visit Japan)
+          Receive email notifications when there are new appointment date(s) for{" "}
+          <Anchor
+            href="https://www.sg.emb-japan.go.jp/itpr_en/visit.html"
+            isExternal
+          >
+            tourist visa application
+          </Anchor>{" "}
+          at the Embassy of Japan in Singapore. <br />
+          <small>(for foreigners who require a visa to visit Japan)</small>
+        </>
+      ),
+    },
+    {
+      id: "flights-singapore-airlines",
+      title: "✈️ Flight Prices (Singapore Airlines)",
+      description: (
+        <>
+          Receive email notifications when the flight prices goes down for{" "}
+          <Anchor
+            href="https://www.singaporeair.com/en_UK/sg/special-offers/flight-from-Singapore/"
+            isExternal
+          >
+            Singapore Airlines flights
+          </Anchor>{" "}
+          departing from Singapore.
+        </>
+      ),
+    },
+    {
+      id: "flights-cebu-pacific",
+      title: "✈️ Flight Prices (Cebu Pacific)",
+      description: (
+        <>
+          Receive email notifications when the flight prices goes down for{" "}
+          <Anchor
+            href="https://www.cebupacificair.com/en-PH/seat-sale"
+            isExternal
+          >
+            Cebu Pacific flights
+          </Anchor>{" "}
+          departing from the Philippines.
+        </>
+      ),
+    },
+    {
+      id: "flights-jetstar",
+      title: "✈️ Flight Prices (Jetstar)",
+      description: (
+        <>
+          Receive email notifications when the flight prices goes down for{" "}
+          <Anchor href="https://www.jetstar.com/sg/en/deals" isExternal>
+            Jetstar flights
+          </Anchor>{" "}
+          departing from Singapore.
+        </>
+      ),
+    },
+    {
+      id: "deposit-rates",
+      title: "💰 Fixed Deposit Rates",
+      description: (
+        <>
+          Receive email notifications when the fixed deposit rates goes up
+          across major banks in Singapore. <br />
+          <small>
+            (
+            {FIXED_DEPOSIT_BANKS.map(({ title, url }, index) => (
+              <Fragment key={title}>
+                {index !== 0 &&
+                  (index === FIXED_DEPOSIT_BANKS.length - 1 ? " and " : ", ")}
+                <Anchor href={url}>{title}</Anchor>
+              </Fragment>
+            ))}
+            )
+          </small>
         </>
       ),
     },
@@ -32,8 +107,12 @@ export default function Home() {
       title: "🚘 CDC Appointment Slots (Eyesight Test)",
       description: (
         <>
-          Receive email notifications when there are available slots for the
-          eyesight test at ComfortDelGro Driving Centre.
+          Receive email notifications when there are new appointment date(s) for
+          the{" "}
+          <Anchor href="https://www.cdc.com.sg/eyesight-test" isExternal>
+            eyesight test
+          </Anchor>{" "}
+          at ComfortDelGro Driving Centre.
         </>
       ),
     },
@@ -42,48 +121,11 @@ export default function Home() {
       title: "🚘 CDC Appointment Slots (Counter Services)",
       description: (
         <>
-          Receive email notifications when there are available slots for the
-          counter services at ComfortDelGro Driving Centre.
-        </>
-      ),
-    },
-    {
-      id: "flights-sq",
-      title: "✈️ Flight Promos (Singapore Airlines)",
-      description: (
-        <>
-          Receive email notifications when there are flight promotions directly
-          from Singapore Airlines departing from Singapore.
-        </>
-      ),
-    },
-    {
-      id: "flights-5j",
-      title: "✈️ Flight Promos (Cebu Pacific)",
-      description: (
-        <>
-          Receive email notifications when there are flight promotions directly
-          from Cebu Pacific departing from the Philippines.
-        </>
-      ),
-    },
-    {
-      id: "flights-3k",
-      title: "✈️ Flight Promos (Jetstar)",
-      description: (
-        <>
-          Receive email notifications when there are flight promotions directly
-          from Jetstar departing from Singapore.
-        </>
-      ),
-    },
-    {
-      id: "fixed-deposit-rates",
-      title: "💰 Fixed Deposit Rates",
-      description: (
-        <>
-          Receive email notifications when the fixed deposit rates are up across
-          major banks in Singapore.
+          Receive email notifications when there are new appointment date(s) for{" "}
+          <Anchor href="https://www.cdc.com.sg/eappointment" isExternal>
+            counter services
+          </Anchor>{" "}
+          at ComfortDelGro Driving Centre.
         </>
       ),
     },
@@ -93,7 +135,14 @@ export default function Home() {
       description: (
         <>
           Receive email notifications when there are new movies with English
-          subtitles at Golden Village.
+          subtitles at{" "}
+          <Anchor href="https://www.gv.com.sg/" isExternal>
+            Golden Village.
+          </Anchor>{" "}
+          <br />
+          <small>
+            (supported languages: English, Chinese, Korean, Japanese)
+          </small>
         </>
       ),
     },
@@ -103,17 +152,31 @@ export default function Home() {
       description: (
         <>
           Receive email notifications when there are new movies with English
-          subtitles at Shaw Theatres.
+          subtitles at{" "}
+          <Anchor href="https://shaw.sg/" isExternal>
+            Shaw Theatres
+          </Anchor>
+          . <br />
+          <small>
+            (supported languages: English, Chinese, Korean, Japanese)
+          </small>
         </>
       ),
     },
     {
-      id: "movies-cathay",
+      id: "movies-cathay-cineplexes",
       title: "🎬 Movies with English Subtitles (Cathay Cineplexes)",
       description: (
         <>
           Receive email notifications when there are new movies with English
-          subtitles at Cathay Cineplexes.
+          subtitles at{" "}
+          <Anchor href="https://www.cathaycineplexes.com.sg/" isExternal>
+            Cathay Cineplexes
+          </Anchor>
+          . <br />
+          <small>
+            (supported languages: English, Chinese, Korean, Japanese)
+          </small>
         </>
       ),
     },
@@ -123,17 +186,24 @@ export default function Home() {
       description: (
         <>
           Receive email notifications when there are new movies with English
-          subtitles at The Projector.
+          subtitles at{" "}
+          <Anchor href="https://theprojector.sg/">The Projector</Anchor>. <br />
+          <small>
+            (supported languages: English, Chinese, Korean, Japanese)
+          </small>
         </>
       ),
     },
     {
-      id: "travel-deals-trip-com",
+      id: "travel-deals-trip.com",
       title: "🌏 Travel Deals (Trip.com)",
       description: (
         <>
-          Receive email notifications when there are new travel deals from
-          Trip.com.
+          Receive email notifications when there are new travel deals from{" "}
+          <Anchor href="https://sg.trip.com/sale/deals" isExternal>
+            Trip.com
+          </Anchor>
+          .
         </>
       ),
     },
@@ -142,27 +212,58 @@ export default function Home() {
       title: "🌏 Travel Deals (Traveloka)",
       description: (
         <>
-          Receive email notifications when there are new travel deals from
-          Traveloka.
+          Receive email notifications when there are new travel deals from{" "}
+          <Anchor href="https://www.traveloka.com/en-sg/promotion" isExternal>
+            Traveloka
+          </Anchor>
+          .
         </>
       ),
     },
     {
-      id: "community-blood-drives",
+      id: "events-blood-drive",
       title: "🩸 Community Blood Drives",
       description: (
         <>
-          Receive email notifications when there are new community blood drives.
+          Receive email notifications when there are new{" "}
+          <Anchor href="https://giveblood.sg/#blood-drive" isExternal>
+            community blood drives
+          </Anchor>{" "}
+          organised by the Singapore Red Cross.
         </>
       ),
     },
     {
-      id: "burnt-ends-slots",
-      title: "🔥 Burnt Ends Reservation Slots (Main Dining - Dinner)",
+      id: "restaurants-burnt-ends",
+      title: "🍽️ Table Reservation Slots (Burnt Ends)",
       description: (
         <>
-          Receive email notifications when there are new table reservation slots
-          for Burnt Ends.
+          Receive email notifications when there are new table reservation
+          date(s) at{" "}
+          <Anchor href="https://burntends.com.sg/reservation/" isExternal>
+            Burnt Ends
+          </Anchor>
+          . <br />
+          <small>
+            (for main dining area & chefs counter seating - dinner time only)
+          </small>
+        </>
+      ),
+    },
+    {
+      id: "features-sg-alerts",
+      title: "🚀 New Features & Alerts",
+      description: (
+        <>
+          Receive email notifications when there are new feature(s) or alert(s)
+          to subscribe to at SG Alerts. <br />
+          <small>
+            Have a suggestion or feedback? Drop me an{" "}
+            <Anchor href="mailto:dominicarrojado@gmail.com" target="_blank">
+              email
+            </Anchor>
+            .
+          </small>
         </>
       ),
     },
@@ -181,27 +282,21 @@ export default function Home() {
           <CardContent>
             <div className="grid gap-6">
               {notificationSettings.map((setting) => (
-                <div
+                <Label
                   key={setting.id}
-                  className="flex items-center justify-between space-x-2"
+                  htmlFor={setting.id}
+                  className="flex flex-row items-center justify-between rounded-lg border p-4"
                 >
-                  <Label
-                    htmlFor={setting.id}
-                    className="flex flex-col space-y-1"
-                  >
-                    <span>{setting.title}</span>
-                    <span className="font-normal leading-snug text-muted-foreground">
+                  <div className="space-y-0.5 pr-2">
+                    <p className="text-base">{setting.title}</p>
+                    <p className="text-sm font-light text-muted-foreground">
                       {setting.description}
-                    </span>
-                  </Label>
+                    </p>
+                  </div>
                   <Switch id={setting.id} />
-                </div>
+                </Label>
               ))}
-              <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                  <span className="w-full border-t" />
-                </div>
-              </div>
+              <Divider />
               <div className="flex flex-col space-y-2">
                 <Label htmlFor="name">Email Address</Label>
                 <Input id="name" type="email" name="email" />
@@ -219,7 +314,18 @@ export default function Home() {
             </Button>
           </CardFooter>
         </Card>
-      </form>
+      </form>{" "}
+      <Balancer className="mt-6 text-center text-sm leading-loose text-muted-foreground">
+        Like the service? Please consider{" "}
+        <Anchor
+          href="https://www.paypal.com/paypalme/DominicArrojado"
+          isExternal
+        >
+          donating
+        </Anchor>{" "}
+        so I can continue to maintain and improve it. Any amount is sincerely
+        appreciated! 🙏
+      </Balancer>
     </Container>
   );
 }

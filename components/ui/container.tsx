@@ -1,11 +1,14 @@
-import { cn } from "@/lib/utils";
+import clsx from "clsx";
 import React, { HTMLProps } from "react";
 
 export type Props = HTMLProps<HTMLDivElement>;
 
 const Container = ({ children, className, ...props }: Props) => {
   return (
-    <div {...props} className={cn("p-10 mx-auto max-w-2xl", className)}>
+    <div
+      {...props}
+      className={clsx("px-4 py-10 mx-auto max-w-2xl", "sm:px-10", className)}
+    >
       {children}
     </div>
   );
