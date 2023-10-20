@@ -13,7 +13,7 @@ const Anchor = React.forwardRef(
       {...props}
       ref={ref}
       className={clsx("font-medium underline underline-offset-4", className)}
-      rel={isExternal ? "noopener noreferrer" : undefined}
+      rel={isExternal ? "noopener noreferrer nofollow" : undefined}
       target={isExternal ? "_blank" : target}
     >
       {children}
