@@ -257,7 +257,7 @@ export const NOTIFICATION_SETTINGS = [
   },
   {
     id: "events-blood-drive",
-    title: "🩸 Community Blood Drives",
+    title: "🏥 Community Blood Drives",
     description: (
       <>
         Receive email notifications when there are new{" "}
