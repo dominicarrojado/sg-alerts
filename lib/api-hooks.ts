@@ -32,3 +32,35 @@ export function useSubmitSubscribeRequest() {
 
   return [fetchStatus, submitSubscribeRequest] as const;
 }
+
+export function useVerifySubscription() {
+  const searchParams = useSearchParams();
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const verifySubscription = async () => {
+    try {
+      const id = searchParams.get("id");
+
+      if (!id) {
+        return setFetchStatus(FetchStatus.NotFound);
+      }
+
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      let reqUrl = `${API_URL}${ApiEndpoint.SubscriptionRequestVerify}`;
+      reqUrl = reqUrl.replace(":id", id);
+
+      await axios.post(reqUrl);
+
+      setFetchStatus(FetchStatus.Success);
+    } catch (err: any) {
+      if (err.response && err.response.status === 404) {
+        setFetchStatus(FetchStatus.NotFound);
+      } else {
+        setFetchStatus(FetchStatus.Failure);
+      }
+    }
+  };
+
+  return [fetchStatus, verifySubscription] as const;
+}

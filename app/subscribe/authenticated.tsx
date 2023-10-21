@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { AlertTriangle, Loader2Icon } from "lucide-react";
 import {
   Card,
@@ -11,18 +11,16 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Anchor } from "@/components/ui/anchor";
+import { useVerifySubscription } from "@/lib/api-hooks";
 import { FetchStatus, Routes } from "@/lib/enums";
 
 export default function Authenticated() {
-  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Loading);
-  const getSubscription = () => {
-    setTimeout(() => {
-      setFetchStatus(FetchStatus.Success);
-    }, 2000);
-  };
+  const [fetchStatus, verifySubscription] = useVerifySubscription();
 
   useEffect(() => {
-    getSubscription();
+    verifySubscription();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -47,7 +45,8 @@ export default function Authenticated() {
           </CardContent>
         </Card>
       )}
-      {fetchStatus === FetchStatus.Loading && (
+      {(fetchStatus === FetchStatus.Idle ||
+        fetchStatus === FetchStatus.Loading) && (
         <Card className="w-full">
           <CardHeader>
             <CardTitle className="flex items-center">
