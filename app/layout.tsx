@@ -11,6 +11,7 @@ import {
   MAIN_URL,
   OWNER_NAME,
   OWNER_WEBSITE,
+  SITE_NAME,
 } from "@/lib/constants";
 import { NOTIFICATION_SETTINGS } from "@/lib/content";
 import "./globals.css";
@@ -54,18 +55,28 @@ export const metadata: Metadata = {
     url: MAIN_URL,
     title: MAIN_TITLE,
     description: MAIN_DESCRIPTION,
-    siteName: MAIN_TITLE,
-    images: [],
+    siteName: SITE_NAME,
+    images: [
+      {
+        url: `${MAIN_URL}og-image.png`,
+        width: 1200,
+        height: 750,
+        alt: SITE_NAME,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: MAIN_TITLE,
     description: MAIN_DESCRIPTION,
-    images: [],
+    images: [`${MAIN_URL}og-image.png`],
   },
   icons: {
-    icon: `${MAIN_ORIGIN}/favicon.ico`,
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon-16x16.png",
   },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({

@@ -6,9 +6,11 @@ export const OWNER_DONATION_LINK =
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export const MAIN_TITLE = `SG Alerts | ${OWNER_NAME}`;
+export const SITE_NAME = "SG Alerts";
+export const MAIN_TITLE = `${SITE_NAME} | ${OWNER_NAME}`;
 export const MAIN_DESCRIPTION =
   "Subscribe to all things Singapore. Save time. Stay updated.";
 export const MAIN_ORIGIN = "https://dominicarrojado.com";
 export const MAIN_PATH = "/sg-alerts/";
 export const MAIN_URL = `${MAIN_ORIGIN}${MAIN_PATH}`;
+export const MAIN_IMAGE = `${MAIN_ORIGIN}/images/og-image.png`;
