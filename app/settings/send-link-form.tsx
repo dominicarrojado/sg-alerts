@@ -58,7 +58,7 @@ export default function SendLinkForm() {
             )}
             Send Link
           </Button>
-          <Link href={Routes.HOME} className="w-full">
+          <Link href={Routes.Home} className="w-full">
             <Button type="button" className="w-full" variant="secondary">
               <ArrowLeftIcon className="mr-2 h-4 w-4" />
               Go Back

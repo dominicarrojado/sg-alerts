@@ -1,5 +1,7 @@
 import { Fragment } from "react";
 import { Anchor } from "@/components/ui/anchor";
+import { NotificationSettings } from "./types";
+import { SubscriptionTopic } from "./enums";
 import { OWNER_EMAIL } from "./constants";
 
 export const FIXED_DEPOSIT_BANKS = [
@@ -61,9 +63,9 @@ export const FIXED_DEPOSIT_BANKS = [
   },
 ];
 
-export const NOTIFICATION_SETTINGS = [
+export const NOTIFICATION_SETTINGS: NotificationSettings = [
   {
-    id: "japan-visa",
+    id: SubscriptionTopic.JapanVisa,
     title: "🇯🇵 Japan Visa Appointment Slots (Tourism)",
     description: (
       <>
@@ -80,7 +82,7 @@ export const NOTIFICATION_SETTINGS = [
     ),
   },
   {
-    id: "flights-singapore-airlines",
+    id: SubscriptionTopic.FlightsSingaporeAirlines,
     title: "✈️ Flight Prices (Singapore Airlines)",
     description: (
       <>
@@ -96,7 +98,7 @@ export const NOTIFICATION_SETTINGS = [
     ),
   },
   {
-    id: "flights-cebu-pacific",
+    id: SubscriptionTopic.FlightsCebuPacific,
     title: "✈️ Flight Prices (Cebu Pacific)",
     description: (
       <>
@@ -112,7 +114,7 @@ export const NOTIFICATION_SETTINGS = [
     ),
   },
   {
-    id: "flights-jetstar",
+    id: SubscriptionTopic.FlightsJetstar,
     title: "✈️ Flight Prices (Jetstar)",
     description: (
       <>
@@ -125,7 +127,7 @@ export const NOTIFICATION_SETTINGS = [
     ),
   },
   {
-    id: "deposit-rates",
+    id: SubscriptionTopic.DepositRates,
     title: "💰 Fixed Deposit Rates",
     description: (
       <>
@@ -146,7 +148,7 @@ export const NOTIFICATION_SETTINGS = [
     ),
   },
   {
-    id: "cdc-eyesight-test",
+    id: SubscriptionTopic.CdcEyesightTest,
     title: "🚘 CDC Appointment Slots (Eyesight Test)",
     description: (
       <>
@@ -160,7 +162,7 @@ export const NOTIFICATION_SETTINGS = [
     ),
   },
   {
-    id: "cdc-counter-services",
+    id: SubscriptionTopic.CdcCounterServices,
     title: "🚘 CDC Appointment Slots (Counter Services)",
     description: (
       <>
@@ -173,7 +175,7 @@ export const NOTIFICATION_SETTINGS = [
     ),
   },
   {
-    id: "movies-gv",
+    id: SubscriptionTopic.MoviesGv,
     title: "🎬 Movies with English Subtitles (GV)",
     description: (
       <>
@@ -188,7 +190,7 @@ export const NOTIFICATION_SETTINGS = [
     ),
   },
   {
-    id: "movies-shaw",
+    id: SubscriptionTopic.MoviesShaw,
     title: "🎬 Movies with English Subtitles (Shaw)",
     description: (
       <>
@@ -203,7 +205,7 @@ export const NOTIFICATION_SETTINGS = [
     ),
   },
   {
-    id: "movies-cathay-cineplexes",
+    id: SubscriptionTopic.MoviesCathayCineplexes,
     title: "🎬 Movies with English Subtitles (Cathay Cineplexes)",
     description: (
       <>
@@ -218,7 +220,7 @@ export const NOTIFICATION_SETTINGS = [
     ),
   },
   {
-    id: "movies-the-projector",
+    id: SubscriptionTopic.MoviesTheProjector,
     title: "🎬 Movies with English Subtitles (The Projector)",
     description: (
       <>
@@ -230,7 +232,7 @@ export const NOTIFICATION_SETTINGS = [
     ),
   },
   {
-    id: "travel-deals-trip.com",
+    id: SubscriptionTopic.TravelDealsTripCom,
     title: "🌏 Travel Deals (Trip.com)",
     description: (
       <>
@@ -243,7 +245,7 @@ export const NOTIFICATION_SETTINGS = [
     ),
   },
   {
-    id: "travel-deals-traveloka",
+    id: SubscriptionTopic.TravelDealsTraveloka,
     title: "🌏 Travel Deals (Traveloka)",
     description: (
       <>
@@ -256,7 +258,7 @@ export const NOTIFICATION_SETTINGS = [
     ),
   },
   {
-    id: "events-blood-drive",
+    id: SubscriptionTopic.EventsBloodDrive,
     title: "🏥 Community Blood Drives",
     description: (
       <>
@@ -269,7 +271,7 @@ export const NOTIFICATION_SETTINGS = [
     ),
   },
   {
-    id: "restaurants-burnt-ends",
+    id: SubscriptionTopic.RestaurantsBurntEnds,
     title: "🍽️ Table Reservation Slots (Burnt Ends)",
     description: (
       <>
@@ -286,7 +288,7 @@ export const NOTIFICATION_SETTINGS = [
     ),
   },
   {
-    id: "features-sg-alerts",
+    id: SubscriptionTopic.FeaturesSgAlerts,
     title: "🚀 New Features & Alerts",
     description: (
       <>

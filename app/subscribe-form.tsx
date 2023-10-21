@@ -17,20 +17,34 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Anchor } from "@/components/ui/anchor";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { FetchStatus, Routes } from "@/lib/enums";
+import { useSubmitSubscribeRequest } from "@/lib/api-hooks";
+import { SubscriptionTopics } from "@/lib/types";
+import { FetchStatus, Routes, SubscriptionTopic } from "@/lib/enums";
 import { NOTIFICATION_SETTINGS } from "@/lib/content";
 
 export default function SubscribeForm() {
-  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [fetchStatus, submitSubscribeRequest] = useSubmitSubscribeRequest();
+  const [topics, setTopics] = useState<SubscriptionTopics>([]);
+  const [email, setEmail] = useState("");
+  const isFormValid =
+    email.includes("@") && email.includes(".") && topics.length > 0;
   const isLoading = fetchStatus === FetchStatus.Loading;
+  const switchOnClick = (topic: SubscriptionTopic) => {
+    const newTopics = topics.includes(topic)
+      ? topics.filter((t) => t !== topic)
+      : [...topics, topic];
+
+    setTopics(newTopics);
+  };
+  const inputOnChange = (e: FormEvent<HTMLInputElement>) => {
+    setEmail(e.currentTarget.value);
+  };
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setFetchStatus(FetchStatus.Loading);
-
-    setTimeout(() => {
-      setFetchStatus(FetchStatus.Failure);
-    }, 2000);
+    if (isFormValid) {
+      submitSubscribeRequest(email, topics);
+    }
   };
 
   return fetchStatus !== FetchStatus.Success ? (
@@ -39,24 +53,29 @@ export default function SubscribeForm() {
         <CardHeader>
           <CardTitle>1️⃣ &nbsp;First Step</CardTitle>
           <CardDescription>
-            Choose what you want to be notified about.
+            Choose at least one topic you want to get notified about.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-6">
-            {NOTIFICATION_SETTINGS.map((setting) => (
+            {NOTIFICATION_SETTINGS.map(({ id, title, description }) => (
               <Label
-                key={setting.id}
-                htmlFor={setting.id}
+                key={id}
+                htmlFor={id}
                 className="flex flex-row items-center justify-between rounded-lg border p-4"
               >
                 <div className="space-y-0.5 pr-2">
-                  <p className="text-base">{setting.title}</p>
+                  <p className="text-base">{title}</p>
                   <p className="text-sm font-light text-muted-foreground">
-                    {setting.description}
+                    {description}
                   </p>
                 </div>
-                <Switch id={setting.id} disabled={isLoading} />
+                <Switch
+                  id={id}
+                  disabled={isLoading}
+                  checked={topics.includes(id)}
+                  onClick={() => switchOnClick(id)}
+                />
               </Label>
             ))}
           </div>
@@ -71,13 +90,21 @@ export default function SubscribeForm() {
         </CardHeader>
         <CardContent>
           <div className="flex flex-col space-y-2">
-            <Label htmlFor="name">Email Address</Label>
-            <Input id="name" type="email" name="email" disabled={isLoading} />
+            <Label htmlFor="email">Email Address</Label>
+            <Input
+              id="email"
+              type="email"
+              autoComplete="email"
+              value={email}
+              disabled={isLoading}
+              onChange={inputOnChange}
+              required
+            />
             <p className="text-sm text-muted-foreground">
               By submitting this form, you agree to receive email notifications
               about your chosen services above and understand that you can
               update it at any time{" "}
-              <Link href={Routes.SETTINGS} passHref legacyBehavior>
+              <Link href={Routes.Settings} passHref legacyBehavior>
                 <Anchor>here</Anchor>
               </Link>
               .
@@ -94,7 +121,11 @@ export default function SubscribeForm() {
               </AlertDescription>
             </Alert>
           )}
-          <Button type="submit" className="w-full" disabled={isLoading}>
+          <Button
+            type="submit"
+            className="w-full"
+            disabled={isLoading || !isFormValid}
+          >
             {isLoading && (
               <>
                 <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />{" "}

@@ -19,10 +19,10 @@ export default function HeaderLogo() {
     </>
   );
 
-  return pathname === Routes.HOME ? (
+  return pathname === Routes.Home ? (
     children
   ) : (
-    <Link href={Routes.HOME} className="group">
+    <Link href={Routes.Home} className="group">
       {children}
     </Link>
   );
