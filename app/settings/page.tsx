@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import React from "react";
 import { Container } from "@/components/ui/container";
 import { Routes } from "@/lib/enums";
-import SendLinkForm from "./send-link-form";
 import Authenticated from "./authenticated";
 
 export const metadata: Metadata = {
@@ -13,16 +12,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Settings({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const { id } = searchParams;
-
+export default function Settings() {
   return (
     <Container className="pt-0">
-      {id ? <Authenticated /> : <SendLinkForm />}
+      <Authenticated />
     </Container>
   );
 }

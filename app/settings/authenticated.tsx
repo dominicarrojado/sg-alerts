@@ -1,5 +1,6 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
 import { AlertTriangle, Loader2Icon } from "lucide-react";
 import {
@@ -12,15 +13,24 @@ import {
 import { useGetSubscription } from "@/lib/api-hooks";
 import { FetchStatus } from "@/lib/enums";
 import SettingsForm from "./settings-form";
+import SendLinkForm from "./send-link-form";
 
 export default function Authenticated() {
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
   const [fetchStatus, subscription, getSubscription] = useGetSubscription();
 
   useEffect(() => {
-    getSubscription();
+    if (id) {
+      getSubscription(id);
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id]);
+
+  if (!id) {
+    return <SendLinkForm />;
+  }
 
   return (
     <>

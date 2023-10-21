@@ -87,17 +87,10 @@ export function useSendSubscriptionLink() {
 }
 
 export function useGetSubscription() {
-  const searchParams = useSearchParams();
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
   const [subscription, setSubscription] = useState<Subscription | null>(null);
-  const getSubscription = async () => {
+  const getSubscription = async (id: string) => {
     try {
-      const id = searchParams.get("id");
-
-      if (!id) {
-        return setFetchStatus(FetchStatus.NotFound);
-      }
-
       setFetchStatus(FetchStatus.Loading);
 
       const axios = (await import("axios")).default;
