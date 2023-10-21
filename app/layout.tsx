@@ -6,7 +6,6 @@ import Header from "@/components/header";
 import TagManager from "@/components/tag-manager";
 import {
   MAIN_DESCRIPTION,
-  MAIN_ORIGIN,
   MAIN_TITLE,
   MAIN_URL,
   OWNER_NAME,
@@ -72,11 +71,11 @@ export const metadata: Metadata = {
     images: [`${MAIN_URL}og-image.png`],
   },
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-    shortcut: "/favicon-16x16.png",
+    icon: `${MAIN_URL}favicon.ico`,
+    apple: `${MAIN_URL}apple-touch-icon.png`,
+    shortcut: `${MAIN_URL}favicon-16x16.png`,
   },
-  manifest: "/site.webmanifest",
+  manifest: `${MAIN_URL}site.webmanifest`,
 };
 
 export default function RootLayout({
