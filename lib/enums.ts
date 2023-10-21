@@ -14,7 +14,8 @@ export enum FetchStatus {
 export enum ApiEndpoint {
   SubscriptionRequests = "/subscription-requests",
   SubscriptionRequestVerify = "/subscription-requests/:id/verify",
-  SubscriptionUpdateTopics = "/subscriptions/:id/topics",
+  SubscriptionLinkEmail = "/subscriptions/link-email",
+  SubscriptionTopics = "/subscriptions/:id/topics",
 }
 
 export enum SubscriptionTopic {

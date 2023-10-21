@@ -11,25 +11,41 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Divider } from "@/components/ui/divider";
-import { FetchStatus } from "@/lib/enums";
+import { useUpdateSubscription } from "@/lib/api-hooks";
+import { Subscription, SubscriptionTopics } from "@/lib/types";
+import { FetchStatus, SubscriptionTopic } from "@/lib/enums";
 import { NOTIFICATION_SETTINGS } from "@/lib/content";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
-export default function SettingsForm() {
-  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+type Props = {
+  subscription: Subscription;
+};
+
+export default function SettingsForm({ subscription }: Props) {
+  const [fetchStatus, updateSubscription] = useUpdateSubscription();
+  const [topics, setTopics] = useState<SubscriptionTopics>(subscription.topics);
+  const [isFormTouched, setIsFormTouched] = useState(false);
   const isLoading = fetchStatus === FetchStatus.Loading;
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const switchOnClick = (topic: SubscriptionTopic) => {
+    const newTopics = topics.includes(topic)
+      ? topics.filter((t) => t !== topic)
+      : [...topics, topic];
+
+    setTopics(newTopics);
+    setIsFormTouched(true);
+  };
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setFetchStatus(FetchStatus.Loading);
+    const isSuccess = await updateSubscription(subscription._id, topics);
 
-    setTimeout(() => {
-      setFetchStatus(FetchStatus.Failure);
-    }, 2000);
+    if (isSuccess) {
+      setIsFormTouched(false);
+    }
   };
 
   return (
@@ -49,24 +65,29 @@ export default function SettingsForm() {
                 id="name"
                 type="email"
                 name="email"
-                value="dominicarrojado@gmail.com"
+                value={subscription.user.email}
                 disabled
               />
             </div>
             <Divider />
-            {NOTIFICATION_SETTINGS.map((setting) => (
+            {NOTIFICATION_SETTINGS.map(({ id, title, description }) => (
               <Label
-                key={setting.id}
-                htmlFor={setting.id}
+                key={id}
+                htmlFor={id}
                 className="flex flex-row items-center justify-between rounded-lg border p-4"
               >
                 <div className="space-y-0.5 pr-2">
-                  <p className="text-base">{setting.title}</p>
+                  <p className="text-base">{title}</p>
                   <p className="text-sm font-light text-muted-foreground">
-                    {setting.description}
+                    {description}
                   </p>
                 </div>
-                <Switch id={setting.id} disabled={isLoading} />
+                <Switch
+                  id={id}
+                  disabled={isLoading}
+                  checked={topics.includes(id)}
+                  onClick={() => switchOnClick(id)}
+                />
               </Label>
             ))}
             <p className="text-sm text-muted-foreground">
@@ -77,7 +98,7 @@ export default function SettingsForm() {
           </div>
         </CardContent>
         <CardFooter className="flex-col space-y-4">
-          {fetchStatus === FetchStatus.Success && (
+          {fetchStatus === FetchStatus.Success && !isFormTouched && (
             <Alert variant="default">
               <CheckCircle className="h-4 w-4" />
               <AlertTitle>Success</AlertTitle>
@@ -95,7 +116,11 @@ export default function SettingsForm() {
               </AlertDescription>
             </Alert>
           )}
-          <Button type="submit" className="w-full" disabled={isLoading}>
+          <Button
+            type="submit"
+            className="w-full"
+            disabled={isLoading || !isFormTouched}
+          >
             {isLoading && (
               <>
                 <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />{" "}

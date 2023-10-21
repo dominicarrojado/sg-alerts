@@ -142,7 +142,7 @@ export default function SubscribeForm() {
         <CardTitle>🎉 You&apos;re almost there!</CardTitle>
         <CardDescription>
           You will receive a confirmation email shortly at{" "}
-          <b className="font-medium">dominicarrojado@gmail.com</b>.
+          <b className="font-medium">{email}</b>.
         </CardDescription>
       </CardHeader>
       <CardContent>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { AlertTriangle, Loader2Icon } from "lucide-react";
 import {
   Card,
@@ -9,25 +9,26 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useGetSubscription } from "@/lib/api-hooks";
 import { FetchStatus } from "@/lib/enums";
 import SettingsForm from "./settings-form";
 
 export default function Authenticated() {
-  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Loading);
-  const getSubscription = () => {
-    setTimeout(() => {
-      setFetchStatus(FetchStatus.NotFound);
-    }, 2000);
-  };
+  const [fetchStatus, subscription, getSubscription] = useGetSubscription();
 
   useEffect(() => {
     getSubscription();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
-      {fetchStatus === FetchStatus.Success && <SettingsForm />}
-      {fetchStatus === FetchStatus.Loading && (
+      {fetchStatus === FetchStatus.Success && subscription && (
+        <SettingsForm subscription={subscription} />
+      )}
+      {(fetchStatus === FetchStatus.Idle ||
+        fetchStatus === FetchStatus.Loading) && (
         <Card className="w-full">
           <CardHeader>
             <CardTitle className="flex items-center">

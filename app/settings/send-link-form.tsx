@@ -1,8 +1,8 @@
 "use client";
 
-import React, { FormEvent, useState } from "react";
 import Link from "next/link";
-import { ArrowLeftIcon, Loader2Icon } from "lucide-react";
+import React, { FormEvent, useState } from "react";
+import { AlertCircle, ArrowLeftIcon, Loader2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -12,21 +12,24 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useSendSubscriptionLink } from "@/lib/api-hooks";
 import { FetchStatus, Routes } from "@/lib/enums";
 
 export default function SendLinkForm() {
-  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [fetchStatus, sendSubscriptionLink] = useSendSubscriptionLink();
+  const [email, setEmail] = useState("");
+  const isFormValid = email.includes("@") && email.includes(".");
   const isLoading = fetchStatus === FetchStatus.Loading;
+  const inputOnChange = (e: FormEvent<HTMLInputElement>) => {
+    setEmail(e.currentTarget.value);
+  };
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setFetchStatus(FetchStatus.Loading);
-
-    setTimeout(() => {
-      setFetchStatus(FetchStatus.Success);
-    }, 2000);
+    sendSubscriptionLink(email);
   };
 
   return fetchStatus !== FetchStatus.Success ? (
@@ -41,16 +44,37 @@ export default function SendLinkForm() {
         </CardHeader>
         <CardContent>
           <div className="flex flex-col space-y-2">
-            <Label htmlFor="name">Email Address</Label>
-            <Input id="name" type="email" name="email" disabled={isLoading} />
+            <Label htmlFor="email">Email Address</Label>
+            <Input
+              id="email"
+              type="email"
+              autoComplete="email"
+              value={email}
+              disabled={isLoading}
+              onChange={inputOnChange}
+              required
+            />
             <p className="text-sm text-muted-foreground">
               We will send you a special link to update your notification
               preferences if you are an existing subscriber.
             </p>
           </div>
         </CardContent>
-        <CardFooter className="flex-col gap-4">
-          <Button type="submit" className="w-full" disabled={isLoading}>
+        <CardFooter className="flex-col space-y-4">
+          {fetchStatus === FetchStatus.Failure && (
+            <Alert variant="destructive">
+              <AlertCircle className="h-4 w-4" />
+              <AlertTitle>Error</AlertTitle>
+              <AlertDescription>
+                Something went wrong. Please try again later.
+              </AlertDescription>
+            </Alert>
+          )}
+          <Button
+            type="submit"
+            className="w-full"
+            disabled={isLoading || !isFormValid}
+          >
             {isLoading && (
               <>
                 <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />{" "}
@@ -73,8 +97,7 @@ export default function SendLinkForm() {
         <CardTitle>🎉 We&apos;ve received your request!</CardTitle>
         <CardDescription>
           If you are an existing subscriber, you will receive an email with the
-          subscription link shortly at{" "}
-          <b className="font-medium">dominicarrojado@gmail.com</b>.
+          subscription link shortly at <b className="font-medium">{email}</b>.
         </CardDescription>
       </CardHeader>
       <CardContent>
