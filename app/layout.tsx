@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import { ThemeProvider } from "@/components/theme-provider";
+import TagManager from "@/components/tag-manager";
 import "./globals.css";
 
 const inter = Inter({
@@ -34,6 +35,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </ThemeProvider>
+        <TagManager />
       </body>
     </html>
   );
