@@ -1,5 +1,6 @@
 export enum Routes {
   Home = "/",
+  Subscribe = "/subscribe",
   Settings = "/settings",
 }
 

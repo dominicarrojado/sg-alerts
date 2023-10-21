@@ -4,6 +4,15 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import TagManager from "@/components/tag-manager";
+import {
+  MAIN_DESCRIPTION,
+  MAIN_ORIGIN,
+  MAIN_TITLE,
+  MAIN_URL,
+  OWNER_NAME,
+  OWNER_WEBSITE,
+} from "@/lib/constants";
+import { NOTIFICATION_SETTINGS } from "@/lib/content";
 import "./globals.css";
 
 const inter = Inter({
@@ -12,8 +21,51 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SG Alerts",
-  description: "Subscribe to all things Singapore. Save time. Stay updated.",
+  metadataBase: new URL(MAIN_URL),
+  alternates: {
+    canonical: "/",
+  },
+  title: {
+    default: MAIN_TITLE,
+    template: `%s - ${MAIN_TITLE}`,
+  },
+  description: MAIN_DESCRIPTION,
+  keywords: [
+    "Alerts",
+    "Singapore Alerts",
+    "Notification Service",
+    "Singapore Notification Service",
+    ...NOTIFICATION_SETTINGS.map((setting) => setting.title),
+  ],
+  authors: [
+    {
+      name: OWNER_NAME,
+      url: OWNER_WEBSITE,
+    },
+  ],
+  creator: OWNER_NAME,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: MAIN_URL,
+    title: MAIN_TITLE,
+    description: MAIN_DESCRIPTION,
+    siteName: MAIN_TITLE,
+    images: [],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: MAIN_TITLE,
+    description: MAIN_DESCRIPTION,
+    images: [],
+  },
+  icons: {
+    icon: `${MAIN_ORIGIN}/favicon.ico`,
+  },
 };
 
 export default function RootLayout({
