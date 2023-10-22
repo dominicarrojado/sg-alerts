@@ -175,6 +175,46 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     ),
   },
   {
+    id: SubscriptionTopic.SsdcEnrolmentWeekend,
+    title: "🚘 SSDC Appointment Slots (School Enrolment)",
+    description: (
+      <>
+        Receive email notifications when there are new appointment date(s) for
+        the{" "}
+        <Anchor href="https://ssdcl.com.sg/e-appointment/" isExternal>
+          class 3/3A school enrolment (weekend)
+        </Anchor>{" "}
+        at Singapore Safety Driving Centre.
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.SsdcSelfStudyWeekend,
+    title: "🚘 SSDC Appointment Slots (Self-study Package)",
+    description: (
+      <>
+        Receive email notifications when there are new appointment date(s) for{" "}
+        <Anchor href="https://www.cdc.com.sg/eappointment" isExternal>
+          foreign license self-study package (weekend)
+        </Anchor>{" "}
+        at Singapore Safety Driving Centre.
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.SsdcOtherPurposes,
+    title: "🚘 SSDC Appointment Slots (Other Purposes)",
+    description: (
+      <>
+        Receive email notifications when there are new appointment date(s) for{" "}
+        <Anchor href="https://www.cdc.com.sg/eappointment" isExternal>
+          all other purpose of visit
+        </Anchor>{" "}
+        at Singapore Safety Driving Centre.
+      </>
+    ),
+  },
+  {
     id: SubscriptionTopic.MoviesGv,
     title: "🎬 Movies with English Subtitles (GV)",
     description: (

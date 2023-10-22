@@ -72,6 +72,7 @@ export default function SubscribeForm() {
                 </div>
                 <Switch
                   id={id}
+                  name="topics"
                   disabled={isLoading}
                   checked={topics.includes(id)}
                   onClick={() => switchOnClick(id)}
