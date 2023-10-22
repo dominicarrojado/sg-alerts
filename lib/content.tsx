@@ -194,7 +194,7 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     description: (
       <>
         Receive email notifications when there are new appointment date(s) for{" "}
-        <Anchor href="https://www.cdc.com.sg/eappointment" isExternal>
+        <Anchor href="https://ssdcl.com.sg/e-appointment/" isExternal>
           foreign license self-study package (weekend)
         </Anchor>{" "}
         at Singapore Safety Driving Centre.
@@ -207,10 +207,23 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     description: (
       <>
         Receive email notifications when there are new appointment date(s) for{" "}
-        <Anchor href="https://www.cdc.com.sg/eappointment" isExternal>
+        <Anchor href="https://ssdcl.com.sg/e-appointment/" isExternal>
           all other purpose of visit
         </Anchor>{" "}
         at Singapore Safety Driving Centre.
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.BbdcCounterServices,
+    title: "🚘 BBDC Appointment Slots",
+    description: (
+      <>
+        Receive email notifications when there are new appointment date(s) for{" "}
+        <Anchor href="https://info.bbdc.sg/visitor-appointment/" isExternal>
+          account opening and counter services
+        </Anchor>{" "}
+        at Bukit Batok Driving Centre.
       </>
     ),
   },

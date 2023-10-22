@@ -28,6 +28,7 @@ export enum SubscriptionTopic {
   SsdcEnrolmentWeekend = "ssdc-enrolment-weekend",
   SsdcSelfStudyWeekend = "ssdc-self-study-weekend",
   SsdcOtherPurposes = "ssdc-other-purposes",
+  BbdcCounterServices = "bbdc-counter-services",
   DepositRates = "deposit-rates",
   EventsBloodDrive = "events-blood-drive",
   FlightsSingaporeAirlines = "flights-singapore-airlines",
