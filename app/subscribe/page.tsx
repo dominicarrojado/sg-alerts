@@ -10,9 +10,6 @@ export const metadata: Metadata = {
     index: false,
     follow: false,
   },
-  alternates: {
-    canonical: `${Routes.Subscribe}/`,
-  },
 };
 
 export default function Subscribe() {

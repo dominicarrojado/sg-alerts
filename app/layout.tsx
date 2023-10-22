@@ -10,9 +10,9 @@ import {
   MAIN_URL,
   OWNER_NAME,
   OWNER_WEBSITE,
-  SITE_NAME,
 } from "@/lib/constants";
 import { NOTIFICATION_SETTINGS } from "@/lib/content";
+import { META_OPEN_GRAPH, META_TWITTER } from "./shared-metadata";
 import "./globals.css";
 
 const inter = Inter({
@@ -35,7 +35,16 @@ export const metadata: Metadata = {
     "Singapore Alerts",
     "Notification Service",
     "Singapore Notification Service",
-    ...NOTIFICATION_SETTINGS.map((setting) => setting.title),
+    "Email Alerts",
+    "Email Notifications",
+    "Email Subscription",
+    ...NOTIFICATION_SETTINGS.map((setting) => {
+      // remove emojis
+      let { title } = setting;
+      title = title.replace(/[\u{2708}-\u{1F9FF}]/gu, "").trim();
+
+      return title;
+    }),
   ],
   authors: [
     {
@@ -48,28 +57,8 @@ export const metadata: Metadata = {
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: MAIN_URL,
-    title: MAIN_TITLE,
-    description: MAIN_DESCRIPTION,
-    siteName: SITE_NAME,
-    images: [
-      {
-        url: `${MAIN_URL}og-image.png`,
-        width: 1200,
-        height: 750,
-        alt: SITE_NAME,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: MAIN_TITLE,
-    description: MAIN_DESCRIPTION,
-    images: [`${MAIN_URL}og-image.png`],
-  },
+  openGraph: META_OPEN_GRAPH,
+  twitter: META_TWITTER,
   icons: {
     icon: `${MAIN_URL}favicon.ico`,
     apple: `${MAIN_URL}apple-touch-icon.png`,
