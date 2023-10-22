@@ -311,6 +311,22 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     ),
   },
   {
+    id: SubscriptionTopic.TravelDealsPhilippineAirlines,
+    title: "🌏 Travel Deals (Philippine Airlines)",
+    description: (
+      <>
+        Receive email notifications when there are new travel deals from{" "}
+        <Anchor
+          href="https://www.philippineairlines.com/promo-offers"
+          isExternal
+        >
+          Philippine Airlines
+        </Anchor>
+        .
+      </>
+    ),
+  },
+  {
     id: SubscriptionTopic.EventsBloodDrive,
     title: "🏥 Community Blood Drives",
     description: (
