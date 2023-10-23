@@ -24,7 +24,9 @@ import { NOTIFICATION_SETTINGS } from "@/lib/content";
 
 export default function SubscribeForm() {
   const [fetchStatus, submitSubscribeRequest] = useSubmitSubscribeRequest();
-  const [topics, setTopics] = useState<SubscriptionTopics>([]);
+  const [topics, setTopics] = useState<SubscriptionTopics>([
+    SubscriptionTopic.FeaturesSgAlerts,
+  ]);
   const [email, setEmail] = useState("");
   const isFormValid =
     email.includes("@") && email.includes(".") && topics.length > 0;

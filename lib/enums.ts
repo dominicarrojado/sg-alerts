@@ -23,8 +23,6 @@ export enum ApiEndpoint {
 }
 
 export enum SubscriptionTopic {
-  NewPost = "new-post",
-  NewVideo = "new-video",
   JapanVisa = "japan-visa",
   CdcEyesightTest = "cdc-eyesight-test",
   CdcCounterServices = "cdc-counter-services",
@@ -37,7 +35,6 @@ export enum SubscriptionTopic {
   FlightsSingaporeAirlines = "flights-singapore-airlines",
   FlightsJetstar = "flights-jetstar",
   FlightsCebuPacific = "flights-cebu-pacific",
-  MoviesYts = "movies-yts",
   MoviesGv = "movies-gv",
   MoviesShaw = "movies-shaw",
   MoviesCathayCineplexes = "movies-cathay-cineplexes",
