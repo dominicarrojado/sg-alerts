@@ -1,3 +1,5 @@
+import { Routes } from "./enums";
+
 export const OWNER_NAME = "Dominic Arrojado";
 export const OWNER_WEBSITE = "https://dominicarrojado.com";
 export const OWNER_EMAIL = "dominicarrojado@gmail.com";
@@ -14,3 +16,9 @@ export const MAIN_ORIGIN = "https://dominicarrojado.com";
 export const MAIN_PATH = "/sg-alerts/";
 export const MAIN_URL = `${MAIN_ORIGIN}${MAIN_PATH}`;
 export const MAIN_IMAGE = `${MAIN_ORIGIN}/images/og-image.png`;
+
+export const ROUTES_WITH_NO_TITLE = [
+  Routes.Home,
+  Routes.Subscribe,
+  Routes.Settings,
+];

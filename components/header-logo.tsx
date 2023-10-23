@@ -1,15 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import React from "react";
 import { Routes } from "@/lib/enums";
+import { cn } from "@/lib/utils";
 
-export default function HeaderLogo() {
-  const pathname = usePathname();
+type Props = {
+  pathname: string;
+  flagClassName?: string;
+};
+
+export default function HeaderLogo({ pathname, flagClassName }: Props) {
   const children = (
     <>
-      <span className="mr-2 md:mr-4">🇸🇬</span>
+      <span className={cn("mr-2 md:mr-4", flagClassName)}>🇸🇬</span>
       <span className="group-hover:underline">
         <abbr title="Singapore" className="no-underline">
           SG

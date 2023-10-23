@@ -1,8 +1,66 @@
 import { Fragment } from "react";
 import { Anchor } from "@/components/ui/anchor";
 import { NotificationSettings } from "./types";
-import { SubscriptionTopic } from "./enums";
+import { ExternalUrl, Routes, SubscriptionTopic } from "./enums";
 import { OWNER_EMAIL } from "./constants";
+
+export const MAIN_MENU_ITEMS = [
+  {
+    title: "Home",
+    href: Routes.Home,
+  },
+  {
+    title: "About",
+    href: Routes.About,
+  },
+];
+
+export const TOPICS_MENU_ITEMS = [
+  {
+    title: "Japan Visa Appointment Slots",
+    href: Routes.JapanVisa,
+  },
+  {
+    title: "Flight Prices",
+    href: "",
+  },
+  {
+    title: "Fixed Deposit Rates",
+    href: "",
+  },
+  {
+    title: "Driving Appointment Slots",
+    href: "",
+  },
+  {
+    title: "Golden Village Movies",
+    href: "",
+  },
+  {
+    title: "Shaw Theatres Movies",
+    href: "",
+  },
+  {
+    title: "Cathay Cineplexes Movies",
+    href: "",
+  },
+  {
+    title: "The Projector Movies",
+    href: "",
+  },
+  {
+    title: "Travel Deals",
+    href: "",
+  },
+  {
+    title: "Community Blood Drives",
+    href: "",
+  },
+  {
+    title: "Burnt Ends Reservation Slots",
+    href: "",
+  },
+];
 
 export const FIXED_DEPOSIT_BANKS = [
   {
@@ -70,10 +128,7 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     description: (
       <>
         Receive email notifications when there are new appointment date(s) for{" "}
-        <Anchor
-          href="https://www.sg.emb-japan.go.jp/itpr_en/visit.html"
-          isExternal
-        >
+        <Anchor href={ExternalUrl.JapanVisa} isExternal>
           tourist visa application
         </Anchor>{" "}
         at the Embassy of Japan in Singapore. <br />
@@ -365,10 +420,7 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         subscribe to at SG Alerts. <br />
         <small>
           Have a suggestion or feedback? Drop me an{" "}
-          <Anchor href={`mailto:${OWNER_EMAIL}`} target="_blank">
-            email
-          </Anchor>
-          .
+          <Anchor href={`mailto:${OWNER_EMAIL}`}>email</Anchor>.
         </small>
       </>
     ),

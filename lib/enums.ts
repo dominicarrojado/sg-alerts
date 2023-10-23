@@ -1,7 +1,9 @@
 export enum Routes {
   Home = "/",
-  Subscribe = "/subscribe",
-  Settings = "/settings",
+  Subscribe = "/subscribe/",
+  Settings = "/settings/",
+  About = "/about/",
+  JapanVisa = "/topics/japan-visa-appointment-slots-tourism/",
 }
 
 export enum FetchStatus {
@@ -44,4 +46,8 @@ export enum SubscriptionTopic {
   TravelDealsTraveloka = "travel-deals-traveloka",
   TravelDealsPhilippineAirlines = "travel-deals-philippine-airlines",
   FeaturesSgAlerts = "features-sg-alerts",
+}
+
+export enum ExternalUrl {
+  JapanVisa = "https://www.sg.emb-japan.go.jp/itpr_en/visit.html",
 }
