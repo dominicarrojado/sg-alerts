@@ -3,7 +3,7 @@ export enum Routes {
   Subscribe = "/subscribe/",
   Settings = "/settings/",
   About = "/about/",
-  JapanVisa = "/topics/japan-visa-appointment-slots-tourism/",
+  JapanVisa = "/topics/japan-visa-appointment-slots/",
 }
 
 export enum FetchStatus {
