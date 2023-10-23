@@ -9,6 +9,7 @@ import Subheading from "@/components/ui/Subheading";
 import Paragraph from "@/components/ui/paragraph";
 import { ExternalUrl, Routes } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
+import JapanVisaSlotsInfo from "./japan-visa-slots-info";
 
 const title = "Japan Visa Appointment Slots";
 const description =
@@ -44,6 +45,7 @@ export default function JapanVisa() {
           tourist visa application at the Embassy of Japan in Singapore.
         </Subheading>
       </div>
+      <JapanVisaSlotsInfo />
       <Paragraph>
         Are you tired of constantly checking the Embassy of Japan in Singapore
         website for an available appointment date for{" "}

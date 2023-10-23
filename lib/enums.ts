@@ -19,6 +19,7 @@ export enum ApiEndpoint {
   SubscriptionRequestVerify = "/subscription-requests/:id/verify",
   SubscriptionLinkEmail = "/subscriptions/link-email",
   SubscriptionTopics = "/subscriptions/:id/topics",
+  JapanVisaLastSlotsInfo = "/japan-visa-checker/last-available-slots-info",
 }
 
 export enum SubscriptionTopic {

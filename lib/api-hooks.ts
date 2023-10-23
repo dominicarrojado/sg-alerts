@@ -143,3 +143,39 @@ export function useUpdateSubscription() {
 
   return [fetchStatus, updateSubscription] as const;
 }
+
+export function useGetJapanVisaSlotsDate() {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [lastAvailableSlotsDate, setJapanVisaSlotsDate] = useState("");
+  const getJapanVisaSlotsDate = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(
+        `${API_URL}${ApiEndpoint.JapanVisaLastSlotsInfo}`
+      );
+
+      if (!res.data || !res.data.updatedAt) {
+        throw new Error("No data");
+      }
+
+      const date = new Date(res.data.updatedAt);
+      const formattedDate = new Intl.DateTimeFormat("en-GB", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        hourCycle: "h12",
+      }).format(date);
+
+      setJapanVisaSlotsDate(formattedDate);
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, lastAvailableSlotsDate, getJapanVisaSlotsDate] as const;
+}
