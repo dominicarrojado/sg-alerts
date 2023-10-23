@@ -49,3 +49,8 @@ export enum SubscriptionTopic {
 export enum ExternalUrl {
   JapanVisa = "https://www.sg.emb-japan.go.jp/itpr_en/visit.html",
 }
+
+export enum GoogleAnalyticsEvent {
+  SUBSCRIBE_FORM_SUBMIT = "subscribe_form_submit",
+  UNSUBSCRIBE_FORM_SUBMIT = "unsubscribe_form_submit",
+}

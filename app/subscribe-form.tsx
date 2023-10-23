@@ -18,11 +18,18 @@ import { Switch } from "@/components/ui/switch";
 import { Anchor } from "@/components/ui/anchor";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useSubmitSubscribeRequest } from "@/lib/api-hooks";
+import { trackEvent } from "@/lib/google-analytics";
 import { SubscriptionTopics } from "@/lib/types";
-import { FetchStatus, Routes, SubscriptionTopic } from "@/lib/enums";
+import {
+  FetchStatus,
+  GoogleAnalyticsEvent,
+  Routes,
+  SubscriptionTopic,
+} from "@/lib/enums";
 import { NOTIFICATION_SETTINGS } from "@/lib/content";
 
 export default function SubscribeForm() {
+  const submitBtnText = "Subscribe Now";
   const [fetchStatus, submitSubscribeRequest] = useSubmitSubscribeRequest();
   const [topics, setTopics] = useState<SubscriptionTopics>([
     SubscriptionTopic.FeaturesSgAlerts,
@@ -46,6 +53,11 @@ export default function SubscribeForm() {
 
     if (isFormValid) {
       submitSubscribeRequest(email, topics);
+
+      trackEvent({
+        event: GoogleAnalyticsEvent.SUBSCRIBE_FORM_SUBMIT,
+        buttonText: submitBtnText,
+      });
     }
   };
 
@@ -134,7 +146,7 @@ export default function SubscribeForm() {
                 <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />{" "}
               </>
             )}
-            Subscribe Now
+            {submitBtnText}
           </Button>
         </CardFooter>
       </Card>

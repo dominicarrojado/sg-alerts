@@ -17,8 +17,13 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Divider } from "@/components/ui/divider";
 import { useUpdateSubscription } from "@/lib/api-hooks";
+import { trackEvent } from "@/lib/google-analytics";
 import { Subscription, SubscriptionTopics } from "@/lib/types";
-import { FetchStatus, SubscriptionTopic } from "@/lib/enums";
+import {
+  FetchStatus,
+  GoogleAnalyticsEvent,
+  SubscriptionTopic,
+} from "@/lib/enums";
 import { NOTIFICATION_SETTINGS } from "@/lib/content";
 
 type Props = {
@@ -26,6 +31,7 @@ type Props = {
 };
 
 export default function SettingsForm({ subscription }: Props) {
+  const updateBtnText = "Save Changes";
   const [fetchStatus, updateSubscription] = useUpdateSubscription();
   const [topics, setTopics] = useState<SubscriptionTopics>(subscription.topics);
   const [isFormTouched, setIsFormTouched] = useState(false);
@@ -41,7 +47,17 @@ export default function SettingsForm({ subscription }: Props) {
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const isSuccess = await updateSubscription(subscription._id, topics);
+    const updatePromise = updateSubscription(subscription._id, topics);
+
+    trackEvent({
+      event:
+        topics.length !== 0
+          ? GoogleAnalyticsEvent.SUBSCRIBE_FORM_SUBMIT
+          : GoogleAnalyticsEvent.UNSUBSCRIBE_FORM_SUBMIT,
+      buttonText: updateBtnText,
+    });
+
+    const isSuccess = await updatePromise;
 
     if (isSuccess) {
       setIsFormTouched(false);
@@ -127,7 +143,7 @@ export default function SettingsForm({ subscription }: Props) {
                 <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />{" "}
               </>
             )}
-            Save Changes
+            {updateBtnText}
           </Button>
         </CardFooter>
       </Card>
