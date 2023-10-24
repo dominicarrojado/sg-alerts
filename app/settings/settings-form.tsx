@@ -47,7 +47,7 @@ export default function SettingsForm({ subscription }: Props) {
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const updatePromise = updateSubscription(subscription._id, topics);
+    const updatePromise = updateSubscription(topics);
 
     trackEvent({
       event:

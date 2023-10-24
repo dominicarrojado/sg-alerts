@@ -118,12 +118,20 @@ export function useGetSubscription() {
 }
 
 export function useUpdateSubscription() {
+  const searchParams = useSearchParams();
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
   const updateSubscription = async (
-    id: string,
     topics: SubscriptionTopics
   ): Promise<boolean> => {
     try {
+      const id = searchParams.get("id") as string;
+
+      if (!id) {
+        setFetchStatus(FetchStatus.Failure);
+
+        return false;
+      }
+
       setFetchStatus(FetchStatus.Loading);
 
       const axios = (await import("axios")).default;

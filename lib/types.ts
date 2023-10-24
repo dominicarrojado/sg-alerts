@@ -3,9 +3,7 @@ import { GoogleAnalyticsEvent, SubscriptionTopic } from "./enums";
 
 export type SubscriptionTopics = Array<SubscriptionTopic>;
 export type Subscription = {
-  _id: string;
   user: {
-    _id: string;
     email: string;
   };
   topics: SubscriptionTopics;
