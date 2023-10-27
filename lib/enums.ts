@@ -3,6 +3,7 @@ export enum Routes {
   Subscribe = "/subscribe/",
   Settings = "/settings/",
   About = "/about/",
+  HowItWorks = "/how-it-works/",
   JapanVisa = "/topics/japan-visa-appointment-slots/",
 }
 

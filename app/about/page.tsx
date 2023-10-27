@@ -69,9 +69,10 @@ export default function About() {
         <span className="font-medium">SG Alerts</span> to expand the service to
         other topics that are relevant to Singapore residents such as flight
         prices, fixed deposit rates, driving centre appointment slots, and many
-        more. I&apos;m always looking for new topics to add. If you have any
-        suggestions or feedback, please feel free to{" "}
-        <Anchor href={`mailto:${OWNER_EMAIL}`}>contact me</Anchor>.
+        more. I&apos;m always looking for new topics or alerts to add to the
+        service, so feel free to send me an{" "}
+        <Anchor href={`mailto:${OWNER_EMAIL}`}>email</Anchor> if you have any
+        suggestions or feedback.
       </Paragraph>
     </Container>
   );

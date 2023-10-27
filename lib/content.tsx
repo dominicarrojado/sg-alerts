@@ -13,6 +13,10 @@ export const MAIN_MENU_ITEMS = [
     title: "About",
     href: Routes.About,
   },
+  {
+    title: "How It Works",
+    href: Routes.HowItWorks,
+  },
 ];
 
 export const TOPICS_MENU_ITEMS = [
