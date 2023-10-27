@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
-import { AlertTriangle, Loader2Icon } from "lucide-react";
+import { AlertCircle, AlertTriangle, Loader2Icon } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -81,7 +81,10 @@ export default function Authenticated() {
       {fetchStatus === FetchStatus.Failure && (
         <Card className="w-full">
           <CardHeader>
-            <CardTitle>Something went wrong</CardTitle>
+            <CardTitle className="flex items-center">
+              <AlertCircle className="mr-2 h-6 w-6" />
+              Something went wrong
+            </CardTitle>
             <CardDescription>
               We were unable to fetch your notification preferences.
             </CardDescription>
