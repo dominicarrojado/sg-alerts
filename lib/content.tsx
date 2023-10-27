@@ -25,11 +25,11 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.JapanVisa,
   },
   {
-    title: "Flight Prices",
-    href: "",
+    title: "Fixed Deposit Rates",
+    href: Routes.FixedDepositRates,
   },
   {
-    title: "Fixed Deposit Rates",
+    title: "Flight Prices",
     href: "",
   },
   {

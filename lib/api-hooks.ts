@@ -1,8 +1,9 @@
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { Subscription, SubscriptionTopics } from "./types";
+import { DepositRatesInfo, Subscription, SubscriptionTopics } from "./types";
 import { ApiEndpoint, FetchStatus } from "./enums";
 import { API_URL } from "./constants";
+import { formatDateTime } from "./date";
 
 export function useSubmitSubscribeRequest() {
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
@@ -98,12 +99,13 @@ export function useGetSubscription() {
       reqUrl = reqUrl.replace(":id", id);
 
       const res = await axios.get(reqUrl);
+      const resData = res.data;
 
-      if (!res.data || !res.data?.user || !Array.isArray(res.data?.topics)) {
+      if (!resData || !resData?.user || !Array.isArray(resData?.topics)) {
         throw new Error("Invalid data");
       }
 
-      setSubscription(res.data);
+      setSubscription(resData);
       setFetchStatus(FetchStatus.Success);
     } catch (err: any) {
       if (err.response && err.response.status === 404) {
@@ -163,22 +165,13 @@ export function useGetJapanVisaSlotsDate() {
       const res = await axios.get(
         `${API_URL}${ApiEndpoint.JapanVisaLastSlotsInfo}`
       );
+      const resData = res.data;
 
-      if (!res.data || !res.data.updatedAt) {
-        throw new Error("No data");
+      if (!resData || !resData.updatedAt) {
+        throw new Error("Invalid data");
       }
 
-      const date = new Date(res.data.updatedAt);
-      const formattedDate = new Intl.DateTimeFormat("en-GB", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-        hourCycle: "h12",
-      }).format(date);
-
-      setJapanVisaSlotsDate(formattedDate);
+      setJapanVisaSlotsDate(formatDateTime(resData.updatedAt));
       setFetchStatus(FetchStatus.Success);
     } catch (err) {
       setFetchStatus(FetchStatus.Failure);
@@ -186,4 +179,37 @@ export function useGetJapanVisaSlotsDate() {
   };
 
   return [fetchStatus, lastAvailableSlotsDate, getJapanVisaSlotsDate] as const;
+}
+
+export function useGetDepositRatesInfo() {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [depositRatesInfo, setDepositRatesInfo] = useState<DepositRatesInfo>({
+    items: [],
+    updatedAt: "",
+  });
+  const getDepositRatesInfo = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(
+        `${API_URL}${ApiEndpoint.FixedDepositRatesInfo}`
+      );
+      const resData = res.data;
+
+      if (!resData || !resData?.updatedAt || !Array.isArray(resData?.items)) {
+        throw new Error("Invalid data");
+      }
+
+      setDepositRatesInfo({
+        ...resData,
+        updatedAt: formatDateTime(resData.updatedAt),
+      });
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, depositRatesInfo, getDepositRatesInfo] as const;
 }

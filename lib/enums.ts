@@ -5,6 +5,7 @@ export enum Routes {
   About = "/about/",
   HowItWorks = "/how-it-works/",
   JapanVisa = "/topics/japan-visa-appointment-slots/",
+  FixedDepositRates = "/topics/fixed-deposit-rates/",
 }
 
 export enum FetchStatus {
@@ -21,6 +22,7 @@ export enum ApiEndpoint {
   SubscriptionLinkEmail = "/subscriptions/link-email",
   SubscriptionTopics = "/subscriptions/:id/topics",
   JapanVisaLastSlotsInfo = "/japan-visa-checker/last-available-slots-info",
+  FixedDepositRatesInfo = "/deposit-rates-checker/deposit-rates-info",
 }
 
 export enum SubscriptionTopic {

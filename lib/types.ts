@@ -25,3 +25,20 @@ export type EventUnsubscribeFormSubmit = {
   event: GoogleAnalyticsEvent.UNSUBSCRIBE_FORM_SUBMIT;
   buttonText: string;
 };
+
+export type DepositRate = {
+  tenure: number;
+  rate: number;
+  previousRate: number;
+  bank: string;
+  minDeposit: number;
+  endDate: string;
+  link: string;
+};
+
+export type DepositRates = Array<DepositRate>;
+
+export type DepositRatesInfo = {
+  items: DepositRates;
+  updatedAt: string;
+};
