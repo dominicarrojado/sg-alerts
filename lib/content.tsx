@@ -257,7 +257,8 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         >
           Our Tampines Hub Badminton Court
         </Anchor>{" "}
-        from OnePA.
+        from OnePA. <br />
+        <small>(for peak slots only)</small>
       </>
     ),
   },
