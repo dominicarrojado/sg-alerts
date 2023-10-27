@@ -156,8 +156,9 @@ export default function SubscribeForm() {
       <CardHeader>
         <CardTitle>🎉 You&apos;re almost there!</CardTitle>
         <CardDescription>
-          You will receive a confirmation email shortly at{" "}
-          <b className="font-medium">{email}</b>.
+          You will receive an email shortly at{" "}
+          <b className="font-medium">{email}</b>. <br />
+          Please click on the link in the email to confirm your subscription.
         </CardDescription>
       </CardHeader>
       <CardContent>

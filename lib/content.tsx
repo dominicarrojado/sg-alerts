@@ -182,6 +182,48 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     ),
   },
   {
+    id: SubscriptionTopic.TravelDealsTripCom,
+    title: "🌏 Travel Deals (Trip.com)",
+    description: (
+      <>
+        Receive email notifications when there are new travel deals from{" "}
+        <Anchor href="https://sg.trip.com/sale/deals" isExternal>
+          Trip.com
+        </Anchor>
+        .
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.TravelDealsTraveloka,
+    title: "🌏 Travel Deals (Traveloka)",
+    description: (
+      <>
+        Receive email notifications when there are new travel deals from{" "}
+        <Anchor href="https://www.traveloka.com/en-sg/promotion" isExternal>
+          Traveloka
+        </Anchor>
+        .
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.TravelDealsPhilippineAirlines,
+    title: "🌏 Travel Deals (Philippine Airlines)",
+    description: (
+      <>
+        Receive email notifications when there are new travel deals from{" "}
+        <Anchor
+          href="https://www.philippineairlines.com/promo-offers"
+          isExternal
+        >
+          Philippine Airlines
+        </Anchor>
+        .
+      </>
+    ),
+  },
+  {
     id: SubscriptionTopic.DepositRates,
     title: "💰 Fixed Deposit Rates",
     description: (
@@ -199,6 +241,110 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
           ))}
           )
         </small>
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.FacilitiesOthBadmintonCourt,
+    title: "🏸 OnePA Facility Slots (OTH Badminton Court)",
+    description: (
+      <>
+        Receive email notifications when there are new facility slot(s)
+        available for{" "}
+        <Anchor
+          href="https://www.onepa.gov.sg/facilities/availability?facilityId=ourtampineshub_badmintoncourts&time=all"
+          isExternal
+        >
+          Our Tampines Hub Badminton Court
+        </Anchor>{" "}
+        from OnePA.
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.EventsBloodDrive,
+    title: "🏥 Community Blood Drives",
+    description: (
+      <>
+        Receive email notifications when there are new{" "}
+        <Anchor href="https://giveblood.sg/#blood-drive" isExternal>
+          community blood drives
+        </Anchor>{" "}
+        organised by the Singapore Red Cross.
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.RestaurantsBurntEnds,
+    title: "🍽️ Table Reservation Slots (Burnt Ends)",
+    description: (
+      <>
+        Receive email notifications when there are new table reservation date(s)
+        at{" "}
+        <Anchor href="https://burntends.com.sg/reservation/" isExternal>
+          Burnt Ends
+        </Anchor>
+        . <br />
+        <small>
+          (for main dining area & chefs counter seating - dinner time only)
+        </small>
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.MoviesGv,
+    title: "🎬 Movies with English Subtitles (GV)",
+    description: (
+      <>
+        Receive email notifications when there are new movies with English
+        subtitles at{" "}
+        <Anchor href="https://www.gv.com.sg/" isExternal>
+          Golden Village.
+        </Anchor>{" "}
+        <br />
+        <small>(supported languages: English, Chinese, Korean, Japanese)</small>
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.MoviesShaw,
+    title: "🎬 Movies with English Subtitles (Shaw)",
+    description: (
+      <>
+        Receive email notifications when there are new movies with English
+        subtitles at{" "}
+        <Anchor href="https://shaw.sg/" isExternal>
+          Shaw Theatres
+        </Anchor>
+        . <br />
+        <small>(supported languages: English, Chinese, Korean, Japanese)</small>
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.MoviesCathayCineplexes,
+    title: "🎬 Movies with English Subtitles (Cathay Cineplexes)",
+    description: (
+      <>
+        Receive email notifications when there are new movies with English
+        subtitles at{" "}
+        <Anchor href="https://www.cathaycineplexes.com.sg/" isExternal>
+          Cathay Cineplexes
+        </Anchor>
+        . <br />
+        <small>(supported languages: English, Chinese, Korean, Japanese)</small>
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.MoviesTheProjector,
+    title: "🎬 Movies with English Subtitles (The Projector)",
+    description: (
+      <>
+        Receive email notifications when there are new movies with English
+        subtitles at{" "}
+        <Anchor href="https://theprojector.sg/">The Projector</Anchor>. <br />
+        <small>(supported languages: English, Chinese, Korean, Japanese)</small>
       </>
     ),
   },
@@ -279,135 +425,6 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
           account opening and counter services
         </Anchor>{" "}
         at Bukit Batok Driving Centre.
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.MoviesGv,
-    title: "🎬 Movies with English Subtitles (GV)",
-    description: (
-      <>
-        Receive email notifications when there are new movies with English
-        subtitles at{" "}
-        <Anchor href="https://www.gv.com.sg/" isExternal>
-          Golden Village.
-        </Anchor>{" "}
-        <br />
-        <small>(supported languages: English, Chinese, Korean, Japanese)</small>
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.MoviesShaw,
-    title: "🎬 Movies with English Subtitles (Shaw)",
-    description: (
-      <>
-        Receive email notifications when there are new movies with English
-        subtitles at{" "}
-        <Anchor href="https://shaw.sg/" isExternal>
-          Shaw Theatres
-        </Anchor>
-        . <br />
-        <small>(supported languages: English, Chinese, Korean, Japanese)</small>
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.MoviesCathayCineplexes,
-    title: "🎬 Movies with English Subtitles (Cathay Cineplexes)",
-    description: (
-      <>
-        Receive email notifications when there are new movies with English
-        subtitles at{" "}
-        <Anchor href="https://www.cathaycineplexes.com.sg/" isExternal>
-          Cathay Cineplexes
-        </Anchor>
-        . <br />
-        <small>(supported languages: English, Chinese, Korean, Japanese)</small>
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.MoviesTheProjector,
-    title: "🎬 Movies with English Subtitles (The Projector)",
-    description: (
-      <>
-        Receive email notifications when there are new movies with English
-        subtitles at{" "}
-        <Anchor href="https://theprojector.sg/">The Projector</Anchor>. <br />
-        <small>(supported languages: English, Chinese, Korean, Japanese)</small>
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.TravelDealsTripCom,
-    title: "🌏 Travel Deals (Trip.com)",
-    description: (
-      <>
-        Receive email notifications when there are new travel deals from{" "}
-        <Anchor href="https://sg.trip.com/sale/deals" isExternal>
-          Trip.com
-        </Anchor>
-        .
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.TravelDealsTraveloka,
-    title: "🌏 Travel Deals (Traveloka)",
-    description: (
-      <>
-        Receive email notifications when there are new travel deals from{" "}
-        <Anchor href="https://www.traveloka.com/en-sg/promotion" isExternal>
-          Traveloka
-        </Anchor>
-        .
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.TravelDealsPhilippineAirlines,
-    title: "🌏 Travel Deals (Philippine Airlines)",
-    description: (
-      <>
-        Receive email notifications when there are new travel deals from{" "}
-        <Anchor
-          href="https://www.philippineairlines.com/promo-offers"
-          isExternal
-        >
-          Philippine Airlines
-        </Anchor>
-        .
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.EventsBloodDrive,
-    title: "🏥 Community Blood Drives",
-    description: (
-      <>
-        Receive email notifications when there are new{" "}
-        <Anchor href="https://giveblood.sg/#blood-drive" isExternal>
-          community blood drives
-        </Anchor>{" "}
-        organised by the Singapore Red Cross.
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.RestaurantsBurntEnds,
-    title: "🍽️ Table Reservation Slots (Burnt Ends)",
-    description: (
-      <>
-        Receive email notifications when there are new table reservation date(s)
-        at{" "}
-        <Anchor href="https://burntends.com.sg/reservation/" isExternal>
-          Burnt Ends
-        </Anchor>
-        . <br />
-        <small>
-          (for main dining area & chefs counter seating - dinner time only)
-        </small>
       </>
     ),
   },
