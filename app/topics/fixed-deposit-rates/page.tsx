@@ -13,7 +13,7 @@ import { FixedDepositRatesTable } from "./fixed-deposit-rates-table";
 const title = "Fixed Deposit Rates";
 const description =
   "Subscribe to SG Alerts to get notified when the fixed deposit rates goes up across major banks in Singapore.";
-const url = Routes.JapanVisa;
+const url = Routes.FixedDepositRates;
 
 export const metadata: Metadata = {
   title,
