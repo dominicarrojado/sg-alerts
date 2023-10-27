@@ -10,11 +10,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Anchor } from "@/components/ui/anchor";
 import { useGetDepositRatesInfo } from "@/lib/api-hooks";
 import { formatMoney } from "@/lib/number";
 import { cn } from "@/lib/utils";
 import { FetchStatus } from "@/lib/enums";
-import { Skeleton } from "@/components/ui/skeleton";
 import { FIXED_DEPOSIT_BANKS } from "@/lib/content";
 
 export function FixedDepositRatesTable() {
@@ -34,7 +35,7 @@ export function FixedDepositRatesTable() {
 
   return fetchState === FetchStatus.Success ? (
     <Table className="my-6">
-      <TableCaption>Last updated {updatedAt}.</TableCaption>
+      <TableCaption>Last updated on {updatedAt}.</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead className="w-[220px]">Bank</TableHead>
@@ -58,7 +59,11 @@ export function FixedDepositRatesTable() {
 
           return (
             <TableRow key={depositRate.bank}>
-              <TableCell className="font-medium">{depositRate.bank}</TableCell>
+              <TableCell>
+                <Anchor href={depositRate.link} isExternal>
+                  {depositRate.bank}
+                </Anchor>
+              </TableCell>
               <TableCell>
                 {formatMoney(depositRate.minDeposit)}
                 <div className="sm:hidden">{tenure}</div>
