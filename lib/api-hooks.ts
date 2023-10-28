@@ -1,9 +1,14 @@
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { DepositRatesInfo, Subscription, SubscriptionTopics } from "./types";
-import { ApiEndpoint, FetchStatus } from "./enums";
-import { API_URL } from "./constants";
 import { formatDateTime } from "./date";
+import {
+  DepositRatesInfo,
+  FlightsInfo,
+  Subscription,
+  SubscriptionTopics,
+} from "./types";
+import { ApiEndpoint, FetchStatus, FlightAirline } from "./enums";
+import { API_URL } from "./constants";
 
 export function useSubmitSubscribeRequest() {
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
@@ -212,4 +217,37 @@ export function useGetDepositRatesInfo() {
   };
 
   return [fetchStatus, depositRatesInfo, getDepositRatesInfo] as const;
+}
+
+export function useGetFlightsInfo(airline: FlightAirline) {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [flightsInfo, setFlightsInfo] = useState<FlightsInfo>({
+    items: [],
+    updatedAt: "",
+  });
+  const getFlightsInfo = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(
+        `${API_URL}${ApiEndpoint.FlightsInfo}?airline=${airline}`
+      );
+      const resData = res.data;
+
+      if (!resData || !resData?.updatedAt || !Array.isArray(resData?.items)) {
+        throw new Error("Invalid data");
+      }
+
+      setFlightsInfo({
+        ...resData,
+        updatedAt: formatDateTime(resData.updatedAt),
+      });
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, flightsInfo, getFlightsInfo] as const;
 }

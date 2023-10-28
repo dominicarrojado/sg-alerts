@@ -29,7 +29,7 @@ export type EventUnsubscribeFormSubmit = {
 export type DepositRate = {
   tenure: number;
   rate: number;
-  previousRate: number;
+  previousRate?: number;
   bank: string;
   minDeposit: number;
   endDate: string;
@@ -40,5 +40,25 @@ export type DepositRates = Array<DepositRate>;
 
 export type DepositRatesInfo = {
   items: DepositRates;
+  updatedAt: string;
+};
+
+export interface Flight {
+  id: string;
+  shareUrl: string;
+  destinationCityCode: string;
+  destinationCityName: string;
+  currency: string;
+  price: number;
+  previousPrice?: number;
+  departureDate: string;
+  returnDate: string;
+  deltaDays: number;
+}
+
+export type Flights = Array<Flight>;
+
+export type FlightsInfo = {
+  items: Flights;
   updatedAt: string;
 };

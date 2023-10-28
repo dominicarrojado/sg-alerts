@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import React from "react";
 import { Container } from "@/components/ui/container";
-import { Routes } from "@/lib/enums";
 import Authenticated from "./authenticated";
 
 export const metadata: Metadata = {

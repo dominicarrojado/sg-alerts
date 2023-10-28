@@ -29,6 +29,10 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.FixedDepositRates,
   },
   {
+    title: "Singapore Airlines Flights",
+    href: Routes.SingaporeAirlinesFlights,
+  },
+  {
     title: "Flight Prices",
     href: "",
   },

@@ -54,7 +54,9 @@ export function FixedDepositRatesTable() {
         {depositRates.map((depositRate) => {
           const { rate, previousRate } = depositRate;
           const tenure = `${depositRate.tenure}-month`;
-          const diff = Number((rate - previousRate).toFixed(2));
+          const diff = previousRate
+            ? Number((rate - previousRate).toFixed(2))
+            : 0;
           const isNegative = diff < 0;
 
           return (

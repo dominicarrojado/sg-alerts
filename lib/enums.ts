@@ -6,6 +6,7 @@ export enum Routes {
   HowItWorks = "/how-it-works/",
   JapanVisa = "/topics/japan-visa-appointment-slots/",
   FixedDepositRates = "/topics/fixed-deposit-rates/",
+  SingaporeAirlinesFlights = "/topics/singapore-airlines-flights/",
 }
 
 export enum FetchStatus {
@@ -23,6 +24,7 @@ export enum ApiEndpoint {
   SubscriptionTopics = "/subscriptions/:id/topics",
   JapanVisaLastSlotsInfo = "/japan-visa-checker/last-available-slots-info",
   FixedDepositRatesInfo = "/deposit-rates-checker/deposit-rates-info",
+  FlightsInfo = "/flight-checker/flights-info",
 }
 
 export enum SubscriptionTopic {
@@ -57,4 +59,10 @@ export enum ExternalUrl {
 export enum GoogleAnalyticsEvent {
   SUBSCRIBE_FORM_SUBMIT = "subscribe_form_submit",
   UNSUBSCRIBE_FORM_SUBMIT = "unsubscribe_form_submit",
+}
+
+export enum FlightAirline {
+  SINGAPORE_AIRLINES = "singapore-airlines",
+  JETSTAR = "jetstar",
+  CEBU_PACIFIC = "cebu-pacific",
 }
