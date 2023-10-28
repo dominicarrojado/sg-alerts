@@ -37,7 +37,7 @@ export default function MenuToggle() {
             Alerts
           </SheetTitle>
         </SheetHeader>
-        <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-7">
+        <ScrollArea className="my-4 h-[calc(100vh-6rem)] pl-7">
           <div className="flex flex-col space-y-3">
             {MAIN_MENU_ITEMS.map(({ title, href }) => (
               <Link key={href} href={href} onClick={closeSheet}>

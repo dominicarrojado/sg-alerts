@@ -13,16 +13,28 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { Anchor } from "@/components/ui/anchor";
 import { useGetFlightsInfo } from "@/lib/api-hooks";
-import { formatMoney } from "@/lib/number";
+import { formatMoney, formatMoneyPeso } from "@/lib/number";
 import { cn } from "@/lib/utils";
-import { FetchStatus, FlightAirline } from "@/lib/enums";
+import { Currency, FetchStatus, FlightAirline } from "@/lib/enums";
+import Balancer from "react-wrap-balancer";
 
 type Props = {
   airline: FlightAirline;
+  destinationLabel?: string;
+  displayCityCode?: boolean;
   pricesLabel?: string;
+  currency?: string;
+  usePercentDiff?: boolean;
 };
 
-export function FlightsTable({ airline, pricesLabel = "Prices" }: Props) {
+export function FlightsTable({
+  airline,
+  destinationLabel = "Destination",
+  displayCityCode = true,
+  pricesLabel = "Price",
+  currency = Currency.SGD,
+  usePercentDiff = true,
+}: Props) {
   const [fetchState, flightsInfo, getFlightsInfo] = useGetFlightsInfo(airline);
   const { items: flights, updatedAt } = flightsInfo;
 
@@ -41,7 +53,7 @@ export function FlightsTable({ airline, pricesLabel = "Prices" }: Props) {
       <TableCaption>Last updated on {updatedAt}.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[230px]">Destination</TableHead>
+          <TableHead className="w-[220px]">{destinationLabel}</TableHead>
           <TableHead className="hidden sm:table-cell">Travel By</TableHead>
           <TableHead className="text-right">{pricesLabel}</TableHead>
         </TableRow>
@@ -50,21 +62,27 @@ export function FlightsTable({ airline, pricesLabel = "Prices" }: Props) {
         {flights.map((flight) => {
           const { price, previousPrice, destinationCityCode } = flight;
           const diff = previousPrice ? Number(price - previousPrice) : 0;
-          const percentDiff = previousPrice ? (diff / previousPrice) * 100 : 0;
+          const percentDiff =
+            usePercentDiff && previousPrice ? (diff / previousPrice) * 100 : 0;
           const isPositive = diff >= 0;
 
           return (
             <TableRow key={flight.id}>
               <TableCell>
                 <Anchor href={flight.shareUrl} isExternal>
-                  {flight.destinationCityName} ({destinationCityCode})
+                  {flight.destinationCityName}
+                  {displayCityCode && ` (${destinationCityCode})`}
                 </Anchor>
               </TableCell>
               <TableCell className="hidden sm:table-cell">
-                {flight.departureDate} - {flight.returnDate}
+                <Balancer>
+                  {flight.departureDate} - {flight.returnDate}
+                </Balancer>
               </TableCell>
               <TableCell className="text-right font-medium">
-                {formatMoney(flight.price)}
+                {currency === Currency.SGD
+                  ? formatMoney(flight.price)
+                  : formatMoneyPeso(flight.price)}
                 {previousPrice && diff !== 0 && (
                   <span
                     className={cn(
@@ -73,7 +91,8 @@ export function FlightsTable({ airline, pricesLabel = "Prices" }: Props) {
                     )}
                   >
                     ({isPositive && "+"}
-                    {Math.round(percentDiff)}%)
+                    {usePercentDiff ? Math.round(percentDiff) : diff}
+                    {usePercentDiff && "%"})
                   </span>
                 )}
               </TableCell>

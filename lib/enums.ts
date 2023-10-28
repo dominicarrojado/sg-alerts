@@ -8,6 +8,7 @@ export enum Routes {
   FixedDepositRates = "/topics/fixed-deposit-rates/",
   SingaporeAirlinesFlights = "/topics/singapore-airlines-flights/",
   JetstarFlights = "/topics/jetstar-flights/",
+  CebuPacificFlights = "/topics/cebu-pacific-flights/",
 }
 
 export enum FetchStatus {
@@ -66,4 +67,9 @@ export enum FlightAirline {
   SINGAPORE_AIRLINES = "singapore-airlines",
   JETSTAR = "jetstar",
   CEBU_PACIFIC = "cebu-pacific",
+}
+
+export enum Currency {
+  SGD = "SGD",
+  PHP = "PHP",
 }

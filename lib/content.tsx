@@ -37,8 +37,8 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.JetstarFlights,
   },
   {
-    title: "Flight Prices",
-    href: "",
+    title: "Cebu Pacific Flights",
+    href: Routes.CebuPacificFlights,
   },
   {
     title: "Driving Appointment Slots",
