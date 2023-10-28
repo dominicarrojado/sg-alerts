@@ -149,6 +149,27 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     ),
   },
   {
+    id: SubscriptionTopic.DepositRates,
+    title: "💰 Fixed Deposit Rates",
+    description: (
+      <>
+        Receive email notifications when the fixed deposit rates goes up across
+        major banks in Singapore. <br />
+        <small>
+          (
+          {FIXED_DEPOSIT_BANKS.map(({ title, url }, index) => (
+            <Fragment key={title}>
+              {index !== 0 &&
+                (index === FIXED_DEPOSIT_BANKS.length - 1 ? " and " : ", ")}
+              <Anchor href={url}>{title}</Anchor>
+            </Fragment>
+          ))}
+          )
+        </small>
+      </>
+    ),
+  },
+  {
     id: SubscriptionTopic.FlightsSingaporeAirlines,
     title: "✈️ Flight Prices (Singapore Airlines)",
     description: (
@@ -232,27 +253,6 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
           Philippine Airlines
         </Anchor>
         .
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.DepositRates,
-    title: "💰 Fixed Deposit Rates",
-    description: (
-      <>
-        Receive email notifications when the fixed deposit rates goes up across
-        major banks in Singapore. <br />
-        <small>
-          (
-          {FIXED_DEPOSIT_BANKS.map(({ title, url }, index) => (
-            <Fragment key={title}>
-              {index !== 0 &&
-                (index === FIXED_DEPOSIT_BANKS.length - 1 ? " and " : ", ")}
-              <Anchor href={url}>{title}</Anchor>
-            </Fragment>
-          ))}
-          )
-        </small>
       </>
     ),
   },
