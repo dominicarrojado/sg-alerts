@@ -44,7 +44,7 @@ export function FixedDepositRatesTable() {
       </TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[220px]">Bank</TableHead>
+          <TableHead className="sm:w-[220px]">Bank</TableHead>
           <TableHead>
             <abbr title="Minimum" className="no-underline">
               Min.
@@ -103,7 +103,7 @@ export function FixedDepositRatesTable() {
       </TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[220px]">
+          <TableHead className="sm:w-[220px]">
             <Skeleton className="h-5 w-full" />
           </TableHead>
           <TableHead>
