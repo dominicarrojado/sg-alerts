@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/Subheading";
 import Paragraph from "@/components/ui/paragraph";
-import { Routes } from "@/lib/enums";
+import { FlightsTable } from "@/components/flights-table";
+import { FlightAirline, Routes } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
-import { FlightsTable } from "./flights-table";
 
 const title = "Singapore Airlines Flights";
 const description =
@@ -41,12 +41,13 @@ export default function SingaporeAirlinesFlights() {
         <Heading>{title}</Heading>
         <Subheading>{description}</Subheading>
       </div>
-      <FlightsTable />
+      <FlightsTable airline={FlightAirline.SINGAPORE_AIRLINES} />
       <Paragraph>
-        Singapore Airlines is the flag carrier airline of Singapore. It is one
-        of the most popular airlines in the world and has a reputation for
-        providing excellent service to its customers. The airline has been
-        ranked as one of the best airlines in the world for many years.
+        <span className="font-medium">Singapore Airlines (SQ)</span> is the flag
+        carrier airline of Singapore. It is one of the most popular airlines in
+        the world and has a reputation for providing excellent service to its
+        customers. The airline has been ranked as one of the best airlines in
+        the world for many years.
       </Paragraph>
       <Paragraph>
         Fare deals offered by Singapore Airlines are highly sought after by

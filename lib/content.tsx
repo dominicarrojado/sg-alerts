@@ -33,6 +33,10 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.SingaporeAirlinesFlights,
   },
   {
+    title: "Jetstar Flights",
+    href: Routes.JetstarFlights,
+  },
+  {
     title: "Flight Prices",
     href: "",
   },
@@ -161,6 +165,19 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     ),
   },
   {
+    id: SubscriptionTopic.FlightsJetstar,
+    title: "✈️ Flight Prices (Jetstar)",
+    description: (
+      <>
+        Receive email notifications when the flight prices goes down for{" "}
+        <Anchor href="https://www.jetstar.com/sg/en/deals" isExternal>
+          Jetstar flights
+        </Anchor>{" "}
+        departing from Singapore.
+      </>
+    ),
+  },
+  {
     id: SubscriptionTopic.FlightsCebuPacific,
     title: "✈️ Flight Prices (Cebu Pacific)",
     description: (
@@ -173,19 +190,6 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
           Cebu Pacific flights
         </Anchor>{" "}
         departing from the Philippines.
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.FlightsJetstar,
-    title: "✈️ Flight Prices (Jetstar)",
-    description: (
-      <>
-        Receive email notifications when the flight prices goes down for{" "}
-        <Anchor href="https://www.jetstar.com/sg/en/deals" isExternal>
-          Jetstar flights
-        </Anchor>{" "}
-        departing from Singapore.
       </>
     ),
   },

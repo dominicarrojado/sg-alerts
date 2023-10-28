@@ -7,6 +7,7 @@ export enum Routes {
   JapanVisa = "/topics/japan-visa-appointment-slots/",
   FixedDepositRates = "/topics/fixed-deposit-rates/",
   SingaporeAirlinesFlights = "/topics/singapore-airlines-flights/",
+  JetstarFlights = "/topics/jetstar-flights/",
 }
 
 export enum FetchStatus {

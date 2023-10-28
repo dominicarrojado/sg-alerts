@@ -17,10 +17,13 @@ import { formatMoney } from "@/lib/number";
 import { cn } from "@/lib/utils";
 import { FetchStatus, FlightAirline } from "@/lib/enums";
 
-export function FlightsTable() {
-  const [fetchState, flightsInfo, getFlightsInfo] = useGetFlightsInfo(
-    FlightAirline.SINGAPORE_AIRLINES
-  );
+type Props = {
+  airline: FlightAirline;
+  pricesLabel?: string;
+};
+
+export function FlightsTable({ airline, pricesLabel = "Prices" }: Props) {
+  const [fetchState, flightsInfo, getFlightsInfo] = useGetFlightsInfo(airline);
   const { items: flights, updatedAt } = flightsInfo;
 
   useEffect(() => {
@@ -40,7 +43,7 @@ export function FlightsTable() {
         <TableRow>
           <TableHead className="w-[230px]">Destination</TableHead>
           <TableHead className="hidden sm:table-cell">Travel By</TableHead>
-          <TableHead className="text-right">Price</TableHead>
+          <TableHead className="text-right">{pricesLabel}</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
