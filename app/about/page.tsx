@@ -3,7 +3,7 @@ import React from "react";
 import { Container } from "@/components/ui/container";
 import { Anchor } from "@/components/ui/anchor";
 import Heading from "@/components/ui/heading";
-import Subheading from "@/components/ui/Subheading";
+import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import { OWNER_EMAIL } from "@/lib/constants";
 import { Routes } from "@/lib/enums";

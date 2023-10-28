@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/container";
 import { Anchor } from "@/components/ui/anchor";
 import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/heading";
-import Subheading from "@/components/ui/Subheading";
+import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import { ExternalUrl, Routes } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";

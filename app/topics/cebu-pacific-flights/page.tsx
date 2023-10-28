@@ -4,7 +4,7 @@ import React from "react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/heading";
-import Subheading from "@/components/ui/Subheading";
+import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import { Currency, FlightAirline, Routes } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
