@@ -35,7 +35,13 @@ export function FixedDepositRatesTable() {
 
   return fetchState === FetchStatus.Success ? (
     <Table className="my-6">
-      <TableCaption>Last updated on {updatedAt}.</TableCaption>
+      <TableCaption>
+        Last updated on {updatedAt}. <br />
+        <small>
+          <b className="font-medium">*</b> SSB and T-bills are not fixed deposit
+          rates, but they are included here for comparison purposes.
+        </small>
+      </TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead className="w-[220px]">Bank</TableHead>

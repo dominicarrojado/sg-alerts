@@ -117,10 +117,12 @@ export const FIXED_DEPOSIT_BANKS = [
   },
   {
     title: "Sing Investments & Finance",
+    shortName: "SIF",
     url: "https://www.sif.com.sg/fixed-deposits/",
   },
   {
-    title: "Singapore Savings Bonds",
+    title: "Singapore Savings Bonds*",
+    shortName: "SSB*",
     url: "https://www.mas.gov.sg/bonds-and-bills/singapore-savings-bonds",
   },
   {
@@ -128,8 +130,13 @@ export const FIXED_DEPOSIT_BANKS = [
     url: "https://www.sc.com/sg/save/time-deposits/singapore-dollar-time-deposit/",
   },
   {
+    title: "Treasury Bills (T-Bills)*",
+    shortName: "T-Bills*",
+    url: "https://www.mas.gov.sg/bonds-and-bills/singapore-savings-bonds",
+  },
+  {
     title: "UOB",
-    url: "https://www.uob.com.sg/personal/save/fixed-deposits/singapore-dollar-fixed-deposit.page",
+    url: "https://www.mas.gov.sg/bonds-and-bills/singapore-government-t-bills-information-for-individuals",
   },
 ];
 
@@ -157,11 +164,11 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         major banks in Singapore. <br />
         <small>
           (
-          {FIXED_DEPOSIT_BANKS.map(({ title, url }, index) => (
+          {FIXED_DEPOSIT_BANKS.map(({ title, shortName, url }, index) => (
             <Fragment key={title}>
               {index !== 0 &&
                 (index === FIXED_DEPOSIT_BANKS.length - 1 ? " and " : ", ")}
-              <Anchor href={url}>{title}</Anchor>
+              <Anchor href={url}>{shortName || title}</Anchor>
             </Fragment>
           ))}
           )
