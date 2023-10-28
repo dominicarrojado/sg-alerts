@@ -69,8 +69,8 @@ export default function CebuPacificFlights() {
       <Paragraph>
         To get started, simply click the button below to head over to the
         subscription page. Once there, you can select{" "}
-        <span className="font-medium">Flight Prices (Jetstar)</span> as one of
-        the topics you want to subscribe to.
+        <span className="font-medium">Flight Prices (Cebu Pacific)</span> as one
+        of the topics you want to subscribe to.
       </Paragraph>
       <div className="mt-8 text-center">
         <Link href={Routes.Home}>
