@@ -41,6 +41,14 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.CebuPacificFlights,
   },
   {
+    title: "COE Bidding Results",
+    href: Routes.CoeBiddingResults,
+  },
+  {
+    title: "OnePA Facility Slots",
+    href: "",
+  },
+  {
     title: "Driving Appointment Slots",
     href: "",
   },
@@ -375,10 +383,7 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
       <>
         Receive email notifications when the COE premiums have decreased from
         the latest bidding results from{" "}
-        <Anchor
-          href="https://onemotoring.lta.gov.sg/content/onemotoring/home/buying/coe-open-bidding.html"
-          isExternal
-        >
+        <Anchor href={ExternalUrl.OneMotoring} isExternal>
           OneMotoring
         </Anchor>{" "}
         by Land Transport Authority.

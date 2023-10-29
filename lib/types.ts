@@ -62,3 +62,20 @@ export type FlightsInfo = {
   items: Flights;
   updatedAt: string;
 };
+
+export type CoeBidding = {
+  category: string;
+  title: string;
+  quota: number;
+  qp: number;
+  previousQp?: number;
+  pqp: number;
+  previousPqp?: number;
+};
+
+export type CoeBiddings = Array<CoeBidding>;
+
+export type CoeBiddingsInfo = {
+  items: CoeBiddings;
+  updatedAt: string;
+};

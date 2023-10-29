@@ -2,6 +2,7 @@ import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { formatDateTime } from "./date";
 import {
+  CoeBiddingsInfo,
   DepositRatesInfo,
   FlightsInfo,
   Subscription,
@@ -250,4 +251,35 @@ export function useGetFlightsInfo(airline: FlightAirline) {
   };
 
   return [fetchStatus, flightsInfo, getFlightsInfo] as const;
+}
+
+export function useGetCoeBiddingsInfo() {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [coeBiddingsInfo, setCoeBiddingsInfo] = useState<CoeBiddingsInfo>({
+    items: [],
+    updatedAt: "",
+  });
+  const getCoeBiddingsInfo = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(`${API_URL}${ApiEndpoint.CoeBiddingsInfo}`);
+      const resData = res.data;
+
+      if (!resData || !resData?.updatedAt || !Array.isArray(resData?.items)) {
+        throw new Error("Invalid data");
+      }
+
+      setCoeBiddingsInfo({
+        ...resData,
+        updatedAt: formatDateTime(resData.updatedAt),
+      });
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, coeBiddingsInfo, getCoeBiddingsInfo] as const;
 }

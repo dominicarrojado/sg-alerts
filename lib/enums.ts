@@ -9,6 +9,7 @@ export enum Routes {
   SingaporeAirlinesFlights = "/topics/singapore-airlines-flights/",
   JetstarFlights = "/topics/jetstar-flights/",
   CebuPacificFlights = "/topics/cebu-pacific-flights/",
+  CoeBiddingResults = "/topics/coe-bidding-results/",
 }
 
 export enum FetchStatus {
@@ -27,6 +28,7 @@ export enum ApiEndpoint {
   JapanVisaLastSlotsInfo = "/japan-visa-checker/last-available-slots-info",
   FixedDepositRatesInfo = "/deposit-rates-checker/deposit-rates-info",
   FlightsInfo = "/flight-checker/flights-info",
+  CoeBiddingsInfo = "/coe-checker/biddings-info",
 }
 
 export enum SubscriptionTopic {
@@ -57,6 +59,7 @@ export enum SubscriptionTopic {
 
 export enum ExternalUrl {
   JapanVisa = "https://www.sg.emb-japan.go.jp/itpr_en/visit.html",
+  OneMotoring = "https://onemotoring.lta.gov.sg/content/onemotoring/home/buying/coe-open-bidding.html",
 }
 
 export enum GoogleAnalyticsEvent {
