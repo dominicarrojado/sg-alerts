@@ -369,6 +369,23 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     ),
   },
   {
+    id: SubscriptionTopic.CoeBiddings,
+    title: "📄 Certificate of Entitlement (COE) Bidding Results",
+    description: (
+      <>
+        Receive email notifications when the COE premiums have decreased from
+        the latest bidding results from{" "}
+        <Anchor
+          href="https://onemotoring.lta.gov.sg/content/onemotoring/home/buying/coe-open-bidding.html"
+          isExternal
+        >
+          OneMotoring
+        </Anchor>{" "}
+        by Land Transport Authority.
+      </>
+    ),
+  },
+  {
     id: SubscriptionTopic.CdcEyesightTest,
     title: "🚘 CDC Appointment Slots (Eyesight Test)",
     description: (

@@ -51,6 +51,7 @@ export enum SubscriptionTopic {
   TravelDealsTraveloka = "travel-deals-traveloka",
   TravelDealsPhilippineAirlines = "travel-deals-philippine-airlines",
   FacilitiesOthBadmintonCourt = "facilities-oth-badminton-court",
+  CoeBiddings = "coe-biddings",
   FeaturesSgAlerts = "features-sg-alerts",
 }
 
