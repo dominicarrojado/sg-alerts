@@ -56,16 +56,22 @@ export default function CoeBiddingResults() {
         for 10 years.
       </Paragraph>
       <Paragraph>
-        The COE bidding system is a monthly auction where the highest bidder
-        wins. The bidding process is conducted by the LTA and the results are
-        published on their{" "}
+        The COE bidding system is a monthly auction where bidders outbid each
+        other to obtain a COE during the bidding exercise by keying in the
+        reserve price. The reserve price is the maximum bid amount that a bidder
+        is prepared to pay for the COE. The bidding process is conducted by the
+        LTA and the results are published on their{" "}
         <Anchor href={ExternalUrl.OneMotoring} isExternal>
           OneMotoring
         </Anchor>{" "}
-        website. Bidding exercises usually start at 12pm on the first and third
-        Monday of the month, and last for 3 working days. The exercises end in
-        the same week, at 4pm on Wednesday, if there is no public holiday in
-        between.
+        website.
+      </Paragraph>
+      <Paragraph>
+        Bidding exercises usually start at 12pm on the first and third Monday of
+        the month, and last for 3 working days. The exercises end in the same
+        week, at 4pm on Wednesday, if there is no public holiday in between. If
+        you are thinking of buying a vehicle, it is important to keep track of
+        the COE premiums so that you can make an informed decision.
       </Paragraph>
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification
