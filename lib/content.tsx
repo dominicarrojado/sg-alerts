@@ -37,10 +37,6 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.JetstarFlights,
   },
   {
-    title: "Cebu Pacific Flights",
-    href: Routes.CebuPacificFlights,
-  },
-  {
     title: "COE Bidding Results",
     href: Routes.CoeBiddingResults,
   },
@@ -182,22 +178,6 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     ),
   },
   {
-    id: SubscriptionTopic.FlightsCebuPacific,
-    title: "✈️ Flight Prices (Cebu Pacific)",
-    description: (
-      <>
-        Receive email notifications when the flight prices goes down for{" "}
-        <Anchor
-          href="https://www.cebupacificair.com/en-PH/seat-sale"
-          isExternal
-        >
-          Cebu Pacific flights
-        </Anchor>{" "}
-        departing from the Philippines.
-      </>
-    ),
-  },
-  {
     id: SubscriptionTopic.TravelDealsTripCom,
     title: "🌏 Travel Deals (Trip.com)",
     description: (
@@ -218,22 +198,6 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         Receive email notifications when there are new travel deals from{" "}
         <Anchor href="https://www.traveloka.com/en-sg/promotion" isExternal>
           Traveloka
-        </Anchor>
-        .
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.TravelDealsPhilippineAirlines,
-    title: "🌏 Travel Deals (Philippine Airlines)",
-    description: (
-      <>
-        Receive email notifications when there are new travel deals from{" "}
-        <Anchor
-          href="https://www.philippineairlines.com/promo-offers"
-          isExternal
-        >
-          Philippine Airlines
         </Anchor>
         .
       </>

@@ -9,6 +9,8 @@ import Paragraph from "@/components/ui/paragraph";
 import { Currency, FlightAirline, Routes } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { FlightsTable } from "@/components/flights-table";
+import Redirect from "@/components/redirector";
+import { PH_ALERTS_CEBU_PACIFIC_URL } from "@/lib/constants";
 
 const title = "Cebu Pacific Flights";
 const description =
@@ -77,6 +79,7 @@ export default function CebuPacificFlights() {
           <Button variant="secondary">Subscribe Now</Button>
         </Link>
       </div>
+      <Redirect to={PH_ALERTS_CEBU_PACIFIC_URL} />
     </Container>
   );
 }

@@ -3,13 +3,13 @@
 import { usePathname } from "next/navigation";
 import React from "react";
 import { Container } from "./ui/container";
-import { ModeToggle } from "./mode-toggle";
 import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
 } from "./page-header";
 import HeaderLogo from "./header-logo";
+import ModeToggle from "./mode-toggle";
 import MenuToggle from "./menu-toggle";
 import { cn } from "@/lib/utils";
 import { Routes } from "@/lib/enums";
@@ -43,8 +43,8 @@ export default function Header() {
           </div>
         )}
         <div className="flex gap-2 shrink-0">
-          <MenuToggle />
           <ModeToggle />
+          <MenuToggle />
         </div>
       </div>
     </Container>

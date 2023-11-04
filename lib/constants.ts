@@ -23,3 +23,4 @@ export const ROUTES_WITH_NO_TITLE = [
 ];
 
 export const PH_ALERTS_URL = `${MAIN_ORIGIN}/ph-alerts/`;
+export const PH_ALERTS_CEBU_PACIFIC_URL = `${PH_ALERTS_URL}topics/cebu-pacific-flights/`;
