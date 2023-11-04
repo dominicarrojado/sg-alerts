@@ -45,39 +45,7 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.CoeBiddingResults,
   },
   {
-    title: "OnePA Facility Slots",
-    href: "",
-  },
-  {
-    title: "Driving Appointment Slots",
-    href: "",
-  },
-  {
-    title: "Golden Village Movies",
-    href: "",
-  },
-  {
-    title: "Shaw Theatres Movies",
-    href: "",
-  },
-  {
-    title: "Cathay Cineplexes Movies",
-    href: "",
-  },
-  {
-    title: "The Projector Movies",
-    href: "",
-  },
-  {
-    title: "Travel Deals",
-    href: "",
-  },
-  {
-    title: "Community Blood Drives",
-    href: "",
-  },
-  {
-    title: "Burnt Ends Reservation Slots",
+    title: "and more...",
     href: "",
   },
 ];
