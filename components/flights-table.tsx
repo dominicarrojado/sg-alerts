@@ -64,6 +64,7 @@ export function FlightsTable({
           const diff = previousPrice ? Number(price - previousPrice) : 0;
           const percentDiff =
             usePercentDiff && previousPrice ? (diff / previousPrice) * 100 : 0;
+          const percentDiffRounded = Math.round(percentDiff);
           const isPositive = diff >= 0;
 
           return (
@@ -83,18 +84,20 @@ export function FlightsTable({
                 {currency === Currency.SGD
                   ? formatMoney(flight.price)
                   : formatMoneyPeso(flight.price)}
-                {previousPrice && diff !== 0 && (
-                  <span
-                    className={cn(
-                      "ml-1 font-normal",
-                      isPositive ? "text-primary" : "text-green-500"
-                    )}
-                  >
-                    ({isPositive && "+"}
-                    {usePercentDiff ? Math.round(percentDiff) : diff}
-                    {usePercentDiff && "%"})
-                  </span>
-                )}
+                {previousPrice &&
+                  diff !== 0 &&
+                  (!usePercentDiff || percentDiffRounded !== 0) && (
+                    <span
+                      className={cn(
+                        "ml-1 font-normal",
+                        isPositive ? "text-primary" : "text-green-500"
+                      )}
+                    >
+                      ({isPositive && "+"}
+                      {usePercentDiff ? percentDiffRounded : diff}
+                      {usePercentDiff && "%"})
+                    </span>
+                  )}
               </TableCell>
             </TableRow>
           );
