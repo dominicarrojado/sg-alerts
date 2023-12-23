@@ -208,23 +208,6 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     ),
   },
   {
-    id: SubscriptionTopic.FacilitiesOthBadmintonCourt,
-    title: "🏸 OnePA Facility Slots (OTH Badminton Court)",
-    description: (
-      <>
-        Receive email notifications when there are new facility slot(s)
-        available for{" "}
-        <Anchor
-          href="https://www.onepa.gov.sg/facilities/availability?facilityId=ourtampineshub_badmintoncourts&time=all"
-          isExternal
-        >
-          Our Tampines Hub Badminton Court
-        </Anchor>{" "}
-        from OnePA.
-      </>
-    ),
-  },
-  {
     id: SubscriptionTopic.EventsBloodDrive,
     title: "🏥 Community Blood Drives",
     description: (
