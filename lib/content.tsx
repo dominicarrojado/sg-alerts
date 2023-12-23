@@ -25,6 +25,10 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.JapanVisa,
   },
   {
+    title: "CDC Practical Lesson Slots",
+    href: Routes.CdcPracticalLessonSlots,
+  },
+  {
     title: "Fixed Deposit Rates",
     href: Routes.FixedDepositRates,
   },
@@ -318,6 +322,20 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
           OneMotoring
         </Anchor>{" "}
         by Land Transport Authority.
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.CdcLessonsAutoCar,
+    title: "🚘 CDC Practical Lesson Slots (Class 3A Motorcar)",
+    description: (
+      <>
+        Receive email notifications when there are new practical lessons slot(s)
+        for{" "}
+        <Anchor href="https://www.cdc.com.sg/course/class-33a" isExternal>
+          Class 3A Motorcar
+        </Anchor>{" "}
+        at ComfortDelGro Driving Centre.
       </>
     ),
   },

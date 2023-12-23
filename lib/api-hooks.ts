@@ -8,7 +8,12 @@ import {
   Subscription,
   SubscriptionTopics,
 } from "./types";
-import { ApiEndpoint, FetchStatus, FlightAirline } from "./enums";
+import {
+  ApiEndpoint,
+  CdcLessonsService,
+  FetchStatus,
+  FlightAirline,
+} from "./enums";
 import { API_URL } from "./constants";
 
 export function useSubmitSubscribeRequest() {
@@ -162,8 +167,8 @@ export function useUpdateSubscription() {
 
 export function useGetJapanVisaSlotsDate() {
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
-  const [lastAvailableSlotsDate, setJapanVisaSlotsDate] = useState("");
-  const getJapanVisaSlotsDate = async () => {
+  const [lastAvailableSlotsDate, setLastAvailableSlotsDate] = useState("");
+  const getLastAvailableSlotsDate = async () => {
     try {
       setFetchStatus(FetchStatus.Loading);
 
@@ -177,14 +182,51 @@ export function useGetJapanVisaSlotsDate() {
         throw new Error("Invalid data");
       }
 
-      setJapanVisaSlotsDate(formatDateTime(resData.updatedAt));
+      setLastAvailableSlotsDate(formatDateTime(resData.updatedAt));
       setFetchStatus(FetchStatus.Success);
     } catch (err) {
       setFetchStatus(FetchStatus.Failure);
     }
   };
 
-  return [fetchStatus, lastAvailableSlotsDate, getJapanVisaSlotsDate] as const;
+  return [
+    fetchStatus,
+    lastAvailableSlotsDate,
+    getLastAvailableSlotsDate,
+  ] as const;
+}
+
+export function useGetCdcLessonSlotsDate() {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [lastAvailableSlotsDate, setLastAvailableSlotsDate] = useState("");
+  const getLastAvailableSlotsDate = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(
+        `${API_URL}${ApiEndpoint.CdcLessonLastSlotsInfo}`
+      );
+      const resData = res.data;
+
+      if (!resData || !resData[CdcLessonsService.AUTO_CAR]) {
+        throw new Error("Invalid data");
+      }
+
+      setLastAvailableSlotsDate(
+        formatDateTime(resData[CdcLessonsService.AUTO_CAR])
+      );
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [
+    fetchStatus,
+    lastAvailableSlotsDate,
+    getLastAvailableSlotsDate,
+  ] as const;
 }
 
 export function useGetDepositRatesInfo() {

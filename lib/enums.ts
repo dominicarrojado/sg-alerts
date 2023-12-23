@@ -5,6 +5,7 @@ export enum Routes {
   About = "/about/",
   HowItWorks = "/how-it-works/",
   JapanVisa = "/topics/japan-visa-appointment-slots/",
+  CdcPracticalLessonSlots = "/topics/cdc-practical-lesson-slots/",
   FixedDepositRates = "/topics/fixed-deposit-rates/",
   SingaporeAirlinesFlights = "/topics/singapore-airlines-flights/",
   JetstarFlights = "/topics/jetstar-flights/",
@@ -26,6 +27,7 @@ export enum ApiEndpoint {
   SubscriptionLinkEmail = "/subscriptions/link-email",
   SubscriptionTopics = "/subscriptions/:id/topics",
   JapanVisaLastSlotsInfo = "/japan-visa-checker/last-available-slots-info",
+  CdcLessonLastSlotsInfo = "/cdc-lessons-checker/slots-last-available-dates",
   FixedDepositRatesInfo = "/deposit-rates-checker/deposit-rates-info",
   FlightsInfo = "/flight-checker/flights-info",
   CoeBiddingsInfo = "/coe-checker/biddings-info",
@@ -33,6 +35,7 @@ export enum ApiEndpoint {
 
 export enum SubscriptionTopic {
   JapanVisa = "japan-visa",
+  CdcLessonsAutoCar = "cdc-lessons-auto-car",
   CdcEyesightTest = "cdc-eyesight-test",
   CdcCounterServices = "cdc-counter-services",
   SsdcEnrolmentWeekend = "ssdc-enrolment-weekend",
@@ -59,6 +62,7 @@ export enum SubscriptionTopic {
 
 export enum ExternalUrl {
   JapanVisa = "https://www.sg.emb-japan.go.jp/itpr_en/visit.html",
+  Cdc = "https://www.cdc.com.sg/",
   OneMotoring = "https://onemotoring.lta.gov.sg/content/onemotoring/home/buying/coe-open-bidding.html",
 }
 
@@ -76,4 +80,8 @@ export enum FlightAirline {
 export enum Currency {
   SGD = "SGD",
   PHP = "PHP",
+}
+
+export enum CdcLessonsService {
+  AUTO_CAR = "auto-car",
 }
