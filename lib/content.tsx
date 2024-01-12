@@ -118,6 +118,20 @@ export const FIXED_DEPOSIT_BANKS = [
 
 export const NOTIFICATION_SETTINGS: NotificationSettings = [
   {
+    id: SubscriptionTopic.CdcLessonsAutoCar,
+    title: "🚘 CDC Practical Lesson Slots (Class 3A Motorcar)",
+    description: (
+      <>
+        Receive email notifications when there are new practical lessons slot(s)
+        for{" "}
+        <Anchor href="https://www.cdc.com.sg/course/class-33a" isExternal>
+          Class 3A Motorcar
+        </Anchor>{" "}
+        at ComfortDelGro Driving Centre.
+      </>
+    ),
+  },
+  {
     id: SubscriptionTopic.JapanVisa,
     title: "🇯🇵 Japan Visa Appointment Slots (Tourism)",
     description: (
@@ -208,6 +222,20 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     ),
   },
   {
+    id: SubscriptionTopic.CoeBiddings,
+    title: "📄 Certificate of Entitlement (COE) Bidding Results",
+    description: (
+      <>
+        Receive email notifications when the COE premiums have decreased from
+        the latest bidding results from{" "}
+        <Anchor href={ExternalUrl.OneMotoring} isExternal>
+          OneMotoring
+        </Anchor>{" "}
+        by Land Transport Authority.
+      </>
+    ),
+  },
+  {
     id: SubscriptionTopic.EventsBloodDrive,
     title: "🏥 Community Blood Drives",
     description: (
@@ -291,34 +319,6 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         subtitles at{" "}
         <Anchor href="https://theprojector.sg/">The Projector</Anchor>. <br />
         <small>(supported languages: English, Chinese, Korean, Japanese)</small>
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.CoeBiddings,
-    title: "📄 Certificate of Entitlement (COE) Bidding Results",
-    description: (
-      <>
-        Receive email notifications when the COE premiums have decreased from
-        the latest bidding results from{" "}
-        <Anchor href={ExternalUrl.OneMotoring} isExternal>
-          OneMotoring
-        </Anchor>{" "}
-        by Land Transport Authority.
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.CdcLessonsAutoCar,
-    title: "🚘 CDC Practical Lesson Slots (Class 3A Motorcar)",
-    description: (
-      <>
-        Receive email notifications when there are new practical lessons slot(s)
-        for{" "}
-        <Anchor href="https://www.cdc.com.sg/course/class-33a" isExternal>
-          Class 3A Motorcar
-        </Anchor>{" "}
-        at ComfortDelGro Driving Centre.
       </>
     ),
   },
