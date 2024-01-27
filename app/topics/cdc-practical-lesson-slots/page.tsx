@@ -82,7 +82,9 @@ export default function CdcPracticalLessonSlots() {
         <span className="font-medium">SG Alerts</span> is a free notification
         service that monitors the CDC website for available practical lesson
         slots. It sends you an email notification when there are new slots
-        available so that you can book them before anyone else does.
+        available so you can save time and effort. It is not a guarantee that
+        you will get the slots you want, but it will definitely increase your
+        chances of getting them.
       </Paragraph>
       <Paragraph>
         To get started, simply click the button below to head over to the
