@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
-import { ExternalUrl, Routes } from "@/lib/enums";
+import { Routes } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import JapanVisaSlotsInfo from "./japan-visa-slots-info";
 
@@ -49,7 +49,10 @@ export default function JapanVisa() {
       <Paragraph>
         Are you tired of constantly checking the Embassy of Japan in Singapore
         website for an available appointment date for{" "}
-        <Anchor href={ExternalUrl.JapanVisa} isExternal>
+        <Anchor
+          href="https://www.sg.emb-japan.go.jp/itpr_en/visit.html"
+          isExternal
+        >
           tourist visa application
         </Anchor>
         , only to find none available day after day? Are you frustrated with

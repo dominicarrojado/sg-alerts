@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
-import { ExternalUrl, Routes } from "@/lib/enums";
+import { Routes } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import CdcLessonSlotsInfo from "./cdc-lesson-slots-info";
 
@@ -48,12 +48,16 @@ export default function CdcPracticalLessonSlots() {
       </div>
       <CdcLessonSlotsInfo />
       <Paragraph>
-        <Anchor href={ExternalUrl.Cdc} isExternal>
+        <Anchor href="https://www.cdc.com.sg/" isExternal>
           ComfortDelGro Driving Centre (CDC)
         </Anchor>{" "}
         is one of the largest driving centres in Singapore. It offers a wide
         range of driving courses and practical lessons for all types of vehicles
-        including Class 3A Motorcar.
+        including{" "}
+        <Anchor href="https://www.cdc.com.sg/course/class-33a" isExternal>
+          Class 3A Motorcar
+        </Anchor>
+        .
       </Paragraph>
       <Paragraph>
         The practical lessons are conducted by experienced driving instructors
@@ -81,10 +85,11 @@ export default function CdcPracticalLessonSlots() {
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification
         service that monitors the CDC website for available practical lesson
-        slots. It sends you an email notification when there are new slots
-        available so you can save time and effort. It is not a guarantee that
-        you will get the slots you want, but it will definitely increase your
-        chances of getting them.
+        slots for Class 3A Motorcar (for Standard only, not applicable for One
+        Team or Elite Team). It sends you an email notification when there are
+        new slots available so you can save time and effort. It is not a
+        guarantee that you will get the slots you want, but it will definitely
+        increase your chances of getting them.
       </Paragraph>
       <Paragraph>
         To get started, simply click the button below to head over to the

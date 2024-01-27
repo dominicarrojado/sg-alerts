@@ -9,6 +9,7 @@ import Paragraph from "@/components/ui/paragraph";
 import { FlightAirline, Routes } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { FlightsTable } from "@/components/flights-table";
+import { Anchor } from "@/components/ui/anchor";
 
 const title = "Jetstar Flights";
 const description =
@@ -50,11 +51,13 @@ export default function JetstarFlights() {
         Pacific region.
       </Paragraph>
       <Paragraph>
-        Fare deals offered by Jetstar are highly sought after by Singapore
-        residents. However, the prices are constantly changing and it can be
-        difficult to keep up when the prices go down. While there are many
-        flight deal websites out there, nothing beats booking directly with the
-        airline itself.
+        <Anchor href="https://www.jetstar.com/sg/en/deals" isExternal>
+          Fare deals offered by Jetstar
+        </Anchor>{" "}
+        are highly sought after by Singapore residents. However, the prices are
+        constantly changing and it can be difficult to keep up when the prices
+        go down. While there are many flight deal websites out there, nothing
+        beats booking directly with the airline itself.
       </Paragraph>
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification

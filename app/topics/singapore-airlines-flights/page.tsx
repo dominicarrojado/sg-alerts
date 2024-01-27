@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
+import { Anchor } from "@/components/ui/anchor";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/heading";
@@ -50,11 +51,16 @@ export default function SingaporeAirlinesFlights() {
         the world for many years.
       </Paragraph>
       <Paragraph>
-        Fare deals offered by Singapore Airlines are highly sought after by
-        Singapore residents. However, the prices are constantly changing and it
-        can be difficult to keep up when the prices go down. While there are
-        many flight deal websites out there, nothing beats booking directly with
-        the airline itself.
+        <Anchor
+          href="https://www.singaporeair.com/en_UK/sg/special-offers/flight-from-Singapore/"
+          isExternal
+        >
+          Fare deals offered by Singapore Airlines
+        </Anchor>{" "}
+        are highly sought after by Singapore residents. However, the prices are
+        constantly changing and it can be difficult to keep up when the prices
+        go down. While there are many flight deal websites out there, nothing
+        beats booking directly with the airline itself.
       </Paragraph>
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification

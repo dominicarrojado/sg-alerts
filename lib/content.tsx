@@ -1,8 +1,9 @@
 import { Fragment } from "react";
 import { Anchor } from "@/components/ui/anchor";
 import { NotificationSettings } from "./types";
-import { ExternalUrl, Routes, SubscriptionTopic } from "./enums";
+import { Routes, SubscriptionTopic } from "./enums";
 import { OWNER_EMAIL } from "./constants";
+import Link from "next/link";
 
 export const MAIN_MENU_ITEMS = [
   {
@@ -21,12 +22,12 @@ export const MAIN_MENU_ITEMS = [
 
 export const TOPICS_MENU_ITEMS = [
   {
-    title: "Japan Visa Appointment Slots",
-    href: Routes.JapanVisa,
-  },
-  {
     title: "CDC Practical Lesson Slots",
     href: Routes.CdcPracticalLessonSlots,
+  },
+  {
+    title: "Japan Visa Appointment Slots",
+    href: Routes.JapanVisa,
   },
   {
     title: "Fixed Deposit Rates",
@@ -124,9 +125,9 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
       <>
         Receive email notifications when there are new practical lessons slot(s)
         for{" "}
-        <Anchor href="https://www.cdc.com.sg/course/class-33a" isExternal>
-          Class 3A Motorcar
-        </Anchor>{" "}
+        <Link href={Routes.CdcPracticalLessonSlots} passHref legacyBehavior>
+          <Anchor>Class 3A Motorcar</Anchor>
+        </Link>{" "}
         at ComfortDelGro Driving Centre.
       </>
     ),
@@ -137,9 +138,9 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     description: (
       <>
         Receive email notifications when there are new appointment date(s) for{" "}
-        <Anchor href={ExternalUrl.JapanVisa} isExternal>
-          tourist visa application
-        </Anchor>{" "}
+        <Link href={Routes.JapanVisa} passHref legacyBehavior>
+          <Anchor>tourist visa application</Anchor>
+        </Link>{" "}
         at the Embassy of Japan in Singapore. <br />
         <small>(for foreigners who require a visa to visit Japan)</small>
       </>
@@ -150,15 +151,18 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     title: "💰 Fixed Deposit Rates",
     description: (
       <>
-        Receive email notifications when the fixed deposit rates goes up across
-        major banks in Singapore. <br />
+        Receive email notifications when the{" "}
+        <Link href={Routes.FixedDepositRates} passHref legacyBehavior>
+          <Anchor>fixed deposit rates</Anchor>
+        </Link>{" "}
+        goes up across major banks in Singapore. <br />
         <small>
           (
           {FIXED_DEPOSIT_BANKS.map(({ title, shortName, url }, index) => (
             <Fragment key={title}>
               {index !== 0 &&
                 (index === FIXED_DEPOSIT_BANKS.length - 1 ? " and " : ", ")}
-              <Anchor href={url}>{shortName || title}</Anchor>
+              {shortName || title}
             </Fragment>
           ))}
           )
@@ -172,12 +176,9 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     description: (
       <>
         Receive email notifications when the flight prices goes down for{" "}
-        <Anchor
-          href="https://www.singaporeair.com/en_UK/sg/special-offers/flight-from-Singapore/"
-          isExternal
-        >
-          Singapore Airlines flights
-        </Anchor>{" "}
+        <Link href={Routes.SingaporeAirlinesFlights} passHref legacyBehavior>
+          <Anchor>Singapore Airlines flights</Anchor>
+        </Link>{" "}
         departing from Singapore.
       </>
     ),
@@ -188,9 +189,9 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     description: (
       <>
         Receive email notifications when the flight prices goes down for{" "}
-        <Anchor href="https://www.jetstar.com/sg/en/deals" isExternal>
-          Jetstar flights
-        </Anchor>{" "}
+        <Link href={Routes.JetstarFlights} passHref legacyBehavior>
+          <Anchor>Jetstar flights</Anchor>
+        </Link>{" "}
         departing from Singapore.
       </>
     ),
@@ -228,9 +229,9 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
       <>
         Receive email notifications when the COE premiums have decreased from
         the latest bidding results from{" "}
-        <Anchor href={ExternalUrl.OneMotoring} isExternal>
-          OneMotoring
-        </Anchor>{" "}
+        <Link href={Routes.CoeBiddingResults} passHref legacyBehavior>
+          <Anchor>OneMotoring</Anchor>
+        </Link>{" "}
         by Land Transport Authority.
       </>
     ),

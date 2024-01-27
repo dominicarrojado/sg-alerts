@@ -81,7 +81,7 @@ export default function Authenticated() {
             <div className="grid gap-6">
               <p className="text-sm text-muted-foreground">
                 Please go to{" "}
-                <Link href={Routes.Home} passHref>
+                <Link href={Routes.Home} passHref legacyBehavior>
                   <Anchor>home</Anchor>
                 </Link>{" "}
                 page and try to subscribe again.

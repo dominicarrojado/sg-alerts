@@ -7,7 +7,7 @@ import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import { Anchor } from "@/components/ui/anchor";
-import { ExternalUrl, Routes } from "@/lib/enums";
+import { Routes } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { CoeBiddingResultsTable } from "./coe-bidding-results-table";
 
@@ -56,15 +56,18 @@ export default function CoeBiddingResults() {
         for 10 years.
       </Paragraph>
       <Paragraph>
-        The COE bidding system is a monthly auction where bidders outbid each
-        other to obtain a COE during the bidding exercise by keying in the
-        reserve price. The reserve price is the maximum bid amount that a bidder
-        is prepared to pay for the COE. The bidding process is conducted by the
-        LTA and the results are published on their{" "}
-        <Anchor href={ExternalUrl.OneMotoring} isExternal>
-          OneMotoring
+        The{" "}
+        <Anchor
+          href="https://onemotoring.lta.gov.sg/content/onemotoring/home/buying/coe-open-bidding.html"
+          isExternal
+        >
+          COE bidding
         </Anchor>{" "}
-        website.
+        system is a monthly auction where bidders outbid each other to obtain a
+        COE during the bidding exercise by keying in the reserve price. The
+        reserve price is the maximum bid amount that a bidder is prepared to pay
+        for the COE. The bidding process is conducted by the LTA and the results
+        are published on their OneMotoring website.
       </Paragraph>
       <Paragraph>
         Bidding exercises usually start at 12pm on the first and third Monday of
