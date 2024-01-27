@@ -228,11 +228,11 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     description: (
       <>
         Receive email notifications when the COE premiums have decreased from
-        the latest bidding results from{" "}
+        the{" "}
         <Link href={Routes.CoeBiddingResults} passHref legacyBehavior>
-          <Anchor>OneMotoring</Anchor>
+          <Anchor>latest bidding results</Anchor>
         </Link>{" "}
-        by Land Transport Authority.
+        from OneMotoring by Land Transport Authority.
       </>
     ),
   },
