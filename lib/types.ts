@@ -79,3 +79,23 @@ export type CoeBiddingsInfo = {
   items: CoeBiddings;
   updatedAt: string;
 };
+
+export type TrainTimeSlot = {
+  id: string;
+  date: string;
+  day: string;
+  from: string;
+  to: string;
+  departureTime: string;
+  arrivalTime: string;
+  fare: number;
+  slotsCount: number;
+  bookingLink: string;
+};
+
+export type TrainTimeSlots = Array<TrainTimeSlot>;
+
+export type TrainTimeSlotsInfo = {
+  items: TrainTimeSlots;
+  updatedAt: string;
+};

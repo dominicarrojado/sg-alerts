@@ -11,6 +11,7 @@ export enum Routes {
   JetstarFlights = "/topics/jetstar-flights/",
   CebuPacificFlights = "/topics/cebu-pacific-flights/",
   CoeBiddingResults = "/topics/coe-bidding-results/",
+  KtmTrainTickets = "/topics/ktm-train-tickets/",
 }
 
 export enum FetchStatus {
@@ -31,6 +32,7 @@ export enum ApiEndpoint {
   FixedDepositRatesInfo = "/deposit-rates-checker/deposit-rates-info",
   FlightsInfo = "/flight-checker/flights-info",
   CoeBiddingsInfo = "/coe-checker/biddings-info",
+  TrainTimeSlotsInfo = "/train-tickets-checker/slots-info",
 }
 
 export enum SubscriptionTopic {
@@ -78,4 +80,8 @@ export enum Currency {
 
 export enum CdcLessonsService {
   AUTO_CAR = "auto-car",
+}
+
+export enum TrainService {
+  KTM = "ktm",
 }

@@ -26,6 +26,10 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.CdcPracticalLessonSlots,
   },
   {
+    title: "KTM Train Tickets",
+    href: Routes.KtmTrainTickets,
+  },
+  {
     title: "Japan Visa Appointment Slots",
     href: Routes.JapanVisa,
   },
@@ -137,20 +141,17 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     title: "🚆 Train Tickets (KTM)",
     description: (
       <>
-        Receive email notifications when there are new KTM train ticket(s)
-        available from Singapore to Johor Bahru (JB) and vice versa from{" "}
-        <Anchor
-          href="https://www.easybook.com/en-sg/train/booking/singapore-to-johor"
-          isExternal
-        >
-          Easybooking.com
-        </Anchor>{" "}
-        website. <br />
+        Receive email notifications when there are{" "}
+        <Link href={Routes.KtmTrainTickets} passHref legacyBehavior>
+          <Anchor>KTM train ticket(s)</Anchor>
+        </Link>{" "}
+        available from Singapore (SG) to Johor Bahru (JB) and vice versa. <br />
         <small>
-          (for one-way to JB Friday after 5:00 PM, Saturday before 3:00 PM)
+          (for SG -&gt; JB: Fridays 5:00 PM onwards, Saturdays before 3:00 PM
+          only)
         </small>{" "}
         <br />
-        <small>(for one-way to Singapore Sunday after 11:30 AM)</small>
+        <small>(for JB -&gt; SG: Sundays 11:30 AM onwards only)</small>
       </>
     ),
   },
@@ -438,5 +439,23 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         </small>
       </>
     ),
+  },
+];
+
+export const TRAIN_SCHEDULE_ITEMS = [
+  {
+    day: "Friday",
+    time: "5:00 PM onwards",
+    to: "Jb Sentral (Johor)",
+  },
+  {
+    day: "Saturday",
+    time: "Before 3:00 PM",
+    to: "Jb Sentral (Johor)",
+  },
+  {
+    day: "Sunday",
+    time: "11:30 AM onwards",
+    to: "Woodlands (Singapore)",
   },
 ];

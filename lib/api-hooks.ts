@@ -7,12 +7,14 @@ import {
   FlightsInfo,
   Subscription,
   SubscriptionTopics,
+  TrainTimeSlotsInfo,
 } from "./types";
 import {
   ApiEndpoint,
   CdcLessonsService,
   FetchStatus,
   FlightAirline,
+  TrainService,
 } from "./enums";
 import { API_URL } from "./constants";
 
@@ -324,4 +326,37 @@ export function useGetCoeBiddingsInfo() {
   };
 
   return [fetchStatus, coeBiddingsInfo, getCoeBiddingsInfo] as const;
+}
+
+export function useGetTrainSlotsInfo() {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [trainSlotsInfo, setTrainSlotsInfo] = useState<TrainTimeSlotsInfo>({
+    items: [],
+    updatedAt: "",
+  });
+  const getTrainSlotsInfo = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(
+        `${API_URL}${ApiEndpoint.TrainTimeSlotsInfo}?service=${TrainService.KTM}`
+      );
+      const resData = res.data;
+
+      if (!resData || !resData?.updatedAt || !Array.isArray(resData?.items)) {
+        throw new Error("Invalid data");
+      }
+
+      setTrainSlotsInfo({
+        ...resData,
+        updatedAt: formatDateTime(resData.updatedAt),
+      });
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, trainSlotsInfo, getTrainSlotsInfo] as const;
 }
