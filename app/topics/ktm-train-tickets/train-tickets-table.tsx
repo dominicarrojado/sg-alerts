@@ -54,7 +54,7 @@ export function TrainTicketsTable() {
             <TableRow key={trainSlot.id}>
               <TableCell>
                 {formatDate(trainSlot.date)} ({trainSlot.day})
-                <div className="sm:hidden">@ {formatTime(time)}</div>
+                <div className="sm:hidden">@ {time}</div>
               </TableCell>
               <TableCell className="hidden sm:table-cell">{time}</TableCell>
               <TableCell>{trainSlot.slotsCount}</TableCell>
