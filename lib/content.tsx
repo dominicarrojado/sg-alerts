@@ -133,6 +133,28 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     ),
   },
   {
+    id: SubscriptionTopic.TrainTicketsKtm,
+    title: "🚆 Train Tickets (KTM)",
+    description: (
+      <>
+        Receive email notifications when there are new KTM train ticket(s)
+        available from Singapore to Johor Bahru (JB) and vice versa from{" "}
+        <Anchor
+          href="https://www.easybook.com/en-sg/train/booking/singapore-to-johor"
+          isExternal
+        >
+          Easybooking.com
+        </Anchor>{" "}
+        website. <br />
+        <small>
+          (for one-way to JB Friday after 5:00 PM, Saturday before 3:00 PM)
+        </small>{" "}
+        <br />
+        <small>(for one-way to Singapore Sunday after 11:30 AM)</small>
+      </>
+    ),
+  },
+  {
     id: SubscriptionTopic.JapanVisa,
     title: "🇯🇵 Japan Visa Appointment Slots (Tourism)",
     description: (
