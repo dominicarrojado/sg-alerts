@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { CheckCircle } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -10,6 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Alert, AlertTitle } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGetTrainSlotsInfo } from "@/lib/api-hooks";
 import { FetchStatus } from "@/lib/enums";
@@ -18,7 +20,7 @@ import { formatDate, formatTime } from "@/lib/date";
 export function TrainTicketsTable() {
   const [fetchState, trainSlotsInfo, getTrainSlotsInfo] =
     useGetTrainSlotsInfo();
-  const { items: trainSlots, updatedAt } = trainSlotsInfo;
+  const { items: trainSlots, updatedAt, lastAvailableDate } = trainSlotsInfo;
 
   useEffect(() => {
     getTrainSlotsInfo();
@@ -30,7 +32,30 @@ export function TrainTicketsTable() {
     return null;
   }
 
-  return fetchState === FetchStatus.Success ? (
+  if (fetchState !== FetchStatus.Success) {
+    return (
+      <Alert className="flex items-start my-6 space-x-3">
+        <Skeleton className="h-5 w-5 mt-1 rounded-full" />
+        <div className="w-full space-y-2 py-1">
+          <Skeleton className="h-5 w-full sm:w-11/12" />
+          <Skeleton className="h-4 w-4/5 sm:hidden" />
+        </div>
+      </Alert>
+    );
+  }
+
+  if (trainSlots.length === 0) {
+    return (
+      <Alert className="my-6">
+        <CheckCircle className="h-4 w-4 mt-1" />
+        <AlertTitle className="leading-normal">
+          Last available slots were spotted on {lastAvailableDate}.
+        </AlertTitle>
+      </Alert>
+    );
+  }
+
+  return (
     <Table className="my-6">
       <TableCaption>Last updated on {updatedAt}.</TableCaption>
       <TableHeader>
@@ -64,46 +89,6 @@ export function TrainTicketsTable() {
             </TableRow>
           );
         })}
-      </TableBody>
-    </Table>
-  ) : (
-    <Table className="my-6">
-      <TableCaption>
-        <Skeleton className="h-5 w-1/2" />
-      </TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead className="sm:w-[220px]">
-            <Skeleton className="h-5 w-full" />
-          </TableHead>
-          <TableHead className="hidden sm:table-cell sm:w-[100px]">
-            <Skeleton className="h-5 w-full" />
-          </TableHead>
-          <TableHead>
-            <Skeleton className="h-5 w-full" />
-          </TableHead>
-          <TableHead className="sm:w-[190px]">
-            <Skeleton className="h-5 w-full" />
-          </TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {Array.from({ length: 5 }).map((_, index) => (
-          <TableRow key={index}>
-            <TableCell>
-              <Skeleton className="h-5 w-full" />
-            </TableCell>
-            <TableHead className="hidden sm:table-cell">
-              <Skeleton className="h-5 w-full" />
-            </TableHead>
-            <TableCell>
-              <Skeleton className="h-5 w-full" />
-            </TableCell>
-            <TableCell>
-              <Skeleton className="h-5 w-full" />
-            </TableCell>
-          </TableRow>
-        ))}
       </TableBody>
     </Table>
   );

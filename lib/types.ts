@@ -98,4 +98,5 @@ export type TrainTimeSlots = Array<TrainTimeSlot>;
 export type TrainTimeSlotsInfo = {
   items: TrainTimeSlots;
   updatedAt: string;
+  lastAvailableDate: string;
 };

@@ -333,6 +333,7 @@ export function useGetTrainSlotsInfo() {
   const [trainSlotsInfo, setTrainSlotsInfo] = useState<TrainTimeSlotsInfo>({
     items: [],
     updatedAt: "",
+    lastAvailableDate: "",
   });
   const getTrainSlotsInfo = async () => {
     try {
@@ -351,6 +352,7 @@ export function useGetTrainSlotsInfo() {
       setTrainSlotsInfo({
         ...resData,
         updatedAt: formatDateTime(resData.updatedAt),
+        lastAvailableDate: formatDateTime(resData.lastAvailableDate),
       });
       setFetchStatus(FetchStatus.Success);
     } catch (err) {
