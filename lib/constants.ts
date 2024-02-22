@@ -1,4 +1,4 @@
-import { Routes } from "./enums";
+import { JapanVisaType, Routes } from "./enums";
 
 export const OWNER_NAME = "Dominic Arrojado";
 export const OWNER_WEBSITE = "https://dominicarrojado.com";
@@ -24,3 +24,6 @@ export const ROUTES_WITH_NO_TITLE = [
 
 export const PH_ALERTS_URL = `${MAIN_ORIGIN}/ph-alerts/`;
 export const PH_ALERTS_CEBU_PACIFIC_URL = `${PH_ALERTS_URL}topics/cebu-pacific-flights/`;
+
+export const JAPAN_VISA_TYPES = Object.values(JapanVisaType);
+export const JAPAN_VISA_TYPES_LENGTH = JAPAN_VISA_TYPES.length;

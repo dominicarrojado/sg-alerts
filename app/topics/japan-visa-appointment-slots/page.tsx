@@ -9,11 +9,11 @@ import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import { Routes } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
-import JapanVisaSlotsInfo from "./japan-visa-slots-info";
+import { JapanVisaSlotsTable } from "./japan-visa-slots-table";
 
 const title = "Japan Visa Appointment Slots";
 const description =
-  "Subscribe to SG Alerts to get notified when there are new appointment date(s) for tourist visa application at the Embassy of Japan in Singapore.";
+  "Subscribe to SG Alerts to get notified when there are new appointment date(s) for visa application at the Embassy of Japan in Singapore.";
 const url = Routes.JapanVisa;
 
 export const metadata: Metadata = {
@@ -42,18 +42,18 @@ export default function JapanVisa() {
         <Heading>{title}</Heading>
         <Subheading>
           Subscribe to get notified when there are new appointment date(s) for
-          tourist visa application at the Embassy of Japan in Singapore.
+          visa application at the Embassy of Japan in Singapore.
         </Subheading>
       </div>
-      <JapanVisaSlotsInfo />
+      <JapanVisaSlotsTable />
       <Paragraph>
         Are you tired of constantly checking the Embassy of Japan in Singapore
-        website for an available appointment date for{" "}
+        website for an available appointment date for your{" "}
         <Anchor
           href="https://www.sg.emb-japan.go.jp/itpr_en/visit.html"
           isExternal
         >
-          tourist visa application
+          visa application
         </Anchor>
         , only to find none available day after day? Are you frustrated with
         having to pay expensive agency fees just to secure a slot? If so,{" "}
@@ -62,8 +62,9 @@ export default function JapanVisa() {
       <Paragraph>
         This free notification service automatically monitors the Embassy of
         Japan in Singapore&apos;s website for any available booking slots for
-        tourism visa applications, and sends out email notifications to our
-        subscribers the moment a slot becomes available.
+        visa applications, and sends out email notifications to our subscribers
+        the moment a slot becomes available. If there are earlier dates
+        available, you would also be notified.
       </Paragraph>
       <Paragraph>
         I created this service because I had the same problem when applying for
@@ -77,9 +78,17 @@ export default function JapanVisa() {
       </Paragraph>
       <Paragraph>
         To get started, simply click the button below to head over to the
-        subscription page. Once there, you can select{" "}
+        subscription page. Once there, you can select either{" "}
         <span className="font-medium">
           Japan Visa Appointment Slots (Tourism)
+        </span>{" "}
+        or{" "}
+        <span className="font-medium">
+          Japan Visa Appointment Slots (Business/
+          <abbr title="Certificate of Eligibility" className="no-underline">
+            COE
+          </abbr>
+          /Spouse)
         </span>{" "}
         as one of the topics you want to subscribe to.
       </Paragraph>

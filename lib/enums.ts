@@ -27,7 +27,7 @@ export enum ApiEndpoint {
   SubscriptionRequestVerify = "/subscription-requests/:id/verify",
   SubscriptionLinkEmail = "/subscriptions/link-email",
   SubscriptionTopics = "/subscriptions/:id/topics",
-  JapanVisaLastSlotsInfo = "/japan-visa-checker/last-available-slots-info",
+  JapanVisaLastSlotsInfo = "/japan-visa-checker/slots-last-available-dates",
   CdcLessonLastSlotsInfo = "/cdc-lessons-checker/slots-last-available-dates",
   FixedDepositRatesInfo = "/deposit-rates-checker/deposit-rates-info",
   FlightsInfo = "/flight-checker/flights-info",
@@ -36,7 +36,8 @@ export enum ApiEndpoint {
 }
 
 export enum SubscriptionTopic {
-  JapanVisa = "japan-visa",
+  JapanVisaTourism = "japan-visa",
+  JapanVisaBusiness = "japan-visa-business",
   CdcLessonsAutoCar = "cdc-lessons-auto-car",
   CdcEyesightTest = "cdc-eyesight-test",
   CdcCounterServices = "cdc-counter-services",
@@ -84,4 +85,9 @@ export enum CdcLessonsService {
 
 export enum TrainService {
   KTM = "ktm",
+}
+
+export enum JapanVisaType {
+  TOURISM = "tourism",
+  BUSINESS = "business",
 }

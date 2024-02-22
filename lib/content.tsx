@@ -156,13 +156,35 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     ),
   },
   {
-    id: SubscriptionTopic.JapanVisa,
+    id: SubscriptionTopic.JapanVisaTourism,
     title: "🇯🇵 Japan Visa Appointment Slots (Tourism)",
     description: (
       <>
-        Receive email notifications when there are new appointment date(s) for{" "}
+        Receive email notifications when there are new visa appointment date(s)
+        for{" "}
         <Link href={Routes.JapanVisa} passHref legacyBehavior>
-          <Anchor>tourist visa application</Anchor>
+          <Anchor>Tourism or Sightseeing</Anchor>
+        </Link>{" "}
+        at the Embassy of Japan in Singapore. <br />
+        <small>(for foreigners who require a visa to visit Japan)</small>
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.JapanVisaBusiness,
+    title: "🇯🇵 Japan Visa Appointment Slots (Business/COE/Spouse)",
+    description: (
+      <>
+        Receive email notifications when there are new visa appointment date(s)
+        for{" "}
+        <Link href={Routes.JapanVisa} passHref legacyBehavior>
+          <Anchor>
+            Short-term Business, Long-term stay with{" "}
+            <abbr title="Certificate of Eligibility" className="no-underline">
+              COE
+            </abbr>
+            , Spouse or Child of Japanese National
+          </Anchor>
         </Link>{" "}
         at the Embassy of Japan in Singapore. <br />
         <small>(for foreigners who require a visa to visit Japan)</small>

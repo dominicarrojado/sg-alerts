@@ -5,6 +5,7 @@ import {
   CoeBiddingsInfo,
   DepositRatesInfo,
   FlightsInfo,
+  JapanVisaSlotsInfo,
   Subscription,
   SubscriptionTopics,
   TrainTimeSlotsInfo,
@@ -14,6 +15,7 @@ import {
   CdcLessonsService,
   FetchStatus,
   FlightAirline,
+  JapanVisaType,
   TrainService,
 } from "./enums";
 import { API_URL } from "./constants";
@@ -167,10 +169,14 @@ export function useUpdateSubscription() {
   return [fetchStatus, updateSubscription] as const;
 }
 
-export function useGetJapanVisaSlotsDate() {
+export function useGetJapanVisaSlotsInfo() {
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
-  const [lastAvailableSlotsDate, setLastAvailableSlotsDate] = useState("");
-  const getLastAvailableSlotsDate = async () => {
+  const [japanVisaSlotsInfo, setJapanVisaSlotsInfo] =
+    useState<JapanVisaSlotsInfo>({
+      [JapanVisaType.TOURISM]: "",
+      [JapanVisaType.BUSINESS]: "",
+    });
+  const getJapanVisaSlotsInfo = async () => {
     try {
       setFetchStatus(FetchStatus.Loading);
 
@@ -180,22 +186,26 @@ export function useGetJapanVisaSlotsDate() {
       );
       const resData = res.data;
 
-      if (!resData || !resData.updatedAt) {
+      if (
+        !resData ||
+        !(resData[JapanVisaType.TOURISM] && resData[JapanVisaType.BUSINESS])
+      ) {
         throw new Error("Invalid data");
       }
 
-      setLastAvailableSlotsDate(formatDateTime(resData.updatedAt));
+      setJapanVisaSlotsInfo({
+        [JapanVisaType.TOURISM]: formatDateTime(resData[JapanVisaType.TOURISM]),
+        [JapanVisaType.BUSINESS]: formatDateTime(
+          resData[JapanVisaType.BUSINESS]
+        ),
+      });
       setFetchStatus(FetchStatus.Success);
     } catch (err) {
       setFetchStatus(FetchStatus.Failure);
     }
   };
 
-  return [
-    fetchStatus,
-    lastAvailableSlotsDate,
-    getLastAvailableSlotsDate,
-  ] as const;
+  return [fetchStatus, japanVisaSlotsInfo, getJapanVisaSlotsInfo] as const;
 }
 
 export function useGetCdcLessonSlotsDate() {

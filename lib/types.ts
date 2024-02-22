@@ -1,5 +1,9 @@
 import { ReactNode } from "react";
-import { GoogleAnalyticsEvent, SubscriptionTopic } from "./enums";
+import {
+  GoogleAnalyticsEvent,
+  JapanVisaType,
+  SubscriptionTopic,
+} from "./enums";
 
 export type SubscriptionTopics = Array<SubscriptionTopic>;
 export type Subscription = {
@@ -100,3 +104,12 @@ export type TrainTimeSlotsInfo = {
   updatedAt: string;
   lastAvailableDate: string;
 };
+
+export type JapanVisaSlotsInfo = Record<JapanVisaType, string>;
+
+export type JapanVisaSlotsInfoItem = {
+  type: JapanVisaType;
+  title: ReactNode;
+  lastAvailableDate: string;
+};
+export type JapanVisaSlotsInfoItems = Array<JapanVisaSlotsInfoItem>;
