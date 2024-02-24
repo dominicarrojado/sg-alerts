@@ -22,11 +22,36 @@ export const MAIN_MENU_ITEMS = [
 
 export const TOPICS_MENU_ITEMS = [
   {
-    title: "CDC Practical Lesson Slots",
+    title: (
+      <>
+        <abbr title="ComfortDelGro Driving Centre" className="no-underline">
+          CDC
+        </abbr>{" "}
+        Practical Lesson Slots
+      </>
+    ),
     href: Routes.CdcPracticalLessonSlots,
   },
   {
-    title: "KTM Train Tickets",
+    title: (
+      <>
+        <abbr title="ComfortDelGro Driving Centre" className="no-underline">
+          CDC
+        </abbr>{" "}
+        Appointment Slots
+      </>
+    ),
+    href: Routes.CdcAppointmentSlots,
+  },
+  {
+    title: (
+      <>
+        <abbr title="Keretapi Tanah Melayu" className="no-underline">
+          KTM
+        </abbr>{" "}
+        Train Tickets
+      </>
+    ),
     href: Routes.KtmTrainTickets,
   },
   {
@@ -46,7 +71,14 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.JetstarFlights,
   },
   {
-    title: "COE Bidding Results",
+    title: (
+      <>
+        <abbr title="Certificate of Entitlement" className="no-underline">
+          COE
+        </abbr>{" "}
+        Bidding Results
+      </>
+    ),
     href: Routes.CoeBiddingResults,
   },
   {
@@ -137,13 +169,45 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     ),
   },
   {
+    id: SubscriptionTopic.CdcEyesightTest,
+    title: "🚘 CDC Appointment Slots (Eyesight Test)",
+    description: (
+      <>
+        Receive email notifications when there are new appointment date(s) for
+        the{" "}
+        <Link href={Routes.CdcAppointmentSlots} passHref legacyBehavior>
+          <Anchor>eyesight test</Anchor>
+        </Link>{" "}
+        at ComfortDelGro Driving Centre.
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.CdcCounterServices,
+    title: "🚘 CDC Appointment Slots (Counter Services)",
+    description: (
+      <>
+        Receive email notifications when there are new appointment date(s) for{" "}
+        <Link href={Routes.CdcAppointmentSlots} passHref legacyBehavior>
+          <Anchor>counter services</Anchor>
+        </Link>{" "}
+        at ComfortDelGro Driving Centre.
+      </>
+    ),
+  },
+  {
     id: SubscriptionTopic.TrainTicketsKtm,
     title: "🚆 Train Tickets (KTM)",
     description: (
       <>
         Receive email notifications when there are{" "}
         <Link href={Routes.KtmTrainTickets} passHref legacyBehavior>
-          <Anchor>KTM train ticket(s)</Anchor>
+          <Anchor>
+            <abbr title="Keretapi Tanah Melayu" className="no-underline">
+              KTM
+            </abbr>{" "}
+            train ticket(s)
+          </Anchor>
         </Link>{" "}
         available from Singapore (SG) to Johor Bahru (JB) and vice versa. <br />
         <small>
@@ -272,8 +336,11 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     title: "📄 Certificate of Entitlement (COE) Bidding Results",
     description: (
       <>
-        Receive email notifications when the COE premiums have decreased from
-        the{" "}
+        Receive email notifications when the{" "}
+        <abbr title="Certificate of Entitlement" className="no-underline">
+          COE
+        </abbr>{" "}
+        premiums have decreased from the{" "}
         <Link href={Routes.CoeBiddingResults} passHref legacyBehavior>
           <Anchor>latest bidding results</Anchor>
         </Link>{" "}
@@ -365,33 +432,6 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         subtitles at{" "}
         <Anchor href="https://theprojector.sg/">The Projector</Anchor>. <br />
         <small>(supported languages: English, Chinese, Korean, Japanese)</small>
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.CdcEyesightTest,
-    title: "🚘 CDC Appointment Slots (Eyesight Test)",
-    description: (
-      <>
-        Receive email notifications when there are new appointment date(s) for
-        the{" "}
-        <Anchor href="https://www.cdc.com.sg/eyesight-test" isExternal>
-          eyesight test
-        </Anchor>{" "}
-        at ComfortDelGro Driving Centre.
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.CdcCounterServices,
-    title: "🚘 CDC Appointment Slots (Counter Services)",
-    description: (
-      <>
-        Receive email notifications when there are new appointment date(s) for{" "}
-        <Anchor href="https://www.cdc.com.sg/eappointment" isExternal>
-          counter services
-        </Anchor>{" "}
-        at ComfortDelGro Driving Centre.
       </>
     ),
   },

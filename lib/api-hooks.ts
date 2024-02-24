@@ -2,10 +2,11 @@ import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { formatDateTime } from "./date";
 import {
+  CdcSlotsDatesMap,
   CoeBiddingsInfo,
   DepositRatesInfo,
   FlightsInfo,
-  JapanVisaSlotsInfo,
+  JapanVisaSlotsDatesMap,
   Subscription,
   SubscriptionTopics,
   TrainTimeSlotsInfo,
@@ -13,6 +14,7 @@ import {
 import {
   ApiEndpoint,
   CdcLessonsService,
+  CdcService,
   FetchStatus,
   FlightAirline,
   JapanVisaType,
@@ -169,14 +171,14 @@ export function useUpdateSubscription() {
   return [fetchStatus, updateSubscription] as const;
 }
 
-export function useGetJapanVisaSlotsInfo() {
+export function useGetJapanVisaSlotsDatesMap() {
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
-  const [japanVisaSlotsInfo, setJapanVisaSlotsInfo] =
-    useState<JapanVisaSlotsInfo>({
+  const [japanVisaSlotsDatesMap, setJapanVisaSlotsDatesMap] =
+    useState<JapanVisaSlotsDatesMap>({
       [JapanVisaType.TOURISM]: "",
       [JapanVisaType.BUSINESS]: "",
     });
-  const getJapanVisaSlotsInfo = async () => {
+  const getJapanVisaSlotsDatesMap = async () => {
     try {
       setFetchStatus(FetchStatus.Loading);
 
@@ -193,7 +195,7 @@ export function useGetJapanVisaSlotsInfo() {
         throw new Error("Invalid data");
       }
 
-      setJapanVisaSlotsInfo({
+      setJapanVisaSlotsDatesMap({
         [JapanVisaType.TOURISM]: formatDateTime(resData[JapanVisaType.TOURISM]),
         [JapanVisaType.BUSINESS]: formatDateTime(
           resData[JapanVisaType.BUSINESS]
@@ -205,7 +207,52 @@ export function useGetJapanVisaSlotsInfo() {
     }
   };
 
-  return [fetchStatus, japanVisaSlotsInfo, getJapanVisaSlotsInfo] as const;
+  return [
+    fetchStatus,
+    japanVisaSlotsDatesMap,
+    getJapanVisaSlotsDatesMap,
+  ] as const;
+}
+
+export function useGetCdcSlotsDatesMap() {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [cdcSlotsDatesMap, setCdcSlotsDatesMap] = useState<CdcSlotsDatesMap>({
+    [CdcService.EYESIGHT_TEST]: "",
+    [CdcService.COUNTER_SERVICES]: "",
+  });
+  const getCdcSlotsDatesMap = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(`${API_URL}${ApiEndpoint.CdcSlotsInfo}`);
+      const resData = res.data;
+
+      if (
+        !resData ||
+        !(
+          resData[CdcService.EYESIGHT_TEST] &&
+          resData[CdcService.COUNTER_SERVICES]
+        )
+      ) {
+        throw new Error("Invalid data");
+      }
+
+      setCdcSlotsDatesMap({
+        [CdcService.EYESIGHT_TEST]: formatDateTime(
+          resData[CdcService.EYESIGHT_TEST]
+        ),
+        [CdcService.COUNTER_SERVICES]: formatDateTime(
+          resData[CdcService.COUNTER_SERVICES]
+        ),
+      });
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, cdcSlotsDatesMap, getCdcSlotsDatesMap] as const;
 }
 
 export function useGetCdcLessonSlotsDate() {

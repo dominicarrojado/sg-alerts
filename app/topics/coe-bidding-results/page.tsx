@@ -41,17 +41,30 @@ export default function CoeBiddingResults() {
       <div className="space-y-2">
         <Heading>{title}</Heading>
         <Subheading>
-          Receive email notifications when the COE premiums have decreased from
-          the latest bidding results from OneMotoring by Land Transport
-          Authority (LTA).
+          Receive email notifications when the{" "}
+          <abbr title="Certificate of Entitlement" className="no-underline">
+            COE
+          </abbr>{" "}
+          premiums have decreased from the latest bidding results from
+          OneMotoring by Land Transport Authority (LTA).
         </Subheading>
       </div>
       <CoeBiddingResultsTable />
       <Paragraph>
         A <span className="font-medium">Certificate of Entitlement (COE)</span>{" "}
         gives you the right to own and use a vehicle in Singapore. All vehicles
-        in Singapore require a COE. To register a vehicle, you must first place
-        a bid for a COE in the corresponding vehicle category. A successful COE
+        in Singapore require a{" "}
+        <abbr title="Certificate of Entitlement" className="no-underline">
+          COE
+        </abbr>
+        . To register a vehicle, you must first place a bid for a{" "}
+        <abbr title="Certificate of Entitlement" className="no-underline">
+          COE
+        </abbr>{" "}
+        in the corresponding vehicle category. A successful{" "}
+        <abbr title="Certificate of Entitlement" className="no-underline">
+          COE
+        </abbr>{" "}
         bid gives you the right to own a vehicle that can be used on the road
         for 10 years.
       </Paragraph>
@@ -61,26 +74,52 @@ export default function CoeBiddingResults() {
           href="https://onemotoring.lta.gov.sg/content/onemotoring/home/buying/coe-open-bidding.html"
           isExternal
         >
-          COE bidding
+          <abbr title="Certificate of Entitlement" className="no-underline">
+            COE
+          </abbr>{" "}
+          bidding
         </Anchor>{" "}
-        system is a monthly auction where bidders outbid each other to obtain a
-        COE during the bidding exercise by keying in the reserve price. The
-        reserve price is the maximum bid amount that a bidder is prepared to pay
-        for the COE. The bidding process is conducted by the LTA and the results
-        are published on their OneMotoring website.
+        system is a monthly auction where bidders outbid each other to obtain a{" "}
+        <abbr title="Certificate of Entitlement" className="no-underline">
+          COE
+        </abbr>{" "}
+        during the bidding exercise by keying in the reserve price. The reserve
+        price is the maximum bid amount that a bidder is prepared to pay for the{" "}
+        <abbr title="Certificate of Entitlement" className="no-underline">
+          COE
+        </abbr>
+        . The bidding process is conducted by the{" "}
+        <abbr title="Land Transport Authority" className="no-underline">
+          LTA
+        </abbr>{" "}
+        and the results are published on their OneMotoring website.
       </Paragraph>
       <Paragraph>
         Bidding exercises usually start at 12pm on the first and third Monday of
         the month, and last for 3 working days. The exercises end in the same
         week, at 4pm on Wednesday, if there is no public holiday in between. If
         you are thinking of buying a vehicle, it is important to keep track of
-        the COE premiums so that you can make an informed decision.
+        the{" "}
+        <abbr title="Certificate of Entitlement" className="no-underline">
+          COE
+        </abbr>{" "}
+        premiums so that you can make an informed decision.
       </Paragraph>
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification
-        service that monitors the COE bidding results published by the LTA. It
-        sends you an email notification when the COE premiums have decreased
-        from the latest bidding results.
+        service that monitors the{" "}
+        <abbr title="Certificate of Entitlement" className="no-underline">
+          COE
+        </abbr>{" "}
+        bidding results published by the{" "}
+        <abbr title="Land Transport Authority" className="no-underline">
+          LTA
+        </abbr>
+        . It sends you an email notification when the{" "}
+        <abbr title="Certificate of Entitlement" className="no-underline">
+          COE
+        </abbr>{" "}
+        premiums have decreased from the latest bidding results.
       </Paragraph>
       <Paragraph>
         To get started, simply click the button below to head over to the

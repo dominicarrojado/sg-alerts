@@ -6,6 +6,7 @@ export enum Routes {
   HowItWorks = "/how-it-works/",
   JapanVisa = "/topics/japan-visa-appointment-slots/",
   CdcPracticalLessonSlots = "/topics/cdc-practical-lesson-slots/",
+  CdcAppointmentSlots = "/topics/cdc-appointment-slots/",
   FixedDepositRates = "/topics/fixed-deposit-rates/",
   SingaporeAirlinesFlights = "/topics/singapore-airlines-flights/",
   JetstarFlights = "/topics/jetstar-flights/",
@@ -28,6 +29,7 @@ export enum ApiEndpoint {
   SubscriptionLinkEmail = "/subscriptions/link-email",
   SubscriptionTopics = "/subscriptions/:id/topics",
   JapanVisaLastSlotsInfo = "/japan-visa-checker/slots-last-available-dates",
+  CdcSlotsInfo = "/cdc-checker/slots-last-available-dates",
   CdcLessonLastSlotsInfo = "/cdc-lessons-checker/slots-last-available-dates",
   FixedDepositRatesInfo = "/deposit-rates-checker/deposit-rates-info",
   FlightsInfo = "/flight-checker/flights-info",
@@ -77,6 +79,11 @@ export enum FlightAirline {
 export enum Currency {
   SGD = "SGD",
   PHP = "PHP",
+}
+
+export enum CdcService {
+  EYESIGHT_TEST = "eyesight-test",
+  COUNTER_SERVICES = "counter-services",
 }
 
 export enum CdcLessonsService {

@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import {
+  CdcService,
   GoogleAnalyticsEvent,
   JapanVisaType,
   SubscriptionTopic,
@@ -105,7 +106,7 @@ export type TrainTimeSlotsInfo = {
   lastAvailableDate: string;
 };
 
-export type JapanVisaSlotsInfo = Record<JapanVisaType, string>;
+export type JapanVisaSlotsDatesMap = Record<JapanVisaType, string>;
 
 export type JapanVisaSlotsInfoItem = {
   type: JapanVisaType;
@@ -113,3 +114,13 @@ export type JapanVisaSlotsInfoItem = {
   lastAvailableDate: string;
 };
 export type JapanVisaSlotsInfoItems = Array<JapanVisaSlotsInfoItem>;
+
+export type CdcSlotsDatesMap = Record<CdcService, string>;
+
+export type CdcSlotsInfo = {
+  service: CdcService;
+  title: string;
+  lastAvailableDate: string;
+  calendarLink: string;
+};
+export type CdcSlotsInfoItems = Array<CdcSlotsInfo>;

@@ -1,4 +1,4 @@
-import { JapanVisaType, Routes } from "./enums";
+import { CdcService, JapanVisaType, Routes } from "./enums";
 
 export const OWNER_NAME = "Dominic Arrojado";
 export const OWNER_WEBSITE = "https://dominicarrojado.com";
@@ -27,3 +27,6 @@ export const PH_ALERTS_CEBU_PACIFIC_URL = `${PH_ALERTS_URL}topics/cebu-pacific-f
 
 export const JAPAN_VISA_TYPES = Object.values(JapanVisaType);
 export const JAPAN_VISA_TYPES_LENGTH = JAPAN_VISA_TYPES.length;
+
+export const CDC_SERVICES = Object.values(CdcService);
+export const CDC_SERVICES_LENGTH = CDC_SERVICES.length;

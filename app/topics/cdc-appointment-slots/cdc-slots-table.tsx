@@ -10,37 +10,32 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useGetJapanVisaSlotsDatesMap } from "@/lib/api-hooks";
-import { FetchStatus, JapanVisaType } from "@/lib/enums";
-import { JAPAN_VISA_TYPES_LENGTH } from "@/lib/constants";
-import type { JapanVisaSlotsInfoItems } from "@/lib/types";
+import { Anchor } from "@/components/ui/anchor";
+import { useGetCdcSlotsDatesMap } from "@/lib/api-hooks";
+import { CdcService, FetchStatus } from "@/lib/enums";
+import { CDC_SERVICES_LENGTH } from "@/lib/constants";
+import type { CdcSlotsInfoItems } from "@/lib/types";
 
-export function JapanVisaSlotsTable() {
-  const [fetchState, japanVisaSlotsDatesMap, getJapanVisaSlotsDatesMap] =
-    useGetJapanVisaSlotsDatesMap();
-  const japanVisaSlotsInfoItems: JapanVisaSlotsInfoItems = [
+export function CdcSlotsTable() {
+  const [fetchState, cdcSlotsDatesMap, getCdcSlotsDatesMap] =
+    useGetCdcSlotsDatesMap();
+  const cdcslotsInfoItems: CdcSlotsInfoItems = [
     {
-      type: JapanVisaType.TOURISM,
-      title: "Tourism or Sightseeing",
-      lastAvailableDate: japanVisaSlotsDatesMap[JapanVisaType.TOURISM],
+      service: CdcService.EYESIGHT_TEST,
+      title: "Eyesight Test",
+      lastAvailableDate: cdcSlotsDatesMap[CdcService.EYESIGHT_TEST],
+      calendarLink: "https://www.cdc.com.sg/eyesight-test",
     },
     {
-      type: JapanVisaType.BUSINESS,
-      title: (
-        <>
-          Short-term Business, Long-term stay with{" "}
-          <abbr title="Certificate of Eligibility" className="no-underline">
-            COE
-          </abbr>
-          , Spouse or Child of Japanese National
-        </>
-      ),
-      lastAvailableDate: japanVisaSlotsDatesMap[JapanVisaType.BUSINESS],
+      service: CdcService.COUNTER_SERVICES,
+      title: "Counter Services",
+      lastAvailableDate: cdcSlotsDatesMap[CdcService.COUNTER_SERVICES],
+      calendarLink: "https://www.cdc.com.sg/eappointment",
     },
   ];
 
   useEffect(() => {
-    getJapanVisaSlotsDatesMap();
+    getCdcSlotsDatesMap();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -53,16 +48,20 @@ export function JapanVisaSlotsTable() {
     <Table className="my-6">
       <TableHeader>
         <TableRow>
-          <TableHead>Type of Application</TableHead>
+          <TableHead>Type of Service</TableHead>
           <TableHead className="w-1/2 sm:w-[240px] text-right">
             Date of Last Available Slots
           </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {japanVisaSlotsInfoItems.map((slotsInfoItem) => (
-          <TableRow key={slotsInfoItem.type}>
-            <TableCell className="font-medium">{slotsInfoItem.title}</TableCell>
+        {cdcslotsInfoItems.map((slotsInfoItem) => (
+          <TableRow key={slotsInfoItem.service}>
+            <TableCell className="font-medium">
+              <Anchor href={slotsInfoItem.calendarLink} isExternal>
+                {slotsInfoItem.title}
+              </Anchor>
+            </TableCell>
             <TableCell className="text-right">
               {slotsInfoItem.lastAvailableDate}
             </TableCell>
@@ -83,7 +82,7 @@ export function JapanVisaSlotsTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {Array.from({ length: JAPAN_VISA_TYPES_LENGTH }).map((_, index) => (
+        {Array.from({ length: CDC_SERVICES_LENGTH }).map((_, index) => (
           <TableRow key={index}>
             <TableCell>
               <Skeleton className="h-5 w-full" />
