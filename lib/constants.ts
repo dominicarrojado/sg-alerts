@@ -3,8 +3,7 @@ import { CdcService, JapanVisaType, Routes } from "./enums";
 export const OWNER_NAME = "Dominic Arrojado";
 export const OWNER_WEBSITE = "https://dominicarrojado.com";
 export const OWNER_EMAIL = "dominicarrojado@gmail.com";
-export const OWNER_DONATION_LINK =
-  "https://www.paypal.com/paypalme/DominicArrojado";
+export const OWNER_DONATION_LINK = `${OWNER_WEBSITE}/donate/`;
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
