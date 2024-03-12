@@ -14,7 +14,7 @@ export default function Footer() {
       <p className="text-center text-sm leading-loose text-muted-foreground">
         <Balancer>
           Like the service? Please consider{" "}
-          <Anchor href={OWNER_DONATION_LINK} isExternal>
+          <Anchor href={OWNER_DONATION_LINK} target="_blank">
             donating
           </Anchor>{" "}
           to support this free notification service. Every donation is sincerely

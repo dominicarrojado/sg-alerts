@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useMemo, useState } from "react";
 import { AlertCircle, CheckCircle, Loader2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Divider } from "@/components/ui/divider";
+import { Anchor } from "@/components/ui/anchor";
 import { useUpdateSubscription } from "@/lib/api-hooks";
 import { trackEvent } from "@/lib/google-analytics";
 import { Subscription, SubscriptionTopics } from "@/lib/types";
@@ -25,6 +26,7 @@ import {
   SubscriptionTopic,
 } from "@/lib/enums";
 import { NOTIFICATION_SETTINGS } from "@/lib/content";
+import { OWNER_DONATION_LINK } from "@/lib/constants";
 
 type Props = {
   subscription: Subscription;
@@ -34,6 +36,13 @@ export default function SettingsForm({ subscription }: Props) {
   const updateBtnText = "Save Changes";
   const [fetchStatus, updateSubscription] = useUpdateSubscription();
   const [topics, setTopics] = useState<SubscriptionTopics>(subscription.topics);
+  const hasTopics = useMemo(
+    () =>
+      topics.some((topicId) =>
+        NOTIFICATION_SETTINGS.find((setting) => setting.id === topicId)
+      ),
+    [topics]
+  );
   const [isFormTouched, setIsFormTouched] = useState(false);
   const isLoading = fetchStatus === FetchStatus.Loading;
   const switchOnClick = (topic: SubscriptionTopic) => {
@@ -118,9 +127,21 @@ export default function SettingsForm({ subscription }: Props) {
           {fetchStatus === FetchStatus.Success && !isFormTouched && (
             <Alert variant="default">
               <CheckCircle className="h-4 w-4" />
-              <AlertTitle>Success</AlertTitle>
+              {hasTopics && <AlertTitle>Success</AlertTitle>}
               <AlertDescription>
-                Your preferences have been updated.
+                {hasTopics ? (
+                  "Your preferences have been updated."
+                ) : (
+                  <>
+                    You have unsubscribed from all topics. We hope to see you
+                    again soon! <br />
+                    If SG Alerts has been helpful to you, please consider{" "}
+                    <Anchor href={OWNER_DONATION_LINK} target="_blank">
+                      donating
+                    </Anchor>
+                    .
+                  </>
+                )}
               </AlertDescription>
             </Alert>
           )}
