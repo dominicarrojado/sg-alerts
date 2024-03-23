@@ -196,6 +196,89 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     ),
   },
   {
+    id: SubscriptionTopic.SsdcEnrolmentWeekend,
+    title: "🚘 SSDC Appointment Slots (School Enrolment)",
+    description: (
+      <>
+        Receive email notifications when there are new appointment date(s) for
+        the{" "}
+        <Anchor href="https://ssdcl.com.sg/e-appointment/" isExternal>
+          Class 3 / 3A School Enrolment (weekend)
+        </Anchor>{" "}
+        at Singapore Safety Driving Centre.
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.SsdcPrivateLearners,
+    title: "🚘 SSDC Appointment Slots (Private Learners)",
+    description: (
+      <>
+        Receive email notifications when there are new appointment date(s) for
+        the{" "}
+        <Anchor href="https://ssdcl.com.sg/e-appointment/" isExternal>
+          Private Learners
+        </Anchor>{" "}
+        at Singapore Safety Driving Centre.
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.SsdcPracticalLessonBooking,
+    title: "🚘 SSDC Appointment Slots (Practical Lesson Booking)",
+    description: (
+      <>
+        Receive email notifications when there are new appointment date(s) for
+        the{" "}
+        <Anchor href="https://ssdcl.com.sg/e-appointment/" isExternal>
+          Class 3 / 3A Practical Lesson Booking
+        </Anchor>{" "}
+        at Singapore Safety Driving Centre.
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.SsdcOtherCoursesEnrolment,
+    title: "🚘 SSDC Appointment Slots (Other Courses Enrolment)",
+    description: (
+      <>
+        Receive email notifications when there are new appointment date(s) for
+        the{" "}
+        <Anchor href="https://ssdcl.com.sg/e-appointment/" isExternal>
+          Other Courses Enrolment (weekend)
+        </Anchor>{" "}
+        at Singapore Safety Driving Centre.
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.SsdcForeignLicenceWeekend,
+    title: "🚘 SSDC Appointment Slots (Foreign Licence Package)",
+    description: (
+      <>
+        Receive email notifications when there are new appointment date(s) for
+        the{" "}
+        <Anchor href="https://ssdcl.com.sg/e-appointment/" isExternal>
+          Foreign Licence Package (weekend)
+        </Anchor>{" "}
+        at Singapore Safety Driving Centre.
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.BbdcCounterServices,
+    title: "🚘 BBDC Appointment Slots",
+    description: (
+      <>
+        Receive email notifications when there are new appointment date(s) for{" "}
+        <Anchor href="https://info.bbdc.sg/visitor-appointment/" isExternal>
+          account opening and counter services
+        </Anchor>{" "}
+        at Bukit Batok Driving Centre.
+      </>
+    ),
+  },
+  {
     id: SubscriptionTopic.TrainTicketsKtm,
     title: "🚆 Train Tickets (KTM)",
     description: (
@@ -432,59 +515,6 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         subtitles at{" "}
         <Anchor href="https://theprojector.sg/">The Projector</Anchor>. <br />
         <small>(supported languages: English, Chinese, Korean, Japanese)</small>
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.SsdcEnrolmentWeekend,
-    title: "🚘 SSDC Appointment Slots (School Enrolment)",
-    description: (
-      <>
-        Receive email notifications when there are new appointment date(s) for
-        the{" "}
-        <Anchor href="https://ssdcl.com.sg/e-appointment/" isExternal>
-          class 3/3A school enrolment (weekend)
-        </Anchor>{" "}
-        at Singapore Safety Driving Centre.
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.SsdcSelfStudyWeekend,
-    title: "🚘 SSDC Appointment Slots (Self-study Package)",
-    description: (
-      <>
-        Receive email notifications when there are new appointment date(s) for{" "}
-        <Anchor href="https://ssdcl.com.sg/e-appointment/" isExternal>
-          foreign license self-study package (weekend)
-        </Anchor>{" "}
-        at Singapore Safety Driving Centre.
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.SsdcOtherPurposes,
-    title: "🚘 SSDC Appointment Slots (Other Purposes)",
-    description: (
-      <>
-        Receive email notifications when there are new appointment date(s) for{" "}
-        <Anchor href="https://ssdcl.com.sg/e-appointment/" isExternal>
-          all other purpose of visit
-        </Anchor>{" "}
-        at Singapore Safety Driving Centre.
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.BbdcCounterServices,
-    title: "🚘 BBDC Appointment Slots",
-    description: (
-      <>
-        Receive email notifications when there are new appointment date(s) for{" "}
-        <Anchor href="https://info.bbdc.sg/visitor-appointment/" isExternal>
-          account opening and counter services
-        </Anchor>{" "}
-        at Bukit Batok Driving Centre.
       </>
     ),
   },
