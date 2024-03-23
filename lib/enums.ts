@@ -13,6 +13,7 @@ export enum Routes {
   CebuPacificFlights = "/topics/cebu-pacific-flights/",
   CoeBiddingResults = "/topics/coe-bidding-results/",
   KtmTrainTickets = "/topics/ktm-train-tickets/",
+  SsdcAppointmentSlots = "/topics/ssdc-appointment-slots/",
 }
 
 export enum FetchStatus {
@@ -35,6 +36,7 @@ export enum ApiEndpoint {
   FlightsInfo = "/flight-checker/flights-info",
   CoeBiddingsInfo = "/coe-checker/biddings-info",
   TrainTimeSlotsInfo = "/train-tickets-checker/slots-info",
+  SsdcSlotsInfo = "/ssdc-checker/slots-last-available-dates",
 }
 
 export enum SubscriptionTopic {
@@ -99,4 +101,12 @@ export enum TrainService {
 export enum JapanVisaType {
   TOURISM = "tourism",
   BUSINESS = "business",
+}
+
+export enum SsdcService {
+  OTHER_COURSES_ENROLMENT = "other-courses-enrolment",
+  PRIVATE_LEARNERS = "private-learners",
+  PRACTICAL_LESSON_BOOKING = "practical-lesson-booking",
+  FOREIGN_LICENCE_WEEKEND = "foreign-licence-weekend",
+  ENROLMENT_WEEKEND = "enrolment-weekend",
 }

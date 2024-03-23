@@ -11,31 +11,50 @@ import {
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Anchor } from "@/components/ui/anchor";
-import { useGetCdcSlotsDatesMap } from "@/lib/api-hooks";
-import { CdcService, FetchStatus } from "@/lib/enums";
-import { CDC_SERVICES_LENGTH } from "@/lib/constants";
-import type { CdcSlotsInfoItems } from "@/lib/types";
+import { useGetSsdcSlotsDatesMap } from "@/lib/api-hooks";
+import { SsdcService, FetchStatus } from "@/lib/enums";
+import { SSDC_SERVICES_LENGTH } from "@/lib/constants";
+import type { SsdcSlotsInfoItems } from "@/lib/types";
 
-export function CdcSlotsTable() {
-  const [fetchState, cdcSlotsDatesMap, getCdcSlotsDatesMap] =
-    useGetCdcSlotsDatesMap();
-  const cdcSlotsInfoItems: CdcSlotsInfoItems = [
+export function SsdcSlotsTable() {
+  const [fetchState, ssdcSlotsDatesMap, getSsdcSlotsDatesMap] =
+    useGetSsdcSlotsDatesMap();
+  const ssdcSlotsInfoItems: SsdcSlotsInfoItems = [
     {
-      service: CdcService.EYESIGHT_TEST,
-      title: "Eyesight Test",
-      lastAvailableDate: cdcSlotsDatesMap[CdcService.EYESIGHT_TEST],
-      calendarLink: "https://www.cdc.com.sg/eyesight-test",
+      service: SsdcService.ENROLMENT_WEEKEND,
+      title: "Class 3 / 3A School Enrolment (weekend)",
+      lastAvailableDate: ssdcSlotsDatesMap[SsdcService.ENROLMENT_WEEKEND],
+      calendarLink: "https://ssdcl.com.sg/e-appointment/",
     },
     {
-      service: CdcService.COUNTER_SERVICES,
-      title: "Counter Services",
-      lastAvailableDate: cdcSlotsDatesMap[CdcService.COUNTER_SERVICES],
-      calendarLink: "https://www.cdc.com.sg/eappointment",
+      service: SsdcService.PRIVATE_LEARNERS,
+      title: "Private Learners",
+      lastAvailableDate: ssdcSlotsDatesMap[SsdcService.PRIVATE_LEARNERS],
+      calendarLink: "https://ssdcl.com.sg/e-appointment/",
+    },
+    {
+      service: SsdcService.PRACTICAL_LESSON_BOOKING,
+      title: "Class 3 / 3A Practical Lesson Booking",
+      lastAvailableDate:
+        ssdcSlotsDatesMap[SsdcService.PRACTICAL_LESSON_BOOKING],
+      calendarLink: "https://ssdcl.com.sg/e-appointment/",
+    },
+    {
+      service: SsdcService.OTHER_COURSES_ENROLMENT,
+      title: "Other Courses Enrolment (weekend)",
+      lastAvailableDate: ssdcSlotsDatesMap[SsdcService.OTHER_COURSES_ENROLMENT],
+      calendarLink: "https://ssdcl.com.sg/e-appointment/",
+    },
+    {
+      service: SsdcService.FOREIGN_LICENCE_WEEKEND,
+      title: "Foreign Licence Package (weekend)",
+      lastAvailableDate: ssdcSlotsDatesMap[SsdcService.FOREIGN_LICENCE_WEEKEND],
+      calendarLink: "https://ssdcl.com.sg/e-appointment/",
     },
   ];
 
   useEffect(() => {
-    getCdcSlotsDatesMap();
+    getSsdcSlotsDatesMap();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -55,7 +74,7 @@ export function CdcSlotsTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {cdcSlotsInfoItems.map((slotsInfoItem) => (
+        {ssdcSlotsInfoItems.map((slotsInfoItem) => (
           <TableRow key={slotsInfoItem.service}>
             <TableCell className="font-medium">
               <Anchor href={slotsInfoItem.calendarLink} isExternal>
@@ -82,7 +101,7 @@ export function CdcSlotsTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {Array.from({ length: CDC_SERVICES_LENGTH }).map((_, index) => (
+        {Array.from({ length: SSDC_SERVICES_LENGTH }).map((_, index) => (
           <TableRow key={index}>
             <TableCell>
               <Skeleton className="h-5 w-full" />

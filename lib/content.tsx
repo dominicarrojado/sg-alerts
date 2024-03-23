@@ -46,6 +46,17 @@ export const TOPICS_MENU_ITEMS = [
   {
     title: (
       <>
+        <abbr title="Singapore Safety Driving Centre" className="no-underline">
+          SSDC
+        </abbr>{" "}
+        Appointment Slots
+      </>
+    ),
+    href: Routes.SsdcAppointmentSlots,
+  },
+  {
+    title: (
+      <>
         <abbr title="Keretapi Tanah Melayu" className="no-underline">
           KTM
         </abbr>{" "}
@@ -202,9 +213,9 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
       <>
         Receive email notifications when there are new appointment date(s) for
         the{" "}
-        <Anchor href="https://ssdcl.com.sg/e-appointment/" isExternal>
-          Class 3 / 3A School Enrolment (weekend)
-        </Anchor>{" "}
+        <Link href={Routes.SsdcAppointmentSlots} passHref legacyBehavior>
+          <Anchor>Class 3 / 3A School Enrolment (weekend)</Anchor>
+        </Link>{" "}
         at Singapore Safety Driving Centre.
       </>
     ),
@@ -216,9 +227,9 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
       <>
         Receive email notifications when there are new appointment date(s) for
         the{" "}
-        <Anchor href="https://ssdcl.com.sg/e-appointment/" isExternal>
-          Private Learners
-        </Anchor>{" "}
+        <Link href={Routes.SsdcAppointmentSlots} passHref legacyBehavior>
+          <Anchor>Private Learners</Anchor>
+        </Link>{" "}
         at Singapore Safety Driving Centre.
       </>
     ),
@@ -230,9 +241,9 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
       <>
         Receive email notifications when there are new appointment date(s) for
         the{" "}
-        <Anchor href="https://ssdcl.com.sg/e-appointment/" isExternal>
-          Class 3 / 3A Practical Lesson Booking
-        </Anchor>{" "}
+        <Link href={Routes.SsdcAppointmentSlots} passHref legacyBehavior>
+          <Anchor>Class 3 / 3A Practical Lesson Booking</Anchor>
+        </Link>{" "}
         at Singapore Safety Driving Centre.
       </>
     ),
@@ -244,9 +255,9 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
       <>
         Receive email notifications when there are new appointment date(s) for
         the{" "}
-        <Anchor href="https://ssdcl.com.sg/e-appointment/" isExternal>
-          Other Courses Enrolment (weekend)
-        </Anchor>{" "}
+        <Link href={Routes.SsdcAppointmentSlots} passHref legacyBehavior>
+          <Anchor>Other Courses Enrolment (weekend)</Anchor>
+        </Link>{" "}
         at Singapore Safety Driving Centre.
       </>
     ),
@@ -258,9 +269,9 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
       <>
         Receive email notifications when there are new appointment date(s) for
         the{" "}
-        <Anchor href="https://ssdcl.com.sg/e-appointment/" isExternal>
-          Foreign Licence Package (weekend)
-        </Anchor>{" "}
+        <Link href={Routes.SsdcAppointmentSlots} passHref legacyBehavior>
+          <Anchor>Foreign Licence Package (weekend)</Anchor>
+        </Link>{" "}
         at Singapore Safety Driving Centre.
       </>
     ),

@@ -3,6 +3,7 @@ import {
   CdcService,
   GoogleAnalyticsEvent,
   JapanVisaType,
+  SsdcService,
   SubscriptionTopic,
 } from "./enums";
 
@@ -124,3 +125,13 @@ export type CdcSlotsInfo = {
   calendarLink: string;
 };
 export type CdcSlotsInfoItems = Array<CdcSlotsInfo>;
+
+export type SsdcSlotsDatesMap = Record<SsdcService, string>;
+
+export type SsdcSlotsInfo = {
+  service: SsdcService;
+  title: string;
+  lastAvailableDate: string;
+  calendarLink: string;
+};
+export type SsdcSlotsInfoItems = Array<SsdcSlotsInfo>;

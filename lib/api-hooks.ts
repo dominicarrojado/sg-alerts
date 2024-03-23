@@ -7,6 +7,7 @@ import {
   DepositRatesInfo,
   FlightsInfo,
   JapanVisaSlotsDatesMap,
+  SsdcSlotsDatesMap,
   Subscription,
   SubscriptionTopics,
   TrainTimeSlotsInfo,
@@ -18,6 +19,7 @@ import {
   FetchStatus,
   FlightAirline,
   JapanVisaType,
+  SsdcService,
   TrainService,
 } from "./enums";
 import { API_URL } from "./constants";
@@ -418,4 +420,62 @@ export function useGetTrainSlotsInfo() {
   };
 
   return [fetchStatus, trainSlotsInfo, getTrainSlotsInfo] as const;
+}
+
+export function useGetSsdcSlotsDatesMap() {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [ssdcSlotsDatesMap, setSsdcSlotsDatesMap] = useState<SsdcSlotsDatesMap>(
+    {
+      [SsdcService.ENROLMENT_WEEKEND]: "",
+      [SsdcService.PRIVATE_LEARNERS]: "",
+      [SsdcService.PRACTICAL_LESSON_BOOKING]: "",
+      [SsdcService.OTHER_COURSES_ENROLMENT]: "",
+      [SsdcService.FOREIGN_LICENCE_WEEKEND]: "",
+    }
+  );
+  const getSsdcSlotsDatesMap = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(`${API_URL}${ApiEndpoint.SsdcSlotsInfo}`);
+      const resData = res.data;
+
+      if (!resData || typeof resData !== "object") {
+        throw new Error("Invalid data");
+      }
+
+      const enrolmentWeekend = resData[SsdcService.ENROLMENT_WEEKEND];
+      const privateLearners = resData[SsdcService.PRIVATE_LEARNERS];
+      const practicalLessonBooking =
+        resData[SsdcService.PRACTICAL_LESSON_BOOKING];
+      const otherCoursesEnrolment =
+        resData[SsdcService.OTHER_COURSES_ENROLMENT];
+      const foreignLicenceWeekend =
+        resData[SsdcService.FOREIGN_LICENCE_WEEKEND];
+
+      setSsdcSlotsDatesMap({
+        [SsdcService.ENROLMENT_WEEKEND]: enrolmentWeekend
+          ? formatDateTime(enrolmentWeekend)
+          : "-",
+        [SsdcService.PRIVATE_LEARNERS]: privateLearners
+          ? formatDateTime(privateLearners)
+          : "-",
+        [SsdcService.PRACTICAL_LESSON_BOOKING]: practicalLessonBooking
+          ? formatDateTime(practicalLessonBooking)
+          : "-",
+        [SsdcService.OTHER_COURSES_ENROLMENT]: otherCoursesEnrolment
+          ? formatDateTime(otherCoursesEnrolment)
+          : "-",
+        [SsdcService.FOREIGN_LICENCE_WEEKEND]: foreignLicenceWeekend
+          ? formatDateTime(foreignLicenceWeekend)
+          : "-",
+      });
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, ssdcSlotsDatesMap, getSsdcSlotsDatesMap] as const;
 }
