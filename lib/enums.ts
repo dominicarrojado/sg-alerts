@@ -14,6 +14,7 @@ export enum Routes {
   CoeBiddingResults = "/topics/coe-bidding-results/",
   KtmTrainTickets = "/topics/ktm-train-tickets/",
   SsdcAppointmentSlots = "/topics/ssdc-appointment-slots/",
+  BbdcAppointmentSlots = "/topics/bbdc-appointment-slots/",
 }
 
 export enum FetchStatus {
@@ -37,6 +38,7 @@ export enum ApiEndpoint {
   CoeBiddingsInfo = "/coe-checker/biddings-info",
   TrainTimeSlotsInfo = "/train-tickets-checker/slots-info",
   SsdcSlotsInfo = "/ssdc-checker/slots-last-available-dates",
+  BbdcSlotsInfo = "/bbdc-checker/slots-last-available-dates",
 }
 
 export enum SubscriptionTopic {
@@ -109,4 +111,8 @@ export enum SsdcService {
   PRACTICAL_LESSON_BOOKING = "practical-lesson-booking",
   FOREIGN_LICENCE_WEEKEND = "foreign-licence-weekend",
   ENROLMENT_WEEKEND = "enrolment-weekend",
+}
+
+export enum BbdcService {
+  COUNTER_SERVICES = "counter-services",
 }

@@ -2,6 +2,7 @@ import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { formatDateTime } from "./date";
 import {
+  BbdcSlotsDatesMap,
   CdcSlotsDatesMap,
   CoeBiddingsInfo,
   DepositRatesInfo,
@@ -14,6 +15,7 @@ import {
 } from "./types";
 import {
   ApiEndpoint,
+  BbdcService,
   CdcLessonsService,
   CdcService,
   FetchStatus,
@@ -478,4 +480,39 @@ export function useGetSsdcSlotsDatesMap() {
   };
 
   return [fetchStatus, ssdcSlotsDatesMap, getSsdcSlotsDatesMap] as const;
+}
+
+export function useGetBbdcSlotsDatesMap() {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [bbdcSlotsDatesMap, setBbdcSlotsDatesMap] = useState<BbdcSlotsDatesMap>(
+    {
+      [BbdcService.COUNTER_SERVICES]: "",
+    }
+  );
+  const getBbdcSlotsDatesMap = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(`${API_URL}${ApiEndpoint.BbdcSlotsInfo}`);
+      const resData = res.data;
+
+      if (!resData || typeof resData !== "object") {
+        throw new Error("Invalid data");
+      }
+
+      const counterServices = resData[BbdcService.COUNTER_SERVICES];
+
+      setBbdcSlotsDatesMap({
+        [BbdcService.COUNTER_SERVICES]: counterServices
+          ? formatDateTime(counterServices)
+          : "",
+      });
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, bbdcSlotsDatesMap, getBbdcSlotsDatesMap] as const;
 }

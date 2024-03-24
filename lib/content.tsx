@@ -57,6 +57,17 @@ export const TOPICS_MENU_ITEMS = [
   {
     title: (
       <>
+        <abbr title="Bukit Batok Driving Centre" className="no-underline">
+          BBDC
+        </abbr>{" "}
+        Appointment Slots
+      </>
+    ),
+    href: Routes.BbdcAppointmentSlots,
+  },
+  {
+    title: (
+      <>
         <abbr title="Keretapi Tanah Melayu" className="no-underline">
           KTM
         </abbr>{" "}
@@ -282,9 +293,9 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     description: (
       <>
         Receive email notifications when there are new appointment date(s) for{" "}
-        <Anchor href="https://info.bbdc.sg/visitor-appointment/" isExternal>
-          account opening and counter services
-        </Anchor>{" "}
+        <Link href={Routes.BbdcAppointmentSlots} passHref legacyBehavior>
+          <Anchor>account opening and counter services</Anchor>
+        </Link>{" "}
         at Bukit Batok Driving Centre.
       </>
     ),

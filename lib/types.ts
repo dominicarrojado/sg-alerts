@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import {
+  BbdcService,
   CdcService,
   GoogleAnalyticsEvent,
   JapanVisaType,
@@ -135,3 +136,13 @@ export type SsdcSlotsInfo = {
   calendarLink: string;
 };
 export type SsdcSlotsInfoItems = Array<SsdcSlotsInfo>;
+
+export type BbdcSlotsDatesMap = Record<BbdcService, string>;
+
+export type BbdcSlotsInfo = {
+  service: BbdcService;
+  title: string;
+  lastAvailableDate: string;
+  calendarLink: string;
+};
+export type BbdcSlotsInfoItems = Array<BbdcSlotsInfo>;
