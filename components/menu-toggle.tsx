@@ -28,7 +28,7 @@ export default function MenuToggle() {
           <span className="sr-only">Toggle menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent className="w-full max-w-[325px] pr-0 sm:max-w-[325px]">
         <SheetHeader>
           <SheetTitle>
             <span className="mr-2">🇸🇬</span>
@@ -38,7 +38,7 @@ export default function MenuToggle() {
             Alerts
           </SheetTitle>
         </SheetHeader>
-        <ScrollArea className="my-4 h-[calc(100vh-6rem)] pl-7">
+        <ScrollArea className="my-4 h-[calc(100dvh-5.2rem)] pb-10 pl-7">
           <div className="flex flex-col space-y-3">
             {MAIN_MENU_ITEMS.map(({ title, href }) => (
               <Link key={href} href={href} onClick={closeSheet}>
