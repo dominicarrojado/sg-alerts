@@ -24,32 +24,27 @@ export function SsdcSlotsTable() {
       service: SsdcService.ENROLMENT_WEEKEND,
       title: "Class 3 / 3A School Enrolment (weekend)",
       lastAvailableDate: ssdcSlotsDatesMap[SsdcService.ENROLMENT_WEEKEND],
-      calendarLink: "https://ssdcl.com.sg/e-appointment/",
     },
     {
       service: SsdcService.PRIVATE_LEARNERS,
       title: "Private Learners",
       lastAvailableDate: ssdcSlotsDatesMap[SsdcService.PRIVATE_LEARNERS],
-      calendarLink: "https://ssdcl.com.sg/e-appointment/",
     },
     {
       service: SsdcService.PRACTICAL_LESSON_BOOKING,
       title: "Class 3 / 3A Practical Lesson Booking",
       lastAvailableDate:
         ssdcSlotsDatesMap[SsdcService.PRACTICAL_LESSON_BOOKING],
-      calendarLink: "https://ssdcl.com.sg/e-appointment/",
     },
     {
       service: SsdcService.OTHER_COURSES_ENROLMENT,
       title: "Other Courses Enrolment (weekend)",
       lastAvailableDate: ssdcSlotsDatesMap[SsdcService.OTHER_COURSES_ENROLMENT],
-      calendarLink: "https://ssdcl.com.sg/e-appointment/",
     },
     {
       service: SsdcService.FOREIGN_LICENCE_WEEKEND,
       title: "Foreign Licence Package (weekend)",
       lastAvailableDate: ssdcSlotsDatesMap[SsdcService.FOREIGN_LICENCE_WEEKEND],
-      calendarLink: "https://ssdcl.com.sg/e-appointment/",
     },
   ];
 
@@ -76,11 +71,7 @@ export function SsdcSlotsTable() {
       <TableBody>
         {ssdcSlotsInfoItems.map((slotsInfoItem) => (
           <TableRow key={slotsInfoItem.service}>
-            <TableCell className="font-medium">
-              <Anchor href={slotsInfoItem.calendarLink} isExternal>
-                {slotsInfoItem.title}
-              </Anchor>
-            </TableCell>
+            <TableCell className="font-medium">{slotsInfoItem.title}</TableCell>
             <TableCell className="text-right">
               {slotsInfoItem.lastAvailableDate}
             </TableCell>

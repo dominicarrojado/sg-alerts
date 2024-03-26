@@ -60,10 +60,13 @@ export default function SsdcAppointmentSlots() {
         <abbr title="Singapore Safety Driving Centre" className="no-underline">
           SSDC
         </abbr>
-        , you may need to book an appointment depending on the course you are
-        interested or the service you are looking for. The appointment slots for
-        these services are sometimes fully booked and you will need to
-        constantly check the{" "}
+        , you may need to{" "}
+        <Anchor href="https://ssdcl.com.sg/e-appointment/" isExternal>
+          book an appointment
+        </Anchor>{" "}
+        depending on the course you are interested or the service you are
+        looking for. The appointment slots for these services are sometimes
+        fully booked and you will need to constantly check the{" "}
         <abbr title="Singapore Safety Driving Centre" className="no-underline">
           SSDC
         </abbr>{" "}
