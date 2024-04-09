@@ -32,3 +32,5 @@ export const CDC_SERVICES_LENGTH = CDC_SERVICES.length;
 
 export const SSDC_SERVICES = Object.values(SsdcService);
 export const SSDC_SERVICES_LENGTH = SSDC_SERVICES.length;
+
+export const TELEGRAM_SHORT_URL = "https://t.me";

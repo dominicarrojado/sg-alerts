@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
-import { Routes } from "@/lib/enums";
+import { Routes, TelegramChannel } from "@/lib/enums";
+import { TELEGRAM_SHORT_URL } from "@/lib/constants";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { CdcSlotsTable } from "./cdc-slots-table";
 
@@ -86,27 +87,42 @@ export default function CdcAppointmentSlots() {
         website manually every day.
       </Paragraph>
       <Paragraph>
-        To get started, simply click the button below to head over to the
-        subscription page. Once there, you can select either{" "}
-        <span className="font-medium">
-          <abbr title="ComfortDelGro Driving Centre" className="no-underline">
-            CDC
-          </abbr>{" "}
-          Appointment Slots (Eyesight Test)
-        </span>{" "}
-        or{" "}
-        <span className="font-medium">
-          <abbr title="ComfortDelGro Driving Centre" className="no-underline">
-            CDC
-          </abbr>{" "}
-          Appointment Slots (Counter Services)
-        </span>{" "}
-        as one of the topics you want to subscribe to.
+        To get started, simply click either of the buttons below to subscribe to
+        the Telegram channel and start receiving notifications.
       </Paragraph>
-      <div className="mt-8 text-center">
-        <Link href={Routes.Home}>
-          <Button variant="secondary">Subscribe Now</Button>
-        </Link>
+      <div className="mt-8 text-center flex flex-col gap-4">
+        <Anchor
+          href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.CdcEyesightTest}`}
+          isExternal
+        >
+          <Button variant="secondary">
+            <span>
+              <abbr
+                title="ComfortDelGro Driving Centre"
+                className="no-underline"
+              >
+                CDC
+              </abbr>{" "}
+              Appointment Slots (Eyesight Test)
+            </span>
+          </Button>
+        </Anchor>
+        <Anchor
+          href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.CdcCounterServices}`}
+          isExternal
+        >
+          <Button variant="secondary" className="!inline-block">
+            <span>
+              <abbr
+                title="ComfortDelGro Driving Centre"
+                className="no-underline"
+              >
+                CDC
+              </abbr>{" "}
+              Appointment Slots (Counter Services)
+            </span>
+          </Button>
+        </Anchor>
       </div>
     </Container>
   );

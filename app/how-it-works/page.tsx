@@ -42,8 +42,9 @@ export default function HowToUse() {
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification
         service that monitors the websites and sends you an email notification
-        when there are new updates. It is designed to help you save time and
-        effort by automating the process of checking for updates.
+        or a Telegram message when there are new updates. It is designed to help
+        you save time and effort by automating the process of checking for
+        updates.
       </Paragraph>
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is not affiliated with
@@ -54,7 +55,7 @@ export default function HowToUse() {
         to help others save time and effort.
       </Paragraph>
       <Paragraph>
-        Since it notifies you via email, the best way to use{" "}
+        Since most alerts are sent via email, the best way to use{" "}
         <span className="font-medium">SG Alerts</span> is to make sure that you
         have access to your email at all times. This means that you should have
         your email app installed on your phone and have notifications enabled.

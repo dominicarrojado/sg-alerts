@@ -116,3 +116,19 @@ export enum SsdcService {
 export enum BbdcService {
   COUNTER_SERVICES = "counter-services",
 }
+
+export enum TelegramChannel {
+  CdcLessonsAutoCar = "SGAlertsCDCLessonsAutoCar",
+  CdcEyesightTest = "SGAlertsCDCEyesightTest",
+  CdcCounterServices = "SGAlertsCDCCounterServices",
+  SsdcPracticalLessonBooking = "SGAlertsSSDCPracticalLessons",
+  JapanVisaTourism = "SGAlertsJapanVisaTourism",
+}
+
+export enum TelegramChannelLink {
+  CdcLessonsAutoCar = `https://t.me/${TelegramChannel.CdcLessonsAutoCar}`,
+  CdcEyesightTest = `https://t.me/${TelegramChannel.CdcEyesightTest}`,
+  CdcCounterServices = `https://t.me/${TelegramChannel.CdcCounterServices}`,
+  SsdcPracticalLessonBooking = `https://t.me/${TelegramChannel.SsdcPracticalLessonBooking}`,
+  JapanVisaTourism = `https://t.me/${TelegramChannel.JapanVisaTourism}`,
+}

@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Anchor } from "@/components/ui/anchor";
-import { NotificationSettings } from "./types";
-import { Routes, SubscriptionTopic } from "./enums";
+import { NotificationSettings, TelegramPublicChannels } from "./types";
+import { Routes, SubscriptionTopic, TelegramChannel } from "./enums";
 import { OWNER_EMAIL } from "./constants";
 import Link from "next/link";
 
@@ -175,6 +175,75 @@ export const FIXED_DEPOSIT_BANKS = [
   },
 ];
 
+export const TELEGRAM_PUBLIC_CHANNELS: TelegramPublicChannels = [
+  {
+    id: TelegramChannel.CdcLessonsAutoCar,
+    title: "🚘 CDC Practical Lesson Slots (Class 3A Motorcar)",
+    description: (
+      <>
+        Receive notifications when there are new practical lessons slot(s) for{" "}
+        <Link href={Routes.CdcPracticalLessonSlots} passHref legacyBehavior>
+          <Anchor>Class 3A Motorcar</Anchor>
+        </Link>{" "}
+        at ComfortDelGro Driving Centre.
+      </>
+    ),
+  },
+  {
+    id: TelegramChannel.CdcEyesightTest,
+    title: "🚘 CDC Appointment Slots (Eyesight Test)",
+    description: (
+      <>
+        Receive notifications when there are new appointment date(s) for the{" "}
+        <Link href={Routes.CdcAppointmentSlots} passHref legacyBehavior>
+          <Anchor>eyesight test</Anchor>
+        </Link>{" "}
+        at ComfortDelGro Driving Centre.
+      </>
+    ),
+  },
+  {
+    id: TelegramChannel.CdcCounterServices,
+    title: "🚘 CDC Appointment Slots (Counter Services)",
+    description: (
+      <>
+        Receive notifications when there are new appointment date(s) for{" "}
+        <Link href={Routes.CdcAppointmentSlots} passHref legacyBehavior>
+          <Anchor>counter services</Anchor>
+        </Link>{" "}
+        at ComfortDelGro Driving Centre.
+      </>
+    ),
+  },
+  {
+    id: TelegramChannel.SsdcPracticalLessonBooking,
+    title: "🚘 SSDC Appointment Slots (Practical Lesson Booking)",
+    description: (
+      <>
+        Receive notifications when there are new appointment date(s) for the{" "}
+        <Link href={Routes.SsdcAppointmentSlots} passHref legacyBehavior>
+          <Anchor>Class 3 / 3A Practical Lesson Booking</Anchor>
+        </Link>{" "}
+        at Singapore Safety Driving Centre.
+      </>
+    ),
+  },
+  {
+    id: TelegramChannel.JapanVisaTourism,
+    title: "🇯🇵 Japan Visa Appointment Slots (Tourism)",
+    description: (
+      <>
+        Receive notifications when there are new visa appointment date(s) for{" "}
+        <Link href={Routes.JapanVisa} passHref legacyBehavior>
+          <Anchor>Tourism or Sightseeing</Anchor>
+        </Link>{" "}
+        at the Embassy of Japan in Singapore. <br />
+        <small>(for foreigners who require a visa to visit Japan)</small>
+      </>
+    ),
+  },
+];
+
 export const NOTIFICATION_SETTINGS: NotificationSettings = [
   {
     id: SubscriptionTopic.CdcLessonsAutoCar,
@@ -189,6 +258,7 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         at ComfortDelGro Driving Centre.
       </>
     ),
+    hasTelegramChannel: true,
   },
   {
     id: SubscriptionTopic.CdcEyesightTest,
@@ -203,6 +273,7 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         at ComfortDelGro Driving Centre.
       </>
     ),
+    hasTelegramChannel: true,
   },
   {
     id: SubscriptionTopic.CdcCounterServices,
@@ -216,6 +287,7 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         at ComfortDelGro Driving Centre.
       </>
     ),
+    hasTelegramChannel: true,
   },
   {
     id: SubscriptionTopic.SsdcEnrolmentWeekend,
@@ -258,6 +330,7 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         at Singapore Safety Driving Centre.
       </>
     ),
+    hasTelegramChannel: true,
   },
   {
     id: SubscriptionTopic.SsdcOtherCoursesEnrolment,
@@ -338,6 +411,7 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         <small>(for foreigners who require a visa to visit Japan)</small>
       </>
     ),
+    hasTelegramChannel: true,
   },
   {
     id: SubscriptionTopic.JapanVisaBusiness,

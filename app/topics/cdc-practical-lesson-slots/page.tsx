@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
-import { Routes } from "@/lib/enums";
+import { Routes, TelegramChannel } from "@/lib/enums";
+import { TELEGRAM_SHORT_URL } from "@/lib/constants";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import CdcLessonSlotsInfo from "./cdc-lesson-slots-info";
 
@@ -100,25 +101,21 @@ export default function CdcPracticalLessonSlots() {
         </abbr>{" "}
         website for available practical lesson slots for Class 3A Motorcar (for
         Standard only, not applicable for One Team or Elite Team). It sends you
-        an email notification when there are new slots available so you can save
-        time and effort. It is not a guarantee that you will get the slots you
-        want, but it will definitely increase your chances of getting them.
+        a notification when there are new slots available so you can save time
+        and effort. It is not a guarantee that you will get the slots you want,
+        but it will definitely increase your chances of getting them.
       </Paragraph>
       <Paragraph>
-        To get started, simply click the button below to head over to the
-        subscription page. Once there, you can select{" "}
-        <span className="font-medium">
-          <abbr title="ComfortDelGro Driving Centre" className="no-underline">
-            CDC
-          </abbr>{" "}
-          Practical Lesson Slots (Class 3A Motorcar)
-        </span>{" "}
-        as one of the topics you want to subscribe to.
+        To get started, simply click the button below to subscribe to the
+        Telegram channel and start receiving notifications.
       </Paragraph>
       <div className="mt-8 text-center">
-        <Link href={Routes.Home}>
+        <Anchor
+          href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.CdcLessonsAutoCar}`}
+          isExternal
+        >
           <Button variant="secondary">Subscribe Now</Button>
-        </Link>
+        </Anchor>
       </div>
     </Container>
   );

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React, { FormEvent, useState } from "react";
-import { AlertCircle, Loader2Icon } from "lucide-react";
+import { AlertCircle, AtSignIcon, Loader2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -27,6 +27,8 @@ import {
   SubscriptionTopic,
 } from "@/lib/enums";
 import { NOTIFICATION_SETTINGS } from "@/lib/content";
+import TelegramChannels from "./telegram-channels";
+import PageSeparator from "./page-separator";
 
 export default function SubscribeForm() {
   const submitBtnText = "Subscribe Now";
@@ -62,95 +64,107 @@ export default function SubscribeForm() {
   };
 
   return fetchStatus !== FetchStatus.Success ? (
-    <form onSubmit={onSubmit}>
-      <Card className="w-full">
-        <CardHeader>
-          <CardTitle>1️⃣ &nbsp;First Step</CardTitle>
-          <CardDescription>
-            Choose at least one topic you want to get notified about.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-6">
-            {NOTIFICATION_SETTINGS.map(({ id, title, description }) => (
-              <Label
-                key={id}
-                htmlFor={id}
-                className="flex flex-row items-center justify-between rounded-lg border p-4"
-              >
-                <div className="space-y-0.5 pr-2">
-                  <p className="text-base">{title}</p>
-                  <p className="text-sm font-light text-muted-foreground">
-                    {description}
-                  </p>
-                </div>
-                <Switch
-                  id={id}
-                  name="topics"
-                  disabled={isLoading}
-                  checked={topics.includes(id)}
-                  onClick={() => switchOnClick(id)}
-                />
-              </Label>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-      <Card className="mt-6">
-        <CardHeader>
-          <CardTitle>2️⃣ &nbsp;Last Step</CardTitle>
-          <CardDescription>
-            Provide your email address and confirm your subscription.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex flex-col space-y-2">
-            <Label htmlFor="email">Email Address</Label>
-            <Input
-              id="email"
-              type="email"
-              autoComplete="email"
-              value={email}
-              disabled={isLoading}
-              onChange={inputOnChange}
-              required
-            />
-            <p className="text-sm text-muted-foreground">
-              By submitting this form, you agree to receive email notifications
-              about your chosen services above and understand that you can
-              update it at any time{" "}
-              <Link href={Routes.Settings} passHref legacyBehavior>
-                <Anchor>here</Anchor>
-              </Link>
-              .
-            </p>
-          </div>
-        </CardContent>
-        <CardFooter className="flex-col space-y-4">
-          {fetchStatus === FetchStatus.Failure && (
-            <Alert variant="destructive">
-              <AlertCircle className="h-4 w-4" />
-              <AlertTitle>Error</AlertTitle>
-              <AlertDescription>
-                Something went wrong. Please try again later.
-              </AlertDescription>
-            </Alert>
-          )}
-          <Button
-            type="submit"
-            className="w-full"
-            disabled={isLoading || !isFormValid}
-          >
-            {isLoading && (
-              <>
-                <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />{" "}
-              </>
+    <>
+      <TelegramChannels />
+      <PageSeparator />
+      <form onSubmit={onSubmit}>
+        <Card className="w-full">
+          <CardHeader>
+            <CardTitle className="flex gap-2 items-center">
+              <AtSignIcon />
+              Email Notifications
+            </CardTitle>
+            <CardTitle className="!mt-6">1️⃣ &nbsp;First Step</CardTitle>
+            <CardDescription>
+              Choose at least one topic you want to get notified about via
+              email.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-6">
+              {NOTIFICATION_SETTINGS.map(
+                ({ id, title, description, hasTelegramChannel }) =>
+                  !hasTelegramChannel && (
+                    <Label
+                      key={id}
+                      htmlFor={id}
+                      className="flex flex-row items-center justify-between rounded-lg border p-4"
+                    >
+                      <div className="space-y-0.5 pr-2">
+                        <p className="text-base">{title}</p>
+                        <p className="text-sm font-light text-muted-foreground">
+                          {description}
+                        </p>
+                      </div>
+                      <Switch
+                        id={id}
+                        name="topics"
+                        disabled={isLoading}
+                        checked={topics.includes(id)}
+                        onClick={() => switchOnClick(id)}
+                      />
+                    </Label>
+                  )
+              )}
+            </div>
+          </CardContent>
+        </Card>
+        <Card className="mt-6">
+          <CardHeader>
+            <CardTitle>2️⃣ &nbsp;Last Step</CardTitle>
+            <CardDescription>
+              Provide your email address and confirm your subscription.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-col space-y-2">
+              <Label htmlFor="email">Email Address</Label>
+              <Input
+                id="email"
+                type="email"
+                autoComplete="email"
+                value={email}
+                disabled={isLoading}
+                onChange={inputOnChange}
+                required
+              />
+              <p className="text-sm text-muted-foreground">
+                By submitting this form, you agree to receive email
+                notifications about your chosen services above and understand
+                that you can update it at any time{" "}
+                <Link href={Routes.Settings} passHref legacyBehavior>
+                  <Anchor>here</Anchor>
+                </Link>
+                .
+              </p>
+            </div>
+          </CardContent>
+          <CardFooter className="flex-col space-y-4">
+            {fetchStatus === FetchStatus.Failure && (
+              <Alert variant="destructive">
+                <AlertCircle className="h-4 w-4" />
+                <AlertTitle>Error</AlertTitle>
+                <AlertDescription>
+                  Something went wrong. Please try again later.
+                </AlertDescription>
+              </Alert>
             )}
-            {submitBtnText}
-          </Button>
-        </CardFooter>
-      </Card>
-    </form>
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={isLoading || !isFormValid}
+            >
+              {isLoading && (
+                <>
+                  <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />{" "}
+                </>
+              )}
+              {submitBtnText}
+            </Button>
+          </CardFooter>
+        </Card>
+      </form>
+    </>
   ) : (
     <Card className="w-full">
       <CardHeader>

@@ -6,6 +6,7 @@ import {
   JapanVisaType,
   SsdcService,
   SubscriptionTopic,
+  TelegramChannel,
 } from "./enums";
 
 export type SubscriptionTopics = Array<SubscriptionTopic>;
@@ -16,10 +17,18 @@ export type Subscription = {
   topics: SubscriptionTopics;
 };
 
+export type TelegramPublicChannel = {
+  id: TelegramChannel;
+  title: string;
+  description: ReactNode;
+};
+export type TelegramPublicChannels = Array<TelegramPublicChannel>;
+
 export type NotificationSetting = {
   id: SubscriptionTopic;
   title: string;
   description: ReactNode;
+  hasTelegramChannel?: boolean;
 };
 export type NotificationSettings = Array<NotificationSetting>;
 

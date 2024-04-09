@@ -38,6 +38,9 @@ export const metadata: Metadata = {
     "Email Alerts",
     "Email Notifications",
     "Email Subscription",
+    "Telegram Alerts",
+    "Telegram Notifications",
+    "Telegram Channels",
     ...NOTIFICATION_SETTINGS.map((setting) => {
       // remove emojis
       let { title } = setting;

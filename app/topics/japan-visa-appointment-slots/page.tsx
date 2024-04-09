@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
-import { Routes } from "@/lib/enums";
+import { Routes, TelegramChannel } from "@/lib/enums";
+import { TELEGRAM_SHORT_URL } from "@/lib/constants";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { JapanVisaSlotsTable } from "./japan-visa-slots-table";
 
@@ -77,24 +78,31 @@ export default function JapanVisa() {
         service available for everyone.
       </Paragraph>
       <Paragraph>
-        To get started, simply click the button below to head over to the
-        subscription page. Once there, you can select either{" "}
-        <span className="font-medium">
-          Japan Visa Appointment Slots (Tourism)
-        </span>{" "}
-        or{" "}
-        <span className="font-medium">
-          Japan Visa Appointment Slots (Business/
-          <abbr title="Certificate of Eligibility" className="no-underline">
-            COE
-          </abbr>
-          /Spouse)
-        </span>{" "}
-        as one of the topics you want to subscribe to.
+        To get started, simply click either of the buttons below to subscribe to
+        the Telegram channel (for tourism) or to head over to the email
+        notifications subscription page (for other business/
+        <abbr title="Certificate of Eligibility" className="no-underline">
+          COE
+        </abbr>
+        /spouse).
       </Paragraph>
-      <div className="mt-8 text-center">
+      <div className="mt-8 text-center flex flex-col gap-4">
+        <Anchor
+          href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.JapanVisaTourism}`}
+          isExternal
+        >
+          <Button variant="secondary" className="!inline-block">
+            Japan Visa Appointment Slots (Tourism)
+          </Button>
+        </Anchor>
         <Link href={Routes.Home}>
-          <Button variant="secondary">Subscribe Now</Button>
+          <Button variant="secondary" className="!inline-block">
+            Japan Visa Appointment Slots (Business/
+            <abbr title="Certificate of Eligibility" className="no-underline">
+              COE
+            </abbr>
+            /Spouse)
+          </Button>
         </Link>
       </div>
     </Container>

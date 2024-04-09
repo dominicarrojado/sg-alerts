@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
-import { Routes } from "@/lib/enums";
+import { Routes, TelegramChannel } from "@/lib/enums";
+import { TELEGRAM_SHORT_URL } from "@/lib/constants";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { SsdcSlotsTable } from "./ssdc-slots-table";
 
@@ -79,7 +80,7 @@ export default function SsdcAppointmentSlots() {
         <abbr title="Singapore Safety Driving Centre" className="no-underline">
           SSDC
         </abbr>
-        . You will receive an email notification when new appointment slots are
+        . You will receive a notification when new appointment slots are
         available. If there&apos;s an earlier date available, you will also be
         notified. You save time and effort by not having to check the{" "}
         <abbr title="Singapore Safety Driving Centre" className="no-underline">
@@ -88,62 +89,40 @@ export default function SsdcAppointmentSlots() {
         website manually every day.
       </Paragraph>
       <Paragraph>
-        To get started, simply click the button below to head over to the
-        subscription page. Once there, you can select either{" "}
-        <span className="font-medium">
-          <abbr
-            title="Singapore Safety Driving Centre"
-            className="no-underline"
-          >
-            SSDC
-          </abbr>{" "}
-          Appointment Slots (School Enrolment)
-        </span>
-        ,{" "}
-        <span className="font-medium">
-          <abbr
-            title="Singapore Safety Driving Centre"
-            className="no-underline"
-          >
-            SSDC
-          </abbr>{" "}
-          Appointment Slots (Private Learners)
-        </span>
-        ,{" "}
-        <span className="font-medium">
-          <abbr
-            title="Singapore Safety Driving Centre"
-            className="no-underline"
-          >
-            SSDC
-          </abbr>{" "}
-          Appointment Slots (Practical Lesson Booking)
-        </span>
-        ,{" "}
-        <span className="font-medium">
-          <abbr
-            title="Singapore Safety Driving Centre"
-            className="no-underline"
-          >
-            SSDC
-          </abbr>{" "}
-          Appointment Slots (Other Courses Enrolment)
-        </span>{" "}
-        or{" "}
-        <span className="font-medium">
-          <abbr
-            title="Singapore Safety Driving Centre"
-            className="no-underline"
-          >
-            SSDC
-          </abbr>{" "}
-          Appointment Slots (Foreign Licence Package)
-        </span>{" "}
-        as one of the topics you want to subscribe to.
+        To get started, simply click either of the buttons below to subscribe to
+        the Telegram channel (for practical lesson booking) or to head over to
+        the email notifications subscription page (for other appointments).
       </Paragraph>
-      <div className="mt-8 text-center">
+      <div className="mt-8 text-center flex flex-col gap-4">
+        <Anchor
+          href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.SsdcPracticalLessonBooking}`}
+          isExternal
+        >
+          <Button variant="secondary" className="!inline-block">
+            <span>
+              <abbr
+                title="Singapore Safety Driving Centre"
+                className="no-underline"
+              >
+                SSDC
+              </abbr>{" "}
+              Appointment Slots (Practical Lesson Booking)
+            </span>
+          </Button>
+        </Anchor>
         <Link href={Routes.Home}>
-          <Button variant="secondary">Subscribe Now</Button>
+          <Button variant="secondary" className="!inline-block">
+            <span>
+              Other{" "}
+              <abbr
+                title="Singapore Safety Driving Centre"
+                className="no-underline"
+              >
+                SSDC
+              </abbr>{" "}
+              Appointment Slots
+            </span>
+          </Button>
         </Link>
       </div>
     </Container>

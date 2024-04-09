@@ -42,7 +42,7 @@ export default function Header() {
             <HeaderLogo pathname={pathname} flagClassName="mr-2 md:mr-2" />
           </div>
         )}
-        <div className="flex gap-2 shrink-0">
+        <div className="flex gap-2 shrink-0 h-10">
           <ModeToggle />
           <MenuToggle />
         </div>
