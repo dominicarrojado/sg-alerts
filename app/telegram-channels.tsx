@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, SendIcon } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Anchor } from "@/components/ui/anchor";
+import { Badge } from "@/components/ui/badge";
 import { TELEGRAM_PUBLIC_CHANNELS } from "@/lib/content";
 import { TELEGRAM_SHORT_URL } from "@/lib/constants";
 
@@ -17,12 +18,11 @@ export default function TelegramChannels() {
     <Card className="w-full">
       <CardHeader>
         <CardTitle className="flex gap-2 items-center">
-          <SendIcon />
-          Telegram Channels
+          Telegram Channels <Badge>NEW</Badge>
         </CardTitle>
         <CardDescription>
           Subscribe to the channels below if you want to receive notifications
-          via Telegram.
+          via Telegram. <br />
         </CardDescription>
       </CardHeader>
       <CardContent>

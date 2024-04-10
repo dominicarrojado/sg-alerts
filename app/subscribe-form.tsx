@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React, { FormEvent, useState } from "react";
-import { AlertCircle, AtSignIcon, Loader2Icon } from "lucide-react";
+import { AlertCircle, Loader2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -70,10 +70,7 @@ export default function SubscribeForm() {
       <form onSubmit={onSubmit}>
         <Card className="w-full">
           <CardHeader>
-            <CardTitle className="flex gap-2 items-center">
-              <AtSignIcon />
-              Email Notifications
-            </CardTitle>
+            <CardTitle>Email Notifications</CardTitle>
             <CardTitle className="!mt-6">1️⃣ &nbsp;First Step</CardTitle>
             <CardDescription>
               Choose at least one topic you want to get notified about via
