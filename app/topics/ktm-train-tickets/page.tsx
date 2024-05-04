@@ -7,14 +7,15 @@ import { Anchor } from "@/components/ui/anchor";
 import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
-import { Routes } from "@/lib/enums";
+import { Routes, TelegramChannel } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
+import { TELEGRAM_SHORT_URL } from "@/lib/constants";
 import { TrainTicketsTable } from "./train-tickets-table";
 import { TrainScheduleTable } from "./train-schedule-table";
 
 const title = "KTM Train Tickets";
 const description =
-  "Subscribe to SG Alerts to get notified when there are KTM train tickets available from Singapore to Johor Bahru (JB) and vice versa from Easybooking.com website.";
+  "Subscribe to SG Alerts to get notified when there are KTM train tickets available from Singapore to Johor Bahru (JB) and vice versa for peak days and time slots directly from KTMB website.";
 const url = Routes.KtmTrainTickets;
 
 export const metadata: Metadata = {
@@ -42,7 +43,7 @@ export default function KtmTrainTickets() {
       <div className="space-y-2">
         <Heading>{title}</Heading>
         <Subheading>
-          Receive email notifications when there are{" "}
+          Get notified when there are{" "}
           <abbr title="Keretapi Tanah Melayu" className="no-underline">
             KTM
           </abbr>{" "}
@@ -50,7 +51,7 @@ export default function KtmTrainTickets() {
           <abbr title="Johor Bahru" className="no-underline">
             JB
           </abbr>
-          ) and vice versa.
+          ) and vice versa for peak days and time slots.
         </Subheading>
       </div>
       <TrainTicketsTable />
@@ -71,18 +72,17 @@ export default function KtmTrainTickets() {
           JB
         </abbr>{" "}
         is a popular destination for Singaporeans to visit for shopping, dining
-        and entertainment. You can either book your train tickets directly from{" "}
-        <abbr title="Keretapi Tanah Melayu" className="no-underline">
-          KTM
-        </abbr>{" "}
-        or you can book from{" "}
+        and entertainment. You can book your tickets online through the{" "}
         <Anchor
-          href="https://www.easybook.com/en-sg/train/booking/singapore-to-johor"
+          href="https://shuttleonline.ktmb.com.my/Home/Shuttle"
           isExternal
         >
-          Easybook.com
-        </Anchor>{" "}
-        website.
+          <abbr title="Keretapi Tanah Melayu Berhad" className="no-underline">
+            KTMB
+          </abbr>{" "}
+          website
+        </Anchor>
+        .
       </Paragraph>
       <Paragraph>
         Due to the high demand for{" "}
@@ -95,15 +95,17 @@ export default function KtmTrainTickets() {
         time-consuming and frustrating.
       </Paragraph>
       <Paragraph>
-        <span className="font-medium">SG Alerts</span> can help you to stay
-        updated with the latest{" "}
+        <span className="font-medium">SG Alerts</span> monitors the{" "}
+        <abbr title="Keretapi Tanah Melayu Berhad" className="no-underline">
+          KTMB
+        </abbr>{" "}
+        website directly to help you to stay updated with the latest{" "}
         <abbr title="Keretapi Tanah Melayu" className="no-underline">
           KTM
         </abbr>{" "}
-        train tickets availability up to 3 months in advance. We will send you
-        an email notification when there are new tickets available. This will
-        save you time and effort from having to check the booking websites
-        frequently.
+        train tickets availability. We will send you a Telegram notification
+        when there are new tickets available. This will save you time and effort
+        from having to check the booking website frequently.
       </Paragraph>
       <Paragraph>
         We have identified that Friday evenings, Saturday mornings are the most
@@ -121,21 +123,16 @@ export default function KtmTrainTickets() {
       </Paragraph>
       <TrainScheduleTable />
       <Paragraph>
-        To get started, simply click the button below to head over to the
-        subscription page. Once there, you can select{" "}
-        <span className="font-medium">
-          Train Tickets (
-          <abbr title="Keretapi Tanah Melayu" className="no-underline">
-            KTM
-          </abbr>
-          )
-        </span>{" "}
-        as one of the topics you want to subscribe to.
+        To get started, simply click the button below to subscribe to the
+        Telegram channel and start receiving notifications.
       </Paragraph>
       <div className="mt-8 text-center">
-        <Link href={Routes.Home}>
+        <Anchor
+          href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.KtmTrainTickets}`}
+          isExternal
+        >
           <Button variant="secondary">Subscribe Now</Button>
-        </Link>
+        </Anchor>
       </div>
     </Container>
   );

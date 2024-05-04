@@ -242,53 +242,33 @@ export const TELEGRAM_PUBLIC_CHANNELS: TelegramPublicChannels = [
       </>
     ),
   },
+  {
+    id: TelegramChannel.KtmTrainTickets,
+    title: "🚆 KTM Train Tickets",
+    description: (
+      <>
+        Receive notifications when there are{" "}
+        <Link href={Routes.KtmTrainTickets} passHref legacyBehavior>
+          <Anchor>
+            <abbr title="Keretapi Tanah Melayu" className="no-underline">
+              KTM
+            </abbr>{" "}
+            train ticket(s)
+          </Anchor>
+        </Link>{" "}
+        available from Singapore (SG) to Johor Bahru (JB) and vice versa. <br />
+        <small>
+          (for SG -&gt; JB: Fridays 5:00 PM onwards, Saturdays before 3:00 PM
+          only)
+        </small>{" "}
+        <br />
+        <small>(for JB -&gt; SG: Sundays 11:30 AM onwards only)</small>
+      </>
+    ),
+  },
 ];
 
 export const NOTIFICATION_SETTINGS: NotificationSettings = [
-  {
-    id: SubscriptionTopic.CdcLessonsAutoCar,
-    title: "🚘 CDC Practical Lesson Slots (Class 3A Motorcar)",
-    description: (
-      <>
-        Receive email notifications when there are new practical lessons slot(s)
-        for{" "}
-        <Link href={Routes.CdcPracticalLessonSlots} passHref legacyBehavior>
-          <Anchor>Class 3A Motorcar</Anchor>
-        </Link>{" "}
-        at ComfortDelGro Driving Centre.
-      </>
-    ),
-    hasTelegramChannel: true,
-  },
-  {
-    id: SubscriptionTopic.CdcEyesightTest,
-    title: "🚘 CDC Appointment Slots (Eyesight Test)",
-    description: (
-      <>
-        Receive email notifications when there are new appointment date(s) for
-        the{" "}
-        <Link href={Routes.CdcAppointmentSlots} passHref legacyBehavior>
-          <Anchor>eyesight test</Anchor>
-        </Link>{" "}
-        at ComfortDelGro Driving Centre.
-      </>
-    ),
-    hasTelegramChannel: true,
-  },
-  {
-    id: SubscriptionTopic.CdcCounterServices,
-    title: "🚘 CDC Appointment Slots (Counter Services)",
-    description: (
-      <>
-        Receive email notifications when there are new appointment date(s) for{" "}
-        <Link href={Routes.CdcAppointmentSlots} passHref legacyBehavior>
-          <Anchor>counter services</Anchor>
-        </Link>{" "}
-        at ComfortDelGro Driving Centre.
-      </>
-    ),
-    hasTelegramChannel: true,
-  },
   {
     id: SubscriptionTopic.SsdcEnrolmentWeekend,
     title: "🚘 SSDC Appointment Slots (School Enrolment)",
@@ -316,21 +296,6 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         at Singapore Safety Driving Centre.
       </>
     ),
-  },
-  {
-    id: SubscriptionTopic.SsdcPracticalLessonBooking,
-    title: "🚘 SSDC Appointment Slots (Practical Lesson Booking)",
-    description: (
-      <>
-        Receive email notifications when there are new appointment date(s) for
-        the{" "}
-        <Link href={Routes.SsdcAppointmentSlots} passHref legacyBehavior>
-          <Anchor>Class 3 / 3A Practical Lesson Booking</Anchor>
-        </Link>{" "}
-        at Singapore Safety Driving Centre.
-      </>
-    ),
-    hasTelegramChannel: true,
   },
   {
     id: SubscriptionTopic.SsdcOtherCoursesEnrolment,
@@ -375,7 +340,7 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
   },
   {
     id: SubscriptionTopic.TrainTicketsKtm,
-    title: "🚆 Train Tickets (KTM)",
+    title: "🚆 KTM Train Tickets",
     description: (
       <>
         Receive email notifications when there are{" "}
@@ -394,21 +359,6 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         </small>{" "}
         <br />
         <small>(for JB -&gt; SG: Sundays 11:30 AM onwards only)</small>
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.JapanVisaTourism,
-    title: "🇯🇵 Japan Visa Appointment Slots (Tourism)",
-    description: (
-      <>
-        Receive email notifications when there are new visa appointment date(s)
-        for{" "}
-        <Link href={Routes.JapanVisa} passHref legacyBehavior>
-          <Anchor>Tourism or Sightseeing</Anchor>
-        </Link>{" "}
-        at the Embassy of Japan in Singapore. <br />
-        <small>(for foreigners who require a visa to visit Japan)</small>
       </>
     ),
     hasTelegramChannel: true,

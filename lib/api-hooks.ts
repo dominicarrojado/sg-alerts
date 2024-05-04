@@ -402,7 +402,7 @@ export function useGetTrainSlotsInfo() {
 
       const axios = (await import("axios")).default;
       const res = await axios.get(
-        `${API_URL}${ApiEndpoint.TrainTimeSlotsInfo}?service=${TrainService.KTM}`
+        `${API_URL}${ApiEndpoint.TrainTimeSlotsInfo}?service=${TrainService.KTMB}`
       );
       const resData = res.data;
 

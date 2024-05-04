@@ -42,8 +42,8 @@ export default function HowToUse() {
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification
         service that monitors the websites and sends you an email notification
-        or a Telegram message when there are new updates. It is designed to help
-        you save time and effort by automating the process of checking for
+        or a Telegram notification when there are new updates. It is designed to
+        help you save time and effort by automating the process of checking for
         updates.
       </Paragraph>
       <Paragraph>

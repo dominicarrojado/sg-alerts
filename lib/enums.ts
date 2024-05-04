@@ -97,7 +97,7 @@ export enum CdcLessonsService {
 }
 
 export enum TrainService {
-  KTM = "ktm",
+  KTMB = "ktmb",
 }
 
 export enum JapanVisaType {
@@ -123,6 +123,7 @@ export enum TelegramChannel {
   CdcCounterServices = "SGAlertsCDCCounterServices",
   SsdcPracticalLessonBooking = "SGAlertsSSDCPracticalLessons",
   JapanVisaTourism = "SGAlertsJapanVisaTourism",
+  KtmTrainTickets = "SGAlertsKTMTrainTickets",
 }
 
 export enum TelegramChannelLink {

@@ -41,9 +41,9 @@ export default function About() {
       </div>
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification
-        service that sends you an email or a Telegram message depending on the
-        topics you&apos;ve subscribed to. It&apos;s a simple service that helps
-        you stay up to date with the latest information without having to
+        service that sends you an email or a Telegram notification depending on
+        the topics you&apos;ve subscribed to. It&apos;s a simple service that
+        helps you stay up to date with the latest information without having to
         constantly check the source website.
       </Paragraph>
       <Paragraph>

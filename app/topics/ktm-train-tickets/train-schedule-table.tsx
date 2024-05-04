@@ -3,6 +3,7 @@
 import {
   Table,
   TableBody,
+  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -13,6 +14,10 @@ import { TRAIN_SCHEDULE_ITEMS } from "@/lib/content";
 export function TrainScheduleTable() {
   return (
     <Table className="my-6">
+      <TableCaption>
+        We monitor these days and time slots from now till the next 38 days.
+      </TableCaption>
+
       <TableHeader>
         <TableRow>
           <TableHead>Day</TableHead>

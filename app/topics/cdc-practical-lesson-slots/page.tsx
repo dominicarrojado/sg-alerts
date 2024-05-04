@@ -101,9 +101,9 @@ export default function CdcPracticalLessonSlots() {
         </abbr>{" "}
         website for available practical lesson slots for Class 3A Motorcar (for
         Standard only, not applicable for One Team or Elite Team). It sends you
-        a notification when there are new slots available so you can save time
-        and effort. It is not a guarantee that you will get the slots you want,
-        but it will definitely increase your chances of getting them.
+        a Telegram notification when there are new slots available so you can
+        save time and effort. It is not a guarantee that you will get the slots
+        you want, but it will definitely increase your chances of getting them.
       </Paragraph>
       <Paragraph>
         To get started, simply click the button below to subscribe to the

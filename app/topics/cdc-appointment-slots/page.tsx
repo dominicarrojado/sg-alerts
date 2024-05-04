@@ -78,9 +78,9 @@ export default function CdcAppointmentSlots() {
         <abbr title="ComfortDelGro Driving Centre" className="no-underline">
           CDC
         </abbr>
-        . You will receive an email notification when new appointment slots are
-        available. If there&apos;s an earlier date available, you will also be
-        notified. You save time and effort by not having to check the{" "}
+        . You will receive a Telegram notification when new appointment slots
+        are available. If there&apos;s an earlier date available, you will also
+        be notified. You save time and effort by not having to check the{" "}
         <abbr title="ComfortDelGro Driving Centre" className="no-underline">
           CDC
         </abbr>{" "}
