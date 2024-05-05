@@ -584,16 +584,16 @@ export const TRAIN_SCHEDULE_ITEMS = [
   {
     day: "Friday",
     time: "5:00 PM onwards",
-    to: "Jb Sentral (Johor)",
+    to: "JB SENTRAL",
   },
   {
     day: "Saturday",
     time: "Before 3:00 PM",
-    to: "Jb Sentral (Johor)",
+    to: "JB SENTRAL",
   },
   {
     day: "Sunday",
     time: "11:30 AM onwards",
-    to: "Woodlands (Singapore)",
+    to: "WOODLANDS CIQ",
   },
 ];
