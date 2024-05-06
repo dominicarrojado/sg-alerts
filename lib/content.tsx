@@ -258,11 +258,11 @@ export const TELEGRAM_PUBLIC_CHANNELS: TelegramPublicChannels = [
         </Link>{" "}
         available from Singapore (SG) to Johor Bahru (JB) and vice versa. <br />
         <small>
-          (for SG -&gt; JB: Fridays 5:00 PM onwards, Saturdays before 3:00 PM
+          (for SG -&gt; JB: Fridays 6:45 PM - 10:30 PM, Saturdays before 3:00 PM
           only)
         </small>{" "}
         <br />
-        <small>(for JB -&gt; SG: Sundays 11:30 AM onwards only)</small>
+        <small>(for JB -&gt; SG: Sundays 12:45 PM onwards only)</small>
       </>
     ),
   },
@@ -354,11 +354,11 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         </Link>{" "}
         available from Singapore (SG) to Johor Bahru (JB) and vice versa. <br />
         <small>
-          (for SG -&gt; JB: Fridays 5:00 PM onwards, Saturdays before 3:00 PM
+          (for SG -&gt; JB: Fridays 6:45 PM - 10:30 PM, Saturdays before 3:00 PM
           only)
         </small>{" "}
         <br />
-        <small>(for JB -&gt; SG: Sundays 11:30 AM onwards only)</small>
+        <small>(for JB -&gt; SG: Sundays 12:45 PM onwards only)</small>
       </>
     ),
     hasTelegramChannel: true,
@@ -583,7 +583,7 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
 export const TRAIN_SCHEDULE_ITEMS = [
   {
     day: "Friday",
-    time: "5:00 PM onwards",
+    time: "6:45 PM - 10:30 PM",
     to: "JB SENTRAL",
   },
   {
@@ -593,7 +593,7 @@ export const TRAIN_SCHEDULE_ITEMS = [
   },
   {
     day: "Sunday",
-    time: "11:30 AM onwards",
+    time: "12:45 PM onwards",
     to: "WOODLANDS CIQ",
   },
 ];
