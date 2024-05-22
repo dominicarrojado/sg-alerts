@@ -93,37 +93,23 @@ export default function SsdcAppointmentSlots() {
         the Telegram channel (for practical lesson booking) or to head over to
         the email notifications subscription page (for other appointments).
       </Paragraph>
-      <div className="mt-8 text-center flex flex-col gap-4">
-        <Anchor
-          href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.SsdcPracticalLessonBooking}`}
-          isExternal
-        >
-          <Button variant="secondary" className="!inline-block">
-            <span>
-              <abbr
-                title="Singapore Safety Driving Centre"
-                className="no-underline"
-              >
-                SSDC
-              </abbr>{" "}
-              Appointment Slots (Practical Lesson Booking)
-            </span>
+      <div className="mt-8 text-center flex flex-col justify-center gap-4 sm:flex-row">
+        <div>
+          <Button variant="secondary" asChild>
+            <Anchor
+              href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.SsdcPracticalLessonBooking}`}
+              className="no-underline"
+              isExternal
+            >
+              For Practical Lesson Booking
+            </Anchor>
           </Button>
-        </Anchor>
-        <Link href={Routes.Home}>
-          <Button variant="secondary" className="!inline-block">
-            <span>
-              Other{" "}
-              <abbr
-                title="Singapore Safety Driving Centre"
-                className="no-underline"
-              >
-                SSDC
-              </abbr>{" "}
-              Appointment Slots
-            </span>
+        </div>
+        <div>
+          <Button variant="secondary" asChild>
+            <Link href={Routes.Home}>For Other Appointment Slots</Link>
           </Button>
-        </Link>
+        </div>
       </div>
     </Container>
   );

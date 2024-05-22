@@ -82,12 +82,12 @@ export default function SendLinkForm() {
             )}
             Send Link
           </Button>
-          <Link href={Routes.Home} className="w-full">
-            <Button type="button" className="w-full" variant="secondary">
+          <Button className="w-full" variant="secondary" asChild>
+            <Link href={Routes.Home}>
               <ArrowLeftIcon className="mr-2 h-4 w-4" />
               Go Back
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </CardFooter>
       </Card>
     </form>

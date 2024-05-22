@@ -86,24 +86,34 @@ export default function JapanVisa() {
         </abbr>
         /spouse).
       </Paragraph>
-      <div className="mt-8 text-center flex flex-col gap-4">
-        <Anchor
-          href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.JapanVisaTourism}`}
-          isExternal
-        >
-          <Button variant="secondary" className="!inline-block">
-            Japan Visa Appointment Slots (Tourism)
+      <div className="mt-8 text-center flex flex-col justify-center gap-4 sm:flex-row">
+        <div>
+          <Button variant="secondary" asChild>
+            <Anchor
+              href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.JapanVisaTourism}`}
+              className="no-underline !inline-block"
+              isExternal
+            >
+              For Tourism
+            </Anchor>
           </Button>
-        </Anchor>
-        <Link href={Routes.Home}>
-          <Button variant="secondary" className="!inline-block">
-            Japan Visa Appointment Slots (Business/
-            <abbr title="Certificate of Eligibility" className="no-underline">
-              COE
-            </abbr>
-            /Spouse)
+        </div>
+        <div>
+          <Button variant="secondary" asChild>
+            <Link href={Routes.Home}>
+              <span>
+                For Business/
+                <abbr
+                  title="Certificate of Eligibility"
+                  className="no-underline"
+                >
+                  COE
+                </abbr>
+                /Spouse
+              </span>
+            </Link>
           </Button>
-        </Link>
+        </div>
       </div>
     </Container>
   );

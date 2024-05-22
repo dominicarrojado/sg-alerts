@@ -76,9 +76,9 @@ export default function SingaporeAirlinesFlights() {
         as one of the topics you want to subscribe to.
       </Paragraph>
       <div className="mt-8 text-center">
-        <Link href={Routes.Home}>
-          <Button variant="secondary">Subscribe Now</Button>
-        </Link>
+        <Button variant="secondary" asChild>
+          <Link href={Routes.Home}>Subscribe Now</Link>
+        </Button>
       </div>
     </Container>
   );
