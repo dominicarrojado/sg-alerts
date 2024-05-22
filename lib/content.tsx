@@ -1,6 +1,10 @@
 import { Fragment } from "react";
 import { Anchor } from "@/components/ui/anchor";
-import { NotificationSettings, TelegramPublicChannels } from "./types";
+import {
+  DonationTestimonials,
+  NotificationSettings,
+  TelegramPublicChannels,
+} from "./types";
 import { Routes, SubscriptionTopic, TelegramChannel } from "./enums";
 import { OWNER_EMAIL } from "./constants";
 import Link from "next/link";
@@ -17,6 +21,10 @@ export const MAIN_MENU_ITEMS = [
   {
     title: "How It Works",
     href: Routes.HowItWorks,
+  },
+  {
+    title: "Donate",
+    href: Routes.Donate,
   },
 ];
 
@@ -595,5 +603,109 @@ export const TRAIN_SCHEDULE_ITEMS = [
     day: "Sunday",
     time: "12:45 PM onwards",
     to: "WOODLANDS CIQ",
+  },
+];
+
+export const DONATION_TESTIMONIALS: DonationTestimonials = [
+  {
+    firstName: "Sania",
+    lastName: "A",
+    message: "Thank you for this channel OMG!",
+    date: "21 May 2024",
+  },
+  {
+    firstName: "Irene",
+    lastName: "L",
+    message: "Thank you for your good work!",
+    date: "20 May 2024",
+  },
+  {
+    firstName: "Sania",
+    lastName: "A",
+    message: "Thank you 😭",
+    date: "5 May 2024",
+  },
+  {
+    firstName: "Fengyuan",
+    lastName: "E",
+    message: "Bro!",
+    date: "22 April 2024",
+  },
+  {
+    firstName: "Hsiao Shan",
+    lastName: "P",
+    message: "Thanks for your work! Life-saving!",
+    date: "9 April 2024",
+  },
+  {
+    firstName: "RJ",
+    lastName: "J",
+    message: "",
+    date: "8 April 2024",
+  },
+  {
+    firstName: "Junior",
+    lastName: "U",
+    message: "",
+    date: "26 March 2024",
+  },
+  {
+    firstName: "Putri",
+    lastName: "W",
+    message: "Thanks for the Japan visa alert. Cheers! 😊",
+    date: "19 March 2024",
+  },
+  {
+    firstName: "Yinghua",
+    lastName: "Y",
+    message:
+      "You saved my life! I am really grateful. Thanks a million. I'll never forget your kindness.",
+    date: "23 February 2024",
+  },
+  {
+    firstName: "Evelyn",
+    lastName: "N",
+    message:
+      "Thank you for the alerts. It has been incredibly convenient and helpful for me.",
+    date: "24 January 2024",
+  },
+  {
+    firstName: "Angeline Kate",
+    lastName: "Q",
+    message:
+      "Thank you for making it easy to book an appointment for Japan Visa! Found it very useful.",
+    date: "19 December 2023",
+  },
+  {
+    firstName: "Anurag",
+    lastName: "A",
+    message: "Thank you for the amazing tool!",
+    date: "20 November 2023",
+  },
+  {
+    firstName: "Rangana",
+    lastName: "C",
+    message: "Coffee on me mate! Fan of your work always!!!",
+    date: "27 October 2023",
+  },
+  {
+    firstName: "Janella",
+    lastName: "O",
+    message: "Thank you for your Japan visa slot availability service!",
+    date: "23 October 2023",
+  },
+  {
+    firstName: "Jiaying",
+    lastName: "O",
+    message:
+      "Because of you, our trip to Japan won't be cancelled anymore, thanks a lot.",
+    date: "16 October 2023",
+  },
+  {
+    firstName: "Kavita",
+    lastName: "T",
+    message:
+      "It's not a lot but still thank you so much, the service is indeed helpful! :)",
+    date: "9 June 2023",
   },
 ];

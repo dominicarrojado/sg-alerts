@@ -2,6 +2,7 @@
 
 import React, { FormEvent, useMemo, useState } from "react";
 import { AlertCircle, CheckCircle, Loader2Icon } from "lucide-react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -23,10 +24,10 @@ import { Subscription, SubscriptionTopics } from "@/lib/types";
 import {
   FetchStatus,
   GoogleAnalyticsEvent,
+  Routes,
   SubscriptionTopic,
 } from "@/lib/enums";
 import { NOTIFICATION_SETTINGS } from "@/lib/content";
-import { OWNER_DONATION_LINK } from "@/lib/constants";
 
 type Props = {
   subscription: Subscription;
@@ -136,9 +137,9 @@ export default function SettingsForm({ subscription }: Props) {
                     You have unsubscribed from all topics. We hope to see you
                     again soon! <br />
                     If SG Alerts has been helpful to you, please consider{" "}
-                    <Anchor href={OWNER_DONATION_LINK} target="_blank">
-                      donating
-                    </Anchor>
+                    <Link href={Routes.Donate} passHref legacyBehavior>
+                      <Anchor>donating</Anchor>
+                    </Link>
                     .
                   </>
                 )}

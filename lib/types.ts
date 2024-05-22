@@ -154,3 +154,11 @@ export type BbdcSlotsInfo = {
   calendarLink: string;
 };
 export type BbdcSlotsInfoItems = Array<BbdcSlotsInfo>;
+
+export type DonationTestimonial = {
+  firstName: string;
+  lastName: string;
+  message: string;
+  date: string;
+};
+export type DonationTestimonials = Array<DonationTestimonial>;

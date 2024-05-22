@@ -1,5 +1,6 @@
 import {
   MAIN_DESCRIPTION,
+  MAIN_IMAGE,
   MAIN_TITLE,
   MAIN_URL,
   SITE_NAME,
@@ -17,7 +18,7 @@ export const META_OPEN_GRAPH = {
   siteName: SITE_NAME,
   images: [
     {
-      url: `${MAIN_URL}og-image.png`,
+      url: MAIN_IMAGE,
       width: 1200,
       height: 750,
       alt: SITE_NAME,
@@ -32,5 +33,5 @@ export const META_TWITTER = {
     template: `%s - ${MAIN_TITLE}`,
   },
   description: MAIN_DESCRIPTION,
-  images: [`${MAIN_URL}og-image.png`],
+  images: [MAIN_IMAGE],
 };

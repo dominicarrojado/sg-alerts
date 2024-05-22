@@ -1,10 +1,8 @@
+import Link from "next/link";
 import React from "react";
 import Balancer from "react-wrap-balancer";
-import {
-  OWNER_DONATION_LINK,
-  OWNER_NAME,
-  OWNER_WEBSITE,
-} from "@/lib/constants";
+import { Routes } from "@/lib/enums";
+import { OWNER_NAME, OWNER_WEBSITE } from "@/lib/constants";
 import { Container } from "./ui/container";
 import { Anchor } from "./ui/anchor";
 
@@ -14,9 +12,9 @@ export default function Footer() {
       <p className="text-center text-sm leading-loose text-muted-foreground">
         <Balancer>
           Like the service? Please consider{" "}
-          <Anchor href={OWNER_DONATION_LINK} target="_blank">
-            donating
-          </Anchor>{" "}
+          <Link href={Routes.Donate} passHref legacyBehavior>
+            <Anchor>donating</Anchor>
+          </Link>{" "}
           to support this free notification service. Every donation is sincerely
           appreciated! 🙏
         </Balancer>

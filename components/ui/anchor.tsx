@@ -1,5 +1,5 @@
-import clsx from "clsx";
 import React, { ForwardedRef, HTMLProps } from "react";
+import { cn } from "@/lib/utils";
 
 export type Props = HTMLProps<HTMLAnchorElement> & {
   isExternal?: boolean;
@@ -12,7 +12,7 @@ const Anchor = React.forwardRef(
     <a
       {...props}
       ref={ref}
-      className={clsx("font-medium underline underline-offset-4", className)}
+      className={cn("font-medium underline underline-offset-4", className)}
       rel={isExternal ? "noopener noreferrer nofollow" : undefined}
       target={isExternal ? "_blank" : target}
     >

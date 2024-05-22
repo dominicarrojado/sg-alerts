@@ -3,7 +3,6 @@ import { CdcService, JapanVisaType, Routes, SsdcService } from "./enums";
 export const OWNER_NAME = "Dominic Arrojado";
 export const OWNER_WEBSITE = "https://dominicarrojado.com";
 export const OWNER_EMAIL = "dominicarrojado@gmail.com";
-export const OWNER_DONATION_LINK = `${OWNER_WEBSITE}/donate/`;
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -13,7 +12,7 @@ export const MAIN_DESCRIPTION =
   "Subscribe to all things Singapore. Save time. Stay updated.";
 export const MAIN_ORIGIN = "https://dominicarrojado.com";
 export const MAIN_URL = `${MAIN_ORIGIN}/sg-alerts/`;
-export const MAIN_IMAGE = `${MAIN_ORIGIN}/images/og-image.png`;
+export const MAIN_IMAGE = `${MAIN_URL}og-image.png`;
 
 export const ROUTES_WITH_NO_TITLE = [
   Routes.Home,

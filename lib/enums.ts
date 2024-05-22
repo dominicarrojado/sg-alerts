@@ -4,6 +4,7 @@ export enum Routes {
   Settings = "/settings/",
   About = "/about/",
   HowItWorks = "/how-it-works/",
+  Donate = "/donate/",
   JapanVisa = "/topics/japan-visa-appointment-slots/",
   CdcPracticalLessonSlots = "/topics/cdc-practical-lesson-slots/",
   CdcAppointmentSlots = "/topics/cdc-appointment-slots/",
