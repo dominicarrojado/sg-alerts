@@ -123,8 +123,14 @@ export enum TelegramChannel {
   CdcEyesightTest = "SGAlertsCDCEyesightTest",
   CdcCounterServices = "SGAlertsCDCCounterServices",
   SsdcPracticalLessonBooking = "SGAlertsSSDCPracticalLessons",
+  SsdcPrivateLearners = "SGAlertsSSDCPrivateLearners",
   JapanVisaTourism = "SGAlertsJapanVisaTourism",
   KtmTrainTickets = "SGAlertsKTMTrainTickets",
+  SingaporeAirlinesFlights = "SGAlertsSingaporeAirlinesFlights",
+  JetstarFlights = "SGAlertsJetstarFlights",
+  FixedDepositRates = "SGAlertsFixedDepositRates",
+  TripComTravelDeals = "SGAlertsTripComTravelDeals",
+  TravelokaTravelDeals = "SGAlertsTravelokaTravelDeals",
 }
 
 export enum TelegramChannelLink {

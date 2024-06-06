@@ -237,6 +237,19 @@ export const TELEGRAM_PUBLIC_CHANNELS: TelegramPublicChannels = [
     ),
   },
   {
+    id: TelegramChannel.SsdcPrivateLearners,
+    title: "🚘 SSDC Appointment Slots (Private Learners)",
+    description: (
+      <>
+        Receive notifications when there are new appointment date(s) for the{" "}
+        <Link href={Routes.SsdcAppointmentSlots} passHref legacyBehavior>
+          <Anchor>Private Learners</Anchor>
+        </Link>{" "}
+        at Singapore Safety Driving Centre.
+      </>
+    ),
+  },
+  {
     id: TelegramChannel.JapanVisaTourism,
     title: "🇯🇵 Japan Visa Appointment Slots (Tourism)",
     description: (
@@ -274,6 +287,82 @@ export const TELEGRAM_PUBLIC_CHANNELS: TelegramPublicChannels = [
       </>
     ),
   },
+  {
+    id: TelegramChannel.SingaporeAirlinesFlights,
+    title: "✈️ Flight Prices (Singapore Airlines)",
+    description: (
+      <>
+        Receive notifications when the flight prices goes down for{" "}
+        <Link href={Routes.SingaporeAirlinesFlights} passHref legacyBehavior>
+          <Anchor>Singapore Airlines flights</Anchor>
+        </Link>{" "}
+        departing from Singapore.
+      </>
+    ),
+  },
+  {
+    id: TelegramChannel.JetstarFlights,
+    title: "✈️ Flight Prices (Jetstar)",
+    description: (
+      <>
+        Receive notifications when the flight prices goes down for{" "}
+        <Link href={Routes.JetstarFlights} passHref legacyBehavior>
+          <Anchor>Jetstar flights</Anchor>
+        </Link>{" "}
+        departing from Singapore.
+      </>
+    ),
+  },
+  {
+    id: TelegramChannel.FixedDepositRates,
+    title: "💰 Fixed Deposit Rates",
+    description: (
+      <>
+        Receive notifications when the{" "}
+        <Link href={Routes.FixedDepositRates} passHref legacyBehavior>
+          <Anchor>fixed deposit rates</Anchor>
+        </Link>{" "}
+        goes up across major banks in Singapore. <br />
+        <small>
+          (
+          {FIXED_DEPOSIT_BANKS.map(({ title, shortName, url }, index) => (
+            <Fragment key={title}>
+              {index !== 0 &&
+                (index === FIXED_DEPOSIT_BANKS.length - 1 ? " and " : ", ")}
+              {shortName || title}
+            </Fragment>
+          ))}
+          )
+        </small>
+      </>
+    ),
+  },
+  {
+    id: TelegramChannel.TripComTravelDeals,
+    title: "🌏 Travel Deals (Trip.com)",
+    description: (
+      <>
+        Receive notifications when there are new travel deals from{" "}
+        <Anchor href="https://sg.trip.com/sale/deals" isExternal>
+          Trip.com
+        </Anchor>
+        .
+      </>
+    ),
+  },
+  {
+    id: TelegramChannel.TravelokaTravelDeals,
+    title: "🌏 Travel Deals (Traveloka)",
+    description: (
+      <>
+        Receive notifications when there are new travel deals from{" "}
+        <Anchor href="https://www.traveloka.com/en-sg/promotion" isExternal>
+          Traveloka
+        </Anchor>
+        .
+      </>
+    ),
+  },
 ];
 
 export const NOTIFICATION_SETTINGS: NotificationSettings = [
@@ -304,6 +393,7 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         at Singapore Safety Driving Centre.
       </>
     ),
+    hasTelegramChannel: true,
   },
   {
     id: SubscriptionTopic.SsdcOtherCoursesEnrolment,
@@ -345,31 +435,6 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         at Bukit Batok Driving Centre.
       </>
     ),
-  },
-  {
-    id: SubscriptionTopic.TrainTicketsKtm,
-    title: "🚆 KTM Train Tickets",
-    description: (
-      <>
-        Receive email notifications when there are{" "}
-        <Link href={Routes.KtmTrainTickets} passHref legacyBehavior>
-          <Anchor>
-            <abbr title="Keretapi Tanah Melayu" className="no-underline">
-              KTM
-            </abbr>{" "}
-            train ticket(s)
-          </Anchor>
-        </Link>{" "}
-        available from Singapore (SG) to Johor Bahru (JB) and vice versa. <br />
-        <small>
-          (for SG -&gt; JB: Fridays 6:45 PM - 10:30 PM, Saturdays before 3:00 PM
-          only)
-        </small>{" "}
-        <br />
-        <small>(for JB -&gt; SG: Sundays 12:45 PM onwards only)</small>
-      </>
-    ),
-    hasTelegramChannel: true,
   },
   {
     id: SubscriptionTopic.JapanVisaBusiness,
@@ -415,6 +480,7 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         </small>
       </>
     ),
+    hasTelegramChannel: true,
   },
   {
     id: SubscriptionTopic.FlightsSingaporeAirlines,
@@ -428,6 +494,7 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         departing from Singapore.
       </>
     ),
+    hasTelegramChannel: true,
   },
   {
     id: SubscriptionTopic.FlightsJetstar,
@@ -441,6 +508,7 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         departing from Singapore.
       </>
     ),
+    hasTelegramChannel: true,
   },
   {
     id: SubscriptionTopic.TravelDealsTripCom,
@@ -454,6 +522,7 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         .
       </>
     ),
+    hasTelegramChannel: true,
   },
   {
     id: SubscriptionTopic.TravelDealsTraveloka,
@@ -467,6 +536,7 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         .
       </>
     ),
+    hasTelegramChannel: true,
   },
   {
     id: SubscriptionTopic.CoeBiddings,

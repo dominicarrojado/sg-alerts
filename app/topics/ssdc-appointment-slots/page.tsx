@@ -90,8 +90,9 @@ export default function SsdcAppointmentSlots() {
       </Paragraph>
       <Paragraph>
         To get started, simply click either of the buttons below to subscribe to
-        the Telegram channel (for practical lesson booking) or to head over to
-        the email notifications subscription page (for other appointments).
+        the Telegram channel (for practical lesson booking or private learners)
+        or to head over to the email notifications subscription page (for other
+        appointments).
       </Paragraph>
       <div className="mt-8 text-center flex flex-col justify-center gap-4 sm:flex-row">
         <div>
@@ -107,9 +108,20 @@ export default function SsdcAppointmentSlots() {
         </div>
         <div>
           <Button variant="secondary" asChild>
-            <Link href={Routes.Home}>For Other Appointment Slots</Link>
+            <Anchor
+              href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.SsdcPrivateLearners}`}
+              className="no-underline"
+              isExternal
+            >
+              For Private Learners
+            </Anchor>
           </Button>
         </div>
+      </div>
+      <div className="mt-4 text-center">
+        <Button variant="secondary" asChild>
+          <Link href={Routes.Home}>For Other Appointment Slots</Link>
+        </Button>
       </div>
     </Container>
   );

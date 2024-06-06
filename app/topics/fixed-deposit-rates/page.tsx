@@ -1,14 +1,15 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import React from "react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
+import { Anchor } from "@/components/ui/anchor";
 import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
-import { Routes } from "@/lib/enums";
+import { Routes, TelegramChannel } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { FixedDepositRatesTable } from "./fixed-deposit-rates-table";
+import { TELEGRAM_SHORT_URL } from "@/lib/constants";
 
 const title = "Fixed Deposit Rates";
 const description =
@@ -58,15 +59,16 @@ export default function FixedDepositRates() {
         that you can take advantage of the higher rates.
       </Paragraph>
       <Paragraph>
-        To get started, simply click the button below to head over to the
-        subscription page. Once there, you can select{" "}
-        <span className="font-medium">Fixed Deposit Rates</span> as one of the
-        topics you want to subscribe to.
+        To get started, simply click the button below to subscribe to the
+        Telegram channel and start receiving notifications.
       </Paragraph>
       <div className="mt-8 text-center">
-        <Button variant="secondary" asChild>
-          <Link href={Routes.Home}>Subscribe Now</Link>
-        </Button>
+        <Anchor
+          href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.FixedDepositRates}`}
+          isExternal
+        >
+          <Button variant="secondary">Subscribe Now</Button>
+        </Anchor>
       </div>
     </Container>
   );
