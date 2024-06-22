@@ -381,21 +381,6 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
     ),
   },
   {
-    id: SubscriptionTopic.SsdcPrivateLearners,
-    title: "🚘 SSDC Appointment Slots (Private Learners)",
-    description: (
-      <>
-        Receive email notifications when there are new appointment date(s) for
-        the{" "}
-        <Link href={Routes.SsdcAppointmentSlots} passHref legacyBehavior>
-          <Anchor>Private Learners</Anchor>
-        </Link>{" "}
-        at Singapore Safety Driving Centre.
-      </>
-    ),
-    hasTelegramChannel: true,
-  },
-  {
     id: SubscriptionTopic.SsdcOtherCoursesEnrolment,
     title: "🚘 SSDC Appointment Slots (Other Courses Enrolment)",
     description: (
@@ -456,87 +441,6 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         <small>(for foreigners who require a visa to visit Japan)</small>
       </>
     ),
-  },
-  {
-    id: SubscriptionTopic.DepositRates,
-    title: "💰 Fixed Deposit Rates",
-    description: (
-      <>
-        Receive email notifications when the{" "}
-        <Link href={Routes.FixedDepositRates} passHref legacyBehavior>
-          <Anchor>fixed deposit rates</Anchor>
-        </Link>{" "}
-        goes up across major banks in Singapore. <br />
-        <small>
-          (
-          {FIXED_DEPOSIT_BANKS.map(({ title, shortName, url }, index) => (
-            <Fragment key={title}>
-              {index !== 0 &&
-                (index === FIXED_DEPOSIT_BANKS.length - 1 ? " and " : ", ")}
-              {shortName || title}
-            </Fragment>
-          ))}
-          )
-        </small>
-      </>
-    ),
-    hasTelegramChannel: true,
-  },
-  {
-    id: SubscriptionTopic.FlightsSingaporeAirlines,
-    title: "✈️ Flight Prices (Singapore Airlines)",
-    description: (
-      <>
-        Receive email notifications when the flight prices goes down for{" "}
-        <Link href={Routes.SingaporeAirlinesFlights} passHref legacyBehavior>
-          <Anchor>Singapore Airlines flights</Anchor>
-        </Link>{" "}
-        departing from Singapore.
-      </>
-    ),
-    hasTelegramChannel: true,
-  },
-  {
-    id: SubscriptionTopic.FlightsJetstar,
-    title: "✈️ Flight Prices (Jetstar)",
-    description: (
-      <>
-        Receive email notifications when the flight prices goes down for{" "}
-        <Link href={Routes.JetstarFlights} passHref legacyBehavior>
-          <Anchor>Jetstar flights</Anchor>
-        </Link>{" "}
-        departing from Singapore.
-      </>
-    ),
-    hasTelegramChannel: true,
-  },
-  {
-    id: SubscriptionTopic.TravelDealsTripCom,
-    title: "🌏 Travel Deals (Trip.com)",
-    description: (
-      <>
-        Receive email notifications when there are new travel deals from{" "}
-        <Anchor href="https://sg.trip.com/sale/deals" isExternal>
-          Trip.com
-        </Anchor>
-        .
-      </>
-    ),
-    hasTelegramChannel: true,
-  },
-  {
-    id: SubscriptionTopic.TravelDealsTraveloka,
-    title: "🌏 Travel Deals (Traveloka)",
-    description: (
-      <>
-        Receive email notifications when there are new travel deals from{" "}
-        <Anchor href="https://www.traveloka.com/en-sg/promotion" isExternal>
-          Traveloka
-        </Anchor>
-        .
-      </>
-    ),
-    hasTelegramChannel: true,
   },
   {
     id: SubscriptionTopic.CoeBiddings,
