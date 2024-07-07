@@ -10,6 +10,7 @@ export enum Routes {
   CdcAppointmentSlots = "/topics/cdc-appointment-slots/",
   FixedDepositRates = "/topics/fixed-deposit-rates/",
   SingaporeAirlinesFlights = "/topics/singapore-airlines-flights/",
+  ScootFlights = "/topics/scoot-flights/",
   JetstarFlights = "/topics/jetstar-flights/",
   CebuPacificFlights = "/topics/cebu-pacific-flights/",
   CoeBiddingResults = "/topics/coe-bidding-results/",
@@ -79,6 +80,7 @@ export enum GoogleAnalyticsEvent {
 
 export enum FlightAirline {
   SINGAPORE_AIRLINES = "singapore-airlines",
+  SCOOT = "scoot",
   JETSTAR = "jetstar",
   CEBU_PACIFIC = "cebu-pacific",
 }
@@ -127,6 +129,7 @@ export enum TelegramChannel {
   JapanVisaTourism = "SGAlertsJapanVisaTourism",
   KtmTrainTickets = "SGAlertsKTMTrainTickets",
   SingaporeAirlinesFlights = "SGAlertsSingaporeAirlinesFlights",
+  ScootFlights = "SGAlertsScootFlights",
   JetstarFlights = "SGAlertsJetstarFlights",
   FixedDepositRates = "SGAlertsFixedDepositRates",
   TripComTravelDeals = "SGAlertsTripComTravelDeals",

@@ -11,10 +11,10 @@ import { FlightAirline, Routes, TelegramChannel } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { TELEGRAM_SHORT_URL } from "@/lib/constants";
 
-const title = "Singapore Airlines Flights";
+const title = "Scoot Flights";
 const description =
-  "Subscribe to SG Alerts to get notified when flight prices goes down for Singapore Airlines flights departing from Singapore.";
-const url = Routes.SingaporeAirlinesFlights;
+  "Subscribe to SG Alerts to get notified when flight prices goes down for Scoot flights departing from Singapore.";
+const url = Routes.ScootFlights;
 
 export const metadata: Metadata = {
   title,
@@ -35,39 +35,36 @@ export const metadata: Metadata = {
   },
 };
 
-export default function SingaporeAirlinesFlights() {
+export default function ScootFlights() {
   return (
     <Container>
       <div className="space-y-2">
         <Heading>{title}</Heading>
         <Subheading>{description}</Subheading>
       </div>
-      <FlightsTable airline={FlightAirline.SINGAPORE_AIRLINES} />
+      <FlightsTable airline={FlightAirline.SCOOT} withTravelBy={false} />
       <Paragraph>
-        <span className="font-medium">Singapore Airlines (SQ)</span> is the flag
-        carrier airline of Singapore. It is one of the most popular airlines in
-        the world and has a reputation for providing excellent service to its
-        customers. The airline has been ranked as one of the best airlines in
-        the world for many years.
+        <span className="font-medium">Scoot</span> is a Singapore-based low-cost
+        airline owned by Singapore Airlines. It is known for offering affordable
+        flights to various destinations around the world. Scoot operates a fleet
+        of Airbus A320, Boeing 787 Dreamliners, and the new Embraer E190-E2
+        aircraft. It was was named the world&apos;s best long-haul low-cost
+        airline in 2024 at Skytrax&apos;s World Airline Awards.
       </Paragraph>
       <Paragraph>
-        <Anchor
-          href="https://www.singaporeair.com/en_UK/sg/special-offers/flight-from-Singapore/"
-          isExternal
-        >
-          Fare deals offered by Singapore Airlines
+        <Anchor href="https://www.flyscoot.com/en" isExternal>
+          Fare deals offered by Scoot
         </Anchor>{" "}
-        are highly sought after by Singapore residents. However, the prices are
-        constantly changing and it can be difficult to keep up when the prices
-        go down. While there are many flight deal websites out there, nothing
-        beats booking directly with the airline itself.
+        are highly sought after by Singapore residents. However, it can be
+        difficult to keep track of sale prices and discounts. While there are
+        many flight deal websites out there, nothing beats booking directly with
+        the airline itself.
       </Paragraph>
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification
-        service that monitors the Singapore Airlines flight fare deals from
-        Singapore to all destinations around the world that it flies to. It
+        service that monitors Scoot flight sales departing from Singapore. It
         sends you a Telegram notification when the prices go down so that you
-        can take advantage of the lower prices.
+        can take advantage of the discounts.
       </Paragraph>
       <Paragraph>
         To get started, simply click the button below to subscribe to the
@@ -75,7 +72,7 @@ export default function SingaporeAirlinesFlights() {
       </Paragraph>
       <div className="mt-8 text-center">
         <Anchor
-          href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.SingaporeAirlinesFlights}`}
+          href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.ScootFlights}`}
           isExternal
         >
           <Button variant="secondary">Subscribe Now</Button>

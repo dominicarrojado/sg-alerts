@@ -25,6 +25,7 @@ type Props = {
   pricesLabel?: string;
   currency?: string;
   usePercentDiff?: boolean;
+  withTravelBy?: boolean;
 };
 
 export function FlightsTable({
@@ -34,6 +35,7 @@ export function FlightsTable({
   pricesLabel = "Price",
   currency = Currency.SGD,
   usePercentDiff = true,
+  withTravelBy = true,
 }: Props) {
   const [fetchState, flightsInfo, getFlightsInfo] = useGetFlightsInfo(airline);
   const { items: flights, updatedAt } = flightsInfo;
@@ -54,7 +56,9 @@ export function FlightsTable({
       <TableHeader>
         <TableRow>
           <TableHead className="w-[220px]">{destinationLabel}</TableHead>
-          <TableHead className="hidden sm:table-cell">Travel By</TableHead>
+          {withTravelBy && (
+            <TableHead className="hidden sm:table-cell">Travel By</TableHead>
+          )}
           <TableHead className="text-right">{pricesLabel}</TableHead>
         </TableRow>
       </TableHeader>
@@ -75,11 +79,13 @@ export function FlightsTable({
                   {displayCityCode && ` (${destinationCityCode})`}
                 </Anchor>
               </TableCell>
-              <TableCell className="hidden sm:table-cell">
-                <Balancer>
-                  {flight.departureDate} - {flight.returnDate}
-                </Balancer>
-              </TableCell>
+              {withTravelBy && (
+                <TableCell className="hidden sm:table-cell">
+                  <Balancer>
+                    {flight.departureDate} - {flight.returnDate}
+                  </Balancer>
+                </TableCell>
+              )}
               <TableCell className="text-right font-medium">
                 {currency === Currency.SGD
                   ? formatMoney(flight.price)

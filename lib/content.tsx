@@ -97,6 +97,10 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.SingaporeAirlinesFlights,
   },
   {
+    title: "Scoot Flights",
+    href: Routes.ScootFlights,
+  },
+  {
     title: "Jetstar Flights",
     href: Routes.JetstarFlights,
   },
@@ -295,6 +299,19 @@ export const TELEGRAM_PUBLIC_CHANNELS: TelegramPublicChannels = [
         Receive notifications when the flight prices goes down for{" "}
         <Link href={Routes.SingaporeAirlinesFlights} passHref legacyBehavior>
           <Anchor>Singapore Airlines flights</Anchor>
+        </Link>{" "}
+        departing from Singapore.
+      </>
+    ),
+  },
+  {
+    id: TelegramChannel.ScootFlights,
+    title: "✈️ Flight Prices (Scoot)",
+    description: (
+      <>
+        Receive notifications when the flight prices goes down for{" "}
+        <Link href={Routes.ScootFlights} passHref legacyBehavior>
+          <Anchor>Scoot flights</Anchor>
         </Link>{" "}
         departing from Singapore.
       </>

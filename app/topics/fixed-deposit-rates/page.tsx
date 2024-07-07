@@ -55,7 +55,7 @@ export default function FixedDepositRates() {
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification
         service that monitors the fixed deposit rates offered by major banks in
-        Singapore. It sends you an email notification when the rates go up so
+        Singapore. It sends you a Telegram notification when the rates go up so
         that you can take advantage of the higher rates.
       </Paragraph>
       <Paragraph>
