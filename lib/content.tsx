@@ -228,6 +228,19 @@ export const TELEGRAM_PUBLIC_CHANNELS: TelegramPublicChannels = [
     ),
   },
   {
+    id: TelegramChannel.CdcAnnouncements,
+    title: "🚘 CDC Announcements",
+    description: (
+      <>
+        Receive notifications when there are{" "}
+        <Anchor href="https://www.cdc.com.sg/news/" isExternal>
+          announcements
+        </Anchor>{" "}
+        from ComfortDelGro Driving Centre.
+      </>
+    ),
+  },
+  {
     id: TelegramChannel.SsdcPracticalLessonBooking,
     title: "🚘 SSDC Appointment Slots (Practical Lesson Booking)",
     description: (
@@ -250,6 +263,32 @@ export const TELEGRAM_PUBLIC_CHANNELS: TelegramPublicChannels = [
           <Anchor>Private Learners</Anchor>
         </Link>{" "}
         at Singapore Safety Driving Centre.
+      </>
+    ),
+  },
+  {
+    id: TelegramChannel.SsdcAnnouncements,
+    title: "🚘 SSDC Announcements",
+    description: (
+      <>
+        Receive notifications when there are{" "}
+        <Anchor href="https://ssdcl.com.sg/category/announcements/" isExternal>
+          announcements
+        </Anchor>{" "}
+        from Singapore Safety Driving Centre.
+      </>
+    ),
+  },
+  {
+    id: TelegramChannel.BbdcAnnouncements,
+    title: "🚘 BBDC Announcements",
+    description: (
+      <>
+        Receive notifications when there are{" "}
+        <Anchor href="https://info.bbdc.sg/news-announcements-all/" isExternal>
+          announcements
+        </Anchor>{" "}
+        from Bukit Batok Driving Centre.
       </>
     ),
   },
@@ -351,6 +390,23 @@ export const TELEGRAM_PUBLIC_CHANNELS: TelegramPublicChannels = [
           ))}
           )
         </small>
+      </>
+    ),
+  },
+  {
+    id: TelegramChannel.TotoSnowballs,
+    title: "💰 TOTO Snowballs",
+    description: (
+      <>
+        Receive notifications when the top prize for the next draw has
+        snowballed from the{" "}
+        <Anchor
+          href="https://www.singaporepools.com.sg/en/product/Pages/toto_results.aspx"
+          isExternal
+        >
+          latest TOTO results
+        </Anchor>{" "}
+        from Singapore Pools.
       </>
     ),
   },
