@@ -655,6 +655,12 @@ export const TRAIN_SCHEDULE_ITEMS = [
 
 export const DONATION_TESTIMONIALS: DonationTestimonials = [
   {
+    firstName: "Des",
+    lastName: "E",
+    message: "Thank you for the CDC eye test appointment alerts!",
+    date: "28 August 2024",
+  },
+  {
     firstName: "Kelly",
     lastName: "L",
     message: "Thanks for CDC alert!",
