@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import React, { FormEvent, useState } from "react";
-import { AlertCircle, Loader2Icon } from "lucide-react";
+import React, { FormEvent, useMemo, useState } from "react";
+import { AlertCircle, ArrowLeftIcon, Loader2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -19,18 +19,31 @@ import { Anchor } from "@/components/ui/anchor";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useSubmitSubscribeRequest } from "@/lib/api-hooks";
 import { trackEvent } from "@/lib/google-analytics";
-import { SubscriptionTopics } from "@/lib/types";
 import {
   FetchStatus,
   GoogleAnalyticsEvent,
   Routes,
   SubscriptionTopic,
 } from "@/lib/enums";
-import { NOTIFICATION_SETTINGS } from "@/lib/content";
-import TelegramChannels from "./telegram-channels";
-import PageSeparator from "./page-separator";
+import { NEW_FEATURES_NOTIFICATION_SETTING } from "@/lib/content";
+import type { NotificationSettings, SubscriptionTopics } from "@/lib/types";
 
-export default function SubscribeForm() {
+type Props = {
+  defaultTopics: NotificationSettings;
+  withBackButton?: boolean;
+};
+
+export default function SubscribeForm({
+  defaultTopics,
+  withBackButton,
+}: Props) {
+  const subscriptionTopics = useMemo(() => {
+    const filteredTopics = defaultTopics.filter(
+      ({ hasTelegramChannel }) => !hasTelegramChannel
+    );
+
+    return [...filteredTopics, NEW_FEATURES_NOTIFICATION_SETTING];
+  }, [defaultTopics]);
   const submitBtnText = "Subscribe Now";
   const [fetchStatus, submitSubscribeRequest] = useSubmitSubscribeRequest();
   const [topics, setTopics] = useState<SubscriptionTopics>([
@@ -65,8 +78,6 @@ export default function SubscribeForm() {
 
   return fetchStatus !== FetchStatus.Success ? (
     <>
-      <TelegramChannels />
-      <PageSeparator />
       <form onSubmit={onSubmit}>
         <Card className="w-full">
           <CardHeader>
@@ -79,30 +90,27 @@ export default function SubscribeForm() {
           </CardHeader>
           <CardContent>
             <div className="grid gap-6">
-              {NOTIFICATION_SETTINGS.map(
-                ({ id, title, description, hasTelegramChannel }) =>
-                  !hasTelegramChannel && (
-                    <Label
-                      key={id}
-                      htmlFor={id}
-                      className="flex flex-row items-center justify-between rounded-lg border p-4"
-                    >
-                      <div className="space-y-0.5 pr-2">
-                        <p className="text-base">{title}</p>
-                        <p className="text-sm font-light text-muted-foreground">
-                          {description}
-                        </p>
-                      </div>
-                      <Switch
-                        id={id}
-                        name="topics"
-                        disabled={isLoading}
-                        checked={topics.includes(id)}
-                        onClick={() => switchOnClick(id)}
-                      />
-                    </Label>
-                  )
-              )}
+              {subscriptionTopics.map(({ id, title, description }) => (
+                <Label
+                  key={id}
+                  htmlFor={id}
+                  className="flex flex-row items-center justify-between rounded-lg border p-4"
+                >
+                  <div className="space-y-0.5 pr-2">
+                    <p className="text-base">{title}</p>
+                    <p className="text-sm font-light text-muted-foreground">
+                      {description}
+                    </p>
+                  </div>
+                  <Switch
+                    id={id}
+                    name="topics"
+                    disabled={isLoading}
+                    checked={topics.includes(id)}
+                    onClick={() => switchOnClick(id)}
+                  />
+                </Label>
+              ))}
             </div>
           </CardContent>
         </Card>
@@ -158,6 +166,19 @@ export default function SubscribeForm() {
               )}
               {submitBtnText}
             </Button>
+            {withBackButton && (
+              <Button
+                variant="secondary"
+                className="w-full"
+                disabled={isLoading}
+                asChild
+              >
+                <Link href={Routes.Home}>
+                  <ArrowLeftIcon className="mr-2 h-4 w-4" />
+                  Go Back
+                </Link>
+              </Button>
+            )}
           </CardFooter>
         </Card>
       </form>

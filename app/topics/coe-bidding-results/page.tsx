@@ -129,7 +129,7 @@ export default function CoeBiddingResults() {
       </Paragraph>
       <div className="mt-8 text-center">
         <Button variant="secondary" asChild>
-          <Link href={Routes.Home}>Subscribe Now</Link>
+          <Link href={Routes.DrivingCategory}>Subscribe Now</Link>
         </Button>
       </div>
     </Container>

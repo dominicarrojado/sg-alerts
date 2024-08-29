@@ -11,7 +11,7 @@ import {
   OWNER_NAME,
   OWNER_WEBSITE,
 } from "@/lib/constants";
-import { NOTIFICATION_SETTINGS } from "@/lib/content";
+import { CATEGORY_ITEMS, NOTIFICATION_SETTINGS } from "@/lib/content";
 import { META_OPEN_GRAPH, META_TWITTER } from "./shared-metadata";
 import "./globals.css";
 
@@ -48,6 +48,7 @@ export const metadata: Metadata = {
 
       return title;
     }),
+    ...CATEGORY_ITEMS.map((category) => `${category.title} in Singapore`),
   ],
   authors: [
     {

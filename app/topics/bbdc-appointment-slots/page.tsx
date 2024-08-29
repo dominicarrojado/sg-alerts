@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import React from "react";
 import { Container } from "@/components/ui/container";
 import { Anchor } from "@/components/ui/anchor";
@@ -7,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
-import { Routes } from "@/lib/enums";
+import { Routes, TelegramChannel } from "@/lib/enums";
+import { TELEGRAM_SHORT_URL } from "@/lib/constants";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import BbdcLessonSlotsInfo from "./bbdc-lesson-slots-info";
 
@@ -99,9 +99,12 @@ export default function BBDCAppointmentSlots() {
         as one of the topics you want to subscribe to.
       </Paragraph>
       <div className="mt-8 text-center">
-        <Button variant="secondary" asChild>
-          <Link href={Routes.Home}>Subscribe Now</Link>
-        </Button>
+        <Anchor
+          href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.BbdcAppointmentSlots}`}
+          isExternal
+        >
+          <Button variant="secondary">Subscribe Now</Button>
+        </Anchor>
       </div>
     </Container>
   );

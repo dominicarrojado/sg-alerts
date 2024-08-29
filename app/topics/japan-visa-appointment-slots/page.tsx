@@ -100,7 +100,7 @@ export default function JapanVisa() {
         </div>
         <div>
           <Button variant="secondary" asChild>
-            <Link href={Routes.Home}>
+            <Link href={Routes.JapanVisa}>
               <span>
                 For Business/
                 <abbr

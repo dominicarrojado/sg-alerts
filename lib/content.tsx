@@ -28,6 +28,62 @@ export const MAIN_MENU_ITEMS = [
   },
 ];
 
+export const CATEGORY_ITEMS = [
+  {
+    emoji: "🚘",
+    title: "Driving",
+    description: (
+      <>
+        Practical Lessons,{" "}
+        <abbr title="Appointment" className="no-underline">
+          Appt.
+        </abbr>{" "}
+        Slots,{" "}
+        <abbr title="Certificate of Entitlement" className="no-underline">
+          COE
+        </abbr>
+      </>
+    ),
+    href: Routes.DrivingCategory,
+  },
+  {
+    emoji: "🇯🇵",
+    title: "Japan Visa",
+    description: "Tourism, Business, Long-term Stay",
+    href: Routes.JapanVisaCategory,
+  },
+  {
+    emoji: "✈️",
+    title: "Travel",
+    description: <>Train Tickets, Flights Prices, Promotions</>,
+    href: Routes.TravelCategory,
+  },
+  {
+    emoji: "💰",
+    title: "Money",
+    description: "Fixed Deposits, TOTO",
+    href: Routes.MoneyCategory,
+  },
+  {
+    emoji: "🍽️",
+    title: "Dining",
+    description: "Table Reservations",
+    href: Routes.DiningCategory,
+  },
+  {
+    emoji: "📅",
+    title: "Events",
+    description: "Blood Drives",
+    href: Routes.EventsCategory,
+  },
+  {
+    emoji: "🎬",
+    title: "Entertainment",
+    description: "Movies",
+    href: Routes.EntertainmentCategory,
+  },
+];
+
 export const TOPICS_MENU_ITEMS = [
   {
     title: (
@@ -187,7 +243,7 @@ export const FIXED_DEPOSIT_BANKS = [
   },
 ];
 
-export const TELEGRAM_PUBLIC_CHANNELS: TelegramPublicChannels = [
+export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   {
     id: TelegramChannel.CdcLessonsAutoCar,
     title: "🚘 CDC Practical Lesson Slots (Class 3A Motorcar)",
@@ -240,6 +296,9 @@ export const TELEGRAM_PUBLIC_CHANNELS: TelegramPublicChannels = [
       </>
     ),
   },
+];
+
+export const SSDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   {
     id: TelegramChannel.SsdcPracticalLessonBooking,
     title: "🚘 SSDC Appointment Slots (Practical Lesson Booking)",
@@ -279,6 +338,22 @@ export const TELEGRAM_PUBLIC_CHANNELS: TelegramPublicChannels = [
       </>
     ),
   },
+];
+
+export const BBDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
+  {
+    id: TelegramChannel.BbdcAppointmentSlots,
+    title: "🚘 BBDC Appointment Slots",
+    description: (
+      <>
+        Receive notifications when there are new appointment date(s) for{" "}
+        <Link href={Routes.BbdcAppointmentSlots} passHref legacyBehavior>
+          <Anchor>account opening and counter services</Anchor>
+        </Link>{" "}
+        at Bukit Batok Driving Centre.
+      </>
+    ),
+  },
   {
     id: TelegramChannel.BbdcAnnouncements,
     title: "🚘 BBDC Announcements",
@@ -292,6 +367,15 @@ export const TELEGRAM_PUBLIC_CHANNELS: TelegramPublicChannels = [
       </>
     ),
   },
+];
+
+export const DRIVING_TELEGRAM_CHANNELS: TelegramPublicChannels = [
+  ...CDC_TELEGRAM_CHANNELS,
+  ...SSDC_TELEGRAM_CHANNELS,
+  ...BBDC_TELEGRAM_CHANNELS,
+];
+
+export const JAPAN_VISA_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   {
     id: TelegramChannel.JapanVisaTourism,
     title: "🇯🇵 Japan Visa Appointment Slots (Tourism)",
@@ -306,6 +390,9 @@ export const TELEGRAM_PUBLIC_CHANNELS: TelegramPublicChannels = [
       </>
     ),
   },
+];
+
+export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   {
     id: TelegramChannel.KtmTrainTickets,
     title: "🚆 KTM Train Tickets",
@@ -370,6 +457,35 @@ export const TELEGRAM_PUBLIC_CHANNELS: TelegramPublicChannels = [
     ),
   },
   {
+    id: TelegramChannel.TripComTravelDeals,
+    title: "🌏 Travel Deals (Trip.com)",
+    description: (
+      <>
+        Receive notifications when there are new travel deals from{" "}
+        <Anchor href="https://sg.trip.com/sale/deals" isExternal>
+          Trip.com
+        </Anchor>
+        .
+      </>
+    ),
+  },
+  {
+    id: TelegramChannel.TravelokaTravelDeals,
+    title: "🌏 Travel Deals (Traveloka)",
+    description: (
+      <>
+        Receive notifications when there are new travel deals from{" "}
+        <Anchor href="https://www.traveloka.com/en-sg/promotion" isExternal>
+          Traveloka
+        </Anchor>
+        .
+      </>
+    ),
+  },
+];
+
+export const MONEY_TELEGRAM_CHANNELS: TelegramPublicChannels = [
+  {
     id: TelegramChannel.FixedDepositRates,
     title: "💰 Fixed Deposit Rates",
     description: (
@@ -410,33 +526,22 @@ export const TELEGRAM_PUBLIC_CHANNELS: TelegramPublicChannels = [
       </>
     ),
   },
-  {
-    id: TelegramChannel.TripComTravelDeals,
-    title: "🌏 Travel Deals (Trip.com)",
-    description: (
-      <>
-        Receive notifications when there are new travel deals from{" "}
-        <Anchor href="https://sg.trip.com/sale/deals" isExternal>
-          Trip.com
-        </Anchor>
-        .
-      </>
-    ),
-  },
-  {
-    id: TelegramChannel.TravelokaTravelDeals,
-    title: "🌏 Travel Deals (Traveloka)",
-    description: (
-      <>
-        Receive notifications when there are new travel deals from{" "}
-        <Anchor href="https://www.traveloka.com/en-sg/promotion" isExternal>
-          Traveloka
-        </Anchor>
-        .
-      </>
-    ),
-  },
 ];
+
+export const NEW_FEATURES_NOTIFICATION_SETTING = {
+  id: SubscriptionTopic.FeaturesSgAlerts,
+  title: "🚀 New Features & Alerts",
+  description: (
+    <>
+      Receive email notifications when there are new feature(s) or alert(s) to
+      subscribe to at SG Alerts. <br />
+      <small>
+        Have a suggestion or feedback? Drop me an{" "}
+        <Anchor href={`mailto:${OWNER_EMAIL}`}>email</Anchor>.
+      </small>
+    </>
+  ),
+};
 
 export const NOTIFICATION_SETTINGS: NotificationSettings = [
   {
@@ -619,17 +724,207 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
       </>
     ),
   },
+  NEW_FEATURES_NOTIFICATION_SETTING,
+];
+
+export const SSDC_NOTIFICATION_SETTINGS: NotificationSettings = [
   {
-    id: SubscriptionTopic.FeaturesSgAlerts,
-    title: "🚀 New Features & Alerts",
+    id: SubscriptionTopic.SsdcEnrolmentWeekend,
+    title: "🚘 SSDC Appointment Slots (School Enrolment)",
     description: (
       <>
-        Receive email notifications when there are new feature(s) or alert(s) to
-        subscribe to at SG Alerts. <br />
+        Receive email notifications when there are new appointment date(s) for
+        the{" "}
+        <Link href={Routes.SsdcAppointmentSlots} passHref legacyBehavior>
+          <Anchor>Class 3 / 3A School Enrolment (weekend)</Anchor>
+        </Link>{" "}
+        at Singapore Safety Driving Centre.
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.SsdcOtherCoursesEnrolment,
+    title: "🚘 SSDC Appointment Slots (Other Courses Enrolment)",
+    description: (
+      <>
+        Receive email notifications when there are new appointment date(s) for
+        the{" "}
+        <Link href={Routes.SsdcAppointmentSlots} passHref legacyBehavior>
+          <Anchor>Other Courses Enrolment (weekend)</Anchor>
+        </Link>{" "}
+        at Singapore Safety Driving Centre.
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.SsdcForeignLicenceWeekend,
+    title: "🚘 SSDC Appointment Slots (Foreign Licence Package)",
+    description: (
+      <>
+        Receive email notifications when there are new appointment date(s) for
+        the{" "}
+        <Link href={Routes.SsdcAppointmentSlots} passHref legacyBehavior>
+          <Anchor>Foreign Licence Package (weekend)</Anchor>
+        </Link>{" "}
+        at Singapore Safety Driving Centre.
+      </>
+    ),
+  },
+];
+
+export const BBDC_NOTIFICATION_SETTINGS: NotificationSettings = [
+  {
+    id: SubscriptionTopic.BbdcCounterServices,
+    title: "🚘 BBDC Appointment Slots",
+    description: (
+      <>
+        Receive email notifications when there are new appointment date(s) for{" "}
+        <Link href={Routes.BbdcAppointmentSlots} passHref legacyBehavior>
+          <Anchor>account opening and counter services</Anchor>
+        </Link>{" "}
+        at Bukit Batok Driving Centre.
+      </>
+    ),
+  },
+];
+
+export const DRIVING_NOTIFICATION_SETTINGS: NotificationSettings = [
+  ...SSDC_NOTIFICATION_SETTINGS,
+  ...BBDC_NOTIFICATION_SETTINGS,
+  {
+    id: SubscriptionTopic.CoeBiddings,
+    title: "📄 Certificate of Entitlement (COE) Bidding Results",
+    description: (
+      <>
+        Receive email notifications when the{" "}
+        <abbr title="Certificate of Entitlement" className="no-underline">
+          COE
+        </abbr>{" "}
+        premiums have decreased from the{" "}
+        <Link href={Routes.CoeBiddingResults} passHref legacyBehavior>
+          <Anchor>latest bidding results</Anchor>
+        </Link>{" "}
+        from OneMotoring by Land Transport Authority.
+      </>
+    ),
+  },
+];
+
+export const JAPAN_VISA_NOTIFICATION_SETTINGS: NotificationSettings = [
+  {
+    id: SubscriptionTopic.JapanVisaBusiness,
+    title: "🇯🇵 Japan Visa Appointment Slots (Business/COE/Spouse)",
+    description: (
+      <>
+        Receive email notifications when there are new visa appointment date(s)
+        for{" "}
+        <Link href={Routes.JapanVisa} passHref legacyBehavior>
+          <Anchor>
+            Short-term Business, Long-term stay with{" "}
+            <abbr title="Certificate of Eligibility" className="no-underline">
+              COE
+            </abbr>
+            , Spouse or Child of Japanese National
+          </Anchor>
+        </Link>{" "}
+        at the Embassy of Japan in Singapore. <br />
+        <small>(for foreigners who require a visa to visit Japan)</small>
+      </>
+    ),
+  },
+];
+
+export const DINING_NOTIFICATION_SETTINGS: NotificationSettings = [
+  {
+    id: SubscriptionTopic.RestaurantsBurntEnds,
+    title: "🍽️ Table Reservation Slots (Burnt Ends)",
+    description: (
+      <>
+        Receive email notifications when there are new table reservation date(s)
+        at{" "}
+        <Anchor href="https://burntends.com.sg/reservation/" isExternal>
+          Burnt Ends
+        </Anchor>
+        . <br />
         <small>
-          Have a suggestion or feedback? Drop me an{" "}
-          <Anchor href={`mailto:${OWNER_EMAIL}`}>email</Anchor>.
+          (for main dining area & chefs counter seating - dinner time only)
         </small>
+      </>
+    ),
+  },
+];
+
+export const EVENTS_NOTIFICATION_SETTINGS: NotificationSettings = [
+  {
+    id: SubscriptionTopic.EventsBloodDrive,
+    title: "🏥 Community Blood Drives",
+    description: (
+      <>
+        Receive email notifications when there are new{" "}
+        <Anchor href="https://giveblood.sg/#blood-drive" isExternal>
+          community blood drives
+        </Anchor>{" "}
+        organised by the Singapore Red Cross.
+      </>
+    ),
+  },
+];
+
+export const ENTERTAINMENT_NOTIFICATION_SETTINGS: NotificationSettings = [
+  {
+    id: SubscriptionTopic.MoviesGv,
+    title: "🎬 Movies with English Subtitles (GV)",
+    description: (
+      <>
+        Receive email notifications when there are new movies with English
+        subtitles at{" "}
+        <Anchor href="https://www.gv.com.sg/" isExternal>
+          Golden Village.
+        </Anchor>{" "}
+        <br />
+        <small>(supported languages: English, Chinese, Korean, Japanese)</small>
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.MoviesShaw,
+    title: "🎬 Movies with English Subtitles (Shaw)",
+    description: (
+      <>
+        Receive email notifications when there are new movies with English
+        subtitles at{" "}
+        <Anchor href="https://shaw.sg/" isExternal>
+          Shaw Theatres
+        </Anchor>
+        . <br />
+        <small>(supported languages: English, Chinese, Korean, Japanese)</small>
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.MoviesCathayCineplexes,
+    title: "🎬 Movies with English Subtitles (Cathay Cineplexes)",
+    description: (
+      <>
+        Receive email notifications when there are new movies with English
+        subtitles at{" "}
+        <Anchor href="https://www.cathaycineplexes.com.sg/" isExternal>
+          Cathay Cineplexes
+        </Anchor>
+        . <br />
+        <small>(supported languages: English, Chinese, Korean, Japanese)</small>
+      </>
+    ),
+  },
+  {
+    id: SubscriptionTopic.MoviesTheProjector,
+    title: "🎬 Movies with English Subtitles (The Projector)",
+    description: (
+      <>
+        Receive email notifications when there are new movies with English
+        subtitles at{" "}
+        <Anchor href="https://theprojector.sg/">The Projector</Anchor>. <br />
+        <small>(supported languages: English, Chinese, Korean, Japanese)</small>
       </>
     ),
   },

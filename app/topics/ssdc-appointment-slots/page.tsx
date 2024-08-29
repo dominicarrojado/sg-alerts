@@ -120,7 +120,7 @@ export default function SsdcAppointmentSlots() {
       </div>
       <div className="mt-4 text-center">
         <Button variant="secondary" asChild>
-          <Link href={Routes.Home}>For Other Appointment Slots</Link>
+          <Link href={Routes.DrivingCategory}>For Other Appointment Slots</Link>
         </Button>
       </div>
     </Container>

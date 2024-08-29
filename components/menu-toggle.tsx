@@ -13,7 +13,11 @@ import {
 } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
-import { MAIN_MENU_ITEMS, TOPICS_MENU_ITEMS } from "@/lib/content";
+import {
+  CATEGORY_ITEMS,
+  MAIN_MENU_ITEMS,
+  TOPICS_MENU_ITEMS,
+} from "@/lib/content";
 import { PH_ALERTS_URL } from "@/lib/constants";
 
 export default function MenuToggle() {
@@ -45,6 +49,21 @@ export default function MenuToggle() {
                 {title}
               </Link>
             ))}
+          </div>
+          <div className="flex flex-col space-y-2">
+            <div className="flex flex-col space-y-3 pt-6">
+              <h4 className="font-medium">Categories</h4>
+              {CATEGORY_ITEMS.map(({ emoji, title, href }, index) => (
+                <nav
+                  key={index}
+                  className="flex gap-2 items-center text-muted-foreground"
+                >
+                  <Link key={href} href={href} onClick={closeSheet}>
+                    <span className="mr-1.5">{emoji}</span> {title}
+                  </Link>
+                </nav>
+              ))}
+            </div>
           </div>
           <div className="flex flex-col space-y-2">
             <div className="flex flex-col space-y-3 pt-6">
