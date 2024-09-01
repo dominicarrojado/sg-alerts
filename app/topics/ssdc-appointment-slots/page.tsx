@@ -8,7 +8,7 @@ import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import { Routes, TelegramChannel } from "@/lib/enums";
-import { TELEGRAM_SHORT_URL } from "@/lib/constants";
+import { SUBSCRIBE_FORM_ID, TELEGRAM_SHORT_URL } from "@/lib/constants";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { SsdcSlotsTable } from "./ssdc-slots-table";
 
@@ -120,7 +120,9 @@ export default function SsdcAppointmentSlots() {
       </div>
       <div className="mt-4 text-center">
         <Button variant="secondary" asChild>
-          <Link href={Routes.DrivingCategory}>For Other Appointment Slots</Link>
+          <Link href={`${Routes.DrivingCategory}#${SUBSCRIBE_FORM_ID}`}>
+            For Other Appointment Slots
+          </Link>
         </Button>
       </div>
     </Container>

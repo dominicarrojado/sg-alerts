@@ -26,6 +26,7 @@ import {
   SubscriptionTopic,
 } from "@/lib/enums";
 import { NEW_FEATURES_NOTIFICATION_SETTING } from "@/lib/content";
+import { SUBSCRIBE_FORM_ID } from "@/lib/constants";
 import type { NotificationSettings, SubscriptionTopics } from "@/lib/types";
 
 type Props = {
@@ -78,7 +79,7 @@ export default function SubscribeForm({
 
   return fetchStatus !== FetchStatus.Success ? (
     <>
-      <form onSubmit={onSubmit}>
+      <form id={SUBSCRIBE_FORM_ID} onSubmit={onSubmit}>
         <Card className="w-full">
           <CardHeader>
             <CardTitle>Email Notifications</CardTitle>

@@ -8,6 +8,7 @@ import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import { Anchor } from "@/components/ui/anchor";
 import { Routes } from "@/lib/enums";
+import { SUBSCRIBE_FORM_ID } from "@/lib/constants";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { CoeBiddingResultsTable } from "./coe-bidding-results-table";
 
@@ -129,7 +130,9 @@ export default function CoeBiddingResults() {
       </Paragraph>
       <div className="mt-8 text-center">
         <Button variant="secondary" asChild>
-          <Link href={Routes.DrivingCategory}>Subscribe Now</Link>
+          <Link href={`${Routes.DrivingCategory}#${SUBSCRIBE_FORM_ID}`}>
+            Subscribe Now
+          </Link>
         </Button>
       </div>
     </Container>

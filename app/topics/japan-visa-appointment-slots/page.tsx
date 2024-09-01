@@ -8,7 +8,7 @@ import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import { Routes, TelegramChannel } from "@/lib/enums";
-import { TELEGRAM_SHORT_URL } from "@/lib/constants";
+import { SUBSCRIBE_FORM_ID, TELEGRAM_SHORT_URL } from "@/lib/constants";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { JapanVisaSlotsTable } from "./japan-visa-slots-table";
 
@@ -100,7 +100,7 @@ export default function JapanVisa() {
         </div>
         <div>
           <Button variant="secondary" asChild>
-            <Link href={Routes.JapanVisaCategory}>
+            <Link href={`${Routes.JapanVisaCategory}#${SUBSCRIBE_FORM_ID}`}>
               <span>
                 For Business/
                 <abbr

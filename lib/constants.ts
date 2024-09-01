@@ -33,3 +33,5 @@ export const SSDC_SERVICES = Object.values(SsdcService);
 export const SSDC_SERVICES_LENGTH = SSDC_SERVICES.length;
 
 export const TELEGRAM_SHORT_URL = "https://t.me";
+
+export const SUBSCRIBE_FORM_ID = "subscribe-form";
