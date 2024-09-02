@@ -80,11 +80,8 @@ export default function JapanVisa() {
       <Paragraph>
         To get started, simply click either of the buttons below to subscribe to
         the Telegram channel (for tourism) or to head over to the email
-        notifications subscription page (for other business/
-        <abbr title="Certificate of Eligibility" className="no-underline">
-          COE
-        </abbr>
-        /spouse).
+        notifications subscription page (for other visa applications and
+        services).
       </Paragraph>
       <div className="mt-8 text-center flex flex-col justify-center gap-4 sm:flex-row">
         <div>
@@ -114,6 +111,13 @@ export default function JapanVisa() {
             </Link>
           </Button>
         </div>
+      </div>
+      <div className="mt-4 text-center">
+        <Button variant="secondary" asChild>
+          <Link href={`${Routes.JapanVisaCategory}#${SUBSCRIBE_FORM_ID}`}>
+            For Other Visa Applications/Services
+          </Link>
+        </Button>
       </div>
     </Container>
   );

@@ -37,6 +37,11 @@ export function JapanVisaSlotsTable() {
       ),
       lastAvailableDate: japanVisaSlotsDatesMap[JapanVisaType.BUSINESS],
     },
+    {
+      type: JapanVisaType.OTHERS,
+      title: "All other visa applications and services",
+      lastAvailableDate: japanVisaSlotsDatesMap[JapanVisaType.OTHERS],
+    },
   ];
 
   useEffect(() => {

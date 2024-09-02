@@ -53,6 +53,7 @@ export enum ApiEndpoint {
 export enum SubscriptionTopic {
   JapanVisaTourism = "japan-visa",
   JapanVisaBusiness = "japan-visa-business",
+  JapanVisaOthers = "japan-visa-others",
   CdcLessonsAutoCar = "cdc-lessons-auto-car",
   CdcEyesightTest = "cdc-eyesight-test",
   CdcCounterServices = "cdc-counter-services",
@@ -113,6 +114,7 @@ export enum TrainService {
 export enum JapanVisaType {
   TOURISM = "tourism",
   BUSINESS = "business",
+  OTHERS = "others",
 }
 
 export enum SsdcService {

@@ -181,6 +181,7 @@ export function useGetJapanVisaSlotsDatesMap() {
     useState<JapanVisaSlotsDatesMap>({
       [JapanVisaType.TOURISM]: "",
       [JapanVisaType.BUSINESS]: "",
+      [JapanVisaType.OTHERS]: "",
     });
   const getJapanVisaSlotsDatesMap = async () => {
     try {
@@ -204,6 +205,7 @@ export function useGetJapanVisaSlotsDatesMap() {
         [JapanVisaType.BUSINESS]: formatDateTime(
           resData[JapanVisaType.BUSINESS]
         ),
+        [JapanVisaType.OTHERS]: formatDateTime(resData[JapanVisaType.OTHERS]),
       });
       setFetchStatus(FetchStatus.Success);
     } catch (err) {
