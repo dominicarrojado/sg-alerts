@@ -988,7 +988,7 @@ export const DONATION_TESTIMONIALS: DonationTestimonials = [
   {
     firstName: "Daphne",
     lastName: "N",
-    message: "Thank you for the CDC telegram group chat :)",
+    message: "Thank you for the CDC Telegram group chat :)",
     date: "5 September 2024",
   },
   {
@@ -1056,6 +1056,12 @@ export const DONATION_TESTIMONIALS: DonationTestimonials = [
     lastName: "L",
     message: "Thank you for your good work!",
     date: "20 May 2024",
+  },
+  {
+    firstName: "Xinyi",
+    lastName: "I",
+    message: "",
+    date: "8 May 2024",
   },
   {
     firstName: "Sania",
