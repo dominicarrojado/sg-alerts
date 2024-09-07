@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { Anchor } from "@/components/ui/anchor";
 import {
   DonationTestimonials,
+  NotificationSetting,
   NotificationSettings,
   TelegramPublicChannels,
 } from "./types";
@@ -528,7 +529,7 @@ export const MONEY_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   },
 ];
 
-export const NEW_FEATURES_NOTIFICATION_SETTING = {
+export const NEW_FEATURES_NOTIFICATION_SETTING: NotificationSetting = {
   id: SubscriptionTopic.FeaturesSgAlerts,
   title: "🚀 New Features & Alerts",
   description: (
@@ -598,6 +599,7 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         at Bukit Batok Driving Centre.
       </>
     ),
+    hasTelegramChannel: true,
   },
   {
     id: SubscriptionTopic.JapanVisaBusiness,
@@ -787,25 +789,8 @@ export const SSDC_NOTIFICATION_SETTINGS: NotificationSettings = [
   },
 ];
 
-export const BBDC_NOTIFICATION_SETTINGS: NotificationSettings = [
-  {
-    id: SubscriptionTopic.BbdcCounterServices,
-    title: "🚘 BBDC Appointment Slots",
-    description: (
-      <>
-        Receive email notifications when there are new appointment date(s) for{" "}
-        <Link href={Routes.BbdcAppointmentSlots} passHref legacyBehavior>
-          <Anchor>account opening and counter services</Anchor>
-        </Link>{" "}
-        at Bukit Batok Driving Centre.
-      </>
-    ),
-  },
-];
-
 export const DRIVING_NOTIFICATION_SETTINGS: NotificationSettings = [
   ...SSDC_NOTIFICATION_SETTINGS,
-  ...BBDC_NOTIFICATION_SETTINGS,
   {
     id: SubscriptionTopic.CoeBiddings,
     title: "📄 Certificate of Entitlement (COE) Bidding Results",
