@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import {
   BbdcService,
+  CdcLessonsService,
   CdcService,
   GoogleAnalyticsEvent,
   JapanVisaType,
@@ -135,6 +136,16 @@ export type CdcSlotsInfo = {
   calendarLink: string;
 };
 export type CdcSlotsInfoItems = Array<CdcSlotsInfo>;
+
+export type CdcLessonSlotsDatesMap = Record<CdcLessonsService, string>;
+
+export type CdcLessonSlotsInfo = {
+  service: CdcService;
+  title: string;
+  lastAvailableDate: string;
+  telegramLink: string;
+};
+export type CdcLessonSlotsInfoItems = Array<CdcLessonSlotsInfo>;
 
 export type SsdcSlotsDatesMap = Record<SsdcService, string>;
 

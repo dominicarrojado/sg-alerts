@@ -3,6 +3,7 @@ import { useState } from "react";
 import { formatDateTime } from "./date";
 import {
   BbdcSlotsDatesMap,
+  CdcLessonSlotsDatesMap,
   CdcSlotsDatesMap,
   CoeBiddingsInfo,
   DepositRatesInfo,
@@ -261,10 +262,14 @@ export function useGetCdcSlotsDatesMap() {
   return [fetchStatus, cdcSlotsDatesMap, getCdcSlotsDatesMap] as const;
 }
 
-export function useGetCdcLessonSlotsDate() {
+export function useGetCdcLessonSlotsDatesMap() {
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
-  const [lastAvailableSlotsDate, setLastAvailableSlotsDate] = useState("");
-  const getLastAvailableSlotsDate = async () => {
+  const [cdcLessonSlotsDatesMap, setCdcLessonSlotsDatesMap] =
+    useState<CdcLessonSlotsDatesMap>({
+      [CdcLessonsService.AUTO_CAR]: "",
+      [CdcLessonsService.MOTORCYCLE_2B]: "",
+    });
+  const getCdcLessonSlotsDatesMap = async () => {
     try {
       setFetchStatus(FetchStatus.Loading);
 
@@ -274,13 +279,24 @@ export function useGetCdcLessonSlotsDate() {
       );
       const resData = res.data;
 
-      if (!resData || !resData[CdcLessonsService.AUTO_CAR]) {
+      if (
+        !resData ||
+        !(
+          resData[CdcLessonsService.AUTO_CAR] &&
+          resData[CdcLessonsService.MOTORCYCLE_2B]
+        )
+      ) {
         throw new Error("Invalid data");
       }
 
-      setLastAvailableSlotsDate(
-        formatDateTime(resData[CdcLessonsService.AUTO_CAR])
-      );
+      setCdcLessonSlotsDatesMap({
+        [CdcLessonsService.AUTO_CAR]: formatDateTime(
+          resData[CdcLessonsService.AUTO_CAR]
+        ),
+        [CdcLessonsService.MOTORCYCLE_2B]: formatDateTime(
+          resData[CdcLessonsService.MOTORCYCLE_2B]
+        ),
+      });
       setFetchStatus(FetchStatus.Success);
     } catch (err) {
       setFetchStatus(FetchStatus.Failure);
@@ -289,8 +305,8 @@ export function useGetCdcLessonSlotsDate() {
 
   return [
     fetchStatus,
-    lastAvailableSlotsDate,
-    getLastAvailableSlotsDate,
+    cdcLessonSlotsDatesMap,
+    getCdcLessonSlotsDatesMap,
   ] as const;
 }
 

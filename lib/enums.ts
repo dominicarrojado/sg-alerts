@@ -105,6 +105,7 @@ export enum CdcService {
 
 export enum CdcLessonsService {
   AUTO_CAR = "auto-car",
+  MOTORCYCLE_2B = "motorcycle-2b",
 }
 
 export enum TrainService {
@@ -131,6 +132,7 @@ export enum BbdcService {
 
 export enum TelegramChannel {
   CdcLessonsAutoCar = "SGAlertsCDCLessonsAutoCar",
+  CdcLessonsMotorcycle2B = "SGAlertsCDCLessonsClass2B",
   CdcEyesightTest = "SGAlertsCDCEyesightTest",
   CdcCounterServices = "SGAlertsCDCCounterServices",
   CdcAnnouncements = "SGAlertsCDCAnnouncements",
