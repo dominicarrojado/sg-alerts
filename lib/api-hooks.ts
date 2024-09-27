@@ -3,7 +3,6 @@ import { useState } from "react";
 import { formatDateTime } from "./date";
 import {
   BbdcSlotsDatesMap,
-  CdcLessonSlotsDatesMap,
   CdcSlotsDatesMap,
   CoeBiddingsInfo,
   DepositRatesInfo,
@@ -262,14 +261,10 @@ export function useGetCdcSlotsDatesMap() {
   return [fetchStatus, cdcSlotsDatesMap, getCdcSlotsDatesMap] as const;
 }
 
-export function useGetCdcLessonSlotsDatesMap() {
+export function useGetCdcLessonSlotsDate() {
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
-  const [cdcLessonSlotsDatesMap, setCdcLessonSlotsDatesMap] =
-    useState<CdcLessonSlotsDatesMap>({
-      [CdcLessonsService.AUTO_CAR]: "",
-      [CdcLessonsService.MOTORCYCLE_2B]: "",
-    });
-  const getCdcLessonSlotsDatesMap = async () => {
+  const [lastAvailableSlotsDate, setLastAvailableSlotsDate] = useState("");
+  const getLastAvailableSlotsDate = async () => {
     try {
       setFetchStatus(FetchStatus.Loading);
 
@@ -279,24 +274,13 @@ export function useGetCdcLessonSlotsDatesMap() {
       );
       const resData = res.data;
 
-      if (
-        !resData ||
-        !(
-          resData[CdcLessonsService.AUTO_CAR] &&
-          resData[CdcLessonsService.MOTORCYCLE_2B]
-        )
-      ) {
+      if (!resData || !resData[CdcLessonsService.AUTO_CAR]) {
         throw new Error("Invalid data");
       }
 
-      setCdcLessonSlotsDatesMap({
-        [CdcLessonsService.AUTO_CAR]: formatDateTime(
-          resData[CdcLessonsService.AUTO_CAR]
-        ),
-        [CdcLessonsService.MOTORCYCLE_2B]: formatDateTime(
-          resData[CdcLessonsService.MOTORCYCLE_2B]
-        ),
-      });
+      setLastAvailableSlotsDate(
+        formatDateTime(resData[CdcLessonsService.AUTO_CAR])
+      );
       setFetchStatus(FetchStatus.Success);
     } catch (err) {
       setFetchStatus(FetchStatus.Failure);
@@ -305,8 +289,8 @@ export function useGetCdcLessonSlotsDatesMap() {
 
   return [
     fetchStatus,
-    cdcLessonSlotsDatesMap,
-    getCdcLessonSlotsDatesMap,
+    lastAvailableSlotsDate,
+    getLastAvailableSlotsDate,
   ] as const;
 }
 

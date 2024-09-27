@@ -259,19 +259,6 @@ export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     ),
   },
   {
-    id: TelegramChannel.CdcLessonsMotorcycle2B,
-    title: "🚘 CDC Practical Lesson Slots (Class 2B Motorcycle)",
-    description: (
-      <>
-        Receive notifications when there are new practical lessons slot(s) for{" "}
-        <Link href={Routes.CdcPracticalLessonSlots} passHref legacyBehavior>
-          <Anchor>Class 2B Motorcycle</Anchor>
-        </Link>{" "}
-        at ComfortDelGro Driving Centre.
-      </>
-    ),
-  },
-  {
     id: TelegramChannel.CdcEyesightTest,
     title: "🚘 CDC Appointment Slots (Eyesight Test)",
     description: (

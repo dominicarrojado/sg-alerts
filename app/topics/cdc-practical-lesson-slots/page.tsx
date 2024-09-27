@@ -10,11 +10,12 @@ import Paragraph from "@/components/ui/paragraph";
 import { Routes, TelegramChannel } from "@/lib/enums";
 import { TELEGRAM_SHORT_URL } from "@/lib/constants";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
-import CdcLessonSlotsTable from "./cdc-lesson-slots-table";
+import CdcLessonSlotsInfo from "./cdc-lesson-slots-info";
 
-const title = "ComfortDelGro Driving Centre Practical Lesson Slots";
+const title =
+  "ComfortDelGro Driving Centre Practical Lesson Slots (Class 3A Motorcar)";
 const description =
-  "Subscribe to SG Alerts to get notified when there are new practical lesson slot(s) at the ComfortDelGro Driving Centre (CDC) website.";
+  "Subscribe to SG Alerts to get notified when there are new practical lesson slot(s) for Class 3A Motorcar at the ComfortDelGro Driving Centre (CDC) website.";
 const url = Routes.CdcPracticalLessonSlots;
 
 export const metadata: Metadata = {
@@ -43,10 +44,10 @@ export default function CdcPracticalLessonSlots() {
         <Heading>{title}</Heading>
         <Subheading>
           Subscribe to get notified when there are new practical lesson slot(s)
-          at ComfortDelGro Driving Centre website.
+          for Class 3A Motorcar at ComfortDelGro Driving Centre website.
         </Subheading>
       </div>
-      <CdcLessonSlotsTable />
+      <CdcLessonSlotsInfo />
       <Paragraph>
         <Anchor href="https://www.cdc.com.sg/" isExternal>
           ComfortDelGro Driving Centre (CDC)
@@ -54,12 +55,8 @@ export default function CdcPracticalLessonSlots() {
         is one of the largest driving school centres in Singapore. It offers a
         wide range of driving courses and practical lessons for different types
         of vehicles including{" "}
-        <Anchor href="https://www.cdc.com.sg/course/class-33a/" isExternal>
+        <Anchor href="https://www.cdc.com.sg/course/class-33a" isExternal>
           Class 3A Motorcar
-        </Anchor>{" "}
-        and{" "}
-        <Anchor href="https://www.cdc.com.sg/course/class-2b/" isExternal>
-          Class 2B Motorcycle
         </Anchor>
         .
       </Paragraph>
@@ -77,9 +74,9 @@ export default function CdcPracticalLessonSlots() {
         </abbr>
         , it is important that you book your practical lesson slots early so
         that you can get the slots you want. However, due to the high demand for
-        practical lesson slots and no session opening date for Class 3A and 2B
-        lessons, it is extremely difficult to get the slots you want. This is
-        especially true if you are only available during certain time slots.
+        practical lesson slots and no session opening date for Class 3A lessons,
+        it is extremely difficult to get the slots you want. This is especially
+        true if you are only available during certain timeslots.
       </Paragraph>
       <Paragraph>
         Slots cancellation is also common at{" "}
@@ -109,26 +106,16 @@ export default function CdcPracticalLessonSlots() {
         you want, but it will definitely increase your chances of getting them.
       </Paragraph>
       <Paragraph>
-        To get started, simply click either of the buttons below to subscribe to
-        the Telegram channel and start receiving notifications.
+        To get started, simply click the button below to subscribe to the
+        Telegram channel and start receiving notifications.
       </Paragraph>
-      <div className="mt-8 text-center flex flex-col justify-center gap-4 sm:flex-row">
-        <div>
-          <Anchor
-            href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.CdcLessonsAutoCar}`}
-            isExternal
-          >
-            <Button variant="secondary">Class 3A Motorcar</Button>
-          </Anchor>
-        </div>
-        <div>
-          <Anchor
-            href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.CdcLessonsMotorcycle2B}`}
-            isExternal
-          >
-            <Button variant="secondary">Class 2B Motorcycle</Button>
-          </Anchor>
-        </div>
+      <div className="mt-8 text-center">
+        <Anchor
+          href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.CdcLessonsAutoCar}`}
+          isExternal
+        >
+          <Button variant="secondary">Subscribe Now</Button>
+        </Anchor>
       </div>
     </Container>
   );
