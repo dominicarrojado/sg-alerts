@@ -53,7 +53,8 @@ export default function Donate() {
       <Paragraph>
         If you&apos;d like to support my work with a donation, I would be very
         grateful. Every donation will be sincerely appreciated and will go a
-        long way. Thank you very much for your support ~
+        long way. Leave a message with your donation and I will add your name to
+        the list of supporters below. Thank you very much for your support ~
       </Paragraph>
       <div className="flex flex-col gap-4 mt-6 sm:flex-row">
         <Card className="w-72 max-w-full mx-auto sm:w-1/2">
