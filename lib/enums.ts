@@ -140,6 +140,7 @@ export enum TelegramChannel {
   BbdcAppointmentSlots = "SGAlertsBBDCAppointmentSlots",
   BbdcAnnouncements = "SGAlertsBBDCAnnouncements",
   JapanVisaTourism = "SGAlertsJapanVisaTourism",
+  JapanVisaOthers = "SGAlertsJapanVisaOthers",
   KtmTrainTickets = "SGAlertsKTMTrainTickets",
   SingaporeAirlinesFlights = "SGAlertsSingaporeAirlinesFlights",
   ScootFlights = "SGAlertsScootFlights",

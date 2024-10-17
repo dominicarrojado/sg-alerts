@@ -391,6 +391,20 @@ export const JAPAN_VISA_TELEGRAM_CHANNELS: TelegramPublicChannels = [
       </>
     ),
   },
+  {
+    id: TelegramChannel.JapanVisaOthers,
+    title: "🇯🇵 Japan Visa Appointment Slots (Others)",
+    description: (
+      <>
+        Receive notifications when there are new visa appointment date(s) for{" "}
+        <Link href={Routes.JapanVisa} passHref legacyBehavior>
+          <Anchor>all other visa applications and services</Anchor>
+        </Link>{" "}
+        at the Embassy of Japan in Singapore. <br />
+        <small>(for foreigners who require a visa to visit Japan)</small>
+      </>
+    ),
+  },
 ];
 
 export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
@@ -636,6 +650,7 @@ export const NOTIFICATION_SETTINGS: NotificationSettings = [
         <small>(for foreigners who require a visa to visit Japan)</small>
       </>
     ),
+    hasTelegramChannel: true,
   },
   {
     id: SubscriptionTopic.CoeBiddings,
@@ -826,21 +841,6 @@ export const JAPAN_VISA_NOTIFICATION_SETTINGS: NotificationSettings = [
             </abbr>
             , Spouse or Child of Japanese National
           </Anchor>
-        </Link>{" "}
-        at the Embassy of Japan in Singapore. <br />
-        <small>(for foreigners who require a visa to visit Japan)</small>
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.JapanVisaOthers,
-    title: "🇯🇵 Japan Visa Appointment Slots (Others)",
-    description: (
-      <>
-        Receive email notifications when there are new visa appointment date(s)
-        for{" "}
-        <Link href={Routes.JapanVisa} passHref legacyBehavior>
-          <Anchor>all other visa applications and services</Anchor>
         </Link>{" "}
         at the Embassy of Japan in Singapore. <br />
         <small>(for foreigners who require a visa to visit Japan)</small>
