@@ -48,6 +48,7 @@ export enum ApiEndpoint {
   TrainTimeSlotsInfo = "/train-tickets-checker/slots-info",
   SsdcSlotsInfo = "/ssdc-checker/slots-last-available-dates",
   BbdcSlotsInfo = "/bbdc-checker/slots-last-available-dates",
+  TravelDealsInfo = "/travel-deals-checker/travel-deals-info",
 }
 
 export enum SubscriptionTopic {
@@ -127,6 +128,10 @@ export enum SsdcService {
 
 export enum BbdcService {
   COUNTER_SERVICES = "counter-services",
+}
+
+export enum TravelDealsService {
+  SCOOT = "scoot",
 }
 
 export enum TelegramChannel {

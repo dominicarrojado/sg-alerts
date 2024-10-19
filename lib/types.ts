@@ -155,6 +155,22 @@ export type BbdcSlotsInfo = {
 };
 export type BbdcSlotsInfoItems = Array<BbdcSlotsInfo>;
 
+export interface TravelDeal {
+  title: string;
+  description: string;
+  imageUrl: string;
+  imageWidth: number;
+  imageHeight: number;
+  link: string;
+  duration: string;
+}
+export type TravelDeals = Array<TravelDeal>;
+export type TravelDealInfo = {
+  items: TravelDeals;
+  updatedAt: string;
+  lastAvailableAt: string;
+};
+
 export type DonationTestimonial = {
   firstName: string;
   lastName: string;

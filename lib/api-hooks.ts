@@ -12,6 +12,7 @@ import {
   Subscription,
   SubscriptionTopics,
   TrainTimeSlotsInfo,
+  TravelDealInfo,
 } from "./types";
 import {
   ApiEndpoint,
@@ -23,6 +24,7 @@ import {
   JapanVisaType,
   SsdcService,
   TrainService,
+  TravelDealsService,
 } from "./enums";
 import { API_URL } from "./constants";
 
@@ -517,4 +519,44 @@ export function useGetBbdcSlotsDatesMap() {
   };
 
   return [fetchStatus, bbdcSlotsDatesMap, getBbdcSlotsDatesMap] as const;
+}
+
+export function useGetTravelDealsInfo() {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [travelDealsInfo, setTravelDealsInfo] = useState<TravelDealInfo>({
+    items: [],
+    updatedAt: "",
+    lastAvailableAt: "",
+  });
+  const getTravelDealsInfo = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(
+        `${API_URL}${ApiEndpoint.TravelDealsInfo}?service=${TravelDealsService.SCOOT}`
+      );
+      const resData = res.data;
+
+      if (
+        !resData ||
+        !Array.isArray(resData.items) ||
+        !resData.updatedAt ||
+        !resData.lastAvailableAt
+      ) {
+        throw new Error("Invalid data");
+      }
+
+      setTravelDealsInfo({
+        ...resData,
+        updatedAt: formatDateTime(resData.updatedAt),
+        lastAvailableAt: formatDateTime(resData.lastAvailableAt),
+      });
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, travelDealsInfo, getTravelDealsInfo] as const;
 }

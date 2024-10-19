@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
-import { FlightsTable } from "@/components/flights-table";
-import { FlightAirline, Routes, TelegramChannel } from "@/lib/enums";
+import { Routes, TelegramChannel } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { TELEGRAM_SHORT_URL } from "@/lib/constants";
+import TravelDealsInfo from "./travel-deals-info";
 
 const title = "Scoot Flights";
 const description =
@@ -42,7 +42,7 @@ export default function ScootFlights() {
         <Heading>{title}</Heading>
         <Subheading>{description}</Subheading>
       </div>
-      <FlightsTable airline={FlightAirline.SCOOT} withTravelBy={false} />
+      <TravelDealsInfo />
       <Paragraph>
         <span className="font-medium">Scoot</span> is a Singapore-based low-cost
         airline owned by Singapore Airlines. It is known for offering affordable
