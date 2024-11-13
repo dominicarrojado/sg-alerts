@@ -114,9 +114,13 @@ export default function JapanVisa() {
       </div>
       <div className="mt-4 text-center">
         <Button variant="secondary" asChild>
-          <Link href={`${Routes.JapanVisaCategory}#${SUBSCRIBE_FORM_ID}`}>
+          <Anchor
+            href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.JapanVisaOthers}`}
+            className="no-underline !inline-block"
+            isExternal
+          >
             For Other Visa Applications/Services
-          </Link>
+          </Anchor>
         </Button>
       </div>
     </Container>
