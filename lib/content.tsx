@@ -179,6 +179,14 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.CoeBiddingResults,
   },
   {
+    title: "Tokyo Disneyland",
+    href: Routes.TokyoDisneylandAttractionUpdates,
+  },
+  {
+    title: "Tokyo DisneySea",
+    href: Routes.TokyoDisneySeaAttractionUpdates,
+  },
+  {
     title: "and more...",
     href: "",
   },
@@ -555,9 +563,16 @@ export const THEME_PARK_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     title: "🏰 Tokyo Disneyland Attraction Updates",
     description: (
       <>
-        Receive notifications when Disney Premier Access, Standby Passes, or
-        40th Anniversary Priority Passes are restocked, and when attractions
-        resume operations.
+        Receive notifications when{" "}
+        <Link
+          href={Routes.TokyoDisneylandAttractionUpdates}
+          passHref
+          legacyBehavior
+        >
+          <Anchor>Tokyo Disneyland</Anchor>
+        </Link>
+        &apos;s Disney Premier Access, Standby Passes or 40th Anniversary
+        Priority Passes are restocked, and when attractions resume operations.
       </>
     ),
   },
@@ -566,9 +581,16 @@ export const THEME_PARK_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     title: "⛰️ Tokyo DisneySea Attraction Updates",
     description: (
       <>
-        Receive notifications when Disney Premier Access, Standby Passes, or
-        40th Anniversary Priority Passes are restocked, and when attractions
-        resume operations.
+        Receive notifications when{" "}
+        <Link
+          href={Routes.TokyoDisneySeaAttractionUpdates}
+          passHref
+          legacyBehavior
+        >
+          <Anchor>Tokyo DisneySea</Anchor>
+        </Link>
+        &apos;s Disney Premier Access, Standby Passes or 40th Anniversary
+        Priority Passes are restocked, and when attractions resume operations.
       </>
     ),
   },

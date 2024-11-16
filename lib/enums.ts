@@ -25,6 +25,8 @@ export enum Routes {
   KtmTrainTickets = "/topics/ktm-train-tickets/",
   SsdcAppointmentSlots = "/topics/ssdc-appointment-slots/",
   BbdcAppointmentSlots = "/topics/bbdc-appointment-slots/",
+  TokyoDisneylandAttractionUpdates = "/topics/tokyo-disneyland-attraction-updates/",
+  TokyoDisneySeaAttractionUpdates = "/topics/tokyo-disneysea-attraction-updates/",
 }
 
 export enum FetchStatus {
@@ -50,6 +52,7 @@ export enum ApiEndpoint {
   SsdcSlotsInfo = "/ssdc-checker/slots-last-available-dates",
   BbdcSlotsInfo = "/bbdc-checker/slots-last-available-dates",
   TravelDealsInfo = "/travel-deals-checker/travel-deals-info",
+  ThemeParkInfo = "/theme-park-checker/theme-park-info",
 }
 
 export enum SubscriptionTopic {
@@ -133,6 +136,11 @@ export enum BbdcService {
 
 export enum TravelDealsService {
   SCOOT = "scoot",
+}
+
+export enum ThemeParkService {
+  TokyoDisneylandAttractions = "tokyo-disneyland-attractions",
+  TokyoDisneySeaAttractions = "tokyo-disneysea-attractions",
 }
 
 export enum TelegramChannel {

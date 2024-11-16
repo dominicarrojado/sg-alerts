@@ -23,8 +23,8 @@ export default function Header() {
     <Container className="pb-0">
       <div
         className={cn(
-          "relative flex justify-between",
-          useLogoTitle ? "items-start" : "items-end"
+          "relative flex min-h-[40px] justify-between",
+          useLogoTitle ? "items-start" : "items-end",
         )}
       >
         {useLogoTitle ? (
@@ -38,11 +38,11 @@ export default function Header() {
             </PageHeaderDescription>
           </PageHeader>
         ) : (
-          <div className="text-2xl dark:text-white font-bold">
+          <div className="text-2xl font-bold dark:text-white">
             <HeaderLogo pathname={pathname} flagClassName="mr-2 md:mr-2" />
           </div>
         )}
-        <div className="absolute top-0 right-0 flex gap-2 h-10">
+        <div className="absolute right-0 top-0 flex h-10 gap-2">
           <ModeToggle />
           <MenuToggle />
         </div>

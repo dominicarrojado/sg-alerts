@@ -11,6 +11,7 @@ import {
   SsdcSlotsDatesMap,
   Subscription,
   SubscriptionTopics,
+  ThemeParkInfo,
   TrainTimeSlotsInfo,
   TravelDealInfo,
 } from "./types";
@@ -23,6 +24,7 @@ import {
   FlightAirline,
   JapanVisaType,
   SsdcService,
+  ThemeParkService,
   TrainService,
   TravelDealsService,
 } from "./enums";
@@ -559,4 +561,37 @@ export function useGetTravelDealsInfo() {
   };
 
   return [fetchStatus, travelDealsInfo, getTravelDealsInfo] as const;
+}
+
+export function useGetThemeParkInfo(service: ThemeParkService) {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [themeParkInfo, setThemeParkInfo] = useState<ThemeParkInfo>({
+    items: [],
+    updatedAt: "",
+  });
+  const getThemeParkInfo = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(
+        `${API_URL}${ApiEndpoint.ThemeParkInfo}?service=${service}`
+      );
+      const resData = res.data;
+
+      if (!resData || !resData?.updatedAt || !Array.isArray(resData?.items)) {
+        throw new Error("Invalid data");
+      }
+
+      setThemeParkInfo({
+        ...resData,
+        updatedAt: formatDateTime(resData.updatedAt),
+      });
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, themeParkInfo, getThemeParkInfo] as const;
 }

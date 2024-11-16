@@ -35,3 +35,5 @@ export const SSDC_SERVICES_LENGTH = SSDC_SERVICES.length;
 export const TELEGRAM_SHORT_URL = "https://t.me";
 
 export const SUBSCRIBE_FORM_ID = "subscribe-form";
+
+export const NOW_AVAILABLE_TEXT = "now available";

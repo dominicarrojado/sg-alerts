@@ -59,7 +59,7 @@ export type DepositRatesInfo = {
   updatedAt: string;
 };
 
-export interface Flight {
+export type Flight = {
   id: string;
   shareUrl: string;
   destinationCityCode: string;
@@ -70,7 +70,7 @@ export interface Flight {
   departureDate: string;
   returnDate: string;
   deltaDays: number;
-}
+};
 
 export type Flights = Array<Flight>;
 
@@ -155,7 +155,7 @@ export type BbdcSlotsInfo = {
 };
 export type BbdcSlotsInfoItems = Array<BbdcSlotsInfo>;
 
-export interface TravelDeal {
+export type TravelDeal = {
   title: string;
   description: string;
   imageUrl: string;
@@ -163,7 +163,7 @@ export interface TravelDeal {
   imageHeight: number;
   link: string;
   duration: string;
-}
+};
 export type TravelDeals = Array<TravelDeal>;
 export type TravelDealInfo = {
   items: TravelDeals;
@@ -178,3 +178,23 @@ export type DonationTestimonial = {
   date: string;
 };
 export type DonationTestimonials = Array<DonationTestimonial>;
+
+export type Facility = {
+  id: string;
+  name: string;
+  operatingStatus: string;
+  isOperating: boolean;
+  previousOperatingStatus?: string;
+  dpaStatus: string | null;
+  previousDpaStatus?: string;
+  fsStatus: string | null;
+  previousFsStatus?: string;
+  standByTime: string | false;
+  standByTimeNum: number;
+  lastUpdatedTime: string;
+};
+export type Facilities = Array<Facility>;
+export type ThemeParkInfo = {
+  items: Facilities;
+  updatedAt: string;
+};
