@@ -83,6 +83,12 @@ export const CATEGORY_ITEMS = [
     description: "Movies",
     href: Routes.EntertainmentCategory,
   },
+  {
+    emoji: "🎢",
+    title: "Theme Parks",
+    description: "Tokyo Disneyland, Tokyo DisneySea",
+    href: Routes.ThemeParksCategory,
+  },
 ];
 
 export const TOPICS_MENU_ITEMS = [
@@ -538,6 +544,31 @@ export const MONEY_TELEGRAM_CHANNELS: TelegramPublicChannels = [
           latest TOTO results
         </Anchor>{" "}
         from Singapore Pools.
+      </>
+    ),
+  },
+];
+
+export const THEME_PARK_TELEGRAM_CHANNELS: TelegramPublicChannels = [
+  {
+    id: TelegramChannel.TokyoDisneylandAttractions,
+    title: "🏰 Tokyo Disneyland Attraction Updates",
+    description: (
+      <>
+        Receive notifications when Disney Premier Access, Standby Passes, or
+        40th Anniversary Priority Passes are restocked, and when attractions
+        resume operations.
+      </>
+    ),
+  },
+  {
+    id: TelegramChannel.TokyoDisneySeaAttractions,
+    title: "⛰️ Tokyo DisneySea Attraction Updates",
+    description: (
+      <>
+        Receive notifications when Disney Premier Access, Standby Passes, or
+        40th Anniversary Priority Passes are restocked, and when attractions
+        resume operations.
       </>
     ),
   },
