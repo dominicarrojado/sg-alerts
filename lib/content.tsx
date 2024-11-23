@@ -1033,7 +1033,7 @@ export const DONATION_TESTIMONIALS: DonationTestimonials = [
     firstName: "GG",
     lastName: "G",
     message: "Thanks!",
-    date: "7 November 2024",
+    date: "6 November 2024",
   },
   {
     firstName: "Celine",

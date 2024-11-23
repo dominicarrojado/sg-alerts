@@ -115,7 +115,7 @@ export default function SubscribeForm({
             </div>
           </CardContent>
         </Card>
-        <Card className="mt-6">
+        <Card className="mt-4 sm:mt-6">
           <CardHeader>
             <CardTitle>2️⃣ &nbsp;Last Step</CardTitle>
             <CardDescription>

@@ -30,11 +30,36 @@ import {
 } from "./enums";
 import { API_URL } from "./constants";
 
+export function useGetSubscribersCount() {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [subscribersCount, setSubscribersCount] = useState(0);
+  const getSubscribersCount = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(`${API_URL}${ApiEndpoint.SubscribersCount}`);
+      const resData = res.data;
+
+      if (typeof resData !== "number") {
+        throw new Error("Invalid data");
+      }
+
+      setSubscribersCount(resData);
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, subscribersCount, getSubscribersCount] as const;
+}
+
 export function useSubmitSubscribeRequest() {
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
   const submitSubscribeRequest = async (
     email: string,
-    topics: SubscriptionTopics
+    topics: SubscriptionTopics,
   ) => {
     try {
       setFetchStatus(FetchStatus.Loading);
@@ -148,7 +173,7 @@ export function useUpdateSubscription() {
   const searchParams = useSearchParams();
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
   const updateSubscription = async (
-    topics: SubscriptionTopics
+    topics: SubscriptionTopics,
   ): Promise<boolean> => {
     try {
       const id = searchParams.get("id") as string;
@@ -193,7 +218,7 @@ export function useGetJapanVisaSlotsDatesMap() {
 
       const axios = (await import("axios")).default;
       const res = await axios.get(
-        `${API_URL}${ApiEndpoint.JapanVisaLastSlotsInfo}`
+        `${API_URL}${ApiEndpoint.JapanVisaLastSlotsInfo}`,
       );
       const resData = res.data;
 
@@ -207,7 +232,7 @@ export function useGetJapanVisaSlotsDatesMap() {
       setJapanVisaSlotsDatesMap({
         [JapanVisaType.TOURISM]: formatDateTime(resData[JapanVisaType.TOURISM]),
         [JapanVisaType.BUSINESS]: formatDateTime(
-          resData[JapanVisaType.BUSINESS]
+          resData[JapanVisaType.BUSINESS],
         ),
         [JapanVisaType.OTHERS]: formatDateTime(resData[JapanVisaType.OTHERS]),
       });
@@ -250,10 +275,10 @@ export function useGetCdcSlotsDatesMap() {
 
       setCdcSlotsDatesMap({
         [CdcService.EYESIGHT_TEST]: formatDateTime(
-          resData[CdcService.EYESIGHT_TEST]
+          resData[CdcService.EYESIGHT_TEST],
         ),
         [CdcService.COUNTER_SERVICES]: formatDateTime(
-          resData[CdcService.COUNTER_SERVICES]
+          resData[CdcService.COUNTER_SERVICES],
         ),
       });
       setFetchStatus(FetchStatus.Success);
@@ -274,7 +299,7 @@ export function useGetCdcLessonSlotsDate() {
 
       const axios = (await import("axios")).default;
       const res = await axios.get(
-        `${API_URL}${ApiEndpoint.CdcLessonLastSlotsInfo}`
+        `${API_URL}${ApiEndpoint.CdcLessonLastSlotsInfo}`,
       );
       const resData = res.data;
 
@@ -283,7 +308,7 @@ export function useGetCdcLessonSlotsDate() {
       }
 
       setLastAvailableSlotsDate(
-        formatDateTime(resData[CdcLessonsService.AUTO_CAR])
+        formatDateTime(resData[CdcLessonsService.AUTO_CAR]),
       );
       setFetchStatus(FetchStatus.Success);
     } catch (err) {
@@ -310,7 +335,7 @@ export function useGetDepositRatesInfo() {
 
       const axios = (await import("axios")).default;
       const res = await axios.get(
-        `${API_URL}${ApiEndpoint.FixedDepositRatesInfo}`
+        `${API_URL}${ApiEndpoint.FixedDepositRatesInfo}`,
       );
       const resData = res.data;
 
@@ -343,7 +368,7 @@ export function useGetFlightsInfo(airline: FlightAirline) {
 
       const axios = (await import("axios")).default;
       const res = await axios.get(
-        `${API_URL}${ApiEndpoint.FlightsInfo}?airline=${airline}`
+        `${API_URL}${ApiEndpoint.FlightsInfo}?airline=${airline}`,
       );
       const resData = res.data;
 
@@ -408,7 +433,7 @@ export function useGetTrainSlotsInfo() {
 
       const axios = (await import("axios")).default;
       const res = await axios.get(
-        `${API_URL}${ApiEndpoint.TrainTimeSlotsInfo}?service=${TrainService.KTMB}`
+        `${API_URL}${ApiEndpoint.TrainTimeSlotsInfo}?service=${TrainService.KTMB}`,
       );
       const resData = res.data;
 
@@ -439,7 +464,7 @@ export function useGetSsdcSlotsDatesMap() {
       [SsdcService.PRACTICAL_LESSON_BOOKING]: "",
       [SsdcService.OTHER_COURSES_ENROLMENT]: "",
       [SsdcService.FOREIGN_LICENCE_WEEKEND]: "",
-    }
+    },
   );
   const getSsdcSlotsDatesMap = async () => {
     try {
@@ -493,7 +518,7 @@ export function useGetBbdcSlotsDatesMap() {
   const [bbdcSlotsDatesMap, setBbdcSlotsDatesMap] = useState<BbdcSlotsDatesMap>(
     {
       [BbdcService.COUNTER_SERVICES]: "",
-    }
+    },
   );
   const getBbdcSlotsDatesMap = async () => {
     try {
@@ -536,7 +561,7 @@ export function useGetTravelDealsInfo() {
 
       const axios = (await import("axios")).default;
       const res = await axios.get(
-        `${API_URL}${ApiEndpoint.TravelDealsInfo}?service=${TravelDealsService.SCOOT}`
+        `${API_URL}${ApiEndpoint.TravelDealsInfo}?service=${TravelDealsService.SCOOT}`,
       );
       const resData = res.data;
 
@@ -575,7 +600,7 @@ export function useGetThemeParkInfo(service: ThemeParkService) {
 
       const axios = (await import("axios")).default;
       const res = await axios.get(
-        `${API_URL}${ApiEndpoint.ThemeParkInfo}?service=${service}`
+        `${API_URL}${ApiEndpoint.ThemeParkInfo}?service=${service}`,
       );
       const resData = res.data;
 

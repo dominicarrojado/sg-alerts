@@ -9,7 +9,7 @@ type Props = {
 
 export default function PageSeparator({ children }: Props) {
   return (
-    <Separator className="my-10 relative">
+    <Separator className="relative my-8 sm:my-10">
       <SeparatorText>{children}</SeparatorText>
     </Separator>
   );
