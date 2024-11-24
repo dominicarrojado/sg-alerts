@@ -1,7 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeftIcon, ExternalLink } from "lucide-react";
+import {
+  ArrowLeftIcon,
+  ChevronRightIcon,
+  ExternalLinkIcon,
+} from "lucide-react";
 import {
   Card,
   CardContent,
@@ -26,7 +30,7 @@ export default function TelegramChannels({ channels, withBackButton }: Props) {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle className="flex gap-2 items-center">
+        <CardTitle className="flex items-center gap-2">
           Telegram Channels <Badge>NEW</Badge>
         </CardTitle>
         <CardDescription>
@@ -36,32 +40,47 @@ export default function TelegramChannels({ channels, withBackButton }: Props) {
       </CardHeader>
       <CardContent>
         <div className="grid gap-6">
-          {channels.map(({ id, title, description }) => (
-            <div
-              key={id}
-              className="flex flex-row items-center justify-between rounded-lg border p-4 w-full"
-            >
-              <div className="space-y-0.5 pr-2">
-                <Anchor
-                  href={`${TELEGRAM_SHORT_URL}/${id}`}
-                  className="no-underline text-base"
-                  isExternal
-                >
-                  {title}
-                </Anchor>
-                <p className="text-sm font-light text-muted-foreground">
-                  {description}
-                </p>
+          {channels.map(({ id, title, description, topicRoute }) => {
+            const channelUrl = `${TELEGRAM_SHORT_URL}/${id}`;
+
+            return (
+              <div key={id} className="rounded-lg border p-4">
+                <div className="flex w-full flex-row items-center justify-between font-normal no-underline">
+                  <div className="space-y-0.5 pr-2">
+                    <Anchor
+                      href={channelUrl}
+                      className="text-base no-underline"
+                      isExternal
+                    >
+                      {title}
+                    </Anchor>
+                    <div className="text-sm font-light text-muted-foreground">
+                      {description}
+                    </div>
+                  </div>
+                  <Anchor
+                    href={channelUrl}
+                    className="shrink-0 px-2 no-underline"
+                    isExternal
+                  >
+                    <ExternalLinkIcon />
+                  </Anchor>
+                </div>
+                {topicRoute && (
+                  <Button
+                    variant="link"
+                    className="mt-2 h-auto p-0 font-normal"
+                    asChild
+                  >
+                    <Link href={topicRoute}>
+                      View Details
+                      <ChevronRightIcon className="ml-1 h-4 w-4" />
+                    </Link>
+                  </Button>
+                )}
               </div>
-              <Anchor
-                href={`${TELEGRAM_SHORT_URL}/${id}`}
-                className="no-underline px-2 shrink-0"
-                isExternal
-              >
-                <ExternalLink />
-              </Anchor>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </CardContent>
       {withBackButton && (

@@ -15,12 +15,11 @@ import {
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
 import { Divider } from "@/components/ui/divider";
 import { Anchor } from "@/components/ui/anchor";
+import SwitchCard from "@/components/switch-card";
 import { useUpdateSubscription } from "@/lib/api-hooks";
 import { trackEvent } from "@/lib/google-analytics";
-import { Subscription, SubscriptionTopics } from "@/lib/types";
 import {
   FetchStatus,
   GoogleAnalyticsEvent,
@@ -28,6 +27,7 @@ import {
   SubscriptionTopic,
 } from "@/lib/enums";
 import { NOTIFICATION_SETTINGS } from "@/lib/content";
+import type { Subscription, SubscriptionTopics } from "@/lib/types";
 
 type Props = {
   subscription: Subscription;
@@ -40,9 +40,9 @@ export default function SettingsForm({ subscription }: Props) {
   const hasTopics = useMemo(
     () =>
       topics.some((topicId) =>
-        NOTIFICATION_SETTINGS.find((setting) => setting.id === topicId)
+        NOTIFICATION_SETTINGS.find((setting) => setting.id === topicId),
       ),
-    [topics]
+    [topics],
   );
   const [isFormTouched, setIsFormTouched] = useState(false);
   const isLoading = fetchStatus === FetchStatus.Loading;
@@ -80,7 +80,7 @@ export default function SettingsForm({ subscription }: Props) {
         <CardHeader>
           <CardTitle>Update Preferences</CardTitle>
           <CardDescription>
-            Choose what you want to be notified about.
+            Choose the topics you would like to receive email notifications for.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -96,28 +96,22 @@ export default function SettingsForm({ subscription }: Props) {
               />
             </div>
             <Divider />
-            {NOTIFICATION_SETTINGS.map(({ id, title, description }) => (
-              <Label
-                key={id}
-                htmlFor={id}
-                className="flex flex-row items-center justify-between rounded-lg border p-4"
-              >
-                <div className="space-y-0.5 pr-2">
-                  <p className="text-base">{title}</p>
-                  <p className="text-sm font-light text-muted-foreground">
-                    {description}
-                  </p>
-                </div>
-                <Switch
+            {NOTIFICATION_SETTINGS.map(
+              ({ id, title, description, topicRoute }) => (
+                <SwitchCard
+                  key={id}
                   id={id}
                   name="topics"
+                  title={title}
+                  description={description}
+                  topicRoute={topicRoute}
                   disabled={isLoading}
                   checked={topics.includes(id)}
                   onClick={() => switchOnClick(id)}
                 />
-              </Label>
-            ))}
-            <p className="text-sm text-muted-foreground">
+              ),
+            )}
+            <p className="text-sm font-light text-muted-foreground">
               By submitting this form, you agree to receive email notifications
               about the services above and understand that you can unsubscribe
               at any time.

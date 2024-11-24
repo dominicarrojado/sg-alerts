@@ -13,7 +13,7 @@ import { TELEGRAM_SHORT_URL } from "@/lib/constants";
 
 const title = "Tokyo Disneyland Attraction Updates";
 const description =
-  "Get notified on Disney Premier Access, Standby Passes or 40th Anniversary Priority Passes are restocked, and when Tokyo Disneyland attractions resume operations.";
+  "Get notified on Disney Premier Access, Standby Passes or 40th Anniversary Priority Passes availability during the day and when Tokyo Disneyland attractions resume operations.";
 const url = Routes.TokyoDisneylandAttractionUpdates;
 
 export const metadata: Metadata = {
@@ -74,9 +74,9 @@ export default function TokyoDisneylandAttractionUpdates() {
       </Paragraph>
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is here to help! We
-        created a dedicated Telegram channel that sends notifications when
-        Disney Premier Access, Standby Passes or 40th Anniversary Priority
-        Passes are restocked. We also notify you when attractions resume
+        created a dedicated Telegram channel that sends notifications on Disney
+        Premier Access, Standby Passes or 40th Anniversary Priority Passes
+        availability during the day. We also notify you when attractions resume
         operations after being temporarily suspended. Saving you time and effort
         so you can focus on enjoying your time at Tokyo Disneyland!
       </Paragraph>

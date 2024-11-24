@@ -1,14 +1,13 @@
-import { Fragment } from "react";
 import { Anchor } from "@/components/ui/anchor";
 import {
   DonationTestimonials,
   NotificationSetting,
   NotificationSettings,
+  TelegramPublicChannel,
   TelegramPublicChannels,
 } from "./types";
 import { Routes, SubscriptionTopic, TelegramChannel } from "./enums";
 import { OWNER_EMAIL } from "./constants";
-import Link from "next/link";
 
 export const MAIN_MENU_ITEMS = [
   {
@@ -258,6 +257,21 @@ export const FIXED_DEPOSIT_BANKS = [
   },
 ];
 
+export const NEW_FEATURES_TELEGRAM_CHANNEL: TelegramPublicChannel = {
+  id: TelegramChannel.SgAlerts,
+  title: "🚀 New Features & Alerts",
+  description: (
+    <>
+      Receive notifications when there are new feature(s) or alert(s) to
+      subscribe to at SG Alerts. <br />
+      <small>
+        Have a suggestion or feedback? Drop me an{" "}
+        <Anchor href={`mailto:${OWNER_EMAIL}`}>email</Anchor>.
+      </small>
+    </>
+  ),
+};
+
 export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   {
     id: TelegramChannel.CdcLessonsAutoCar,
@@ -265,12 +279,11 @@ export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     description: (
       <>
         Receive notifications when there are new practical lessons slot(s) for{" "}
-        <Link href={Routes.CdcPracticalLessonSlots} passHref legacyBehavior>
-          <Anchor>Class 3A Motorcar</Anchor>
-        </Link>{" "}
-        at ComfortDelGro Driving Centre.
+        <strong className="font-medium">Class 3A Motorcar</strong> at
+        ComfortDelGro Driving Centre.
       </>
     ),
+    topicRoute: Routes.CdcPracticalLessonSlots,
   },
   {
     id: TelegramChannel.CdcEyesightTest,
@@ -278,12 +291,11 @@ export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     description: (
       <>
         Receive notifications when there are new appointment date(s) for the{" "}
-        <Link href={Routes.CdcAppointmentSlots} passHref legacyBehavior>
-          <Anchor>eyesight test</Anchor>
-        </Link>{" "}
-        at ComfortDelGro Driving Centre.
+        <strong className="font-medium">eyesight test</strong> at ComfortDelGro
+        Driving Centre.
       </>
     ),
+    topicRoute: Routes.CdcAppointmentSlots,
   },
   {
     id: TelegramChannel.CdcCounterServices,
@@ -291,12 +303,11 @@ export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     description: (
       <>
         Receive notifications when there are new appointment date(s) for{" "}
-        <Link href={Routes.CdcAppointmentSlots} passHref legacyBehavior>
-          <Anchor>counter services</Anchor>
-        </Link>{" "}
-        at ComfortDelGro Driving Centre.
+        <strong className="font-medium">counter services</strong> at
+        ComfortDelGro Driving Centre.
       </>
     ),
+    topicRoute: Routes.CdcAppointmentSlots,
   },
   {
     id: TelegramChannel.CdcAnnouncements,
@@ -320,12 +331,13 @@ export const SSDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     description: (
       <>
         Receive notifications when there are new appointment date(s) for the{" "}
-        <Link href={Routes.SsdcAppointmentSlots} passHref legacyBehavior>
-          <Anchor>Class 3 / 3A Practical Lesson Booking</Anchor>
-        </Link>{" "}
+        <strong className="font-medium">
+          Class 3 / 3A Practical Lesson Booking
+        </strong>{" "}
         at Singapore Safety Driving Centre.
       </>
     ),
+    topicRoute: Routes.SsdcAppointmentSlots,
   },
   {
     id: TelegramChannel.SsdcPrivateLearners,
@@ -333,12 +345,11 @@ export const SSDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     description: (
       <>
         Receive notifications when there are new appointment date(s) for the{" "}
-        <Link href={Routes.SsdcAppointmentSlots} passHref legacyBehavior>
-          <Anchor>Private Learners</Anchor>
-        </Link>{" "}
-        at Singapore Safety Driving Centre.
+        <strong className="font-medium">Private Learners</strong> at Singapore
+        Safety Driving Centre.
       </>
     ),
+    topicRoute: Routes.SsdcAppointmentSlots,
   },
   {
     id: TelegramChannel.SsdcAnnouncements,
@@ -362,12 +373,13 @@ export const BBDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     description: (
       <>
         Receive notifications when there are new appointment date(s) for{" "}
-        <Link href={Routes.BbdcAppointmentSlots} passHref legacyBehavior>
-          <Anchor>account opening and counter services</Anchor>
-        </Link>{" "}
+        <strong className="font-medium">
+          account opening and counter services
+        </strong>{" "}
         at Bukit Batok Driving Centre.
       </>
     ),
+    topicRoute: Routes.BbdcAppointmentSlots,
   },
   {
     id: TelegramChannel.BbdcAnnouncements,
@@ -388,6 +400,7 @@ export const DRIVING_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   ...CDC_TELEGRAM_CHANNELS,
   ...SSDC_TELEGRAM_CHANNELS,
   ...BBDC_TELEGRAM_CHANNELS,
+  NEW_FEATURES_TELEGRAM_CHANNEL,
 ];
 
 export const JAPAN_VISA_TELEGRAM_CHANNELS: TelegramPublicChannels = [
@@ -397,13 +410,11 @@ export const JAPAN_VISA_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     description: (
       <>
         Receive notifications when there are new visa appointment date(s) for{" "}
-        <Link href={Routes.JapanVisa} passHref legacyBehavior>
-          <Anchor>Tourism or Sightseeing</Anchor>
-        </Link>{" "}
-        at the Embassy of Japan in Singapore. <br />
-        <small>(for foreigners who require a visa to visit Japan)</small>
+        <strong className="font-medium">Tourism or Sightseeing</strong> at the
+        Embassy of Japan in Singapore. <br />
       </>
     ),
+    topicRoute: Routes.JapanVisa,
   },
   {
     id: TelegramChannel.JapanVisaOthers,
@@ -411,14 +422,16 @@ export const JAPAN_VISA_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     description: (
       <>
         Receive notifications when there are new visa appointment date(s) for{" "}
-        <Link href={Routes.JapanVisa} passHref legacyBehavior>
-          <Anchor>all other visa applications and services</Anchor>
-        </Link>{" "}
+        <strong className="font-medium">
+          all other visa applications and services
+        </strong>{" "}
         at the Embassy of Japan in Singapore. <br />
         <small>(for foreigners who require a visa to visit Japan)</small>
       </>
     ),
+    topicRoute: Routes.JapanVisa,
   },
+  NEW_FEATURES_TELEGRAM_CHANNEL,
 ];
 
 export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
@@ -428,23 +441,16 @@ export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     description: (
       <>
         Receive notifications when there are{" "}
-        <Link href={Routes.KtmTrainTickets} passHref legacyBehavior>
-          <Anchor>
-            <abbr title="Keretapi Tanah Melayu" className="no-underline">
-              KTM
-            </abbr>{" "}
-            train ticket(s)
-          </Anchor>
-        </Link>{" "}
-        available from Singapore (SG) to Johor Bahru (JB) and vice versa. <br />
-        <small>
-          (for SG -&gt; JB: Fridays 6:45 PM - 10:30 PM, Saturdays before 3:00 PM
-          only)
-        </small>{" "}
-        <br />
-        <small>(for JB -&gt; SG: Sundays 12:45 PM onwards only)</small>
+        <strong className="font-medium">
+          <abbr title="Keretapi Tanah Melayu" className="no-underline">
+            KTM
+          </abbr>{" "}
+          train ticket(s)
+        </strong>{" "}
+        available from Singapore (SG) to Johor Bahru (JB) and vice versa.
       </>
     ),
+    topicRoute: Routes.KtmTrainTickets,
   },
   {
     id: TelegramChannel.SingaporeAirlinesFlights,
@@ -452,12 +458,11 @@ export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     description: (
       <>
         Receive notifications when the flight prices goes down for{" "}
-        <Link href={Routes.SingaporeAirlinesFlights} passHref legacyBehavior>
-          <Anchor>Singapore Airlines flights</Anchor>
-        </Link>{" "}
+        <strong className="font-medium">Singapore Airlines flights</strong>{" "}
         departing from Singapore.
       </>
     ),
+    topicRoute: Routes.SingaporeAirlinesFlights,
   },
   {
     id: TelegramChannel.ScootFlights,
@@ -465,12 +470,11 @@ export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     description: (
       <>
         Receive notifications when the flight prices goes down for{" "}
-        <Link href={Routes.ScootFlights} passHref legacyBehavior>
-          <Anchor>Scoot flights</Anchor>
-        </Link>{" "}
-        departing from Singapore.
+        <strong className="font-medium">Scoot flights</strong> departing from
+        Singapore.
       </>
     ),
+    topicRoute: Routes.ScootFlights,
   },
   {
     id: TelegramChannel.JetstarFlights,
@@ -478,12 +482,11 @@ export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     description: (
       <>
         Receive notifications when the flight prices goes down for{" "}
-        <Link href={Routes.JetstarFlights} passHref legacyBehavior>
-          <Anchor>Jetstar flights</Anchor>
-        </Link>{" "}
-        departing from Singapore.
+        <strong className="font-medium">Jetstar flights</strong> departing from
+        Singapore.
       </>
     ),
+    topicRoute: Routes.JetstarFlights,
   },
   {
     id: TelegramChannel.TripComTravelDeals,
@@ -511,6 +514,7 @@ export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
       </>
     ),
   },
+  NEW_FEATURES_TELEGRAM_CHANNEL,
 ];
 
 export const MONEY_TELEGRAM_CHANNELS: TelegramPublicChannels = [
@@ -520,23 +524,22 @@ export const MONEY_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     description: (
       <>
         Receive notifications when the{" "}
-        <Link href={Routes.FixedDepositRates} passHref legacyBehavior>
-          <Anchor>fixed deposit rates</Anchor>
-        </Link>{" "}
-        goes up across major banks in Singapore. <br />
+        <strong className="font-medium">fixed deposit rates</strong> goes up
+        across major banks in Singapore. <br />
         <small>
-          (
-          {FIXED_DEPOSIT_BANKS.map(({ title, shortName, url }, index) => (
-            <Fragment key={title}>
-              {index !== 0 &&
-                (index === FIXED_DEPOSIT_BANKS.length - 1 ? " and " : ", ")}
-              {shortName || title}
-            </Fragment>
-          ))}
-          )
+          (including{" "}
+          <abbr title="Singapore Savings Bonds" className="no-underline">
+            SSB
+          </abbr>{" "}
+          and{" "}
+          <abbr title="Treasury Bills" className="no-underline">
+            T-Bills
+          </abbr>{" "}
+          for comparison purposes)
         </small>
       </>
     ),
+    topicRoute: Routes.FixedDepositRates,
   },
   {
     id: TelegramChannel.TotoSnowballs,
@@ -555,6 +558,7 @@ export const MONEY_TELEGRAM_CHANNELS: TelegramPublicChannels = [
       </>
     ),
   },
+  NEW_FEATURES_TELEGRAM_CHANNEL,
 ];
 
 export const THEME_PARK_TELEGRAM_CHANNELS: TelegramPublicChannels = [
@@ -563,37 +567,26 @@ export const THEME_PARK_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     title: "🏰 Tokyo Disneyland Attraction Updates",
     description: (
       <>
-        Receive notifications when{" "}
-        <Link
-          href={Routes.TokyoDisneylandAttractionUpdates}
-          passHref
-          legacyBehavior
-        >
-          <Anchor>Tokyo Disneyland</Anchor>
-        </Link>
-        &apos;s Disney Premier Access, Standby Passes or 40th Anniversary
-        Priority Passes are restocked, and when attractions resume operations.
+        Receive notifications on Disney Premier Access, Standby Passes or 40th
+        Anniversary Priority Passes availability during the day and when
+        attractions resume operations.
       </>
     ),
+    topicRoute: Routes.TokyoDisneylandAttractionUpdates,
   },
   {
     id: TelegramChannel.TokyoDisneySeaAttractions,
     title: "⛰️ Tokyo DisneySea Attraction Updates",
     description: (
       <>
-        Receive notifications when{" "}
-        <Link
-          href={Routes.TokyoDisneySeaAttractionUpdates}
-          passHref
-          legacyBehavior
-        >
-          <Anchor>Tokyo DisneySea</Anchor>
-        </Link>
-        &apos;s Disney Premier Access, Standby Passes or 40th Anniversary
-        Priority Passes are restocked, and when attractions resume operations.
+        Receive notifications on Disney Premier Access, Standby Passes or 40th
+        Anniversary Priority Passes availability during the day and when
+        attractions resume operations.
       </>
     ),
+    topicRoute: Routes.TokyoDisneySeaAttractionUpdates,
   },
+  NEW_FEATURES_TELEGRAM_CHANNEL,
 ];
 
 export const NEW_FEATURES_NOTIFICATION_SETTING: NotificationSetting = {
@@ -611,207 +604,6 @@ export const NEW_FEATURES_NOTIFICATION_SETTING: NotificationSetting = {
   ),
 };
 
-export const NOTIFICATION_SETTINGS: NotificationSettings = [
-  {
-    id: SubscriptionTopic.SsdcEnrolmentWeekend,
-    title: "🚘 SSDC Appointment Slots (School Enrolment)",
-    description: (
-      <>
-        Receive email notifications when there are new appointment date(s) for
-        the{" "}
-        <Link href={Routes.SsdcAppointmentSlots} passHref legacyBehavior>
-          <Anchor>Class 3 / 3A School Enrolment (weekend)</Anchor>
-        </Link>{" "}
-        at Singapore Safety Driving Centre.
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.SsdcOtherCoursesEnrolment,
-    title: "🚘 SSDC Appointment Slots (Other Courses Enrolment)",
-    description: (
-      <>
-        Receive email notifications when there are new appointment date(s) for
-        the{" "}
-        <Link href={Routes.SsdcAppointmentSlots} passHref legacyBehavior>
-          <Anchor>Other Courses Enrolment (weekend)</Anchor>
-        </Link>{" "}
-        at Singapore Safety Driving Centre.
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.SsdcForeignLicenceWeekend,
-    title: "🚘 SSDC Appointment Slots (Foreign Licence Package)",
-    description: (
-      <>
-        Receive email notifications when there are new appointment date(s) for
-        the{" "}
-        <Link href={Routes.SsdcAppointmentSlots} passHref legacyBehavior>
-          <Anchor>Foreign Licence Package (weekend)</Anchor>
-        </Link>{" "}
-        at Singapore Safety Driving Centre.
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.BbdcCounterServices,
-    title: "🚘 BBDC Appointment Slots",
-    description: (
-      <>
-        Receive email notifications when there are new appointment date(s) for{" "}
-        <Link href={Routes.BbdcAppointmentSlots} passHref legacyBehavior>
-          <Anchor>account opening and counter services</Anchor>
-        </Link>{" "}
-        at Bukit Batok Driving Centre.
-      </>
-    ),
-    hasTelegramChannel: true,
-  },
-  {
-    id: SubscriptionTopic.JapanVisaBusiness,
-    title: "🇯🇵 Japan Visa Appointment Slots (Business/COE/Spouse)",
-    description: (
-      <>
-        Receive email notifications when there are new visa appointment date(s)
-        for{" "}
-        <Link href={Routes.JapanVisa} passHref legacyBehavior>
-          <Anchor>
-            Short-term Business, Long-term stay with{" "}
-            <abbr title="Certificate of Eligibility" className="no-underline">
-              COE
-            </abbr>
-            , Spouse or Child of Japanese National
-          </Anchor>
-        </Link>{" "}
-        at the Embassy of Japan in Singapore. <br />
-        <small>(for foreigners who require a visa to visit Japan)</small>
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.JapanVisaOthers,
-    title: "🇯🇵 Japan Visa Appointment Slots (Others)",
-    description: (
-      <>
-        Receive email notifications when there are new visa appointment date(s)
-        for{" "}
-        <Link href={Routes.JapanVisa} passHref legacyBehavior>
-          <Anchor>all other visa applications and services</Anchor>
-        </Link>{" "}
-        at the Embassy of Japan in Singapore. <br />
-        <small>(for foreigners who require a visa to visit Japan)</small>
-      </>
-    ),
-    hasTelegramChannel: true,
-  },
-  {
-    id: SubscriptionTopic.CoeBiddings,
-    title: "📄 Certificate of Entitlement (COE) Bidding Results",
-    description: (
-      <>
-        Receive email notifications when the{" "}
-        <abbr title="Certificate of Entitlement" className="no-underline">
-          COE
-        </abbr>{" "}
-        premiums have decreased from the{" "}
-        <Link href={Routes.CoeBiddingResults} passHref legacyBehavior>
-          <Anchor>latest bidding results</Anchor>
-        </Link>{" "}
-        from OneMotoring by Land Transport Authority.
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.EventsBloodDrive,
-    title: "🏥 Community Blood Drives",
-    description: (
-      <>
-        Receive email notifications when there are new{" "}
-        <Anchor href="https://giveblood.sg/#blood-drive" isExternal>
-          community blood drives
-        </Anchor>{" "}
-        organised by the Singapore Red Cross.
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.RestaurantsBurntEnds,
-    title: "🍽️ Table Reservation Slots (Burnt Ends)",
-    description: (
-      <>
-        Receive email notifications when there are new table reservation date(s)
-        at{" "}
-        <Anchor href="https://burntends.com.sg/reservation/" isExternal>
-          Burnt Ends
-        </Anchor>
-        . <br />
-        <small>
-          (for main dining area & chefs counter seating - dinner time only)
-        </small>
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.MoviesGv,
-    title: "🎬 Movies with English Subtitles (GV)",
-    description: (
-      <>
-        Receive email notifications when there are new movies with English
-        subtitles at{" "}
-        <Anchor href="https://www.gv.com.sg/" isExternal>
-          Golden Village.
-        </Anchor>{" "}
-        <br />
-        <small>(supported languages: English, Chinese, Korean, Japanese)</small>
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.MoviesShaw,
-    title: "🎬 Movies with English Subtitles (Shaw)",
-    description: (
-      <>
-        Receive email notifications when there are new movies with English
-        subtitles at{" "}
-        <Anchor href="https://shaw.sg/" isExternal>
-          Shaw Theatres
-        </Anchor>
-        . <br />
-        <small>(supported languages: English, Chinese, Korean, Japanese)</small>
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.MoviesCathayCineplexes,
-    title: "🎬 Movies with English Subtitles (Cathay Cineplexes)",
-    description: (
-      <>
-        Receive email notifications when there are new movies with English
-        subtitles at{" "}
-        <Anchor href="https://www.cathaycineplexes.com.sg/" isExternal>
-          Cathay Cineplexes
-        </Anchor>
-        . <br />
-        <small>(supported languages: English, Chinese, Korean, Japanese)</small>
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.MoviesTheProjector,
-    title: "🎬 Movies with English Subtitles (The Projector)",
-    description: (
-      <>
-        Receive email notifications when there are new movies with English
-        subtitles at{" "}
-        <Anchor href="https://theprojector.sg/">The Projector</Anchor>. <br />
-        <small>(supported languages: English, Chinese, Korean, Japanese)</small>
-      </>
-    ),
-  },
-  NEW_FEATURES_NOTIFICATION_SETTING,
-];
-
 export const SSDC_NOTIFICATION_SETTINGS: NotificationSettings = [
   {
     id: SubscriptionTopic.SsdcEnrolmentWeekend,
@@ -820,12 +612,13 @@ export const SSDC_NOTIFICATION_SETTINGS: NotificationSettings = [
       <>
         Receive email notifications when there are new appointment date(s) for
         the{" "}
-        <Link href={Routes.SsdcAppointmentSlots} passHref legacyBehavior>
-          <Anchor>Class 3 / 3A School Enrolment (weekend)</Anchor>
-        </Link>{" "}
+        <strong className="font-medium">
+          Class 3 / 3A School Enrolment (weekend)
+        </strong>{" "}
         at Singapore Safety Driving Centre.
       </>
     ),
+    topicRoute: Routes.SsdcAppointmentSlots,
   },
   {
     id: SubscriptionTopic.SsdcOtherCoursesEnrolment,
@@ -834,12 +627,13 @@ export const SSDC_NOTIFICATION_SETTINGS: NotificationSettings = [
       <>
         Receive email notifications when there are new appointment date(s) for
         the{" "}
-        <Link href={Routes.SsdcAppointmentSlots} passHref legacyBehavior>
-          <Anchor>Other Courses Enrolment (weekend)</Anchor>
-        </Link>{" "}
+        <strong className="font-medium">
+          Other Courses Enrolment (weekend)
+        </strong>{" "}
         at Singapore Safety Driving Centre.
       </>
     ),
+    topicRoute: Routes.SsdcAppointmentSlots,
   },
   {
     id: SubscriptionTopic.SsdcForeignLicenceWeekend,
@@ -848,12 +642,13 @@ export const SSDC_NOTIFICATION_SETTINGS: NotificationSettings = [
       <>
         Receive email notifications when there are new appointment date(s) for
         the{" "}
-        <Link href={Routes.SsdcAppointmentSlots} passHref legacyBehavior>
-          <Anchor>Foreign Licence Package (weekend)</Anchor>
-        </Link>{" "}
+        <strong className="font-medium">
+          Foreign Licence Package (weekend)
+        </strong>{" "}
         at Singapore Safety Driving Centre.
       </>
     ),
+    topicRoute: Routes.SsdcAppointmentSlots,
   },
 ];
 
@@ -864,17 +659,18 @@ export const DRIVING_NOTIFICATION_SETTINGS: NotificationSettings = [
     title: "📄 Certificate of Entitlement (COE) Bidding Results",
     description: (
       <>
-        Receive email notifications when the{" "}
-        <abbr title="Certificate of Entitlement" className="no-underline">
-          COE
-        </abbr>{" "}
-        premiums have decreased from the{" "}
-        <Link href={Routes.CoeBiddingResults} passHref legacyBehavior>
-          <Anchor>latest bidding results</Anchor>
-        </Link>{" "}
+        Receive email notifications when the premiums have decreased from the{" "}
+        <strong className="font-medium">
+          latest{" "}
+          <abbr title="Certificate of Entitlement" className="no-underline">
+            COE
+          </abbr>{" "}
+          bidding results
+        </strong>{" "}
         from OneMotoring by Land Transport Authority.
       </>
     ),
+    topicRoute: Routes.CoeBiddingResults,
   },
 ];
 
@@ -886,19 +682,17 @@ export const JAPAN_VISA_NOTIFICATION_SETTINGS: NotificationSettings = [
       <>
         Receive email notifications when there are new visa appointment date(s)
         for{" "}
-        <Link href={Routes.JapanVisa} passHref legacyBehavior>
-          <Anchor>
-            Short-term Business, Long-term stay with{" "}
-            <abbr title="Certificate of Eligibility" className="no-underline">
-              COE
-            </abbr>
-            , Spouse or Child of Japanese National
-          </Anchor>
-        </Link>{" "}
-        at the Embassy of Japan in Singapore. <br />
-        <small>(for foreigners who require a visa to visit Japan)</small>
+        <strong className="font-medium">
+          Short-term Business, Long-term stay with{" "}
+          <abbr title="Certificate of Eligibility" className="no-underline">
+            COE
+          </abbr>
+          , Spouse or Child of Japanese National
+        </strong>{" "}
+        at the Embassy of Japan in Singapore.
       </>
     ),
+    topicRoute: Routes.JapanVisa,
   },
 ];
 
@@ -996,6 +790,16 @@ export const ENTERTAINMENT_NOTIFICATION_SETTINGS: NotificationSettings = [
       </>
     ),
   },
+];
+
+export const NOTIFICATION_SETTINGS: NotificationSettings = [
+  ...SSDC_NOTIFICATION_SETTINGS,
+  ...JAPAN_VISA_NOTIFICATION_SETTINGS,
+  ...DRIVING_NOTIFICATION_SETTINGS,
+  ...EVENTS_NOTIFICATION_SETTINGS,
+  ...DINING_NOTIFICATION_SETTINGS,
+  ...ENTERTAINMENT_NOTIFICATION_SETTINGS,
+  NEW_FEATURES_NOTIFICATION_SETTING,
 ];
 
 export const TRAIN_SCHEDULE_ITEMS = [

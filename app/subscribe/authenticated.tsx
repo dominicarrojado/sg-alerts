@@ -30,7 +30,8 @@ export default function Authenticated() {
           <CardHeader>
             <CardTitle>🎉 Subscription confirmed!</CardTitle>
             <CardDescription>
-              You are now subscribed to <b className="font-medium">SG Alerts</b>
+              You are now subscribed to{" "}
+              <strong className="font-medium">SG Alerts</strong>
               . <br />
               Get ready to receive updates on the topics you have selected.
             </CardDescription>

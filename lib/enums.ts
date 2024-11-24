@@ -57,33 +57,18 @@ export enum ApiEndpoint {
 }
 
 export enum SubscriptionTopic {
-  JapanVisaTourism = "japan-visa",
   JapanVisaBusiness = "japan-visa-business",
-  JapanVisaOthers = "japan-visa-others",
-  CdcLessonsAutoCar = "cdc-lessons-auto-car",
-  CdcEyesightTest = "cdc-eyesight-test",
-  CdcCounterServices = "cdc-counter-services",
   SsdcOtherCoursesEnrolment = "ssdc-other-courses-enrolment",
-  SsdcPrivateLearners = "ssdc-private-learners",
-  SsdcPracticalLessonBooking = "ssdc-practical-lesson-booking",
   SsdcForeignLicenceWeekend = "ssdc-foreign-licence-weekend",
   SsdcEnrolmentWeekend = "ssdc-enrolment-weekend",
-  BbdcCounterServices = "bbdc-counter-services",
-  DepositRates = "deposit-rates",
   EventsBloodDrive = "events-blood-drive",
-  FlightsSingaporeAirlines = "flights-singapore-airlines",
-  FlightsJetstar = "flights-jetstar",
-  FlightsCebuPacific = "flights-cebu-pacific",
   MoviesGv = "movies-gv",
   MoviesShaw = "movies-shaw",
   MoviesCathayCineplexes = "movies-cathay-cineplexes",
   MoviesTheProjector = "movies-the-projector",
   RestaurantsBurntEnds = "restaurants-burnt-ends",
-  TravelDealsTripCom = "travel-deals-trip.com",
-  TravelDealsTraveloka = "travel-deals-traveloka",
   TravelDealsPhilippineAirlines = "travel-deals-philippine-airlines",
   CoeBiddings = "coe-biddings",
-  TrainTicketsKtm = "train-tickets-ktm",
   FeaturesSgAlerts = "features-sg-alerts",
 }
 
@@ -145,6 +130,7 @@ export enum ThemeParkService {
 }
 
 export enum TelegramChannel {
+  SgAlerts = "SGAlertsOfficial",
   CdcLessonsAutoCar = "SGAlertsCDCLessonsAutoCar",
   CdcEyesightTest = "SGAlertsCDCEyesightTest",
   CdcCounterServices = "SGAlertsCDCCounterServices",

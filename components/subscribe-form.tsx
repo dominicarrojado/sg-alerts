@@ -14,9 +14,9 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
 import { Anchor } from "@/components/ui/anchor";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import SwitchCard from "@/components/switch-card";
 import { useSubmitSubscribeRequest } from "@/lib/api-hooks";
 import { trackEvent } from "@/lib/google-analytics";
 import {
@@ -40,7 +40,7 @@ export default function SubscribeForm({
 }: Props) {
   const subscriptionTopics = useMemo(() => {
     const filteredTopics = defaultTopics.filter(
-      ({ hasTelegramChannel }) => !hasTelegramChannel
+      ({ hasTelegramChannel }) => !hasTelegramChannel,
     );
 
     return [...filteredTopics, NEW_FEATURES_NOTIFICATION_SETTING];
@@ -91,27 +91,21 @@ export default function SubscribeForm({
           </CardHeader>
           <CardContent>
             <div className="grid gap-6">
-              {subscriptionTopics.map(({ id, title, description }) => (
-                <Label
-                  key={id}
-                  htmlFor={id}
-                  className="flex flex-row items-center justify-between rounded-lg border p-4"
-                >
-                  <div className="space-y-0.5 pr-2">
-                    <p className="text-base">{title}</p>
-                    <p className="text-sm font-light text-muted-foreground">
-                      {description}
-                    </p>
-                  </div>
-                  <Switch
+              {subscriptionTopics.map(
+                ({ id, title, description, topicRoute }) => (
+                  <SwitchCard
+                    key={id}
                     id={id}
                     name="topics"
+                    title={title}
+                    description={description}
+                    topicRoute={topicRoute}
                     disabled={isLoading}
                     checked={topics.includes(id)}
                     onClick={() => switchOnClick(id)}
                   />
-                </Label>
-              ))}
+                ),
+              )}
             </div>
           </CardContent>
         </Card>
@@ -134,7 +128,7 @@ export default function SubscribeForm({
                 onChange={inputOnChange}
                 required
               />
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm font-light text-muted-foreground">
                 By submitting this form, you agree to receive email
                 notifications about your chosen services above and understand
                 that you can update it at any time{" "}
@@ -190,7 +184,7 @@ export default function SubscribeForm({
         <CardTitle>🎉 You&apos;re almost there!</CardTitle>
         <CardDescription>
           You will receive an email shortly at{" "}
-          <b className="font-medium">{email}</b>. <br />
+          <strong className="font-medium">{email}</strong>. <br />
           Please click on the link in the email to confirm your subscription.
         </CardDescription>
       </CardHeader>

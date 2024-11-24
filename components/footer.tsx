@@ -8,8 +8,8 @@ import { Anchor } from "./ui/anchor";
 
 export default function Footer() {
   return (
-    <Container className="pt-0">
-      <p className="text-center text-sm leading-loose text-muted-foreground">
+    <Container className="pt-0 text-center text-sm font-light leading-loose text-muted-foreground">
+      <p>
         <Balancer>
           Like the service? Please consider{" "}
           <Link href={Routes.Donate} passHref legacyBehavior>
@@ -19,7 +19,7 @@ export default function Footer() {
           appreciated! 🙏
         </Balancer>
       </p>
-      <p className="mt-4 text-center text-sm leading-loose text-muted-foreground">
+      <p className="mt-4">
         Built by{" "}
         <Anchor href={OWNER_WEBSITE} target="_blank">
           {OWNER_NAME}

@@ -97,7 +97,8 @@ export default function SendLinkForm() {
         <CardTitle>🎉 We&apos;ve received your request!</CardTitle>
         <CardDescription>
           If you are an existing subscriber, you will receive an email with the
-          subscription link shortly at <b className="font-medium">{email}</b>.
+          subscription link shortly at{" "}
+          <strong className="font-medium">{email}</strong>.
         </CardDescription>
       </CardHeader>
       <CardContent>

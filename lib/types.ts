@@ -4,6 +4,7 @@ import {
   CdcService,
   GoogleAnalyticsEvent,
   JapanVisaType,
+  Routes,
   SsdcService,
   SubscriptionTopic,
   TelegramChannel,
@@ -21,6 +22,7 @@ export type TelegramPublicChannel = {
   id: TelegramChannel;
   title: string;
   description: ReactNode;
+  topicRoute?: Routes;
 };
 export type TelegramPublicChannels = Array<TelegramPublicChannel>;
 
@@ -28,6 +30,7 @@ export type NotificationSetting = {
   id: SubscriptionTopic;
   title: string;
   description: ReactNode;
+  topicRoute?: Routes;
   hasTelegramChannel?: boolean;
 };
 export type NotificationSettings = Array<NotificationSetting>;

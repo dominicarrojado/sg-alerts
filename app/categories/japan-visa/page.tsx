@@ -13,7 +13,7 @@ import {
   JAPAN_VISA_TELEGRAM_CHANNELS,
 } from "@/lib/content";
 
-const title = "Japan Visa in Singapore";
+const title = "Apply for Japan Visa in Singapore";
 const description =
   "Subscribe to get notified to topics related to visa applications at the Embassy of Japan in Singapore.";
 const url = Routes.JapanVisaCategory;
@@ -41,7 +41,7 @@ export default function JapanVisa() {
   return (
     <>
       <Container>
-        <div className="space-y-2 mb-6">
+        <div className="mb-6 space-y-2">
           <Heading>{title}</Heading>
           <Subheading>{description}</Subheading>
         </div>

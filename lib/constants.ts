@@ -1,4 +1,11 @@
-import { CdcService, JapanVisaType, Routes, SsdcService } from "./enums";
+import {
+  CdcService,
+  JapanVisaType,
+  Routes,
+  SsdcService,
+  SubscriptionTopic,
+  TelegramChannel,
+} from "./enums";
 
 export const OWNER_NAME = "Dominic Arrojado";
 export const OWNER_WEBSITE = "https://dominicarrojado.com";
@@ -37,3 +44,10 @@ export const TELEGRAM_SHORT_URL = "https://t.me";
 export const SUBSCRIBE_FORM_ID = "subscribe-form";
 
 export const NOW_AVAILABLE_TEXT = "now available";
+
+export const SUBSCRIPTION_TOPICS = Object.values(SubscriptionTopic);
+
+export const TELEGRAM_CHANNELS = Object.values(TelegramChannel);
+
+export const TOPICS_COUNT =
+  SUBSCRIPTION_TOPICS.length + TELEGRAM_CHANNELS.length - 2; // exclude SG Alerts new features topic

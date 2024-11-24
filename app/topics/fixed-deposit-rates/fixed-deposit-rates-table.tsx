@@ -38,8 +38,16 @@ export function FixedDepositRatesTable() {
       <TableCaption>
         Last updated on {updatedAt}. <br />
         <small>
-          <b className="font-medium">*</b> SSB and T-bills are not fixed deposit
-          rates, but they are included here for comparison purposes.
+          <b className="font-medium">*</b>{" "}
+          <abbr title="Singapore Savings Bond" className="no-underline">
+            SSB
+          </abbr>{" "}
+          and{" "}
+          <abbr title="Treasury Bills" className="no-underline">
+            T-bills
+          </abbr>{" "}
+          are not fixed deposit rates, but they are included here for comparison
+          purposes.
         </small>
       </TableCaption>
       <TableHeader>
@@ -83,7 +91,7 @@ export function FixedDepositRatesTable() {
                   <span
                     className={cn(
                       "ml-1 font-normal",
-                      isNegative ? "text-primary" : "text-green-500"
+                      isNegative ? "text-primary" : "text-green-500",
                     )}
                   >
                     ({isNegative ? "▾" : "▴"}
