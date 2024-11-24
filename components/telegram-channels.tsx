@@ -17,8 +17,8 @@ import {
 import { Anchor } from "@/components/ui/anchor";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { getTelegramChannelUrl } from "@/lib/telegram";
 import { Routes } from "@/lib/enums";
-import { TELEGRAM_SHORT_URL } from "@/lib/constants";
 import type { TelegramPublicChannels } from "@/lib/types";
 
 type Props = {
@@ -41,7 +41,7 @@ export default function TelegramChannels({ channels, withBackButton }: Props) {
       <CardContent>
         <div className="grid gap-6">
           {channels.map(({ id, title, description, topicRoute }) => {
-            const channelUrl = `${TELEGRAM_SHORT_URL}/${id}`;
+            const channelUrl = getTelegramChannelUrl(id);
 
             return (
               <div key={id} className="rounded-lg border p-4">

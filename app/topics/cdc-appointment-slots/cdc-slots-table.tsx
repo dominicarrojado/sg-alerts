@@ -12,7 +12,8 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { Anchor } from "@/components/ui/anchor";
 import { useGetCdcSlotsDatesMap } from "@/lib/api-hooks";
-import { CdcService, FetchStatus } from "@/lib/enums";
+import { getTelegramChannelUrl } from "@/lib/telegram";
+import { CdcService, FetchStatus, TelegramChannel } from "@/lib/enums";
 import { CDC_SERVICES_LENGTH } from "@/lib/constants";
 import type { CdcSlotsInfoItems } from "@/lib/types";
 
@@ -24,13 +25,13 @@ export function CdcSlotsTable() {
       service: CdcService.EYESIGHT_TEST,
       title: "Eyesight Test",
       lastAvailableDate: cdcSlotsDatesMap[CdcService.EYESIGHT_TEST],
-      calendarLink: "https://www.cdc.com.sg/eyesight-test",
+      channelLink: getTelegramChannelUrl(TelegramChannel.CdcEyesightTest),
     },
     {
       service: CdcService.COUNTER_SERVICES,
       title: "Counter Services",
       lastAvailableDate: cdcSlotsDatesMap[CdcService.COUNTER_SERVICES],
-      calendarLink: "https://www.cdc.com.sg/eappointment",
+      channelLink: getTelegramChannelUrl(TelegramChannel.CdcCounterServices),
     },
   ];
 
@@ -49,7 +50,7 @@ export function CdcSlotsTable() {
       <TableHeader>
         <TableRow>
           <TableHead>Type of Service</TableHead>
-          <TableHead className="w-1/2 sm:w-[240px] text-right">
+          <TableHead className="w-1/2 text-right sm:w-[240px]">
             Date of Last Available Slots
           </TableHead>
         </TableRow>
@@ -58,7 +59,7 @@ export function CdcSlotsTable() {
         {cdcSlotsInfoItems.map((slotsInfoItem) => (
           <TableRow key={slotsInfoItem.service}>
             <TableCell className="font-medium">
-              <Anchor href={slotsInfoItem.calendarLink} isExternal>
+              <Anchor href={slotsInfoItem.channelLink} isExternal>
                 {slotsInfoItem.title}
               </Anchor>
             </TableCell>

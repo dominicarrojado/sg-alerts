@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import {
   Table,
   TableBody,
@@ -10,9 +11,16 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Anchor } from "@/components/ui/anchor";
 import { useGetJapanVisaSlotsDatesMap } from "@/lib/api-hooks";
-import { FetchStatus, JapanVisaType } from "@/lib/enums";
-import { JAPAN_VISA_TYPES_LENGTH } from "@/lib/constants";
+import { getTelegramChannelUrl } from "@/lib/telegram";
+import {
+  FetchStatus,
+  JapanVisaType,
+  Routes,
+  TelegramChannel,
+} from "@/lib/enums";
+import { JAPAN_VISA_TYPES_LENGTH, SUBSCRIBE_FORM_ID } from "@/lib/constants";
 import type { JapanVisaSlotsInfoItems } from "@/lib/types";
 
 export function JapanVisaSlotsTable() {
@@ -23,6 +31,7 @@ export function JapanVisaSlotsTable() {
       type: JapanVisaType.TOURISM,
       title: "Tourism or Sightseeing",
       lastAvailableDate: japanVisaSlotsDatesMap[JapanVisaType.TOURISM],
+      topicLink: getTelegramChannelUrl(TelegramChannel.JapanVisaTourism),
     },
     {
       type: JapanVisaType.BUSINESS,
@@ -36,11 +45,13 @@ export function JapanVisaSlotsTable() {
         </>
       ),
       lastAvailableDate: japanVisaSlotsDatesMap[JapanVisaType.BUSINESS],
+      topicLink: `${Routes.JapanVisaCategory}#${SUBSCRIBE_FORM_ID}`,
     },
     {
       type: JapanVisaType.OTHERS,
       title: "All other visa applications and services",
       lastAvailableDate: japanVisaSlotsDatesMap[JapanVisaType.OTHERS],
+      topicLink: getTelegramChannelUrl(TelegramChannel.JapanVisaOthers),
     },
   ];
 
@@ -59,20 +70,38 @@ export function JapanVisaSlotsTable() {
       <TableHeader>
         <TableRow>
           <TableHead>Type of Application</TableHead>
-          <TableHead className="w-1/2 sm:w-[240px] text-right">
+          <TableHead className="w-1/2 text-right sm:w-[240px]">
             Date of Last Available Slots
           </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {japanVisaSlotsInfoItems.map((slotsInfoItem) => (
-          <TableRow key={slotsInfoItem.type}>
-            <TableCell className="font-medium">{slotsInfoItem.title}</TableCell>
-            <TableCell className="text-right">
-              {slotsInfoItem.lastAvailableDate}
-            </TableCell>
-          </TableRow>
-        ))}
+        {japanVisaSlotsInfoItems.map((slotsInfoItem) => {
+          const { title, topicLink } = slotsInfoItem;
+          const isExternal = !topicLink.startsWith("/");
+          const anchorEl = (
+            <Anchor href={topicLink} isExternal={isExternal}>
+              {title}
+            </Anchor>
+          );
+
+          return (
+            <TableRow key={slotsInfoItem.type}>
+              <TableCell className="font-medium">
+                {isExternal ? (
+                  anchorEl
+                ) : (
+                  <Link href={topicLink} passHref legacyBehavior>
+                    {anchorEl}
+                  </Link>
+                )}
+              </TableCell>
+              <TableCell className="text-right">
+                {slotsInfoItem.lastAvailableDate}
+              </TableCell>
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
   ) : (

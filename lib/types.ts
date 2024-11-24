@@ -126,6 +126,7 @@ export type JapanVisaSlotsInfoItem = {
   type: JapanVisaType;
   title: ReactNode;
   lastAvailableDate: string;
+  topicLink: string;
 };
 export type JapanVisaSlotsInfoItems = Array<JapanVisaSlotsInfoItem>;
 
@@ -135,7 +136,7 @@ export type CdcSlotsInfo = {
   service: CdcService;
   title: string;
   lastAvailableDate: string;
-  calendarLink: string;
+  channelLink: string;
 };
 export type CdcSlotsInfoItems = Array<CdcSlotsInfo>;
 
@@ -145,6 +146,7 @@ export type SsdcSlotsInfo = {
   service: SsdcService;
   title: string;
   lastAvailableDate: string;
+  topicLink: string;
 };
 export type SsdcSlotsInfoItems = Array<SsdcSlotsInfo>;
 
