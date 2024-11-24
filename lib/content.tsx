@@ -425,8 +425,7 @@ export const JAPAN_VISA_TELEGRAM_CHANNELS: TelegramPublicChannels = [
         <strong className="font-medium">
           all other visa applications and services
         </strong>{" "}
-        at the Embassy of Japan in Singapore. <br />
-        <small>(for foreigners who require a visa to visit Japan)</small>
+        at the Embassy of Japan in Singapore.
       </>
     ),
     topicRoute: Routes.JapanVisa,
