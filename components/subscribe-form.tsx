@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { FormEvent, useMemo, useState } from "react";
+import React, { FormEvent, useMemo, useRef, useState } from "react";
 import { AlertCircle, ArrowLeftIcon, Loader2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,7 +16,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Anchor } from "@/components/ui/anchor";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { ToastAction } from "@/components/ui/toast";
 import SwitchCard from "@/components/switch-card";
+import { useToast } from "@/lib/hooks/use-toast";
 import { useSubmitSubscribeRequest } from "@/lib/api-hooks";
 import { trackEvent } from "@/lib/google-analytics";
 import {
@@ -38,6 +40,8 @@ export default function SubscribeForm({
   defaultTopics,
   withBackButton,
 }: Props) {
+  const { toast } = useToast();
+  const hasToastedRef = useRef(false);
   const subscriptionTopics = useMemo(() => {
     const filteredTopics = defaultTopics.filter(
       ({ hasTelegramChannel }) => !hasTelegramChannel,
@@ -50,14 +54,37 @@ export default function SubscribeForm({
   const [topics, setTopics] = useState<SubscriptionTopics>([
     SubscriptionTopic.FeaturesSgAlerts,
   ]);
+  const formCardRef = useRef<HTMLDivElement>(null);
   const [email, setEmail] = useState("");
   const isFormValid =
     email.includes("@") && email.includes(".") && topics.length > 0;
   const isLoading = fetchStatus === FetchStatus.Loading;
+  const scrollDown = () => {
+    const formCardEl = formCardRef.current;
+
+    if (formCardEl) {
+      formCardEl.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   const switchOnClick = (topic: SubscriptionTopic) => {
     const newTopics = topics.includes(topic)
       ? topics.filter((t) => t !== topic)
       : [...topics, topic];
+
+    if (newTopics.length !== 0 && !hasToastedRef.current) {
+      hasToastedRef.current = true;
+
+      toast({
+        title: "👍 Almost there!",
+        description: "If you're done, scroll down to the last step.",
+        action: (
+          <ToastAction altText="Scroll to Last Step" onClick={scrollDown}>
+            Scroll Down
+          </ToastAction>
+        ),
+        duration: 60000,
+      });
+    }
 
     setTopics(newTopics);
   };
@@ -109,7 +136,7 @@ export default function SubscribeForm({
             </div>
           </CardContent>
         </Card>
-        <Card className="mt-4 sm:mt-6">
+        <Card ref={formCardRef} className="mt-4 sm:mt-6">
           <CardHeader>
             <CardTitle>2️⃣ &nbsp;Last Step</CardTitle>
             <CardDescription>

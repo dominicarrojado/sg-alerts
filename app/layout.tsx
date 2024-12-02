@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import TagManager from "@/components/tag-manager";
@@ -91,6 +92,7 @@ export default function RootLayout({
           <Footer />
         </ThemeProvider>
         <TagManager />
+        <Toaster />
       </body>
     </html>
   );
