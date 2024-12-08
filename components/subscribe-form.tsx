@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { FormEvent, useMemo, useRef, useState } from "react";
+import React, { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { AlertCircle, ArrowLeftIcon, Loader2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -42,6 +42,7 @@ export default function SubscribeForm({
 }: Props) {
   const { toast } = useToast();
   const hasToastedRef = useRef(false);
+  const dismissToastRef = useRef<() => void>(() => {});
   const subscriptionTopics = useMemo(() => {
     const filteredTopics = defaultTopics.filter(
       ({ hasTelegramChannel }) => !hasTelegramChannel,
@@ -74,7 +75,7 @@ export default function SubscribeForm({
     if (newTopics.length !== 0 && !hasToastedRef.current) {
       hasToastedRef.current = true;
 
-      toast({
+      const { dismiss } = toast({
         title: "👍 Almost there!",
         description: "If you're done, scroll down to the last step.",
         action: (
@@ -84,6 +85,8 @@ export default function SubscribeForm({
         ),
         duration: 60000,
       });
+
+      dismissToastRef.current = dismiss;
     }
 
     setTopics(newTopics);
@@ -103,6 +106,12 @@ export default function SubscribeForm({
       });
     }
   };
+
+  useEffect(() => {
+    return () => {
+      dismissToastRef.current();
+    };
+  }, []);
 
   return fetchStatus !== FetchStatus.Success ? (
     <>
