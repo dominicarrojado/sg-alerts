@@ -60,33 +60,50 @@ export default function SubscribeForm({
   const isFormValid =
     email.includes("@") && email.includes(".") && topics.length > 0;
   const isLoading = fetchStatus === FetchStatus.Loading;
-  const scrollDown = () => {
+  const toastTitle = "👍 Almost there!";
+  const scrollDownText = "Scroll Down";
+  const scrollDownOnClick = () => {
     const formCardEl = formCardRef.current;
 
     if (formCardEl) {
       formCardEl.scrollIntoView({ behavior: "smooth" });
     }
+
+    trackEvent({
+      toastTitle,
+      event: GoogleAnalyticsEvent.TOAST_CLICK,
+      buttonText: scrollDownText,
+    });
   };
-  const switchOnClick = (topic: SubscriptionTopic) => {
-    const newTopics = topics.includes(topic)
-      ? topics.filter((t) => t !== topic)
-      : [...topics, topic];
+  const switchOnClick = (topicId: SubscriptionTopic, topicTitle: string) => {
+    const newTopics = topics.includes(topicId)
+      ? topics.filter((t) => t !== topicId)
+      : [...topics, topicId];
 
     if (newTopics.length !== 0 && !hasToastedRef.current) {
       hasToastedRef.current = true;
 
       const { dismiss } = toast({
-        title: "👍 Almost there!",
+        title: toastTitle,
         description: "If you're done, scroll down to the last step.",
         action: (
-          <ToastAction altText="Scroll to Last Step" onClick={scrollDown}>
-            Scroll Down
+          <ToastAction
+            altText="Scroll to Last Step"
+            onClick={scrollDownOnClick}
+          >
+            {scrollDownText}
           </ToastAction>
         ),
         duration: 60000,
       });
 
       dismissToastRef.current = dismiss;
+
+      trackEvent({
+        toastTitle,
+        event: GoogleAnalyticsEvent.TOAST_OPEN,
+        buttonText: topicTitle,
+      });
     }
 
     setTopics(newTopics);
@@ -138,7 +155,7 @@ export default function SubscribeForm({
                     topicRoute={topicRoute}
                     disabled={isLoading}
                     checked={topics.includes(id)}
-                    onClick={() => switchOnClick(id)}
+                    onClick={() => switchOnClick(id, title)}
                   />
                 ),
               )}

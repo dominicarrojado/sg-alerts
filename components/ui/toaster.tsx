@@ -1,6 +1,7 @@
 "use client";
 
 import { useToast } from "@/lib/hooks/use-toast";
+import { trackEvent } from "@/lib/google-analytics";
 import {
   Toast,
   ToastClose,
@@ -9,9 +10,18 @@ import {
   ToastTitle,
   ToastViewport,
 } from "@/components/ui/toast";
+import { GoogleAnalyticsEvent } from "@/lib/enums";
 
 export function Toaster() {
   const { toasts } = useToast();
+  const closeBtnText = "Close Toast";
+  const closeBtnOnClick = (title: string) => {
+    trackEvent({
+      event: GoogleAnalyticsEvent.TOAST_CLOSE,
+      toastTitle: title,
+      buttonText: closeBtnText,
+    });
+  };
 
   return (
     <ToastProvider>
@@ -25,7 +35,10 @@ export function Toaster() {
               )}
             </div>
             {action}
-            <ToastClose />
+            <ToastClose
+              title={closeBtnText}
+              onClick={() => closeBtnOnClick(title || "")}
+            />
           </Toast>
         );
       })}

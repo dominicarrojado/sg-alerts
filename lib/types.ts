@@ -45,6 +45,38 @@ export type EventUnsubscribeFormSubmit = {
   buttonText: string;
 };
 
+export type EventTopicClick = {
+  event: GoogleAnalyticsEvent.TOPIC_CLICK;
+  topicTitle: string;
+  linkText?: string;
+  linkUrl: string;
+};
+
+export type EventTopicPageClick = {
+  event: GoogleAnalyticsEvent.TOPIC_PAGE_CLICK;
+  topicTitle: string;
+  linkText: string;
+  linkUrl: string;
+};
+
+export type EventToastOpen = {
+  event: GoogleAnalyticsEvent.TOAST_OPEN;
+  toastTitle: string;
+  buttonText: string;
+};
+
+export type EventToastClose = {
+  event: GoogleAnalyticsEvent.TOAST_CLOSE;
+  toastTitle: string;
+  buttonText: string;
+};
+
+export type EventToastClick = {
+  event: GoogleAnalyticsEvent.TOAST_CLICK;
+  toastTitle: string;
+  buttonText: string;
+};
+
 export type DepositRate = {
   tenure: number;
   rate: number;

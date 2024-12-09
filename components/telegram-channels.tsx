@@ -18,7 +18,8 @@ import { Anchor } from "@/components/ui/anchor";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getTelegramChannelUrl } from "@/lib/telegram";
-import { Routes } from "@/lib/enums";
+import { trackEvent } from "@/lib/google-analytics";
+import { GoogleAnalyticsEvent, Routes } from "@/lib/enums";
 import type { TelegramPublicChannels } from "@/lib/types";
 
 type Props = {
@@ -27,6 +28,24 @@ type Props = {
 };
 
 export default function TelegramChannels({ channels, withBackButton }: Props) {
+  const viewDetailsText = "View Details";
+  const topicOnClick = (title: string, linkUrl: string, linkText?: string) => {
+    trackEvent({
+      linkText,
+      linkUrl,
+      event: GoogleAnalyticsEvent.TOPIC_CLICK,
+      topicTitle: title,
+    });
+  };
+  const topicPageOnClick = (title: string, linkUrl: string) => {
+    trackEvent({
+      linkUrl,
+      event: GoogleAnalyticsEvent.TOPIC_PAGE_CLICK,
+      topicTitle: title,
+      linkText: viewDetailsText,
+    });
+  };
+
   return (
     <Card className="w-full">
       <CardHeader>
@@ -50,6 +69,7 @@ export default function TelegramChannels({ channels, withBackButton }: Props) {
                     <Anchor
                       href={channelUrl}
                       className="text-base no-underline"
+                      onClick={() => topicOnClick(title, channelUrl, title)}
                       isExternal
                     >
                       {title}
@@ -61,6 +81,7 @@ export default function TelegramChannels({ channels, withBackButton }: Props) {
                   <Anchor
                     href={channelUrl}
                     className="shrink-0 px-2 no-underline"
+                    onClick={() => topicOnClick(title, channelUrl)}
                     isExternal
                   >
                     <ExternalLinkIcon />
@@ -70,10 +91,11 @@ export default function TelegramChannels({ channels, withBackButton }: Props) {
                   <Button
                     variant="link"
                     className="mt-2 h-auto p-0 font-normal"
+                    onClick={() => topicPageOnClick(title, topicRoute)}
                     asChild
                   >
                     <Link href={topicRoute}>
-                      View Details
+                      {viewDetailsText}
                       <ChevronRightIcon className="ml-1 h-4 w-4" />
                     </Link>
                   </Button>

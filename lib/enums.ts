@@ -75,6 +75,11 @@ export enum SubscriptionTopic {
 export enum GoogleAnalyticsEvent {
   SUBSCRIBE_FORM_SUBMIT = "subscribe_form_submit",
   UNSUBSCRIBE_FORM_SUBMIT = "unsubscribe_form_submit",
+  TOPIC_CLICK = "topic_click",
+  TOPIC_PAGE_CLICK = "topic_page_click",
+  TOAST_OPEN = "toast_open",
+  TOAST_CLOSE = "toast_close",
+  TOAST_CLICK = "toast_click",
 }
 
 export enum FlightAirline {
