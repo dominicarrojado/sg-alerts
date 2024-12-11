@@ -51,3 +51,5 @@ export const TELEGRAM_CHANNELS = Object.values(TelegramChannel);
 
 export const TOPICS_COUNT =
   SUBSCRIPTION_TOPICS.length + TELEGRAM_CHANNELS.length - 2; // exclude SG Alerts new features topic
+
+export const TOAST_DURATION = 60000; // 1 minute
