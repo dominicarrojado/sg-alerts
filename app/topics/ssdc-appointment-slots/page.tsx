@@ -1,14 +1,13 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import React from "react";
 import { Container } from "@/components/ui/container";
 import { Anchor } from "@/components/ui/anchor";
-import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
-import { Routes, TelegramChannel } from "@/lib/enums";
-import { SUBSCRIBE_FORM_ID, TELEGRAM_SHORT_URL } from "@/lib/constants";
+import TelegramLinkButton from "@/components/telegram-link-button";
+import SubscribeLinkButton from "@/components/subscribe-link-button";
+import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { SsdcSlotsTable } from "./ssdc-slots-table";
 
@@ -94,36 +93,27 @@ export default function SsdcAppointmentSlots() {
         or to head over to the email notifications subscription page (for other
         appointments).
       </Paragraph>
-      <div className="mt-8 text-center flex flex-col justify-center gap-4 sm:flex-row">
+      <div className="mt-8 flex flex-col justify-center gap-4 text-center sm:flex-row">
         <div>
-          <Button variant="secondary" asChild>
-            <Anchor
-              href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.SsdcPracticalLessonBooking}`}
-              className="no-underline"
-              isExternal
-            >
-              For Practical Lesson Booking
-            </Anchor>
-          </Button>
+          <TelegramLinkButton
+            channel={TelegramChannel.SsdcPracticalLessonBooking}
+            linkText="Subscribe to Practical Lesson Booking"
+            topicTitle={TopicTitle.SsdcPracticalLessonBooking}
+          />
         </div>
         <div>
-          <Button variant="secondary" asChild>
-            <Anchor
-              href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.SsdcPrivateLearners}`}
-              className="no-underline"
-              isExternal
-            >
-              For Private Learners
-            </Anchor>
-          </Button>
+          <TelegramLinkButton
+            channel={TelegramChannel.SsdcPrivateLearners}
+            linkText="Subscribe to Private Learners"
+            topicTitle={TopicTitle.SsdcPrivateLearners}
+          />
         </div>
       </div>
       <div className="mt-4 text-center">
-        <Button variant="secondary" asChild>
-          <Link href={`${Routes.DrivingCategory}#${SUBSCRIBE_FORM_ID}`}>
-            For Other Appointment Slots
-          </Link>
-        </Button>
+        <SubscribeLinkButton
+          route={Routes.DrivingCategory}
+          linkText="Subscribe to Other Appointment Slots"
+        />
       </div>
     </Container>
   );

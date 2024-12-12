@@ -1,15 +1,13 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import React from "react";
 import { Container } from "@/components/ui/container";
-import { Button } from "@/components/ui/button";
 import { Anchor } from "@/components/ui/anchor";
 import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
-import { Routes, TelegramChannel } from "@/lib/enums";
+import TelegramLinkButton from "@/components/telegram-link-button";
+import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
-import { TELEGRAM_SHORT_URL } from "@/lib/constants";
 import { TrainTicketsTable } from "./train-tickets-table";
 import { TrainScheduleTable } from "./train-schedule-table";
 
@@ -127,12 +125,11 @@ export default function KtmTrainTickets() {
         Telegram channel and start receiving notifications.
       </Paragraph>
       <div className="mt-8 text-center">
-        <Anchor
-          href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.KtmTrainTickets}`}
-          isExternal
-        >
-          <Button variant="secondary">Subscribe Now</Button>
-        </Anchor>
+        <TelegramLinkButton
+          channel={TelegramChannel.KtmTrainTickets}
+          linkText="Subscribe Now"
+          topicTitle={TopicTitle.KtmTrainTickets}
+        />
       </div>
     </Container>
   );

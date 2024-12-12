@@ -1,14 +1,12 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import React from "react";
 import { Container } from "@/components/ui/container";
 import { Anchor } from "@/components/ui/anchor";
-import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
-import { Routes, TelegramChannel } from "@/lib/enums";
-import { TELEGRAM_SHORT_URL } from "@/lib/constants";
+import TelegramLinkButton from "@/components/telegram-link-button";
+import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { CdcSlotsTable } from "./cdc-slots-table";
 
@@ -90,39 +88,17 @@ export default function CdcAppointmentSlots() {
         To get started, simply click either of the buttons below to subscribe to
         the Telegram channel and start receiving notifications.
       </Paragraph>
-      <div className="mt-8 text-center flex flex-col gap-4">
-        <Anchor
-          href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.CdcEyesightTest}`}
-          isExternal
-        >
-          <Button variant="secondary">
-            <span>
-              <abbr
-                title="ComfortDelGro Driving Centre"
-                className="no-underline"
-              >
-                CDC
-              </abbr>{" "}
-              Appointment Slots (Eyesight Test)
-            </span>
-          </Button>
-        </Anchor>
-        <Anchor
-          href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.CdcCounterServices}`}
-          isExternal
-        >
-          <Button variant="secondary" className="!inline-block">
-            <span>
-              <abbr
-                title="ComfortDelGro Driving Centre"
-                className="no-underline"
-              >
-                CDC
-              </abbr>{" "}
-              Appointment Slots (Counter Services)
-            </span>
-          </Button>
-        </Anchor>
+      <div className="mt-8 flex flex-col items-center gap-4">
+        <TelegramLinkButton
+          channel={TelegramChannel.CdcEyesightTest}
+          linkText="Subscribe to Eyesight Test"
+          topicTitle={TopicTitle.CdcEyesightTest}
+        />
+        <TelegramLinkButton
+          channel={TelegramChannel.CdcCounterServices}
+          linkText="Subscribe to Counter Services"
+          topicTitle={TopicTitle.CdcCounterServices}
+        />
       </div>
     </Container>
   );

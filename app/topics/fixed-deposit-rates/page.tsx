@@ -1,15 +1,13 @@
 import { Metadata } from "next";
 import React from "react";
 import { Container } from "@/components/ui/container";
-import { Button } from "@/components/ui/button";
-import { Anchor } from "@/components/ui/anchor";
 import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
-import { Routes, TelegramChannel } from "@/lib/enums";
+import TelegramLinkButton from "@/components/telegram-link-button";
+import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { FixedDepositRatesTable } from "./fixed-deposit-rates-table";
-import { TELEGRAM_SHORT_URL } from "@/lib/constants";
 
 const title = "Fixed Deposit Rates";
 const description =
@@ -63,12 +61,11 @@ export default function FixedDepositRates() {
         Telegram channel and start receiving notifications.
       </Paragraph>
       <div className="mt-8 text-center">
-        <Anchor
-          href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.FixedDepositRates}`}
-          isExternal
-        >
-          <Button variant="secondary">Subscribe Now</Button>
-        </Anchor>
+        <TelegramLinkButton
+          channel={TelegramChannel.FixedDepositRates}
+          linkText="Subscribe Now"
+          topicTitle={TopicTitle.FixedDepositRates}
+        />
       </div>
     </Container>
   );

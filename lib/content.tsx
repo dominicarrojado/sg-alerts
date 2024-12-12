@@ -6,7 +6,12 @@ import {
   TelegramPublicChannel,
   TelegramPublicChannels,
 } from "./types";
-import { Routes, SubscriptionTopic, TelegramChannel } from "./enums";
+import {
+  Routes,
+  SubscriptionTopic,
+  TelegramChannel,
+  TopicTitle,
+} from "./enums";
 import { OWNER_EMAIL } from "./constants";
 
 export const MAIN_MENU_ITEMS = [
@@ -275,7 +280,7 @@ export const NEW_FEATURES_TELEGRAM_CHANNEL: TelegramPublicChannel = {
 export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   {
     id: TelegramChannel.CdcLessonsAutoCar,
-    title: "🚘 CDC Practical Lesson Slots (Class 3A Motorcar)",
+    title: TopicTitle.CdcPracticalLessonSlots,
     description: (
       <>
         Receive notifications when there are new practical lessons slot(s) for{" "}
@@ -287,7 +292,7 @@ export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   },
   {
     id: TelegramChannel.CdcEyesightTest,
-    title: "🚘 CDC Appointment Slots (Eyesight Test)",
+    title: TopicTitle.CdcEyesightTest,
     description: (
       <>
         Receive notifications when there are new appointment date(s) for the{" "}
@@ -299,7 +304,7 @@ export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   },
   {
     id: TelegramChannel.CdcCounterServices,
-    title: "🚘 CDC Appointment Slots (Counter Services)",
+    title: TopicTitle.CdcCounterServices,
     description: (
       <>
         Receive notifications when there are new appointment date(s) for{" "}
@@ -327,7 +332,7 @@ export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
 export const SSDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   {
     id: TelegramChannel.SsdcPracticalLessonBooking,
-    title: "🚘 SSDC Appointment Slots (Practical Lesson Booking)",
+    title: TopicTitle.SsdcPracticalLessonBooking,
     description: (
       <>
         Receive notifications when there are new appointment date(s) for the{" "}
@@ -341,7 +346,7 @@ export const SSDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   },
   {
     id: TelegramChannel.SsdcPrivateLearners,
-    title: "🚘 SSDC Appointment Slots (Private Learners)",
+    title: TopicTitle.SsdcPrivateLearners,
     description: (
       <>
         Receive notifications when there are new appointment date(s) for the{" "}
@@ -369,7 +374,7 @@ export const SSDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
 export const BBDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   {
     id: TelegramChannel.BbdcAppointmentSlots,
-    title: "🚘 BBDC Appointment Slots",
+    title: TopicTitle.BbdcAppointmentSlots,
     description: (
       <>
         Receive notifications when there are new appointment date(s) for{" "}
@@ -406,7 +411,7 @@ export const DRIVING_TELEGRAM_CHANNELS: TelegramPublicChannels = [
 export const JAPAN_VISA_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   {
     id: TelegramChannel.JapanVisaTourism,
-    title: "🇯🇵 Japan Visa Appointment Slots (Tourism)",
+    title: TopicTitle.JapanVisaTourism,
     description: (
       <>
         Receive notifications when there are new visa appointment date(s) for{" "}
@@ -418,7 +423,7 @@ export const JAPAN_VISA_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   },
   {
     id: TelegramChannel.JapanVisaOthers,
-    title: "🇯🇵 Japan Visa Appointment Slots (Others)",
+    title: TopicTitle.JapanVisaOthers,
     description: (
       <>
         Receive notifications when there are new visa appointment date(s) for{" "}
@@ -436,7 +441,7 @@ export const JAPAN_VISA_TELEGRAM_CHANNELS: TelegramPublicChannels = [
 export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   {
     id: TelegramChannel.KtmTrainTickets,
-    title: "🚆 KTM Train Tickets",
+    title: TopicTitle.KtmTrainTickets,
     description: (
       <>
         Receive notifications when there are{" "}
@@ -453,7 +458,7 @@ export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   },
   {
     id: TelegramChannel.SingaporeAirlinesFlights,
-    title: "✈️ Flight Prices (Singapore Airlines)",
+    title: TopicTitle.SingaporeAirlinesFlights,
     description: (
       <>
         Receive notifications when the flight prices goes down for{" "}
@@ -465,7 +470,7 @@ export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   },
   {
     id: TelegramChannel.ScootFlights,
-    title: "✈️ Flight Prices (Scoot)",
+    title: TopicTitle.ScootFlights,
     description: (
       <>
         Receive notifications when the flight prices goes down for{" "}
@@ -477,7 +482,7 @@ export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   },
   {
     id: TelegramChannel.JetstarFlights,
-    title: "✈️ Flight Prices (Jetstar)",
+    title: TopicTitle.JetstarFlights,
     description: (
       <>
         Receive notifications when the flight prices goes down for{" "}
@@ -519,7 +524,7 @@ export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
 export const MONEY_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   {
     id: TelegramChannel.FixedDepositRates,
-    title: "💰 Fixed Deposit Rates",
+    title: TopicTitle.FixedDepositRates,
     description: (
       <>
         Receive notifications when the{" "}
@@ -563,7 +568,7 @@ export const MONEY_TELEGRAM_CHANNELS: TelegramPublicChannels = [
 export const THEME_PARK_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   {
     id: TelegramChannel.TokyoDisneylandAttractions,
-    title: "🏰 Tokyo Disneyland Attraction Updates",
+    title: TopicTitle.TokyoDisneylandAttractions,
     description: (
       <>
         Receive notifications on Disney Premier Access, Standby Passes or 40th
@@ -575,7 +580,7 @@ export const THEME_PARK_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   },
   {
     id: TelegramChannel.TokyoDisneySeaAttractions,
-    title: "⛰️ Tokyo DisneySea Attraction Updates",
+    title: TopicTitle.TokyoDisneySeaAttractions,
     description: (
       <>
         Receive notifications on Disney Premier Access, Standby Passes or 40th
@@ -676,7 +681,7 @@ export const DRIVING_NOTIFICATION_SETTINGS: NotificationSettings = [
 export const JAPAN_VISA_NOTIFICATION_SETTINGS: NotificationSettings = [
   {
     id: SubscriptionTopic.JapanVisaBusiness,
-    title: "🇯🇵 Japan Visa Appointment Slots (Business/COE/Spouse)",
+    title: TopicTitle.JapanVisaBusiness,
     description: (
       <>
         Receive email notifications when there are new visa appointment date(s)

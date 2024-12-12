@@ -134,6 +134,25 @@ export enum ThemeParkService {
   TokyoDisneySeaAttractions = "tokyo-disneysea-attractions",
 }
 
+export enum TopicTitle {
+  BbdcAppointmentSlots = "🚘 BBDC Appointment Slots",
+  CdcEyesightTest = "🚘 CDC Appointment Slots (Eyesight Test)",
+  CdcCounterServices = "🚘 CDC Appointment Slots (Counter Services)",
+  CdcPracticalLessonSlots = "🚘 CDC Practical Lesson Slots (Class 3A Motorcar)",
+  SsdcPracticalLessonBooking = "🚘 SSDC Appointment Slots (Practical Lesson Booking)",
+  SsdcPrivateLearners = "🚘 SSDC Appointment Slots (Private Learners)",
+  FixedDepositRates = "💰 Fixed Deposit Rates",
+  JapanVisaTourism = "🇯🇵 Japan Visa Appointment Slots (Tourism)",
+  JapanVisaOthers = "🇯🇵 Japan Visa Appointment Slots (Others)",
+  JapanVisaBusiness = "🇯🇵 Japan Visa Appointment Slots (Business/COE/Spouse)",
+  TokyoDisneylandAttractions = "🏰 Tokyo Disneyland Attraction Updates",
+  TokyoDisneySeaAttractions = "⛰️ Tokyo DisneySea Attraction Updates",
+  KtmTrainTickets = "🚆 KTM Train Tickets",
+  SingaporeAirlinesFlights = "✈️ Flight Prices (Singapore Airlines)",
+  ScootFlights = "✈️ Flight Prices (Scoot)",
+  JetstarFlights = "✈️ Flight Prices (Jetstar)",
+}
+
 export enum TelegramChannel {
   SgAlerts = "SGAlertsOfficial",
   CdcLessonsAutoCar = "SGAlertsCDCLessonsAutoCar",

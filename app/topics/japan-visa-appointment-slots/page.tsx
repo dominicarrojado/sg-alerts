@@ -1,14 +1,13 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import React from "react";
 import { Container } from "@/components/ui/container";
 import { Anchor } from "@/components/ui/anchor";
-import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
-import { Routes, TelegramChannel } from "@/lib/enums";
-import { SUBSCRIBE_FORM_ID, TELEGRAM_SHORT_URL } from "@/lib/constants";
+import TelegramLinkButton from "@/components/telegram-link-button";
+import SubscribeLinkButton from "@/components/subscribe-link-button";
+import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { JapanVisaSlotsTable } from "./japan-visa-slots-table";
 
@@ -83,45 +82,27 @@ export default function JapanVisa() {
         notifications subscription page (for other visa applications and
         services).
       </Paragraph>
-      <div className="mt-8 text-center flex flex-col justify-center gap-4 sm:flex-row">
+      <div className="mt-8 flex flex-col justify-center gap-4 text-center sm:flex-row">
         <div>
-          <Button variant="secondary" asChild>
-            <Anchor
-              href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.JapanVisaTourism}`}
-              className="no-underline !inline-block"
-              isExternal
-            >
-              For Tourism
-            </Anchor>
-          </Button>
+          <TelegramLinkButton
+            channel={TelegramChannel.JapanVisaTourism}
+            linkText="Subscribe to Tourism"
+            topicTitle={TopicTitle.JapanVisaTourism}
+          />
         </div>
         <div>
-          <Button variant="secondary" asChild>
-            <Link href={`${Routes.JapanVisaCategory}#${SUBSCRIBE_FORM_ID}`}>
-              <span>
-                For Business/
-                <abbr
-                  title="Certificate of Eligibility"
-                  className="no-underline"
-                >
-                  COE
-                </abbr>
-                /Spouse
-              </span>
-            </Link>
-          </Button>
+          <SubscribeLinkButton
+            route={Routes.JapanVisaCategory}
+            linkText="Subscribe to For Business/COE/Spouse"
+          />
         </div>
       </div>
       <div className="mt-4 text-center">
-        <Button variant="secondary" asChild>
-          <Anchor
-            href={`${TELEGRAM_SHORT_URL}/${TelegramChannel.JapanVisaOthers}`}
-            className="no-underline !inline-block"
-            isExternal
-          >
-            For Other Visa Applications/Services
-          </Anchor>
-        </Button>
+        <TelegramLinkButton
+          channel={TelegramChannel.JapanVisaOthers}
+          linkText="Subscribe to Other Visa Applications/Services"
+          topicTitle={TopicTitle.JapanVisaOthers}
+        />
       </div>
     </Container>
   );

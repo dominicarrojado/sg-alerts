@@ -1,14 +1,12 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import React from "react";
 import { Container } from "@/components/ui/container";
-import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import { Anchor } from "@/components/ui/anchor";
+import SubscribeLinkButton from "@/components/subscribe-link-button";
 import { Routes } from "@/lib/enums";
-import { SUBSCRIBE_FORM_ID } from "@/lib/constants";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { CoeBiddingResultsTable } from "./coe-bidding-results-table";
 
@@ -129,11 +127,10 @@ export default function CoeBiddingResults() {
         want to subscribe to.
       </Paragraph>
       <div className="mt-8 text-center">
-        <Button variant="secondary" asChild>
-          <Link href={`${Routes.DrivingCategory}#${SUBSCRIBE_FORM_ID}`}>
-            Subscribe Now
-          </Link>
-        </Button>
+        <SubscribeLinkButton
+          route={Routes.DrivingCategory}
+          linkText="Subscribe Now"
+        />
       </div>
     </Container>
   );
