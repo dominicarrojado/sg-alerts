@@ -85,10 +85,10 @@ export default function TokyoDisneylandAttractionUpdates() {
         so you can focus on enjoying your time at Tokyo Disneyland!
       </Paragraph>
       <Paragraph>
-        To get started, simply click the button below to subscribe to the
-        Telegram channel and start receiving notifications.
+        To get started, simply click the button below to join the Telegram
+        channel and start receiving notifications.
       </Paragraph>
-      <div className="mt-8 text-center">
+      <div className="sticky bottom-6 z-50 mt-8 text-center">
         <TelegramLinkButton
           channel={TelegramChannel.TokyoDisneylandAttractions}
           linkText="Subscribe Now"

@@ -93,27 +93,29 @@ export default function SsdcAppointmentSlots() {
         or to head over to the email notifications subscription page (for other
         appointments).
       </Paragraph>
-      <div className="mt-8 flex flex-col justify-center gap-4 text-center sm:flex-row">
-        <div>
-          <TelegramLinkButton
-            channel={TelegramChannel.SsdcPracticalLessonBooking}
-            linkText="Subscribe to Practical Lesson Booking"
-            topicTitle={TopicTitle.SsdcPracticalLessonBooking}
+      <div className="sticky bottom-6 z-50">
+        <div className="mt-8 flex flex-col justify-center gap-4 text-center sm:flex-row">
+          <div>
+            <TelegramLinkButton
+              channel={TelegramChannel.SsdcPracticalLessonBooking}
+              linkText="For Practical Lesson Booking"
+              topicTitle={TopicTitle.SsdcPracticalLessonBooking}
+            />
+          </div>
+          <div>
+            <TelegramLinkButton
+              channel={TelegramChannel.SsdcPrivateLearners}
+              linkText="For Private Learners"
+              topicTitle={TopicTitle.SsdcPrivateLearners}
+            />
+          </div>
+        </div>
+        <div className="mt-4 text-center">
+          <SubscribeLinkButton
+            route={Routes.DrivingCategory}
+            linkText="For Other Appointment Slots"
           />
         </div>
-        <div>
-          <TelegramLinkButton
-            channel={TelegramChannel.SsdcPrivateLearners}
-            linkText="Subscribe to Private Learners"
-            topicTitle={TopicTitle.SsdcPrivateLearners}
-          />
-        </div>
-      </div>
-      <div className="mt-4 text-center">
-        <SubscribeLinkButton
-          route={Routes.DrivingCategory}
-          linkText="Subscribe to Other Appointment Slots"
-        />
       </div>
     </Container>
   );

@@ -222,19 +222,18 @@ export function useGetJapanVisaSlotsDatesMap() {
       );
       const resData = res.data;
 
-      if (
-        !resData ||
-        !(resData[JapanVisaType.TOURISM] && resData[JapanVisaType.BUSINESS])
-      ) {
+      if (!resData || typeof resData !== "object") {
         throw new Error("Invalid data");
       }
 
+      const tourism = resData[JapanVisaType.TOURISM];
+      const business = resData[JapanVisaType.BUSINESS];
+      const others = resData[JapanVisaType.OTHERS];
+
       setJapanVisaSlotsDatesMap({
-        [JapanVisaType.TOURISM]: formatDateTime(resData[JapanVisaType.TOURISM]),
-        [JapanVisaType.BUSINESS]: formatDateTime(
-          resData[JapanVisaType.BUSINESS],
-        ),
-        [JapanVisaType.OTHERS]: formatDateTime(resData[JapanVisaType.OTHERS]),
+        [JapanVisaType.TOURISM]: tourism ? formatDateTime(tourism) : "-",
+        [JapanVisaType.BUSINESS]: business ? formatDateTime(business) : "-",
+        [JapanVisaType.OTHERS]: others ? formatDateTime(others) : "-",
       });
       setFetchStatus(FetchStatus.Success);
     } catch (err) {
@@ -263,23 +262,20 @@ export function useGetCdcSlotsDatesMap() {
       const res = await axios.get(`${API_URL}${ApiEndpoint.CdcSlotsInfo}`);
       const resData = res.data;
 
-      if (
-        !resData ||
-        !(
-          resData[CdcService.EYESIGHT_TEST] &&
-          resData[CdcService.COUNTER_SERVICES]
-        )
-      ) {
+      if (!resData || typeof resData !== "object") {
         throw new Error("Invalid data");
       }
 
+      const eyesightTest = resData[CdcService.EYESIGHT_TEST];
+      const counterServices = resData[CdcService.COUNTER_SERVICES];
+
       setCdcSlotsDatesMap({
-        [CdcService.EYESIGHT_TEST]: formatDateTime(
-          resData[CdcService.EYESIGHT_TEST],
-        ),
-        [CdcService.COUNTER_SERVICES]: formatDateTime(
-          resData[CdcService.COUNTER_SERVICES],
-        ),
+        [CdcService.EYESIGHT_TEST]: eyesightTest
+          ? formatDateTime(eyesightTest)
+          : "-",
+        [CdcService.COUNTER_SERVICES]: counterServices
+          ? formatDateTime(counterServices)
+          : "-",
       });
       setFetchStatus(FetchStatus.Success);
     } catch (err) {

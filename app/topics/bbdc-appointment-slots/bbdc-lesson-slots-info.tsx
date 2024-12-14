@@ -23,19 +23,20 @@ export default function BbdcLessonSlotsInfo() {
     return null;
   }
 
-  return fetchState === FetchStatus.Success && lastAvailableSlotsDate ? (
+  return fetchState === FetchStatus.Success ? (
     <Alert className="my-6">
-      <CheckCircle className="h-4 w-4 mt-1" />
+      <CheckCircle className="mt-1 h-4 w-4" />
       <AlertTitle className="leading-normal">
         Last available slots were spotted on {lastAvailableSlotsDate}.
       </AlertTitle>
     </Alert>
   ) : (
-    <Alert className="flex items-start my-6 space-x-3">
-      <Skeleton className="h-5 w-5 mt-1 rounded-full" />
+    <Alert className="my-6 flex items-start space-x-3">
+      <Skeleton className="mt-1 h-5 w-5 rounded-full" />
       <div className="w-full space-y-2 py-1">
         <Skeleton className="h-5 w-full sm:w-11/12" />
         <Skeleton className="h-4 w-4/5 sm:hidden" />
+        <Skeleton className="h-3 w-1/2 sm:w-1/4" />
       </div>
     </Alert>
   );

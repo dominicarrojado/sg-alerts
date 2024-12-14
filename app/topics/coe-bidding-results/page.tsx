@@ -126,7 +126,7 @@ export default function CoeBiddingResults() {
         <span className="font-medium">{title}</span> as one of the topics you
         want to subscribe to.
       </Paragraph>
-      <div className="mt-8 text-center">
+      <div className="sticky bottom-6 z-50 mt-8 text-center">
         <SubscribeLinkButton
           route={Routes.DrivingCategory}
           linkText="Subscribe Now"

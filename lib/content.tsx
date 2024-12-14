@@ -611,7 +611,7 @@ export const NEW_FEATURES_NOTIFICATION_SETTING: NotificationSetting = {
 export const SSDC_NOTIFICATION_SETTINGS: NotificationSettings = [
   {
     id: SubscriptionTopic.SsdcEnrolmentWeekend,
-    title: "🚘 SSDC Appointment Slots (School Enrolment)",
+    title: TopicTitle.SsdcEnrolmentWeekend,
     description: (
       <>
         Receive email notifications when there are new appointment date(s) for
@@ -626,7 +626,7 @@ export const SSDC_NOTIFICATION_SETTINGS: NotificationSettings = [
   },
   {
     id: SubscriptionTopic.SsdcOtherCoursesEnrolment,
-    title: "🚘 SSDC Appointment Slots (Other Courses Enrolment)",
+    title: TopicTitle.SsdcOtherCoursesEnrolment,
     description: (
       <>
         Receive email notifications when there are new appointment date(s) for
@@ -641,7 +641,7 @@ export const SSDC_NOTIFICATION_SETTINGS: NotificationSettings = [
   },
   {
     id: SubscriptionTopic.SsdcForeignLicenceWeekend,
-    title: "🚘 SSDC Appointment Slots (Foreign Licence Package)",
+    title: TopicTitle.SsdcForeignLicenceWeekend,
     description: (
       <>
         Receive email notifications when there are new appointment date(s) for

@@ -14,7 +14,15 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Anchor } from "@/components/ui/anchor";
 import { useGetSsdcSlotsDatesMap } from "@/lib/api-hooks";
 import { getTelegramChannelUrl } from "@/lib/telegram";
-import { SsdcService, FetchStatus, Routes, TelegramChannel } from "@/lib/enums";
+import { trackEvent } from "@/lib/google-analytics";
+import {
+  SsdcService,
+  FetchStatus,
+  Routes,
+  TelegramChannel,
+  GoogleAnalyticsEvent,
+  TopicTitle,
+} from "@/lib/enums";
 import { SSDC_SERVICES_LENGTH, SUBSCRIBE_FORM_ID } from "@/lib/constants";
 import type { SsdcSlotsInfoItems } from "@/lib/types";
 
@@ -30,32 +38,45 @@ export function SsdcSlotsTable() {
       topicLink: getTelegramChannelUrl(
         TelegramChannel.SsdcPracticalLessonBooking,
       ),
+      topicTitle: TopicTitle.SsdcPracticalLessonBooking,
     },
     {
       service: SsdcService.PRIVATE_LEARNERS,
       title: "Private Learners",
       lastAvailableDate: ssdcSlotsDatesMap[SsdcService.PRIVATE_LEARNERS],
       topicLink: getTelegramChannelUrl(TelegramChannel.SsdcPrivateLearners),
+      topicTitle: TopicTitle.SsdcPrivateLearners,
     },
     {
       service: SsdcService.ENROLMENT_WEEKEND,
       title: "Class 3 / 3A School Enrolment (weekend)",
       lastAvailableDate: ssdcSlotsDatesMap[SsdcService.ENROLMENT_WEEKEND],
       topicLink: `${Routes.DrivingCategory}#${SUBSCRIBE_FORM_ID}`,
+      topicTitle: TopicTitle.SsdcEnrolmentWeekend,
     },
     {
       service: SsdcService.OTHER_COURSES_ENROLMENT,
       title: "Other Courses Enrolment (weekend)",
       lastAvailableDate: ssdcSlotsDatesMap[SsdcService.OTHER_COURSES_ENROLMENT],
       topicLink: `${Routes.DrivingCategory}#${SUBSCRIBE_FORM_ID}`,
+      topicTitle: TopicTitle.SsdcOtherCoursesEnrolment,
     },
     {
       service: SsdcService.FOREIGN_LICENCE_WEEKEND,
       title: "Foreign Licence Package (weekend)",
       lastAvailableDate: ssdcSlotsDatesMap[SsdcService.FOREIGN_LICENCE_WEEKEND],
       topicLink: `${Routes.DrivingCategory}#${SUBSCRIBE_FORM_ID}`,
+      topicTitle: TopicTitle.SsdcForeignLicenceWeekend,
     },
   ];
+  const topicOnClick = (title: string, linkUrl: string, linkText?: string) => {
+    trackEvent({
+      linkText,
+      linkUrl,
+      event: GoogleAnalyticsEvent.TOPIC_CLICK,
+      topicTitle: title,
+    });
+  };
 
   useEffect(() => {
     getSsdcSlotsDatesMap();
@@ -82,7 +103,16 @@ export function SsdcSlotsTable() {
           const { title, topicLink } = slotsInfoItem;
           const isExternal = !topicLink.startsWith("/");
           const anchorEl = (
-            <Anchor href={topicLink} isExternal={isExternal}>
+            <Anchor
+              href={topicLink}
+              isExternal={isExternal}
+              onClick={
+                isExternal
+                  ? () =>
+                      topicOnClick(slotsInfoItem.topicTitle, topicLink, title)
+                  : undefined
+              }
+            >
               {title}
             </Anchor>
           );

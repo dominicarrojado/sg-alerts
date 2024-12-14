@@ -13,7 +13,14 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Anchor } from "@/components/ui/anchor";
 import { useGetCdcSlotsDatesMap } from "@/lib/api-hooks";
 import { getTelegramChannelUrl } from "@/lib/telegram";
-import { CdcService, FetchStatus, TelegramChannel } from "@/lib/enums";
+import { trackEvent } from "@/lib/google-analytics";
+import {
+  CdcService,
+  FetchStatus,
+  GoogleAnalyticsEvent,
+  TelegramChannel,
+  TopicTitle,
+} from "@/lib/enums";
 import { CDC_SERVICES_LENGTH } from "@/lib/constants";
 import type { CdcSlotsInfoItems } from "@/lib/types";
 
@@ -25,15 +32,25 @@ export function CdcSlotsTable() {
       service: CdcService.EYESIGHT_TEST,
       title: "Eyesight Test",
       lastAvailableDate: cdcSlotsDatesMap[CdcService.EYESIGHT_TEST],
-      channelLink: getTelegramChannelUrl(TelegramChannel.CdcEyesightTest),
+      telegramChannel: TelegramChannel.CdcEyesightTest,
+      topicTitle: TopicTitle.CdcEyesightTest,
     },
     {
       service: CdcService.COUNTER_SERVICES,
       title: "Counter Services",
       lastAvailableDate: cdcSlotsDatesMap[CdcService.COUNTER_SERVICES],
-      channelLink: getTelegramChannelUrl(TelegramChannel.CdcCounterServices),
+      telegramChannel: TelegramChannel.CdcCounterServices,
+      topicTitle: TopicTitle.CdcCounterServices,
     },
   ];
+  const topicOnClick = (title: string, linkUrl: string, linkText?: string) => {
+    trackEvent({
+      linkText,
+      linkUrl,
+      event: GoogleAnalyticsEvent.TOPIC_CLICK,
+      topicTitle: title,
+    });
+  };
 
   useEffect(() => {
     getCdcSlotsDatesMap();
@@ -56,18 +73,32 @@ export function CdcSlotsTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {cdcSlotsInfoItems.map((slotsInfoItem) => (
-          <TableRow key={slotsInfoItem.service}>
-            <TableCell className="font-medium">
-              <Anchor href={slotsInfoItem.channelLink} isExternal>
-                {slotsInfoItem.title}
-              </Anchor>
-            </TableCell>
-            <TableCell className="text-right">
-              {slotsInfoItem.lastAvailableDate}
-            </TableCell>
-          </TableRow>
-        ))}
+        {cdcSlotsInfoItems.map((slotsInfoItem) => {
+          const { title, telegramChannel } = slotsInfoItem;
+
+          return (
+            <TableRow key={slotsInfoItem.service}>
+              <TableCell className="font-medium">
+                <Anchor
+                  href={getTelegramChannelUrl(telegramChannel)}
+                  onClick={() =>
+                    topicOnClick(
+                      slotsInfoItem.topicTitle,
+                      telegramChannel,
+                      title,
+                    )
+                  }
+                  isExternal
+                >
+                  {title}
+                </Anchor>
+              </TableCell>
+              <TableCell className="text-right">
+                {slotsInfoItem.lastAvailableDate}
+              </TableCell>
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
   ) : (

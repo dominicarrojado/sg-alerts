@@ -16,7 +16,7 @@ export default function SubscribeLinkButton({ route, linkText }: Props) {
   const linkUrl = `${route}#${SUBSCRIBE_FORM_ID}`;
 
   return (
-    <Button variant="secondary" asChild>
+    <Button asChild>
       <Link href={linkUrl}>
         {linkText} <ArrowRightIcon className="ml-2 h-4 w-4" />
       </Link>

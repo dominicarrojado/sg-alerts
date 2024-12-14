@@ -8,6 +8,7 @@ import {
   SsdcService,
   SubscriptionTopic,
   TelegramChannel,
+  TopicTitle,
 } from "./enums";
 
 export type SubscriptionTopics = Array<SubscriptionTopic>;
@@ -156,9 +157,13 @@ export type JapanVisaSlotsDatesMap = Record<JapanVisaType, string>;
 
 export type JapanVisaSlotsInfoItem = {
   type: JapanVisaType;
-  title: ReactNode;
+  title: string;
   lastAvailableDate: string;
   topicLink: string;
+  topicTitle:
+    | TopicTitle.JapanVisaTourism
+    | TopicTitle.JapanVisaBusiness
+    | TopicTitle.JapanVisaOthers;
 };
 export type JapanVisaSlotsInfoItems = Array<JapanVisaSlotsInfoItem>;
 
@@ -168,7 +173,10 @@ export type CdcSlotsInfo = {
   service: CdcService;
   title: string;
   lastAvailableDate: string;
-  channelLink: string;
+  telegramChannel:
+    | TelegramChannel.CdcEyesightTest
+    | TelegramChannel.CdcCounterServices;
+  topicTitle: TopicTitle.CdcEyesightTest | TopicTitle.CdcCounterServices;
 };
 export type CdcSlotsInfoItems = Array<CdcSlotsInfo>;
 
@@ -179,6 +187,12 @@ export type SsdcSlotsInfo = {
   title: string;
   lastAvailableDate: string;
   topicLink: string;
+  topicTitle:
+    | TopicTitle.SsdcPracticalLessonBooking
+    | TopicTitle.SsdcPrivateLearners
+    | TopicTitle.SsdcEnrolmentWeekend
+    | TopicTitle.SsdcOtherCoursesEnrolment
+    | TopicTitle.SsdcForeignLicenceWeekend;
 };
 export type SsdcSlotsInfoItems = Array<SsdcSlotsInfo>;
 

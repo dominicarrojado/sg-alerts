@@ -14,11 +14,14 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Anchor } from "@/components/ui/anchor";
 import { useGetJapanVisaSlotsDatesMap } from "@/lib/api-hooks";
 import { getTelegramChannelUrl } from "@/lib/telegram";
+import { trackEvent } from "@/lib/google-analytics";
 import {
   FetchStatus,
+  GoogleAnalyticsEvent,
   JapanVisaType,
   Routes,
   TelegramChannel,
+  TopicTitle,
 } from "@/lib/enums";
 import { JAPAN_VISA_TYPES_LENGTH, SUBSCRIBE_FORM_ID } from "@/lib/constants";
 import type { JapanVisaSlotsInfoItems } from "@/lib/types";
@@ -32,28 +35,32 @@ export function JapanVisaSlotsTable() {
       title: "Tourism or Sightseeing",
       lastAvailableDate: japanVisaSlotsDatesMap[JapanVisaType.TOURISM],
       topicLink: getTelegramChannelUrl(TelegramChannel.JapanVisaTourism),
+      topicTitle: TopicTitle.JapanVisaTourism,
     },
     {
       type: JapanVisaType.BUSINESS,
-      title: (
-        <>
-          Short-term Business, Long-term stay with{" "}
-          <abbr title="Certificate of Eligibility" className="no-underline">
-            COE
-          </abbr>
-          , Spouse or Child of Japanese National
-        </>
-      ),
+      title:
+        "Short-term Business, Long-term stay with COE, Spouse or Child of Japanese National",
       lastAvailableDate: japanVisaSlotsDatesMap[JapanVisaType.BUSINESS],
       topicLink: `${Routes.JapanVisaCategory}#${SUBSCRIBE_FORM_ID}`,
+      topicTitle: TopicTitle.JapanVisaBusiness,
     },
     {
       type: JapanVisaType.OTHERS,
       title: "All other visa applications and services",
       lastAvailableDate: japanVisaSlotsDatesMap[JapanVisaType.OTHERS],
       topicLink: getTelegramChannelUrl(TelegramChannel.JapanVisaOthers),
+      topicTitle: TopicTitle.JapanVisaOthers,
     },
   ];
+  const topicOnClick = (title: string, linkUrl: string, linkText?: string) => {
+    trackEvent({
+      linkText,
+      linkUrl,
+      event: GoogleAnalyticsEvent.TOPIC_CLICK,
+      topicTitle: title,
+    });
+  };
 
   useEffect(() => {
     getJapanVisaSlotsDatesMap();
@@ -80,7 +87,16 @@ export function JapanVisaSlotsTable() {
           const { title, topicLink } = slotsInfoItem;
           const isExternal = !topicLink.startsWith("/");
           const anchorEl = (
-            <Anchor href={topicLink} isExternal={isExternal}>
+            <Anchor
+              href={topicLink}
+              isExternal={isExternal}
+              onClick={
+                isExternal
+                  ? () =>
+                      topicOnClick(slotsInfoItem.topicTitle, topicLink, title)
+                  : undefined
+              }
+            >
               {title}
             </Anchor>
           );

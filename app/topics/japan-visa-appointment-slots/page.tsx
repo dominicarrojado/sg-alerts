@@ -82,27 +82,29 @@ export default function JapanVisa() {
         notifications subscription page (for other visa applications and
         services).
       </Paragraph>
-      <div className="mt-8 flex flex-col justify-center gap-4 text-center sm:flex-row">
-        <div>
+      <div className="sticky bottom-6 z-50">
+        <div className="mt-8 flex flex-col justify-center gap-4 text-center sm:flex-row">
+          <div>
+            <TelegramLinkButton
+              channel={TelegramChannel.JapanVisaTourism}
+              linkText="For Tourism"
+              topicTitle={TopicTitle.JapanVisaTourism}
+            />
+          </div>
+          <div>
+            <SubscribeLinkButton
+              route={Routes.JapanVisaCategory}
+              linkText="For Business/COE/Spouse"
+            />
+          </div>
+        </div>
+        <div className="mt-4 text-center">
           <TelegramLinkButton
-            channel={TelegramChannel.JapanVisaTourism}
-            linkText="Subscribe to Tourism"
-            topicTitle={TopicTitle.JapanVisaTourism}
+            channel={TelegramChannel.JapanVisaOthers}
+            linkText="For Other Visa Applications/Services"
+            topicTitle={TopicTitle.JapanVisaOthers}
           />
         </div>
-        <div>
-          <SubscribeLinkButton
-            route={Routes.JapanVisaCategory}
-            linkText="Subscribe to For Business/COE/Spouse"
-          />
-        </div>
-      </div>
-      <div className="mt-4 text-center">
-        <TelegramLinkButton
-          channel={TelegramChannel.JapanVisaOthers}
-          linkText="Subscribe to Other Visa Applications/Services"
-          topicTitle={TopicTitle.JapanVisaOthers}
-        />
       </div>
     </Container>
   );

@@ -85,18 +85,18 @@ export default function CdcAppointmentSlots() {
         website manually every day.
       </Paragraph>
       <Paragraph>
-        To get started, simply click either of the buttons below to subscribe to
-        the Telegram channel and start receiving notifications.
+        To get started, simply click either of the buttons below to join the
+        Telegram channel and start receiving notifications.
       </Paragraph>
-      <div className="mt-8 flex flex-col items-center gap-4">
+      <div className="sticky bottom-6 z-50 mt-8 flex flex-col items-center gap-4">
         <TelegramLinkButton
           channel={TelegramChannel.CdcEyesightTest}
-          linkText="Subscribe to Eyesight Test"
+          linkText="Subscribe for Eyesight Test"
           topicTitle={TopicTitle.CdcEyesightTest}
         />
         <TelegramLinkButton
           channel={TelegramChannel.CdcCounterServices}
-          linkText="Subscribe to Counter Services"
+          linkText="Subscribe for Counter Services"
           topicTitle={TopicTitle.CdcCounterServices}
         />
       </div>

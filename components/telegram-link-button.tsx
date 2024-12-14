@@ -2,13 +2,14 @@
 
 import React from "react";
 import { ExternalLinkIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button, ButtonProps } from "@/components/ui/button";
 import { Anchor } from "@/components/ui/anchor";
+import { cn } from "@/lib/utils";
 import { trackEvent } from "@/lib/google-analytics";
 import { GoogleAnalyticsEvent, TelegramChannel } from "@/lib/enums";
 import { TELEGRAM_SHORT_URL } from "@/lib/constants";
 
-type Props = {
+type Props = Partial<ButtonProps> & {
   channel: TelegramChannel;
   linkText: string;
   topicTitle: string;
@@ -18,6 +19,8 @@ export default function TelegramLinkButton({
   channel,
   linkText,
   topicTitle,
+  className,
+  ...props
 }: Props) {
   const linkUrl = `${TELEGRAM_SHORT_URL}/${channel}`;
   const onClick = () => {
@@ -30,14 +33,18 @@ export default function TelegramLinkButton({
   };
 
   return (
-    <Button variant="secondary" asChild>
+    <Button {...props} asChild>
       <Anchor
         href={linkUrl}
         onClick={onClick}
-        className="no-underline"
+        className={cn(
+          "text-center no-underline shadow-md hover:shadow-none",
+          className,
+        )}
         isExternal
       >
-        {linkText} <ExternalLinkIcon className="ml-2 h-4 w-4" />
+        <span className="align-middle">{linkText}</span>
+        <ExternalLinkIcon className="ml-2 inline-block h-4 w-4 align-middle" />
       </Anchor>
     </Button>
   );

@@ -87,17 +87,10 @@ export default function BBDCAppointmentSlots() {
         website manually every day.
       </Paragraph>
       <Paragraph>
-        To get started, simply click the button below to head over to the
-        subscription page. Once there, you can select either{" "}
-        <span className="font-medium">
-          <abbr title="Bukit Batok Driving Centre" className="no-underline">
-            BBDC
-          </abbr>{" "}
-          Appointment Slots
-        </span>{" "}
-        as one of the topics you want to subscribe to.
+        To get started, simply click the button below to join the Telegram
+        channel and start receiving notifications.
       </Paragraph>
-      <div className="mt-8 text-center">
+      <div className="sticky bottom-6 z-50 mt-8 text-center">
         <TelegramLinkButton
           channel={TelegramChannel.BbdcAppointmentSlots}
           linkText="Subscribe Now"
