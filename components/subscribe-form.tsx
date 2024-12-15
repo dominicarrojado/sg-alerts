@@ -45,6 +45,7 @@ export default function SubscribeForm({
   const scrollDownText = "Scroll Down";
   const formCardRef = useRef<HTMLDivElement>(null);
   const hasToastedRef = useRef(false);
+  const isNoTopicsToastOpenRef = useRef(false);
   const dismissToastRef = useRef<() => void>(() => {});
   const subscriptionTopics = useMemo(() => {
     const filteredTopics = defaultTopics.filter(
@@ -68,6 +69,8 @@ export default function SubscribeForm({
     if (formCardEl) {
       formCardEl.scrollIntoView({ behavior: "smooth" });
     }
+
+    isNoTopicsToastOpenRef.current = false;
 
     trackEvent({
       toastTitle: scrollDownToastTitle,
@@ -104,6 +107,9 @@ export default function SubscribeForm({
         toastTitle: scrollDownToastTitle,
         buttonText: topicTitle,
       });
+    } else if (isNoTopicsToastOpenRef.current) {
+      dismissToastRef.current();
+      isNoTopicsToastOpenRef.current = false;
     }
 
     setTopics(newTopics);
@@ -138,6 +144,7 @@ export default function SubscribeForm({
         duration: TOAST_DURATION,
       });
 
+      isNoTopicsToastOpenRef.current = true;
       dismissToastRef.current = dismiss;
 
       trackEvent({
