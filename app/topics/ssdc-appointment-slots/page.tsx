@@ -7,6 +7,7 @@ import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import TelegramLinkButton from "@/components/telegram-link-button";
 import SubscribeLinkButton from "@/components/subscribe-link-button";
+import PageScroller from "@/components/page-scroller";
 import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { SsdcSlotsTable } from "./ssdc-slots-table";
@@ -93,7 +94,7 @@ export default function SsdcAppointmentSlots() {
         or to head over to the email notifications subscription page (for other
         appointments).
       </Paragraph>
-      <div className="sticky bottom-6 z-50">
+      <PageScroller>
         <div className="mt-8 flex flex-col justify-center gap-4 text-center sm:flex-row">
           <div>
             <TelegramLinkButton
@@ -116,7 +117,7 @@ export default function SsdcAppointmentSlots() {
             linkText="For Other Appointment Slots"
           />
         </div>
-      </div>
+      </PageScroller>
     </Container>
   );
 }

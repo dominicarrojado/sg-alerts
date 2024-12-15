@@ -80,6 +80,7 @@ export enum GoogleAnalyticsEvent {
   TOAST_OPEN = "toast_open",
   TOAST_CLOSE = "toast_close",
   TOAST_CLICK = "toast_click",
+  SCROLL_CLICK = "scroll_click",
 }
 
 export enum FlightAirline {

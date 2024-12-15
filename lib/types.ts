@@ -78,6 +78,11 @@ export type EventToastClick = {
   buttonText: string;
 };
 
+export type EventScrollClick = {
+  event: GoogleAnalyticsEvent.SCROLL_CLICK;
+  buttonText: string;
+};
+
 export type DepositRate = {
   tenure: number;
   rate: number;

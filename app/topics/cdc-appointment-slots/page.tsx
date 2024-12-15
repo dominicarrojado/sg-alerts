@@ -6,6 +6,7 @@ import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import TelegramLinkButton from "@/components/telegram-link-button";
+import PageScroller from "@/components/page-scroller";
 import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { CdcSlotsTable } from "./cdc-slots-table";
@@ -88,7 +89,7 @@ export default function CdcAppointmentSlots() {
         To get started, simply click either of the buttons below to join the
         Telegram channel and start receiving notifications.
       </Paragraph>
-      <div className="sticky bottom-6 z-50 mt-8 flex flex-col items-center gap-4">
+      <PageScroller className="mt-8 flex flex-col items-center gap-4">
         <TelegramLinkButton
           channel={TelegramChannel.CdcEyesightTest}
           linkText="Subscribe for Eyesight Test"
@@ -99,7 +100,7 @@ export default function CdcAppointmentSlots() {
           linkText="Subscribe for Counter Services"
           topicTitle={TopicTitle.CdcCounterServices}
         />
-      </div>
+      </PageScroller>
     </Container>
   );
 }

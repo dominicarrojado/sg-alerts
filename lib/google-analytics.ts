@@ -1,6 +1,7 @@
 import { SITE_NAME } from "./constants";
 import { checkIsLocalhost } from "./location";
 import {
+  EventScrollClick,
   EventSubscribeFormSubmit,
   EventToastClick,
   EventToastClose,
@@ -24,7 +25,8 @@ export function trackEvent(
     | EventTopicPageClick
     | EventToastOpen
     | EventToastClose
-    | EventToastClick,
+    | EventToastClick
+    | EventScrollClick,
 ) {
   if (checkIsLocalhost()) {
     return;
