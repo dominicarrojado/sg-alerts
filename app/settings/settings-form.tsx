@@ -46,10 +46,10 @@ export default function SettingsForm({ subscription }: Props) {
   );
   const [isFormTouched, setIsFormTouched] = useState(false);
   const isLoading = fetchStatus === FetchStatus.Loading;
-  const switchOnClick = (topic: SubscriptionTopic) => {
-    const newTopics = topics.includes(topic)
-      ? topics.filter((t) => t !== topic)
-      : [...topics, topic];
+  const switchOnClick = (topicId: SubscriptionTopic, topicTitle: string) => {
+    const newTopics = topics.includes(topicId)
+      ? topics.filter((t) => t !== topicId)
+      : [...topics, topicId];
 
     setTopics(newTopics);
     setIsFormTouched(true);
@@ -107,7 +107,7 @@ export default function SettingsForm({ subscription }: Props) {
                   topicRoute={topicRoute}
                   disabled={isLoading}
                   checked={topics.includes(id)}
-                  onClick={() => switchOnClick(id)}
+                  onClick={() => switchOnClick(id, title)}
                 />
               ),
             )}
@@ -118,7 +118,7 @@ export default function SettingsForm({ subscription }: Props) {
             </p>
           </div>
         </CardContent>
-        <CardFooter className="flex-col space-y-4">
+        <CardFooter className="sticky bottom-0 z-50 flex-col space-y-4 rounded-b-lg">
           {fetchStatus === FetchStatus.Success && !isFormTouched && (
             <Alert variant="default">
               <CheckCircle className="h-4 w-4" />
@@ -141,7 +141,7 @@ export default function SettingsForm({ subscription }: Props) {
             </Alert>
           )}
           {fetchStatus === FetchStatus.Failure && (
-            <Alert variant="destructive">
+            <Alert variant="destructive" className="bg-card shadow-md">
               <AlertCircle className="h-4 w-4" />
               <AlertTitle>Error</AlertTitle>
               <AlertDescription>
@@ -149,18 +149,20 @@ export default function SettingsForm({ subscription }: Props) {
               </AlertDescription>
             </Alert>
           )}
-          <Button
-            type="submit"
-            className="w-full"
-            disabled={isLoading || !isFormTouched}
-          >
-            {isLoading && (
-              <>
-                <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />{" "}
-              </>
-            )}
-            {updateBtnText}
-          </Button>
+          <div className="inline-block w-full rounded-md bg-card">
+            <Button
+              type="submit"
+              className="relative w-full shadow-md hover:shadow-none"
+              disabled={isLoading || !isFormTouched}
+            >
+              {isLoading && (
+                <>
+                  <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />{" "}
+                </>
+              )}
+              {updateBtnText}
+            </Button>
+          </div>
         </CardFooter>
       </Card>
     </form>
