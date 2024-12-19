@@ -7,6 +7,7 @@ import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import TelegramLinkButton from "@/components/telegram-link-button";
 import { ThemeParkFacilitiesTable } from "@/components/theme-park-facilities-table";
+import AdUnit from "@/components/ad-unit";
 import {
   Routes,
   TelegramChannel,
@@ -76,6 +77,7 @@ export default function TokyoDisneylandAttractionUpdates() {
         Wouldn&apos;t it be great if you could get notified when this happens
         instead of constantly refreshing the mobile app?
       </Paragraph>
+      <AdUnit />
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is here to help! We
         created a dedicated Telegram channel that sends notifications on Disney

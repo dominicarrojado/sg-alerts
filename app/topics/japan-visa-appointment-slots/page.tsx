@@ -8,6 +8,7 @@ import Paragraph from "@/components/ui/paragraph";
 import TelegramLinkButton from "@/components/telegram-link-button";
 import SubscribeLinkButton from "@/components/subscribe-link-button";
 import PageScroller from "@/components/page-scroller";
+import AdUnit from "@/components/ad-unit";
 import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { JapanVisaSlotsTable } from "./japan-visa-slots-table";
@@ -67,6 +68,7 @@ export default function JapanVisa() {
         subscribers the moment a slot becomes available. If there are earlier
         dates available, you would also be notified.
       </Paragraph>
+      <AdUnit />
       <Paragraph>
         I created this service because I had the same problem when applying for
         my Japan tourist visa. The embassy had turned off the waitlist feature,

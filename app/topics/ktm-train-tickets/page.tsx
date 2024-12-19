@@ -6,6 +6,7 @@ import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import TelegramLinkButton from "@/components/telegram-link-button";
+import AdUnit from "@/components/ad-unit";
 import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { TrainTicketsTable } from "./train-tickets-table";
@@ -92,6 +93,7 @@ export default function KtmTrainTickets() {
         tickets available or if someone has cancelled their tickets. This can be
         time-consuming and frustrating.
       </Paragraph>
+      <AdUnit />
       <Paragraph>
         <span className="font-medium">SG Alerts</span> monitors the{" "}
         <abbr title="Keretapi Tanah Melayu Berhad" className="no-underline">

@@ -189,3 +189,15 @@ export enum TelegramChannelLink {
   SsdcPracticalLessonBooking = `https://t.me/${TelegramChannel.SsdcPracticalLessonBooking}`,
   JapanVisaTourism = `https://t.me/${TelegramChannel.JapanVisaTourism}`,
 }
+
+export enum GoogleAdSenseUnit {
+  TOPIC_BODY = "9536070128",
+}
+
+export enum GoogleAdSenseUnitLayout {
+  IN_ARTICLE = "in-article",
+}
+
+export enum GoogleAdSenseUnitFormat {
+  FLUID = "fluid",
+}

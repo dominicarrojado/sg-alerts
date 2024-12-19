@@ -5,6 +5,7 @@ import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import TelegramLinkButton from "@/components/telegram-link-button";
+import AdUnit from "@/components/ad-unit";
 import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { FixedDepositRatesTable } from "./fixed-deposit-rates-table";
@@ -50,6 +51,7 @@ export default function FixedDepositRates() {
         are constantly changing. It can be difficult to keep up with these
         changes and find the best rates.
       </Paragraph>
+      <AdUnit />
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification
         service that monitors the fixed deposit rates offered by major banks in

@@ -6,6 +6,7 @@ import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import TelegramLinkButton from "@/components/telegram-link-button";
+import AdUnit from "@/components/ad-unit";
 import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import CdcLessonSlotsInfo from "./cdc-lesson-slots-info";
@@ -76,6 +77,7 @@ export default function CdcPracticalLessonSlots() {
         it is extremely difficult to get the slots you want. This is especially
         true if you are only available during certain timeslots.
       </Paragraph>
+      <AdUnit />
       <Paragraph>
         Slots cancellation is also common at{" "}
         <abbr title="ComfortDelGro Driving Centre" className="no-underline">

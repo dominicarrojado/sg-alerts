@@ -7,6 +7,7 @@ import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import { FlightsTable } from "@/components/flights-table";
 import TelegramLinkButton from "@/components/telegram-link-button";
+import AdUnit from "@/components/ad-unit";
 import {
   FlightAirline,
   Routes,
@@ -66,6 +67,7 @@ export default function SingaporeAirlinesFlights() {
         go down. While there are many flight deal websites out there, nothing
         beats booking directly with the airline itself.
       </Paragraph>
+      <AdUnit />
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification
         service that monitors the Singapore Airlines flight fare deals from

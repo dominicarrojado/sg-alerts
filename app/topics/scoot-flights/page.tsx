@@ -6,6 +6,7 @@ import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import TelegramLinkButton from "@/components/telegram-link-button";
+import AdUnit from "@/components/ad-unit";
 import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import TravelDealsInfo from "./travel-deals-info";
@@ -59,6 +60,7 @@ export default function ScootFlights() {
         many flight deal websites out there, nothing beats booking directly with
         the airline itself.
       </Paragraph>
+      <AdUnit />
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification
         service that monitors Scoot flight sales departing from Singapore. It

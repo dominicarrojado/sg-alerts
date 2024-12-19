@@ -53,3 +53,5 @@ export const TOPICS_COUNT =
   SUBSCRIPTION_TOPICS.length + TELEGRAM_CHANNELS.length - 2; // exclude SG Alerts new features topic
 
 export const TOAST_DURATION = 60000; // 1 minute
+
+export const GOOGLE_ADSENSE_CLIENT_ID = "ca-pub-3632473845121107";

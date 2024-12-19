@@ -7,6 +7,7 @@ import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import TelegramLinkButton from "@/components/telegram-link-button";
 import PageScroller from "@/components/page-scroller";
+import AdUnit from "@/components/ad-unit";
 import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { CdcSlotsTable } from "./cdc-slots-table";
@@ -70,6 +71,7 @@ export default function CdcAppointmentSlots() {
         </abbr>{" "}
         website for new appointment slots.
       </Paragraph>
+      <AdUnit />
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free service that
         helps you to get notified when there are new appointment slots available

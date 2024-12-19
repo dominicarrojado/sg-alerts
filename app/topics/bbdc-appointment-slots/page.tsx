@@ -6,6 +6,7 @@ import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import TelegramLinkButton from "@/components/telegram-link-button";
+import AdUnit from "@/components/ad-unit";
 import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import BbdcLessonSlotsInfo from "./bbdc-lesson-slots-info";
@@ -71,6 +72,7 @@ export default function BBDCAppointmentSlots() {
         </abbr>{" "}
         website for available appointment slots.
       </Paragraph>
+      <AdUnit />
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free service that
         helps you to get notified when there are new appointment slots available

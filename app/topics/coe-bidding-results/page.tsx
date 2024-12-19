@@ -6,6 +6,7 @@ import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import { Anchor } from "@/components/ui/anchor";
 import SubscribeLinkButton from "@/components/subscribe-link-button";
+import AdUnit from "@/components/ad-unit";
 import { Routes } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { CoeBiddingResultsTable } from "./coe-bidding-results-table";
@@ -93,6 +94,7 @@ export default function CoeBiddingResults() {
         </abbr>{" "}
         and the results are published on their OneMotoring website.
       </Paragraph>
+      <AdUnit />
       <Paragraph>
         Bidding exercises usually start at 12pm on the first and third Monday of
         the month, and last for 3 working days. The exercises end in the same

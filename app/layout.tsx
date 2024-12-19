@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import TagManager from "@/components/tag-manager";
+import AdUnitScript from "@/components/ad-unit-script";
 import {
   MAIN_DESCRIPTION,
   MAIN_TITLE,
@@ -92,6 +93,7 @@ export default function RootLayout({
           <Footer />
         </ThemeProvider>
         <TagManager />
+        <AdUnitScript />
         <Toaster />
       </body>
     </html>
