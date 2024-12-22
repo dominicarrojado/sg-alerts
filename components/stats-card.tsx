@@ -44,7 +44,10 @@ export default function StatsCard(props: Props) {
   }, [isLoading, finalCount, intervalMs]);
 
   return (
-    <Card className="flex flex-grow items-center gap-6 pr-6">
+    <Card
+      className="flex flex-grow items-center gap-6 pr-6"
+      data-clarity-unmask="true"
+    >
       <div className="flex-grow">
         <CardHeader className="pb-2">
           <CardTitle className="text-4xl">
