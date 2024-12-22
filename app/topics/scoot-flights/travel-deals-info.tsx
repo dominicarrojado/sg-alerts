@@ -35,14 +35,14 @@ export default function TravelDealsInfo() {
   return fetchState === FetchStatus.Success ? (
     <>
       {travelDeals.length === 0 ? (
-        <Alert className="my-6">
+        <Alert className="my-6" data-clarity-unmask="true">
           <CheckCircle className="mt-1 h-4 w-4" />
           <AlertTitle className="leading-normal">
             Last flight sale was spotted on {lastAvailableAt}.
           </AlertTitle>
         </Alert>
       ) : (
-        <Table className="my-6">
+        <Table className="my-6" data-clarity-unmask="true">
           <TableCaption>Last updated on {updatedAt}.</TableCaption>
           <TableHeader>
             <TableRow>

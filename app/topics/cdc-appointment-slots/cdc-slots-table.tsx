@@ -63,7 +63,7 @@ export function CdcSlotsTable() {
   }
 
   return fetchState === FetchStatus.Success ? (
-    <Table className="my-6">
+    <Table className="my-6" data-clarity-unmask="true">
       <TableHeader>
         <TableRow>
           <TableHead>Type of Service</TableHead>

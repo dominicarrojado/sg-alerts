@@ -34,7 +34,7 @@ export function FixedDepositRatesTable() {
   }
 
   return fetchState === FetchStatus.Success ? (
-    <Table className="my-6">
+    <Table className="my-6" data-clarity-unmask="true">
       <TableCaption>
         Last updated on {updatedAt}. <br />
         <small>

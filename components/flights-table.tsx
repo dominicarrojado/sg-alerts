@@ -51,7 +51,7 @@ export function FlightsTable({
   }
 
   return fetchState === FetchStatus.Success ? (
-    <Table className="my-6">
+    <Table className="my-6" data-clarity-unmask="true">
       <TableCaption>Last updated on {updatedAt}.</TableCaption>
       <TableHeader>
         <TableRow>
@@ -96,7 +96,7 @@ export function FlightsTable({
                     <span
                       className={cn(
                         "ml-1 font-normal",
-                        isPositive ? "text-primary" : "text-green-500"
+                        isPositive ? "text-primary" : "text-green-500",
                       )}
                     >
                       ({isPositive && "+"}

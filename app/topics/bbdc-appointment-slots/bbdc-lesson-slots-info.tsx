@@ -24,7 +24,7 @@ export default function BbdcLessonSlotsInfo() {
   }
 
   return fetchState === FetchStatus.Success ? (
-    <Alert className="my-6">
+    <Alert className="my-6" data-clarity-unmask="true">
       <CheckCircle className="mt-1 h-4 w-4" />
       <AlertTitle className="leading-normal">
         Last available slots were spotted on {lastAvailableSlotsDate}.

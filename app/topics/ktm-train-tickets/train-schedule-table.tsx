@@ -13,7 +13,7 @@ import { TRAIN_SCHEDULE_ITEMS } from "@/lib/content";
 
 export function TrainScheduleTable() {
   return (
-    <Table className="my-6">
+    <Table className="my-6" data-clarity-unmask="true">
       <TableCaption>
         We monitor these days and time slots from now till the next 38 days.
       </TableCaption>
