@@ -18,7 +18,8 @@ export const MAIN_TITLE = `${SITE_NAME} | ${OWNER_NAME}`;
 export const MAIN_DESCRIPTION =
   "Subscribe to all things Singapore. Save time. Stay updated.";
 export const MAIN_ORIGIN = "https://dominicarrojado.com";
-export const MAIN_URL = `${MAIN_ORIGIN}/sg-alerts/`;
+export const MAIN_PATH = "/sg-alerts";
+export const MAIN_URL = `${MAIN_ORIGIN}${MAIN_PATH}/`;
 export const MAIN_IMAGE = `${MAIN_URL}og-image.png`;
 
 export const ROUTES_WITH_NO_TITLE = [

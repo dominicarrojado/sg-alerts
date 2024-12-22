@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
-import Link from "next/link";
 import { ChevronRightIcon } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
+import InternalLink from "@/components/internal-anchor";
 import { Routes, SubscriptionTopic } from "@/lib/enums";
 
 type Props = {
@@ -51,10 +51,10 @@ export default function SwitchCard(props: Props) {
       </Label>
       {topicRoute && (
         <Button variant="link" className="mt-2 h-auto p-0 font-normal" asChild>
-          <Link href={topicRoute}>
+          <InternalLink href={topicRoute}>
             View Details
             <ChevronRightIcon className="ml-1 h-4 w-4" />
-          </Link>
+          </InternalLink>
         </Button>
       )}
     </div>

@@ -1,3 +1,7 @@
+export enum Environment {
+  Production = "production",
+}
+
 export enum Routes {
   Home = "/",
   Subscribe = "/subscribe/",
@@ -13,6 +17,7 @@ export enum Routes {
   EventsCategory = "/categories/events/",
   EntertainmentCategory = "/categories/entertainment/",
   ThemeParksCategory = "/categories/theme-parks/",
+  Topics = "/topics/",
   JapanVisa = "/topics/japan-visa-appointment-slots/",
   CdcPracticalLessonSlots = "/topics/cdc-practical-lesson-slots/",
   CdcAppointmentSlots = "/topics/cdc-appointment-slots/",

@@ -17,6 +17,7 @@ import {
 import { Anchor } from "@/components/ui/anchor";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import InternalLink from "@/components/internal-anchor";
 import { getTelegramChannelUrl } from "@/lib/telegram";
 import { trackEvent } from "@/lib/google-analytics";
 import { GoogleAnalyticsEvent, Routes } from "@/lib/enums";
@@ -94,10 +95,10 @@ export default function TelegramChannels({ channels, withBackButton }: Props) {
                     onClick={() => topicPageOnClick(title, topicRoute)}
                     asChild
                   >
-                    <Link href={topicRoute}>
+                    <InternalLink href={topicRoute}>
                       {viewDetailsText}
                       <ChevronRightIcon className="ml-1 h-4 w-4" />
-                    </Link>
+                    </InternalLink>
                   </Button>
                 )}
               </div>

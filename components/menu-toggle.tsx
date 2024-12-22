@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
+import InternalLink from "@/components/internal-anchor";
 import {
   CATEGORY_ITEMS,
   MAIN_MENU_ITEMS,
@@ -56,7 +57,7 @@ export default function MenuToggle() {
               {CATEGORY_ITEMS.map(({ emoji, title, href }, index) => (
                 <nav
                   key={index}
-                  className="flex gap-2 items-center text-muted-foreground"
+                  className="flex items-center gap-2 text-muted-foreground"
                 >
                   <Link key={href} href={href} onClick={closeSheet}>
                     <span className="mr-1.5">{emoji}</span> {title}
@@ -71,12 +72,12 @@ export default function MenuToggle() {
               {TOPICS_MENU_ITEMS.map(({ title, href }, index) => (
                 <nav
                   key={index}
-                  className="flex gap-2 items-center text-muted-foreground"
+                  className="flex items-center gap-2 text-muted-foreground"
                 >
                   {href ? (
-                    <Link key={href} href={href} onClick={closeSheet}>
+                    <InternalLink key={href} href={href} onClick={closeSheet}>
                       {title}
-                    </Link>
+                    </InternalLink>
                   ) : (
                     <>
                       <span className="opacity-60">{title}</span>
@@ -92,7 +93,7 @@ export default function MenuToggle() {
           <div className="flex flex-col space-y-2">
             <div className="flex flex-col space-y-3 pt-6">
               <h4 className="font-medium">Other Alerts</h4>
-              <nav className="flex gap-2 items-center">
+              <nav className="flex items-center gap-2">
                 <a href={PH_ALERTS_URL}>
                   <span className="mr-1">🇵🇭</span>{" "}
                   <abbr title="Philippine" className="no-underline">
