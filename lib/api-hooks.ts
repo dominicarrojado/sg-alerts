@@ -6,6 +6,7 @@ import {
   CdcSlotsDatesMap,
   CoeBiddingsInfo,
   DepositRatesInfo,
+  Flights,
   FlightsInfo,
   JapanVisaSlotsDatesMap,
   SsdcSlotsDatesMap,
@@ -373,7 +374,9 @@ export function useGetFlightsInfo(airline: FlightAirline) {
       }
 
       setFlightsInfo({
-        ...resData,
+        items: (resData.items as Flights).filter(
+          (item) => !item.isNoLongerAvailable,
+        ),
         updatedAt: formatDateTime(resData.updatedAt),
       });
       setFetchStatus(FetchStatus.Success);

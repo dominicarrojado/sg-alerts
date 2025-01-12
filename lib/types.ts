@@ -110,7 +110,7 @@ export type Flight = {
   previousPrice?: number;
   departureDate: string;
   returnDate: string;
-  deltaDays: number;
+  isNoLongerAvailable?: boolean;
 };
 
 export type Flights = Array<Flight>;
