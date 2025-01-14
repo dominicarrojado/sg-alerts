@@ -825,6 +825,12 @@ export const TRAIN_SCHEDULE_ITEMS = [
 
 export const DONATION_TESTIMONIALS: DonationTestimonials = [
   {
+    firstName: "Mel",
+    lastName: "H",
+    message: "You're doing a great service to humanity.",
+    date: "14 January 2025",
+  },
+  {
     firstName: "Preetam",
     lastName: "R",
     message: "Thanks for building the Japanese Visa appointment alert.",
