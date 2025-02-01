@@ -113,6 +113,17 @@ export const TOPICS_MENU_ITEMS = [
         <abbr title="ComfortDelGro Driving Centre" className="no-underline">
           CDC
         </abbr>{" "}
+        Practical Test Slots
+      </>
+    ),
+    href: Routes.CdcPracticalTestSlots,
+  },
+  {
+    title: (
+      <>
+        <abbr title="ComfortDelGro Driving Centre" className="no-underline">
+          CDC
+        </abbr>{" "}
         Appointment Slots
       </>
     ),
@@ -280,7 +291,7 @@ export const NEW_FEATURES_TELEGRAM_CHANNEL: TelegramPublicChannel = {
 export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   {
     id: TelegramChannel.CdcLessonsAutoCar,
-    title: TopicTitle.CdcPracticalLessonSlots,
+    title: TopicTitle.CdcPracticalLessonSlotsAuto,
     description: (
       <>
         Receive notifications when there are new practical lessons slot(s) for{" "}
@@ -289,6 +300,31 @@ export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
       </>
     ),
     topicRoute: Routes.CdcPracticalLessonSlots,
+  },
+  {
+    id: TelegramChannel.CdcLessonsManualCar,
+    title: TopicTitle.CdcPracticalLessonSlotsManual,
+    description: (
+      <>
+        Receive notifications when there are new practical lessons slot(s) for{" "}
+        <strong className="font-medium">Class 3 Motorcar</strong> at
+        ComfortDelGro Driving Centre.
+      </>
+    ),
+    topicRoute: Routes.CdcPracticalLessonSlots,
+  },
+  {
+    id: TelegramChannel.CdcTestsPrivate,
+    title: TopicTitle.CdcPracticalTestSlotsPrivate,
+    description: (
+      <>
+        Receive notifications when there are new traffic police practical
+        driving test slot(s) for{" "}
+        <strong className="font-medium">Private Account</strong> at
+        ComfortDelGro Driving Centre.
+      </>
+    ),
+    topicRoute: Routes.CdcPracticalTestSlots,
   },
   {
     id: TelegramChannel.CdcEyesightTest,

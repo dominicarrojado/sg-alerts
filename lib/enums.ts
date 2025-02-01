@@ -20,6 +20,7 @@ export enum Routes {
   Topics = "/topics/",
   JapanVisa = "/topics/japan-visa-appointment-slots/",
   CdcPracticalLessonSlots = "/topics/cdc-practical-lesson-slots/",
+  CdcPracticalTestSlots = "/topics/cdc-practical-test-slots/",
   CdcAppointmentSlots = "/topics/cdc-appointment-slots/",
   FixedDepositRates = "/topics/fixed-deposit-rates/",
   SingaporeAirlinesFlights = "/topics/singapore-airlines-flights/",
@@ -107,6 +108,11 @@ export enum CdcService {
 
 export enum CdcLessonsService {
   AUTO_CAR = "auto-car",
+  MANUAL_CAR = "manual-car",
+}
+
+export enum CdcTestsService {
+  PRIVATE_TP_TEST = "private-tp-test",
 }
 
 export enum TrainService {
@@ -144,7 +150,9 @@ export enum TopicTitle {
   BbdcAppointmentSlots = "🚘 BBDC Appointment Slots",
   CdcEyesightTest = "🚘 CDC Appointment Slots (Eyesight Test)",
   CdcCounterServices = "🚘 CDC Appointment Slots (Counter Services)",
-  CdcPracticalLessonSlots = "🚘 CDC Practical Lesson Slots (Class 3A Motorcar)",
+  CdcPracticalLessonSlotsAuto = "🚘 CDC Practical Lesson Slots (Class 3A Motorcar)",
+  CdcPracticalLessonSlotsManual = "🚘 CDC Practical Lesson Slots (Class 3 Motorcar)",
+  CdcPracticalTestSlotsPrivate = "🚘 CDC Practical Test Slots (Private Account)",
   SsdcPracticalLessonBooking = "🚘 SSDC Appointment Slots (Practical Lesson Booking)",
   SsdcPrivateLearners = "🚘 SSDC Appointment Slots (Private Learners)",
   SsdcEnrolmentWeekend = "🚘 SSDC Appointment Slots (School Enrolment)",
@@ -165,6 +173,8 @@ export enum TopicTitle {
 export enum TelegramChannel {
   SgAlerts = "SGAlertsOfficial",
   CdcLessonsAutoCar = "SGAlertsCDCLessonsAutoCar",
+  CdcLessonsManualCar = "SGAlertsCDCLessonsManualCar",
+  CdcTestsPrivate = "SGAlertsCDCTestsPrivate",
   CdcEyesightTest = "SGAlertsCDCEyesightTest",
   CdcCounterServices = "SGAlertsCDCCounterServices",
   CdcAnnouncements = "SGAlertsCDCAnnouncements",

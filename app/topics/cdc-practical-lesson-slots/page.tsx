@@ -6,15 +6,16 @@ import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import TelegramLinkButton from "@/components/telegram-link-button";
+import PageScroller from "@/components/page-scroller";
 import AdUnit from "@/components/ad-unit";
 import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
-import CdcLessonSlotsInfo from "./cdc-lesson-slots-info";
+import { CdcLessonSlotsTable } from "./cdc-lesson-slots-table";
 
 const title =
-  "ComfortDelGro Driving Centre Practical Lesson Slots (Class 3A Motorcar)";
+  "ComfortDelGro Driving Centre Practical Lesson Slots (Class 3/3A Motorcar)";
 const description =
-  "Subscribe to SG Alerts to get notified when there are new practical lesson slot(s) for Class 3A Motorcar at the ComfortDelGro Driving Centre (CDC) website.";
+  "Subscribe to SG Alerts to get notified when there are new practical lesson slot(s) for Class 3/3A Motorcar at the ComfortDelGro Driving Centre (CDC) website.";
 const url = Routes.CdcPracticalLessonSlots;
 
 export const metadata: Metadata = {
@@ -43,10 +44,10 @@ export default function CdcPracticalLessonSlots() {
         <Heading>{title}</Heading>
         <Subheading>
           Subscribe to get notified when there are new practical lesson slot(s)
-          for Class 3A Motorcar at ComfortDelGro Driving Centre website.
+          for Class 3/3A Motorcar at ComfortDelGro Driving Centre website.
         </Subheading>
       </div>
-      <CdcLessonSlotsInfo />
+      <CdcLessonSlotsTable />
       <Paragraph>
         <Anchor href="https://www.cdc.com.sg/" isExternal>
           ComfortDelGro Driving Centre (CDC)
@@ -55,7 +56,7 @@ export default function CdcPracticalLessonSlots() {
         wide range of driving courses and practical lessons for different types
         of vehicles including{" "}
         <Anchor href="https://www.cdc.com.sg/course/class-33a" isExternal>
-          Class 3A Motorcar
+          Class 3A Motorcar and Class 3 Motorcar
         </Anchor>
         .
       </Paragraph>
@@ -73,9 +74,10 @@ export default function CdcPracticalLessonSlots() {
         </abbr>
         , it is important that you book your practical lesson slots early so
         that you can get the slots you want. However, due to the high demand for
-        practical lesson slots and no session opening date for Class 3A lessons,
-        it is extremely difficult to get the slots you want. This is especially
-        true if you are only available during certain timeslots.
+        practical lesson slots and no session opening date for both Class 3A and
+        Class 3 lessons, it is extremely difficult to get the slots you want.
+        This is especially true if you are only available during certain
+        timeslots.
       </Paragraph>
       <AdUnit />
       <Paragraph>
@@ -99,23 +101,29 @@ export default function CdcPracticalLessonSlots() {
         <abbr title="ComfortDelGro Driving Centre" className="no-underline">
           CDC
         </abbr>{" "}
-        website for available practical lesson slots for Class 3A Motorcar (for
-        Standard only, not applicable for One Team or Elite Team). It sends you
-        a Telegram notification when there are new slots available so you can
-        save time and effort. It is not a guarantee that you will get the slots
-        you want, but it will definitely increase your chances of getting them.
+        website for available practical lesson slots for Class 3/3A Motorcar
+        (for Standard only, not applicable for One Team, Elite Team or CDC
+        Outposts). It sends you a Telegram notification when there are new slots
+        available so you can save time and effort. It is not a guarantee that
+        you will get the slots you want, but it will definitely increase your
+        chances of getting them.
       </Paragraph>
       <Paragraph>
         To get started, simply click the button below to join the Telegram
         channel and start receiving notifications.
       </Paragraph>
-      <div className="sticky bottom-6 z-50 mt-8 text-center">
+      <PageScroller className="mt-8 flex flex-col items-center gap-4">
         <TelegramLinkButton
           channel={TelegramChannel.CdcLessonsAutoCar}
-          linkText="Subscribe Now"
-          topicTitle={TopicTitle.CdcPracticalLessonSlots}
+          linkText="Subscribe for Class 3A Motorcar"
+          topicTitle={TopicTitle.CdcPracticalLessonSlotsAuto}
         />
-      </div>
+        <TelegramLinkButton
+          channel={TelegramChannel.CdcLessonsManualCar}
+          linkText="Subscribe for Class 3 Motorcar"
+          topicTitle={TopicTitle.CdcPracticalLessonSlotsManual}
+        />
+      </PageScroller>
     </Container>
   );
 }

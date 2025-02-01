@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import {
   BbdcService,
+  CdcLessonsService,
   CdcService,
   GoogleAnalyticsEvent,
   JapanVisaType,
@@ -184,6 +185,21 @@ export type CdcSlotsInfo = {
   topicTitle: TopicTitle.CdcEyesightTest | TopicTitle.CdcCounterServices;
 };
 export type CdcSlotsInfoItems = Array<CdcSlotsInfo>;
+
+export type CdcLessonSlotsDatesMap = Record<CdcLessonsService, string>;
+
+export type CdcLessonSlotsInfo = {
+  service: CdcLessonsService;
+  title: string;
+  lastAvailableDate: string;
+  telegramChannel:
+    | TelegramChannel.CdcLessonsAutoCar
+    | TelegramChannel.CdcLessonsManualCar;
+  topicTitle:
+    | TopicTitle.CdcPracticalLessonSlotsAuto
+    | TopicTitle.CdcPracticalLessonSlotsManual;
+};
+export type CdcLessonSlotsInfoItems = Array<CdcLessonSlotsInfo>;
 
 export type SsdcSlotsDatesMap = Record<SsdcService, string>;
 

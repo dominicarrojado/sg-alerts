@@ -3,6 +3,7 @@ import { useState } from "react";
 import { formatDateTime } from "./date";
 import {
   BbdcSlotsDatesMap,
+  CdcLessonSlotsDatesMap,
   CdcSlotsDatesMap,
   CoeBiddingsInfo,
   DepositRatesInfo,
@@ -21,6 +22,7 @@ import {
   BbdcService,
   CdcLessonsService,
   CdcService,
+  CdcTestsService,
   FetchStatus,
   FlightAirline,
   JapanVisaType,
@@ -287,7 +289,46 @@ export function useGetCdcSlotsDatesMap() {
   return [fetchStatus, cdcSlotsDatesMap, getCdcSlotsDatesMap] as const;
 }
 
-export function useGetCdcLessonSlotsDate() {
+export function useGetCdcLessonSlotsDatesMap() {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [cdcSlotsDatesMap, setCdcLessonSlotsDatesMap] =
+    useState<CdcLessonSlotsDatesMap>({
+      [CdcLessonsService.AUTO_CAR]: "",
+      [CdcLessonsService.MANUAL_CAR]: "",
+    });
+  const getCdcLessonSlotsDatesMap = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(
+        `${API_URL}${ApiEndpoint.CdcLessonLastSlotsInfo}`,
+      );
+      const resData = res.data;
+
+      if (!resData || typeof resData !== "object") {
+        throw new Error("Invalid data");
+      }
+
+      const autoCar = resData[CdcLessonsService.AUTO_CAR];
+      const manualCar = resData[CdcLessonsService.MANUAL_CAR];
+
+      setCdcLessonSlotsDatesMap({
+        [CdcLessonsService.AUTO_CAR]: autoCar ? formatDateTime(autoCar) : "-",
+        [CdcLessonsService.MANUAL_CAR]: manualCar
+          ? formatDateTime(manualCar)
+          : "-",
+      });
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, cdcSlotsDatesMap, getCdcLessonSlotsDatesMap] as const;
+}
+
+export function useGetCdcTestSlotsDate() {
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
   const [lastAvailableSlotsDate, setLastAvailableSlotsDate] = useState("");
   const getLastAvailableSlotsDate = async () => {
@@ -300,12 +341,12 @@ export function useGetCdcLessonSlotsDate() {
       );
       const resData = res.data;
 
-      if (!resData || !resData[CdcLessonsService.AUTO_CAR]) {
+      if (!resData || !resData[CdcTestsService.PRIVATE_TP_TEST]) {
         throw new Error("Invalid data");
       }
 
       setLastAvailableSlotsDate(
-        formatDateTime(resData[CdcLessonsService.AUTO_CAR]),
+        formatDateTime(resData[CdcTestsService.PRIVATE_TP_TEST]),
       );
       setFetchStatus(FetchStatus.Success);
     } catch (err) {

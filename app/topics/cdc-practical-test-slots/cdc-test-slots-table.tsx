@@ -4,12 +4,12 @@ import React, { useEffect } from "react";
 import { CheckCircle } from "lucide-react";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useGetCdcLessonSlotsDate } from "@/lib/api-hooks";
+import { useGetCdcTestSlotsDate } from "@/lib/api-hooks";
 import { FetchStatus } from "@/lib/enums";
 
-export default function CdcLessonSlotsInfo() {
+export function CdcTestSlotsTable() {
   const [fetchState, lastAvailableSlotsDate, getLastAvailableSlotsDate] =
-    useGetCdcLessonSlotsDate();
+    useGetCdcTestSlotsDate();
 
   useEffect(() => {
     getLastAvailableSlotsDate();

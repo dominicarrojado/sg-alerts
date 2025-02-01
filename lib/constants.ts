@@ -1,4 +1,5 @@
 import {
+  CdcLessonsService,
   CdcService,
   JapanVisaType,
   Routes,
@@ -36,6 +37,9 @@ export const JAPAN_VISA_TYPES_LENGTH = JAPAN_VISA_TYPES.length;
 
 export const CDC_SERVICES = Object.values(CdcService);
 export const CDC_SERVICES_LENGTH = CDC_SERVICES.length;
+
+export const CDC_LESSONS_SERVICES = Object.values(CdcLessonsService);
+export const CDC_LESSONS_SERVICES_LENGTH = CDC_LESSONS_SERVICES.length;
 
 export const SSDC_SERVICES = Object.values(SsdcService);
 export const SSDC_SERVICES_LENGTH = SSDC_SERVICES.length;
