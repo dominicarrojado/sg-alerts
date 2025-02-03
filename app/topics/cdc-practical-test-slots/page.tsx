@@ -65,9 +65,10 @@ export default function CdcPracticalTestSlots() {
       </Paragraph>
       <Paragraph>
         After passing the Basic Theory Test (BTT), Final Theory Test (FTT), and
-        completing the required number of practical lessons and simulator
-        courses, learner motorists can proceed to book their practical driving
-        test. You can book your test date and time through the{" "}
+        completing the required number of practical lessons, simulator courses,
+        and recommendations by their Private Driving Instructor (PDI), learner
+        motorists can proceed to book their practical driving test. You can book
+        your test date and time through the{" "}
         <abbr title="ComfortDelGro Driving Centre" className="no-underline">
           CDC
         </abbr>{" "}
