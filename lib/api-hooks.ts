@@ -5,6 +5,7 @@ import {
   BbdcSlotsDatesMap,
   CdcLessonSlotsDatesMap,
   CdcSlotsDatesMap,
+  CdcTestSlotsDatesMap,
   CoeBiddingsInfo,
   DepositRatesInfo,
   Flights,
@@ -291,7 +292,7 @@ export function useGetCdcSlotsDatesMap() {
 
 export function useGetCdcLessonSlotsDatesMap() {
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
-  const [cdcSlotsDatesMap, setCdcLessonSlotsDatesMap] =
+  const [cdcLessonSlotsDatesMap, setCdcLessonSlotsDatesMap] =
     useState<CdcLessonSlotsDatesMap>({
       [CdcLessonsService.AUTO_CAR]: "",
       [CdcLessonsService.MANUAL_CAR]: "",
@@ -325,13 +326,22 @@ export function useGetCdcLessonSlotsDatesMap() {
     }
   };
 
-  return [fetchStatus, cdcSlotsDatesMap, getCdcLessonSlotsDatesMap] as const;
+  return [
+    fetchStatus,
+    cdcLessonSlotsDatesMap,
+    getCdcLessonSlotsDatesMap,
+  ] as const;
 }
 
-export function useGetCdcTestSlotsDate() {
+export function useGetCdcTestSlotsDatesMap() {
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
-  const [lastAvailableSlotsDate, setLastAvailableSlotsDate] = useState("");
-  const getLastAvailableSlotsDate = async () => {
+  const [cdcTestSlotsDatesMap, setCdcTestSlotsDatesMap] =
+    useState<CdcTestSlotsDatesMap>({
+      [CdcTestsService.PRIVATE_TP_TEST]: "",
+      [CdcTestsService.AUTO_CAR_TEST]: "",
+      [CdcTestsService.MANUAL_CAR_TEST]: "",
+    });
+  const getCdcTestSlotsDatesMap = async () => {
     try {
       setFetchStatus(FetchStatus.Loading);
 
@@ -341,24 +351,32 @@ export function useGetCdcTestSlotsDate() {
       );
       const resData = res.data;
 
-      if (!resData || !resData[CdcTestsService.PRIVATE_TP_TEST]) {
+      if (!resData || typeof resData !== "object") {
         throw new Error("Invalid data");
       }
 
-      setLastAvailableSlotsDate(
-        formatDateTime(resData[CdcTestsService.PRIVATE_TP_TEST]),
-      );
+      const privateTpTest = resData[CdcTestsService.PRIVATE_TP_TEST];
+      const autoCarTest = resData[CdcTestsService.AUTO_CAR_TEST];
+      const manualCarTest = resData[CdcTestsService.MANUAL_CAR_TEST];
+
+      setCdcTestSlotsDatesMap({
+        [CdcTestsService.PRIVATE_TP_TEST]: privateTpTest
+          ? formatDateTime(privateTpTest)
+          : "-",
+        [CdcTestsService.AUTO_CAR_TEST]: autoCarTest
+          ? formatDateTime(autoCarTest)
+          : "-",
+        [CdcTestsService.MANUAL_CAR_TEST]: manualCarTest
+          ? formatDateTime(manualCarTest)
+          : "-",
+      });
       setFetchStatus(FetchStatus.Success);
     } catch (err) {
       setFetchStatus(FetchStatus.Failure);
     }
   };
 
-  return [
-    fetchStatus,
-    lastAvailableSlotsDate,
-    getLastAvailableSlotsDate,
-  ] as const;
+  return [fetchStatus, cdcTestSlotsDatesMap, getCdcTestSlotsDatesMap] as const;
 }
 
 export function useGetDepositRatesInfo() {

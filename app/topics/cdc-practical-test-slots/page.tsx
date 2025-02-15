@@ -7,14 +7,14 @@ import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import TelegramLinkButton from "@/components/telegram-link-button";
 import AdUnit from "@/components/ad-unit";
+import PageScroller from "@/components/page-scroller";
 import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { CdcTestSlotsTable } from "./cdc-test-slots-table";
 
-const title =
-  "ComfortDelGro Driving Centre Practical Test Slots (Private Account)";
+const title = "ComfortDelGro Driving Centre Practical Test Slots";
 const description =
-  "Subscribe to SG Alerts to get notified when there are new traffic police practical driving test slot(s) for Private Account at the ComfortDelGro Driving Centre (CDC) website.";
+  "Subscribe to SG Alerts to get notified when there are new traffic police practical driving test slot(s) at the ComfortDelGro Driving Centre (CDC) website.";
 const url = Routes.CdcPracticalTestSlots;
 
 export const metadata: Metadata = {
@@ -43,8 +43,7 @@ export default function CdcPracticalTestSlots() {
         <Heading>{title}</Heading>
         <Subheading>
           Subscribe to get notified when there are new traffic police practical
-          driving test slot(s) for Private Account at ComfortDelGro Driving
-          Centre website.
+          driving test slot(s) at ComfortDelGro Driving Centre website.
         </Subheading>
       </div>
       <CdcTestSlotsTable />
@@ -59,16 +58,24 @@ export default function CdcPracticalTestSlots() {
           href="https://www.cdc.com.sg/course/theory-test-btt-ftt/"
           isExternal
         >
-          Private/Self-Study Package for Class 3/3A Motorcar
+          Private/Self-Study Package
+        </Anchor>
+        ,{" "}
+        <Anchor href="https://www.cdc.com.sg/course/class-33a" isExternal>
+          Class 3A Motorcar
+        </Anchor>{" "}
+        and{" "}
+        <Anchor href="https://www.cdc.com.sg/course/class-33a" isExternal>
+          Class 3 Motorcar
         </Anchor>
         .
       </Paragraph>
       <Paragraph>
         After passing the Basic Theory Test (BTT), Final Theory Test (FTT), and
         completing the required number of practical lessons, simulator courses,
-        and recommendations by their Private Driving Instructor (PDI), learner
-        motorists can proceed to book their practical driving test. You can book
-        your test date and time through the{" "}
+        and recommendations by their Private Driving Instructor (PDI) or school
+        instructor, learner motorists can proceed to book their practical
+        driving test. You can book your test date and time through the{" "}
         <abbr title="ComfortDelGro Driving Centre" className="no-underline">
           CDC
         </abbr>{" "}
@@ -83,23 +90,41 @@ export default function CdcPracticalTestSlots() {
         <abbr title="ComfortDelGro Driving Centre" className="no-underline">
           CDC
         </abbr>{" "}
-        website for available traffic police practical driving test slots for
-        Private Account. It sends you a Telegram notification when there are new
-        slots available so you can save time and effort. It is not a guarantee
-        that you will get the slots you want, but it will definitely increase
-        your chances of getting them.
+        website for available traffic police practical driving test slots. It
+        sends you a Telegram notification when there are new slots available so
+        you can save time and effort. It is not a guarantee that you will get
+        the slots you want, but it will definitely increase your chances of
+        getting them.
       </Paragraph>
       <Paragraph>
         To get started, simply click the button below to join the Telegram
         channel and start receiving notifications.
       </Paragraph>
-      <div className="sticky bottom-6 z-50 mt-8 text-center">
-        <TelegramLinkButton
-          channel={TelegramChannel.CdcTestsPrivate}
-          linkText="Subscribe Now"
-          topicTitle={TopicTitle.CdcPracticalTestSlotsPrivate}
-        />
-      </div>
+      <PageScroller>
+        <div className="mt-8 flex flex-col justify-center gap-4 text-center sm:flex-row">
+          <div>
+            <TelegramLinkButton
+              channel={TelegramChannel.CdcTestsPrivate}
+              linkText="Private Account"
+              topicTitle={TopicTitle.CdcPracticalTestSlotsPrivate}
+            />
+          </div>
+          <div>
+            <TelegramLinkButton
+              channel={TelegramChannel.CdcTestsAutoCar}
+              linkText="Class 3A Motorcar"
+              topicTitle={TopicTitle.CdcPracticalTestSlotsAuto}
+            />
+          </div>
+        </div>
+        <div className="mt-4 text-center">
+          <TelegramLinkButton
+            channel={TelegramChannel.CdcTestsManualCar}
+            linkText="Class 3 Motorcar"
+            topicTitle={TopicTitle.CdcPracticalTestSlotsManual}
+          />
+        </div>
+      </PageScroller>
     </Container>
   );
 }

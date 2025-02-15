@@ -12,10 +12,9 @@ import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { CdcLessonSlotsTable } from "./cdc-lesson-slots-table";
 
-const title =
-  "ComfortDelGro Driving Centre Practical Lesson Slots (Class 3/3A Motorcar)";
+const title = "ComfortDelGro Driving Centre Practical Lesson Slots";
 const description =
-  "Subscribe to SG Alerts to get notified when there are new practical lesson slot(s) for Class 3/3A Motorcar at the ComfortDelGro Driving Centre (CDC) website.";
+  "Subscribe to SG Alerts to get notified when there are new practical lesson slot(s) at the ComfortDelGro Driving Centre (CDC) website.";
 const url = Routes.CdcPracticalLessonSlots;
 
 export const metadata: Metadata = {
@@ -44,7 +43,7 @@ export default function CdcPracticalLessonSlots() {
         <Heading>{title}</Heading>
         <Subheading>
           Subscribe to get notified when there are new practical lesson slot(s)
-          for Class 3/3A Motorcar at ComfortDelGro Driving Centre website.
+          at ComfortDelGro Driving Centre website.
         </Subheading>
       </div>
       <CdcLessonSlotsTable />
@@ -56,7 +55,11 @@ export default function CdcPracticalLessonSlots() {
         wide range of driving courses and practical lessons for different types
         of vehicles including{" "}
         <Anchor href="https://www.cdc.com.sg/course/class-33a" isExternal>
-          Class 3A Motorcar and Class 3 Motorcar
+          Class 3A Motorcar
+        </Anchor>{" "}
+        and{" "}
+        <Anchor href="https://www.cdc.com.sg/course/class-33a" isExternal>
+          Class 3 Motorcar
         </Anchor>
         .
       </Paragraph>
