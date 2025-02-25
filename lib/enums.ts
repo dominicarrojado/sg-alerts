@@ -30,6 +30,7 @@ export enum Routes {
   CoeBiddingResults = "/topics/coe-bidding-results/",
   KtmTrainTickets = "/topics/ktm-train-tickets/",
   SsdcAppointmentSlots = "/topics/ssdc-appointment-slots/",
+  SsdcPracticalTestSlots = "/topics/ssdc-practical-test-slots/",
   BbdcAppointmentSlots = "/topics/bbdc-appointment-slots/",
   TokyoDisneylandAttractionUpdates = "/topics/tokyo-disneyland-attraction-updates/",
   TokyoDisneySeaAttractionUpdates = "/topics/tokyo-disneysea-attraction-updates/",
@@ -135,6 +136,13 @@ export enum SsdcService {
   ENROLMENT_WEEKEND = "enrolment-weekend",
 }
 
+export enum SsdcTestsService {
+  PRIVATE_AUTO_CAR = "private-auto-car",
+  PRIVATE_MANUAL_CAR = "private-manual",
+  AUTO_CAR = "auto-car",
+  MANUAL_CAR = "manual-car",
+}
+
 export enum BbdcService {
   COUNTER_SERVICES = "counter-services",
 }
@@ -162,6 +170,9 @@ export enum TopicTitle {
   SsdcEnrolmentWeekend = "🚘 SSDC Appointment Slots (School Enrolment)",
   SsdcOtherCoursesEnrolment = "🚘 SSDC Appointment Slots (Other Courses Enrolment)",
   SsdcForeignLicenceWeekend = "🚘 SSDC Appointment Slots (Foreign Licence Package)",
+  SsdcPracticalTestSlotsPrivate = "🚘 SSDC Practical Test Slots (Private Learners)",
+  SsdcPracticalTestSlotsAuto = "🚘 SSDC Practical Test Slots (Class 3A Motorcar)",
+  SsdcPracticalTestSlotsManual = "🚘 SSDC Practical Test Slots (Class 3 Motorcar)",
   FixedDepositRates = "💰 Fixed Deposit Rates",
   JapanVisaTourism = "🇯🇵 Japan Visa Appointment Slots (Tourism)",
   JapanVisaOthers = "🇯🇵 Japan Visa Appointment Slots (Others)",
@@ -186,6 +197,9 @@ export enum TelegramChannel {
   CdcAnnouncements = "SGAlertsCDCAnnouncements",
   SsdcPracticalLessonBooking = "SGAlertsSSDCPracticalLessons",
   SsdcPrivateLearners = "SGAlertsSSDCPrivateLearners",
+  SsdcTestsPrivate = "SGAlertsSSDCTestsPrivate",
+  SsdcTestsAutoCar = "SGAlertsSSDCTestsAutoCar",
+  SsdcTestsManualCar = "SGAlertsSSDCTestsManualCar",
   SsdcAnnouncements = "SGAlertsSSDCAnnouncements",
   BbdcAppointmentSlots = "SGAlertsBBDCAppointmentSlots",
   BbdcAnnouncements = "SGAlertsBBDCAnnouncements",

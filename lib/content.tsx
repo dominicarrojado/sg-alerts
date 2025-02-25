@@ -143,6 +143,17 @@ export const TOPICS_MENU_ITEMS = [
   {
     title: (
       <>
+        <abbr title="Singapore Safety Driving Centre" className="no-underline">
+          SSDC
+        </abbr>{" "}
+        Practical Test Slots
+      </>
+    ),
+    href: Routes.SsdcAppointmentSlots,
+  },
+  {
+    title: (
+      <>
         <abbr title="Bukit Batok Driving Centre" className="no-underline">
           BBDC
         </abbr>{" "}
@@ -417,6 +428,45 @@ export const SSDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
       </>
     ),
     topicRoute: Routes.SsdcAppointmentSlots,
+  },
+  {
+    id: TelegramChannel.SsdcTestsPrivate,
+    title: TopicTitle.SsdcPracticalTestSlotsPrivate,
+    description: (
+      <>
+        Receive notifications when there are new traffic police practical
+        driving test slot(s) for{" "}
+        <strong className="font-medium">Private Learners</strong> at Singapore
+        Safety Driving Centre.
+      </>
+    ),
+    topicRoute: Routes.SsdcPracticalTestSlots,
+  },
+  {
+    id: TelegramChannel.SsdcTestsAutoCar,
+    title: TopicTitle.SsdcPracticalTestSlotsAuto,
+    description: (
+      <>
+        Receive notifications when there are new traffic police practical
+        driving test slot(s) for{" "}
+        <strong className="font-medium">Class 3A Motorcar</strong> at Singapore
+        Safety Driving Centre.
+      </>
+    ),
+    topicRoute: Routes.SsdcPracticalTestSlots,
+  },
+  {
+    id: TelegramChannel.SsdcTestsManualCar,
+    title: TopicTitle.SsdcPracticalTestSlotsManual,
+    description: (
+      <>
+        Receive notifications when there are new traffic police practical
+        driving test slot(s) for{" "}
+        <strong className="font-medium">Class 3 Motorcar</strong> at Singapore
+        Safety Driving Centre.
+      </>
+    ),
+    topicRoute: Routes.SsdcPracticalTestSlots,
   },
   {
     id: TelegramChannel.SsdcAnnouncements,

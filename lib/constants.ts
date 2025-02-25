@@ -5,6 +5,7 @@ import {
   JapanVisaType,
   Routes,
   SsdcService,
+  SsdcTestsService,
   SubscriptionTopic,
   TelegramChannel,
 } from "./enums";
@@ -47,6 +48,9 @@ export const CDC_TESTS_SERVICES_LENGTH = CDC_TESTS_SERVICES.length;
 
 export const SSDC_SERVICES = Object.values(SsdcService);
 export const SSDC_SERVICES_LENGTH = SSDC_SERVICES.length;
+
+export const SSDC_TESTS_SERVICES = Object.values(SsdcTestsService);
+export const SSDC_TESTS_SERVICES_LENGTH = SSDC_TESTS_SERVICES.length;
 
 export const TELEGRAM_SHORT_URL = "https://t.me";
 

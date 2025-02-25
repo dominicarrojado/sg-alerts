@@ -8,6 +8,7 @@ import {
   JapanVisaType,
   Routes,
   SsdcService,
+  SsdcTestsService,
   SubscriptionTopic,
   TelegramChannel,
   TopicTitle,
@@ -234,6 +235,23 @@ export type SsdcSlotsInfo = {
     | TopicTitle.SsdcForeignLicenceWeekend;
 };
 export type SsdcSlotsInfoItems = Array<SsdcSlotsInfo>;
+
+export type SsdcTestSlotsDatesMap = Record<SsdcTestsService, string>;
+
+export type SsdcTestSlotsInfo = {
+  service: SsdcTestsService;
+  title: string;
+  lastAvailableDate: string;
+  telegramChannel:
+    | TelegramChannel.SsdcTestsPrivate
+    | TelegramChannel.SsdcTestsAutoCar
+    | TelegramChannel.SsdcTestsManualCar;
+  topicTitle:
+    | TopicTitle.SsdcPracticalTestSlotsPrivate
+    | TopicTitle.SsdcPracticalTestSlotsAuto
+    | TopicTitle.SsdcPracticalTestSlotsManual;
+};
+export type SsdcTestSlotsInfoItems = Array<SsdcTestSlotsInfo>;
 
 export type BbdcSlotsDatesMap = Record<BbdcService, string>;
 

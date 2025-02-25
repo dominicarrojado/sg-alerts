@@ -12,6 +12,7 @@ import {
   FlightsInfo,
   JapanVisaSlotsDatesMap,
   SsdcSlotsDatesMap,
+  SsdcTestSlotsDatesMap,
   Subscription,
   SubscriptionTopics,
   ThemeParkInfo,
@@ -28,6 +29,7 @@ import {
   FlightAirline,
   JapanVisaType,
   SsdcService,
+  SsdcTestsService,
   ThemeParkService,
   TrainService,
   TravelDealsService,
@@ -569,6 +571,59 @@ export function useGetSsdcSlotsDatesMap() {
   };
 
   return [fetchStatus, ssdcSlotsDatesMap, getSsdcSlotsDatesMap] as const;
+}
+
+export function useGetSsdcTestSlotsDatesMap() {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [ssdcTestSlotsDatesMap, setSsdcTestSlotsDatesMap] =
+    useState<SsdcTestSlotsDatesMap>({
+      [SsdcTestsService.PRIVATE_MANUAL_CAR]: "",
+      [SsdcTestsService.PRIVATE_AUTO_CAR]: "",
+      [SsdcTestsService.AUTO_CAR]: "",
+      [SsdcTestsService.MANUAL_CAR]: "",
+    });
+  const getSsdcTestSlotsDatesMap = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(
+        `${API_URL}${ApiEndpoint.CdcLessonLastSlotsInfo}`,
+      );
+      const resData = res.data;
+
+      if (!resData || typeof resData !== "object") {
+        throw new Error("Invalid data");
+      }
+
+      const privateManualCar = resData[SsdcTestsService.PRIVATE_MANUAL_CAR];
+      const privateAutoCar = resData[SsdcTestsService.PRIVATE_AUTO_CAR];
+      const autoCar = resData[SsdcTestsService.AUTO_CAR];
+      const manualCar = resData[SsdcTestsService.MANUAL_CAR];
+
+      setSsdcTestSlotsDatesMap({
+        [SsdcTestsService.PRIVATE_MANUAL_CAR]: privateManualCar
+          ? formatDateTime(privateManualCar)
+          : "-",
+        [SsdcTestsService.PRIVATE_AUTO_CAR]: privateAutoCar
+          ? formatDateTime(privateAutoCar)
+          : "-",
+        [SsdcTestsService.AUTO_CAR]: autoCar ? formatDateTime(autoCar) : "-",
+        [SsdcTestsService.MANUAL_CAR]: manualCar
+          ? formatDateTime(manualCar)
+          : "-",
+      });
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [
+    fetchStatus,
+    ssdcTestSlotsDatesMap,
+    getSsdcTestSlotsDatesMap,
+  ] as const;
 }
 
 export function useGetBbdcSlotsDatesMap() {
