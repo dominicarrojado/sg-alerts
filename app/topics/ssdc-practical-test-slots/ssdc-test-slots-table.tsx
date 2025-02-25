@@ -32,7 +32,7 @@ export function SsdcTestSlotsTable() {
       service: SsdcTestsService.PRIVATE_MANUAL_CAR,
       title: "Private Learners",
       lastAvailableDate: ssdcSlotsDatesMap[SsdcTestsService.PRIVATE_MANUAL_CAR],
-      telegramChannel: TelegramChannel.SsdcTestsManualCar,
+      telegramChannel: TelegramChannel.SsdcTestsPrivate,
       topicTitle: TopicTitle.SsdcPracticalTestSlotsPrivate,
     },
     {
