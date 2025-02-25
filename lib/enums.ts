@@ -58,6 +58,7 @@ export enum ApiEndpoint {
   CoeBiddingsInfo = "/coe-checker/biddings-info",
   TrainTimeSlotsInfo = "/train-tickets-checker/slots-info",
   SsdcSlotsInfo = "/ssdc-checker/slots-last-available-dates",
+  SsdcTestSlotsInfo = "/ssdc-tests-checker/slots-last-available-dates",
   BbdcSlotsInfo = "/bbdc-checker/slots-last-available-dates",
   TravelDealsInfo = "/travel-deals-checker/travel-deals-info",
   ThemeParkInfo = "/theme-park-checker/theme-park-info",

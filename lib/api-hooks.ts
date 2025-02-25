@@ -587,9 +587,7 @@ export function useGetSsdcTestSlotsDatesMap() {
       setFetchStatus(FetchStatus.Loading);
 
       const axios = (await import("axios")).default;
-      const res = await axios.get(
-        `${API_URL}${ApiEndpoint.CdcLessonLastSlotsInfo}`,
-      );
+      const res = await axios.get(`${API_URL}${ApiEndpoint.SsdcTestSlotsInfo}`);
       const resData = res.data;
 
       if (!resData || typeof resData !== "object") {
