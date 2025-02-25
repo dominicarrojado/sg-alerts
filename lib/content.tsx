@@ -939,7 +939,7 @@ export const DONATION_TESTIMONIALS: DonationTestimonials = [
   {
     firstName: "Kailin",
     lastName: "C",
-    message: "",
+    message: "Thank you Dominic!!",
     date: "25 February 2025",
   },
   {
