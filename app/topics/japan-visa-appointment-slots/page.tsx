@@ -64,7 +64,7 @@ export default function JapanVisa() {
       <Paragraph>
         This free notification service automatically monitors the Embassy of
         Japan in Singapore&apos;s website for any available booking slots for
-        visa applications, and sends out email or Telegram notifications to our
+        visa applications and sends out email or Telegram notifications to our
         subscribers the moment a slot becomes available. If there are earlier
         dates available, you would also be notified.
       </Paragraph>

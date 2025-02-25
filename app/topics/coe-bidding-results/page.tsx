@@ -97,7 +97,7 @@ export default function CoeBiddingResults() {
       <AdUnit />
       <Paragraph>
         Bidding exercises usually start at 12pm on the first and third Monday of
-        the month, and last for 3 working days. The exercises end in the same
+        the month and last for 3 working days. The exercises end in the same
         week, at 4pm on Wednesday, if there is no public holiday in between. If
         you are thinking of buying a vehicle, it is important to keep track of
         the{" "}

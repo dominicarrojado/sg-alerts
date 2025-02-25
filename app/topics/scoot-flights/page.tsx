@@ -47,7 +47,7 @@ export default function ScootFlights() {
         <span className="font-medium">Scoot</span> is a Singapore-based low-cost
         airline owned by Singapore Airlines. It is known for offering affordable
         flights to various destinations around the world. Scoot operates a fleet
-        of Airbus A320, Boeing 787 Dreamliners, and the new Embraer E190-E2
+        of Airbus A320, Boeing 787 Dreamliners and the new Embraer E190-E2
         aircraft. It was was named the world&apos;s best long-haul low-cost
         airline in 2024 at Skytrax&apos;s World Airline Awards.
       </Paragraph>

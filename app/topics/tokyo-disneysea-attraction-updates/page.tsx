@@ -72,11 +72,11 @@ export default function TokyoDisneySeaAttractionUpdates() {
       </Paragraph>
       <Paragraph>
         However, due to the high demand, it can be challenging to secure these
-        passes. They easily get sold out, and you may miss out on the
-        opportunity to enjoy your favorite attractions. But did you know that
-        sometimes people cancel their passes or new passes are released?
-        Wouldn&apos;t it be great if you could get notified when this happens
-        instead of constantly refreshing the mobile app?
+        passes. They easily get sold out and you may miss out on the opportunity
+        to enjoy your favorite attractions. But did you know that sometimes
+        people cancel their passes or new passes are released? Wouldn&apos;t it
+        be great if you could get notified when this happens instead of
+        constantly refreshing the mobile app?
       </Paragraph>
       <AdUnit />
       <Paragraph>

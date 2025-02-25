@@ -49,7 +49,7 @@ export default function About() {
       <Paragraph>
         It started out as a personal project to help me monitor the appointment
         booking slots for my Japan tourist visa application. I had little time
-        left to apply for my visa, and I was having trouble finding an available
+        left to apply for my visa and I was having trouble finding an available
         appointment slot. I was frustrated with having to constantly check the
         embassy&apos;s website for available slots and I didn&apos;t want to pay
         the expensive agency fees just to secure a slot. So I created a service
@@ -60,7 +60,7 @@ export default function About() {
         I knew that other people would find the Japan Visa Appointment
         Notification Service useful as well, so I decided to share it with
         everyone. I created a simple website where people could subscribe to the
-        service and receive notifications for free. It was well received, and
+        service and receive notifications for free. It was well received and
         many people were able to secure their visa appointment slots thanks to
         the service.
       </Paragraph>
@@ -68,7 +68,7 @@ export default function About() {
         After seeing how useful it was, I decided to create{" "}
         <span className="font-medium">SG Alerts</span> to expand the service to
         other topics that are relevant to Singapore residents such as flight
-        prices, fixed deposit rates, driving centre appointment slots, and many
+        prices, fixed deposit rates, driving centre appointment slots and many
         more. I&apos;m always looking for new topics or alerts to add to the
         service, so feel free to send me an{" "}
         <Anchor href={`mailto:${OWNER_EMAIL}`}>email</Anchor> if you have any

@@ -71,7 +71,7 @@ export default function CdcPracticalTestSlots() {
         .
       </Paragraph>
       <Paragraph>
-        After passing the Basic Theory Test (BTT), Final Theory Test (FTT), and
+        After passing the Basic Theory Test (BTT), Final Theory Test (FTT) and
         completing the required number of practical lessons, simulator courses,
         and recommendations by their Private Driving Instructor (PDI) or school
         instructor, learner motorists can proceed to book their practical
@@ -92,9 +92,10 @@ export default function CdcPracticalTestSlots() {
         </abbr>{" "}
         website for available traffic police practical driving test slots. It
         sends you a Telegram notification when there are new slots available so
-        you can save time and effort. It is not a guarantee that you will get
-        the slots you want, but it will definitely increase your chances of
-        getting them.
+        you can save time and effort. You will also be notified if there are
+        earlier slots available. It is not a guarantee that you will get the
+        slots you want, but it will definitely increase your chances of getting
+        them.
       </Paragraph>
       <Paragraph>
         To get started, simply click the button below to join the Telegram
