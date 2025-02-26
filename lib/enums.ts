@@ -138,7 +138,6 @@ export enum SsdcService {
 }
 
 export enum SsdcTestsService {
-  PRIVATE_AUTO_CAR = "private-auto-car",
   PRIVATE_MANUAL_CAR = "private-manual",
   AUTO_CAR = "auto-car",
   MANUAL_CAR = "manual-car",

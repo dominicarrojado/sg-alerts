@@ -578,7 +578,6 @@ export function useGetSsdcTestSlotsDatesMap() {
   const [ssdcTestSlotsDatesMap, setSsdcTestSlotsDatesMap] =
     useState<SsdcTestSlotsDatesMap>({
       [SsdcTestsService.PRIVATE_MANUAL_CAR]: "",
-      [SsdcTestsService.PRIVATE_AUTO_CAR]: "",
       [SsdcTestsService.AUTO_CAR]: "",
       [SsdcTestsService.MANUAL_CAR]: "",
     });
@@ -595,16 +594,12 @@ export function useGetSsdcTestSlotsDatesMap() {
       }
 
       const privateManualCar = resData[SsdcTestsService.PRIVATE_MANUAL_CAR];
-      const privateAutoCar = resData[SsdcTestsService.PRIVATE_AUTO_CAR];
       const autoCar = resData[SsdcTestsService.AUTO_CAR];
       const manualCar = resData[SsdcTestsService.MANUAL_CAR];
 
       setSsdcTestSlotsDatesMap({
         [SsdcTestsService.PRIVATE_MANUAL_CAR]: privateManualCar
           ? formatDateTime(privateManualCar)
-          : "-",
-        [SsdcTestsService.PRIVATE_AUTO_CAR]: privateAutoCar
-          ? formatDateTime(privateAutoCar)
           : "-",
         [SsdcTestsService.AUTO_CAR]: autoCar ? formatDateTime(autoCar) : "-",
         [SsdcTestsService.MANUAL_CAR]: manualCar
