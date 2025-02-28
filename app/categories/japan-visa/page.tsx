@@ -49,7 +49,7 @@ export default function JapanVisa() {
         <PageSeparator>OR</PageSeparator>
         <SubscribeForm
           defaultTopics={JAPAN_VISA_NOTIFICATION_SETTINGS}
-          withBackButton
+          backButtonRoute={Routes.Home}
         />
       </Container>
     </>

@@ -41,11 +41,9 @@ export default function Home() {
                   <div className="flex flex-col py-2 text-center">
                     <div className="text-2xl sm:text-4xl">{emoji}</div>
                     <div className="mt-2">{title}</div>
-                    {description && (
-                      <div className="mt-1 text-xs font-light text-muted-foreground">
-                        {description}
-                      </div>
-                    )}
+                    <div className="mt-1 text-xs font-light text-muted-foreground">
+                      {description}
+                    </div>
                   </div>
                 </Link>
               </Button>

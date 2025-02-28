@@ -36,11 +36,14 @@ export default function Money() {
   return (
     <>
       <Container>
-        <div className="space-y-2 mb-6">
+        <div className="mb-6 space-y-2">
           <Heading>{title}</Heading>
           <Subheading>{description}</Subheading>
         </div>
-        <TelegramChannels channels={MONEY_TELEGRAM_CHANNELS} withBackButton />
+        <TelegramChannels
+          channels={MONEY_TELEGRAM_CHANNELS}
+          backButtonRoute={Routes.Home}
+        />
       </Container>
     </>
   );

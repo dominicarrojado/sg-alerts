@@ -25,10 +25,10 @@ import type { TelegramPublicChannels } from "@/lib/types";
 
 type Props = {
   channels: TelegramPublicChannels;
-  withBackButton?: boolean;
+  backButtonRoute?: Routes;
 };
 
-export default function TelegramChannels({ channels, withBackButton }: Props) {
+export default function TelegramChannels({ channels, backButtonRoute }: Props) {
   const viewDetailsText = "View Details";
   const topicOnClick = (title: string, linkUrl: string, linkText?: string) => {
     trackEvent({
@@ -106,10 +106,10 @@ export default function TelegramChannels({ channels, withBackButton }: Props) {
           })}
         </div>
       </CardContent>
-      {withBackButton && (
+      {backButtonRoute && (
         <CardFooter className="flex-col space-y-4">
           <Button variant="secondary" className="w-full" asChild>
-            <Link href={Routes.Home}>
+            <Link href={backButtonRoute}>
               <ArrowLeftIcon className="mr-2 h-4 w-4" />
               Go Back
             </Link>

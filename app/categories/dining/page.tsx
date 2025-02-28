@@ -36,13 +36,13 @@ export default function Dining() {
   return (
     <>
       <Container>
-        <div className="space-y-2 mb-6">
+        <div className="mb-6 space-y-2">
           <Heading>{title}</Heading>
           <Subheading>{description}</Subheading>
         </div>
         <SubscribeForm
           defaultTopics={DINING_NOTIFICATION_SETTINGS}
-          withBackButton
+          backButtonRoute={Routes.Home}
         />
       </Container>
     </>

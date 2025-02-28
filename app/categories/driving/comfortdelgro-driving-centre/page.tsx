@@ -6,12 +6,12 @@ import Subheading from "@/components/ui/subheading";
 import TelegramChannels from "@/components/telegram-channels";
 import { Routes } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
-import { THEME_PARK_TELEGRAM_CHANNELS } from "@/lib/content";
+import { CDC_TELEGRAM_CHANNELS } from "@/lib/content";
 
-const title = "Theme Parks Attraction Updates";
+const title = "ComfortDelGro Driving Centre";
 const description =
-  "Subscribe to get notified to topics related to popular theme parks visited by Singapore residents such as Tokyo Disneyland and Tokyo DisneySea.";
-const url = Routes.ThemeParksCategory;
+  "Subscribe to get notified to topics related to ComfortDelGro Driving Centre such as practical lessons, appointment slots and more.";
+const url = Routes.ComfortDelGroDrivingCentre;
 
 export const metadata: Metadata = {
   title,
@@ -32,19 +32,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ThemeParks() {
+export default function ComfortDelGroDrivingCentre() {
   return (
-    <>
-      <Container>
-        <div className="mb-6 space-y-2">
-          <Heading>{title}</Heading>
-          <Subheading>{description}</Subheading>
-        </div>
-        <TelegramChannels
-          channels={THEME_PARK_TELEGRAM_CHANNELS}
-          backButtonRoute={Routes.Home}
-        />
-      </Container>
-    </>
+    <Container>
+      <div className="mb-6 space-y-2">
+        <Heading>{title}</Heading>
+        <Subheading>{description}</Subheading>
+      </div>
+      <TelegramChannels
+        channels={CDC_TELEGRAM_CHANNELS}
+        backButtonRoute={Routes.DrivingCategory}
+      />
+    </Container>
   );
 }

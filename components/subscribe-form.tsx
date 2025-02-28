@@ -33,12 +33,12 @@ import type { NotificationSettings, SubscriptionTopics } from "@/lib/types";
 
 type Props = {
   defaultTopics: NotificationSettings;
-  withBackButton?: boolean;
+  backButtonRoute?: Routes;
 };
 
 export default function SubscribeForm({
   defaultTopics,
-  withBackButton,
+  backButtonRoute,
 }: Props) {
   const submitBtnText = "Subscribe Now";
   const scrollDownToastTitle = "👍 Almost there!";
@@ -254,14 +254,14 @@ export default function SubscribeForm({
               )}
               {submitBtnText}
             </Button>
-            {withBackButton && (
+            {backButtonRoute && (
               <Button
                 variant="secondary"
                 className="w-full"
                 disabled={isLoading}
                 asChild
               >
-                <Link href={Routes.Home}>
+                <Link href={backButtonRoute}>
                   <ArrowLeftIcon className="mr-2 h-4 w-4" />
                   Go Back
                 </Link>

@@ -95,6 +95,62 @@ export const CATEGORY_ITEMS = [
   },
 ];
 
+export const DRIVING_CATEGORY_ITEMS = [
+  {
+    emoji: "🚖",
+    title: (
+      <abbr title="ComfortDelGro Driving Centre" className="no-underline">
+        CDC
+      </abbr>
+    ),
+    description: (
+      <>
+        Practical Lessons,{" "}
+        <abbr title="Appointment" className="no-underline">
+          Appt.
+        </abbr>{" "}
+        Slots{" "}
+      </>
+    ),
+    href: Routes.ComfortDelGroDrivingCentre,
+  },
+  {
+    emoji: "🚍",
+    title: (
+      <abbr title="Singapore Safety Driving Centre" className="no-underline">
+        SSDC
+      </abbr>
+    ),
+    description: (
+      <>
+        <abbr title="Appointment" className="no-underline">
+          Appt.
+        </abbr>{" "}
+        Slots, <br className="hidden sm:block" />
+        Practical Tests
+      </>
+    ),
+    href: Routes.SingaporeSafetyDrivingCentre,
+  },
+  {
+    emoji: "🚘",
+    title: (
+      <abbr title="Bukit Batok Driving Centre" className="no-underline">
+        BBDC
+      </abbr>
+    ),
+    description: (
+      <>
+        <abbr title="Appointment" className="no-underline">
+          Appt.
+        </abbr>{" "}
+        Slots, Announcements
+      </>
+    ),
+    href: Routes.BukitBatokDrivingCentre,
+  },
+];
+
 export const TOPICS_MENU_ITEMS = [
   {
     title: (
@@ -400,6 +456,7 @@ export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
       </>
     ),
   },
+  NEW_FEATURES_TELEGRAM_CHANNEL,
 ];
 
 export const SSDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
@@ -511,6 +568,7 @@ export const BBDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
       </>
     ),
   },
+  NEW_FEATURES_TELEGRAM_CHANNEL,
 ];
 
 export const DRIVING_TELEGRAM_CHANNELS: TelegramPublicChannels = [
@@ -769,7 +827,6 @@ export const SSDC_NOTIFICATION_SETTINGS: NotificationSettings = [
 ];
 
 export const DRIVING_NOTIFICATION_SETTINGS: NotificationSettings = [
-  ...SSDC_NOTIFICATION_SETTINGS,
   {
     id: SubscriptionTopic.CoeBiddings,
     title: "📄 Certificate of Entitlement (COE) Bidding Results",
@@ -910,6 +967,7 @@ export const ENTERTAINMENT_NOTIFICATION_SETTINGS: NotificationSettings = [
 
 export const NOTIFICATION_SETTINGS: NotificationSettings = [
   ...JAPAN_VISA_NOTIFICATION_SETTINGS,
+  ...SSDC_NOTIFICATION_SETTINGS,
   ...DRIVING_NOTIFICATION_SETTINGS,
   ...EVENTS_NOTIFICATION_SETTINGS,
   ...DINING_NOTIFICATION_SETTINGS,

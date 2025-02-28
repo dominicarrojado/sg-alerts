@@ -61,7 +61,7 @@ export default function BBDCAppointmentSlots() {
           BBDC
         </abbr>
         , you may need to{" "}
-        <Anchor href="https://info.bbdc.sg/visitor-appointment/" isExternal>
+        <Anchor href="https://info.bbdc.sg/visitors-appointment/" isExternal>
           book an appointment
         </Anchor>{" "}
         for opening of new account and other counter services. The appointment
