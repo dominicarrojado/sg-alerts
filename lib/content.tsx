@@ -205,7 +205,7 @@ export const TOPICS_MENU_ITEMS = [
         Practical Test Slots
       </>
     ),
-    href: Routes.SsdcAppointmentSlots,
+    href: Routes.SsdcPracticalTestSlots,
   },
   {
     title: (
