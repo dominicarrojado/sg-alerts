@@ -23,7 +23,7 @@ import {
   TelegramChannel,
   TopicTitle,
 } from "@/lib/enums";
-import { JAPAN_VISA_TYPES_LENGTH, SUBSCRIBE_FORM_ID } from "@/lib/constants";
+import { SUBSCRIBE_FORM_ID } from "@/lib/constants";
 import type { JapanVisaSlotsInfoItems } from "@/lib/types";
 
 export function JapanVisaSlotsTable() {
@@ -133,16 +133,18 @@ export function JapanVisaSlotsTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {Array.from({ length: JAPAN_VISA_TYPES_LENGTH }).map((_, index) => (
-          <TableRow key={index}>
-            <TableCell>
-              <Skeleton className="h-5 w-full" />
-            </TableCell>
-            <TableCell>
-              <Skeleton className="h-5 w-full" />
-            </TableCell>
-          </TableRow>
-        ))}
+        {Array.from({ length: japanVisaSlotsInfoItems.length }).map(
+          (_, index) => (
+            <TableRow key={index}>
+              <TableCell>
+                <Skeleton className="h-5 w-full" />
+              </TableCell>
+              <TableCell>
+                <Skeleton className="h-5 w-full" />
+              </TableCell>
+            </TableRow>
+          ),
+        )}
       </TableBody>
     </Table>
   );

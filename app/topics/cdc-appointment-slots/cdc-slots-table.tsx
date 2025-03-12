@@ -21,7 +21,6 @@ import {
   TelegramChannel,
   TopicTitle,
 } from "@/lib/enums";
-import { CDC_SERVICES_LENGTH } from "@/lib/constants";
 import type { CdcSlotsInfoItems } from "@/lib/types";
 
 export function CdcSlotsTable() {
@@ -114,7 +113,7 @@ export function CdcSlotsTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {Array.from({ length: CDC_SERVICES_LENGTH }).map((_, index) => (
+        {Array.from({ length: cdcSlotsInfoItems.length }).map((_, index) => (
           <TableRow key={index}>
             <TableCell>
               <Skeleton className="h-5 w-full" />

@@ -21,7 +21,6 @@ import {
   TopicTitle,
   SsdcTestsService,
 } from "@/lib/enums";
-import { SSDC_TESTS_SERVICES_LENGTH } from "@/lib/constants";
 import type { SsdcTestSlotsInfoItems } from "@/lib/types";
 
 export function SsdcTestSlotsTable() {
@@ -121,16 +120,18 @@ export function SsdcTestSlotsTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {Array.from({ length: SSDC_TESTS_SERVICES_LENGTH }).map((_, index) => (
-          <TableRow key={index}>
-            <TableCell>
-              <Skeleton className="h-5 w-full" />
-            </TableCell>
-            <TableCell>
-              <Skeleton className="h-5 w-full" />
-            </TableCell>
-          </TableRow>
-        ))}
+        {Array.from({ length: ssdcTestsSlotsInfoItems.length }).map(
+          (_, index) => (
+            <TableRow key={index}>
+              <TableCell>
+                <Skeleton className="h-5 w-full" />
+              </TableCell>
+              <TableCell>
+                <Skeleton className="h-5 w-full" />
+              </TableCell>
+            </TableRow>
+          ),
+        )}
       </TableBody>
     </Table>
   );

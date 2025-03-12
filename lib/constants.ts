@@ -1,14 +1,4 @@
-import {
-  CdcLessonsService,
-  CdcService,
-  CdcTestsService,
-  JapanVisaType,
-  Routes,
-  SsdcService,
-  SsdcTestsService,
-  SubscriptionTopic,
-  TelegramChannel,
-} from "./enums";
+import { Routes, SubscriptionTopic, TelegramChannel } from "./enums";
 
 export const OWNER_NAME = "Dominic Arrojado";
 export const OWNER_WEBSITE = "https://dominicarrojado.com";
@@ -33,24 +23,6 @@ export const ROUTES_WITH_NO_TITLE = [
 
 export const PH_ALERTS_URL = `${MAIN_ORIGIN}/ph-alerts/`;
 export const PH_ALERTS_CEBU_PACIFIC_URL = `${PH_ALERTS_URL}topics/cebu-pacific-flights/`;
-
-export const JAPAN_VISA_TYPES = Object.values(JapanVisaType);
-export const JAPAN_VISA_TYPES_LENGTH = JAPAN_VISA_TYPES.length;
-
-export const CDC_SERVICES = Object.values(CdcService);
-export const CDC_SERVICES_LENGTH = CDC_SERVICES.length;
-
-export const CDC_LESSONS_SERVICES = Object.values(CdcLessonsService);
-export const CDC_LESSONS_SERVICES_LENGTH = CDC_LESSONS_SERVICES.length;
-
-export const CDC_TESTS_SERVICES = Object.values(CdcTestsService);
-export const CDC_TESTS_SERVICES_LENGTH = CDC_TESTS_SERVICES.length;
-
-export const SSDC_SERVICES = Object.values(SsdcService);
-export const SSDC_SERVICES_LENGTH = SSDC_SERVICES.length;
-
-export const SSDC_TESTS_SERVICES = Object.values(SsdcTestsService);
-export const SSDC_TESTS_SERVICES_LENGTH = SSDC_TESTS_SERVICES.length;
 
 export const TELEGRAM_SHORT_URL = "https://t.me";
 

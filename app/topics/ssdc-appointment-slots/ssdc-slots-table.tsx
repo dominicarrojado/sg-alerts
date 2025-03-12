@@ -23,7 +23,7 @@ import {
   GoogleAnalyticsEvent,
   TopicTitle,
 } from "@/lib/enums";
-import { SSDC_SERVICES_LENGTH, SUBSCRIBE_FORM_ID } from "@/lib/constants";
+import { SUBSCRIBE_FORM_ID } from "@/lib/constants";
 import type { SsdcSlotsInfoItems } from "@/lib/types";
 
 export function SsdcSlotsTable() {
@@ -149,7 +149,7 @@ export function SsdcSlotsTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {Array.from({ length: SSDC_SERVICES_LENGTH }).map((_, index) => (
+        {Array.from({ length: ssdcSlotsInfoItems.length }).map((_, index) => (
           <TableRow key={index}>
             <TableCell>
               <Skeleton className="h-5 w-full" />

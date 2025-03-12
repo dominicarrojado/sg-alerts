@@ -12,10 +12,11 @@ import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { CdcLessonSlotsTable } from "./cdc-lesson-slots-table";
 
-const title = "ComfortDelGro Driving Centre Practical Lesson Slots";
+const title =
+  "ComfortDelGro Driving Centre Class 2 Motorcycle Practical Lesson Slots";
 const description =
-  "Subscribe to SG Alerts to get notified when there are new practical lesson slot(s) at the ComfortDelGro Driving Centre (CDC) website.";
-const url = Routes.CdcPracticalLessonSlots;
+  "Subscribe to SG Alerts to get notified when there are new practical lesson slot(s) for Class 2 Motorcycle at the ComfortDelGro Driving Centre (CDC) website.";
+const url = Routes.CdcClass2PracticalLessonSlots;
 
 export const metadata: Metadata = {
   title,
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CdcPracticalLessonSlots() {
+export default function CdcClass2PracticalLessonSlots() {
   return (
     <Container>
       <div className="space-y-2">
@@ -54,32 +55,23 @@ export default function CdcPracticalLessonSlots() {
         is one of the largest driving school centres in Singapore. It offers a
         wide range of driving courses and practical lessons for different types
         of vehicles including{" "}
-        <Anchor href="https://www.cdc.com.sg/course/class-33a" isExternal>
-          Class 3A Motorcar
-        </Anchor>{" "}
-        and{" "}
-        <Anchor href="https://www.cdc.com.sg/course/class-33a" isExternal>
-          Class 3 Motorcar
+        <Anchor href="https://www.cdc.com.sg/course/class-2/" isExternal>
+          Class 2 Motorcycle
         </Anchor>
         .
       </Paragraph>
       <Paragraph>
         The practical lessons are conducted by experienced driving instructors
-        who will teach you how to drive safely on the road. You will also learn
-        about traffic rules and regulations, as well as defensive driving
-        techniques. After completing the course, you will be able to apply for
-        your driving license and start driving on your own.
-      </Paragraph>
-      <Paragraph>
-        If you are planning to take up driving lessons at{" "}
+        who will teach you how to ride a motorcycle safely on the road. You will
+        also learn about traffic rules and regulations, as well as defensive
+        riding techniques. If you are planning to take up driving lessons at{" "}
         <abbr title="ComfortDelGro Driving Centre" className="no-underline">
           CDC
         </abbr>
         , it is important that you book your practical lesson slots early so
         that you can get the slots you want. However, due to the high demand for
-        practical lesson slots and no session opening date for both Class 3A and
-        Class 3 lessons, it is extremely difficult to get the slots you want.
-        This is especially true if you are only available during certain
+        practical lesson slots, it is extremely difficult to get the slots you
+        want. This is especially true if you are only available during certain
         timeslots.
       </Paragraph>
       <AdUnit />
@@ -104,29 +96,23 @@ export default function CdcPracticalLessonSlots() {
         <abbr title="ComfortDelGro Driving Centre" className="no-underline">
           CDC
         </abbr>{" "}
-        website for available practical lesson slots for Class 3/3A Motorcar
-        (for Standard only, not applicable for One Team, Elite Team or CDC
-        Outposts). It sends you a Telegram notification when there are new slots
-        available so you can save time and effort. It is not a guarantee that
-        you will get the slots you want, but it will definitely increase your
-        chances of getting them.
+        website for available practical lesson slots for Class 2 Motorcycle. It
+        sends you a Telegram notification when there are new slots available so
+        you can save time and effort. It is not a guarantee that you will get
+        the slots you want, but it will definitely increase your chances of
+        getting them.
       </Paragraph>
       <Paragraph>
         To get started, simply click the button below to join the Telegram
         channel and start receiving notifications.
       </Paragraph>
-      <PageScroller className="mt-8 flex flex-col items-center gap-4">
+      <div className="sticky bottom-6 z-50 mt-8 text-center">
         <TelegramLinkButton
-          channel={TelegramChannel.CdcLessonsAutoCar}
-          linkText="Subscribe for Class 3A Motorcar"
-          topicTitle={TopicTitle.CdcPracticalLessonSlotsAuto}
+          channel={TelegramChannel.CdcLessonsClass2}
+          linkText="Subscribe Now"
+          topicTitle={TopicTitle.CdcPracticalLessonSlotsClass2}
         />
-        <TelegramLinkButton
-          channel={TelegramChannel.CdcLessonsManualCar}
-          linkText="Subscribe for Class 3 Motorcar"
-          topicTitle={TopicTitle.CdcPracticalLessonSlotsManual}
-        />
-      </PageScroller>
+      </div>
     </Container>
   );
 }

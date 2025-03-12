@@ -203,6 +203,13 @@ export type CdcLessonSlotsInfo = {
 };
 export type CdcLessonSlotsInfoItems = Array<CdcLessonSlotsInfo>;
 
+export type CdcClass2LessonSlotsInfo = {
+  service: CdcLessonsService;
+  title: string;
+  lastAvailableDate: string;
+};
+export type CdcClass2SlotsInfoItems = Array<CdcClass2LessonSlotsInfo>;
+
 export type CdcTestSlotsDatesMap = Record<CdcTestsService, string>;
 
 export type CdcTestSlotsInfo = {

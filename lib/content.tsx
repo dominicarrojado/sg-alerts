@@ -158,10 +158,43 @@ export const TOPICS_MENU_ITEMS = [
         <abbr title="ComfortDelGro Driving Centre" className="no-underline">
           CDC
         </abbr>{" "}
-        Practical Lesson Slots
+        Class 3/3A Practical Slots
       </>
     ),
     href: Routes.CdcPracticalLessonSlots,
+  },
+  {
+    title: (
+      <>
+        <abbr title="ComfortDelGro Driving Centre" className="no-underline">
+          CDC
+        </abbr>{" "}
+        Class 2B Practical Slots
+      </>
+    ),
+    href: Routes.CdcClass2BPracticalLessonSlots,
+  },
+  {
+    title: (
+      <>
+        <abbr title="ComfortDelGro Driving Centre" className="no-underline">
+          CDC
+        </abbr>{" "}
+        Class 2A Practical Slots
+      </>
+    ),
+    href: Routes.CdcClass2APracticalLessonSlots,
+  },
+  {
+    title: (
+      <>
+        <abbr title="ComfortDelGro Driving Centre" className="no-underline">
+          CDC
+        </abbr>{" "}
+        Class 2 Practical Slots
+      </>
+    ),
+    href: Routes.CdcClass2PracticalLessonSlots,
   },
   {
     title: (
@@ -379,6 +412,42 @@ export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
       </>
     ),
     topicRoute: Routes.CdcPracticalLessonSlots,
+  },
+  {
+    id: TelegramChannel.CdcLessonsClass2B,
+    title: TopicTitle.CdcPracticalLessonSlotsClass2B,
+    description: (
+      <>
+        Receive notifications when there are new practical lessons slot(s) for{" "}
+        <strong className="font-medium">Class 2B Motorcycle</strong> at
+        ComfortDelGro Driving Centre.
+      </>
+    ),
+    topicRoute: Routes.CdcClass2BPracticalLessonSlots,
+  },
+  {
+    id: TelegramChannel.CdcLessonsClass2A,
+    title: TopicTitle.CdcPracticalLessonSlotsClass2A,
+    description: (
+      <>
+        Receive notifications when there are new practical lessons slot(s) for{" "}
+        <strong className="font-medium">Class 2A Motorcycle</strong> at
+        ComfortDelGro Driving Centre.
+      </>
+    ),
+    topicRoute: Routes.CdcClass2APracticalLessonSlots,
+  },
+  {
+    id: TelegramChannel.CdcLessonsClass2,
+    title: TopicTitle.CdcPracticalLessonSlotsClass2,
+    description: (
+      <>
+        Receive notifications when there are new practical lessons slot(s) for{" "}
+        <strong className="font-medium">Class 2 Motorcycle</strong> at
+        ComfortDelGro Driving Centre.
+      </>
+    ),
+    topicRoute: Routes.CdcClass2PracticalLessonSlots,
   },
   {
     id: TelegramChannel.CdcTestsPrivate,

@@ -21,7 +21,6 @@ import {
   TelegramChannel,
   TopicTitle,
 } from "@/lib/enums";
-import { CDC_LESSONS_SERVICES_LENGTH } from "@/lib/constants";
 import type { CdcTestSlotsInfoItems } from "@/lib/types";
 
 export function CdcTestSlotsTable() {
@@ -121,16 +120,18 @@ export function CdcTestSlotsTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {Array.from({ length: CDC_LESSONS_SERVICES_LENGTH }).map((_, index) => (
-          <TableRow key={index}>
-            <TableCell>
-              <Skeleton className="h-5 w-full" />
-            </TableCell>
-            <TableCell>
-              <Skeleton className="h-5 w-full" />
-            </TableCell>
-          </TableRow>
-        ))}
+        {Array.from({ length: cdcTestsSlotsInfoItems.length }).map(
+          (_, index) => (
+            <TableRow key={index}>
+              <TableCell>
+                <Skeleton className="h-5 w-full" />
+              </TableCell>
+              <TableCell>
+                <Skeleton className="h-5 w-full" />
+              </TableCell>
+            </TableRow>
+          ),
+        )}
       </TableBody>
     </Table>
   );
