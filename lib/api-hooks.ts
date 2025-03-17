@@ -4,6 +4,7 @@ import { formatDateTime } from "./date";
 import {
   BbdcSlotsDatesMap,
   CdcLessonSlotsDatesMap,
+  CdcSimulatorSlotsDatesMap,
   CdcSlotsDatesMap,
   CdcTestSlotsDatesMap,
   CoeBiddingsInfo,
@@ -24,6 +25,7 @@ import {
   BbdcService,
   CdcLessonsService,
   CdcService,
+  CdcSimulatorService,
   CdcTestsService,
   FetchStatus,
   FlightAirline,
@@ -449,6 +451,51 @@ export function useGetCdcTestSlotsDatesMap() {
   };
 
   return [fetchStatus, cdcTestSlotsDatesMap, getCdcTestSlotsDatesMap] as const;
+}
+
+export function useGetCdcSimulatorSlotsDatesMap() {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [cdcSimulatorSlotsDatesMap, setCdcSimulatorSlotsDatesMap] =
+    useState<CdcSimulatorSlotsDatesMap>({
+      [CdcSimulatorService.SIMULATOR_BIKE]: "",
+      [CdcSimulatorService.SIMULATOR_CAR]: "",
+    });
+  const getCdcSimulatorSlotsDatesMap = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(
+        `${API_URL}${ApiEndpoint.CdcLessonLastSlotsInfo}`,
+      );
+      const resData = res.data;
+
+      if (!resData || typeof resData !== "object") {
+        throw new Error("Invalid data");
+      }
+
+      const simulatorBike = resData[CdcSimulatorService.SIMULATOR_BIKE];
+      const simulatorCar = resData[CdcSimulatorService.SIMULATOR_CAR];
+
+      setCdcSimulatorSlotsDatesMap({
+        [CdcSimulatorService.SIMULATOR_BIKE]: simulatorBike
+          ? formatDateTime(simulatorBike)
+          : "-",
+        [CdcSimulatorService.SIMULATOR_CAR]: simulatorCar
+          ? formatDateTime(simulatorCar)
+          : "-",
+      });
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [
+    fetchStatus,
+    cdcSimulatorSlotsDatesMap,
+    getCdcSimulatorSlotsDatesMap,
+  ] as const;
 }
 
 export function useGetDepositRatesInfo() {

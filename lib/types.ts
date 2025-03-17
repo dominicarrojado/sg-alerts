@@ -3,6 +3,7 @@ import {
   BbdcService,
   CdcLessonsService,
   CdcService,
+  CdcSimulatorService,
   CdcTestsService,
   GoogleAnalyticsEvent,
   JapanVisaType,
@@ -226,6 +227,21 @@ export type CdcTestSlotsInfo = {
     | TopicTitle.CdcPracticalTestSlotsManual;
 };
 export type CdcTestSlotsInfoItems = Array<CdcTestSlotsInfo>;
+
+export type CdcSimulatorSlotsDatesMap = Record<CdcSimulatorService, string>;
+
+export type CdcSimulatorSlotsInfo = {
+  service: CdcSimulatorService;
+  title: string;
+  lastAvailableDate: string;
+  telegramChannel:
+    | TelegramChannel.CdcSimulatorBike
+    | TelegramChannel.CdcSimulatorCar;
+  topicTitle:
+    | TopicTitle.CdcSimulatorCourseSlotsBike
+    | TopicTitle.CdcSimulatorCourseSlotsCar;
+};
+export type CdcSimulatorSlotsInfoItems = Array<CdcSimulatorSlotsInfo>;
 
 export type SsdcSlotsDatesMap = Record<SsdcService, string>;
 

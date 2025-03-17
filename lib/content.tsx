@@ -202,6 +202,17 @@ export const TOPICS_MENU_ITEMS = [
         <abbr title="ComfortDelGro Driving Centre" className="no-underline">
           CDC
         </abbr>{" "}
+        Simulator Course Slots
+      </>
+    ),
+    href: Routes.CdcSimulatorCourseSlots,
+  },
+  {
+    title: (
+      <>
+        <abbr title="ComfortDelGro Driving Centre" className="no-underline">
+          CDC
+        </abbr>{" "}
         Practical Test Slots
       </>
     ),
@@ -448,6 +459,30 @@ export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
       </>
     ),
     topicRoute: Routes.CdcClass2PracticalLessonSlots,
+  },
+  {
+    id: TelegramChannel.CdcSimulatorBike,
+    title: TopicTitle.CdcSimulatorCourseSlotsBike,
+    description: (
+      <>
+        Receive notifications when there are new session slot(s) for{" "}
+        <strong className="font-medium">Simulator Course (Bike)</strong> at
+        ComfortDelGro Driving Centre.
+      </>
+    ),
+    topicRoute: Routes.CdcSimulatorCourseSlots,
+  },
+  {
+    id: TelegramChannel.CdcSimulatorCar,
+    title: TopicTitle.CdcSimulatorCourseSlotsCar,
+    description: (
+      <>
+        Receive notifications when there are new session slot(s) for{" "}
+        <strong className="font-medium">Simulator Course (Car)</strong> at
+        ComfortDelGro Driving Centre.
+      </>
+    ),
+    topicRoute: Routes.CdcSimulatorCourseSlots,
   },
   {
     id: TelegramChannel.CdcTestsPrivate,
