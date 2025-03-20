@@ -29,14 +29,14 @@ export function CdcSimulatorSlotsTable() {
   const cdcSimulatorSlotsInfoItems: CdcSimulatorSlotsInfoItems = [
     {
       service: CdcSimulatorService.SIMULATOR_BIKE,
-      title: "Bike",
+      title: "Motorcycle (Bike)",
       lastAvailableDate: cdcSlotsDatesMap[CdcSimulatorService.SIMULATOR_BIKE],
       telegramChannel: TelegramChannel.CdcSimulatorBike,
       topicTitle: TopicTitle.CdcSimulatorCourseSlotsBike,
     },
     {
       service: CdcSimulatorService.SIMULATOR_CAR,
-      title: "Car",
+      title: "Motorcar (Car)",
       lastAvailableDate: cdcSlotsDatesMap[CdcSimulatorService.SIMULATOR_CAR],
       telegramChannel: TelegramChannel.CdcSimulatorCar,
       topicTitle: TopicTitle.CdcSimulatorCourseSlotsCar,
