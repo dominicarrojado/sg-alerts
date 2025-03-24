@@ -115,7 +115,7 @@ export default function SsdcAppointmentSlots() {
         </div>
         <div className="mt-4 text-center">
           <SubscribeLinkButton
-            route={Routes.DrivingCategory}
+            route={Routes.SingaporeSafetyDrivingCentre}
             linkText="For Other Appointment Slots"
           />
         </div>

@@ -138,6 +138,7 @@ export enum CdcTestsService {
   PRIVATE_TP_TEST = "private-tp-test",
   AUTO_CAR_TEST = "auto-car-test",
   MANUAL_CAR_TEST = "manual-car-test",
+  CLASS_2B_TEST = "class-2b-test",
 }
 
 export enum CdcSimulatorService {
@@ -193,7 +194,8 @@ export enum TopicTitle {
   CdcPracticalLessonSlotsClass2B = "🚘 CDC Practical Lesson Slots (Class 2B Motorcycle)",
   CdcPracticalTestSlotsPrivate = "🚘 CDC Practical Test Slots (Private Account)",
   CdcPracticalTestSlotsAuto = "🚘 CDC Practical Test Slots (Class 3A Motorcar)",
-  CdcPracticalTestSlotsManual = "🚘 CDC Practical Test Slots  (Class 3 Motorcar)",
+  CdcPracticalTestSlotsManual = "🚘 CDC Practical Test Slots (Class 3 Motorcar)",
+  CdcPracticalTestSlotsClass2B = "🚘 CDC Practical Test Slots (Class 2B Motorcycle)",
   CdcSimulatorCourseSlotsBike = "🚘 CDC Simulator Course Slots (Bike)",
   CdcSimulatorCourseSlotsCar = "🚘 CDC Simulator Course Slots (Car)",
   SsdcPracticalLessonBooking = "🚘 SSDC Appointment Slots (Practical Lesson Booking)",
@@ -226,6 +228,7 @@ export enum TelegramChannel {
   CdcTestsPrivate = "SGAlertsCDCTestsPrivate",
   CdcTestsAutoCar = "SGAlertsCDCTestsAutoCar",
   CdcTestsManualCar = "SGAlertsCDCTestsManualCar",
+  CdcTestsClass2B = "SGAlertsCDCTestsClass2B",
   CdcSimulatorBike = "SGAlertsCDCSimulatorBike",
   CdcSimulatorCar = "SGAlertsCDCSimulatorCar",
   CdcEyesightTest = "SGAlertsCDCEyesightTest",

@@ -414,6 +414,7 @@ export function useGetCdcTestSlotsDatesMap() {
       [CdcTestsService.PRIVATE_TP_TEST]: "",
       [CdcTestsService.AUTO_CAR_TEST]: "",
       [CdcTestsService.MANUAL_CAR_TEST]: "",
+      [CdcTestsService.CLASS_2B_TEST]: "",
     });
   const getCdcTestSlotsDatesMap = async () => {
     try {
@@ -432,6 +433,7 @@ export function useGetCdcTestSlotsDatesMap() {
       const privateTpTest = resData[CdcTestsService.PRIVATE_TP_TEST];
       const autoCarTest = resData[CdcTestsService.AUTO_CAR_TEST];
       const manualCarTest = resData[CdcTestsService.MANUAL_CAR_TEST];
+      const class2BTest = resData[CdcTestsService.CLASS_2B_TEST];
 
       setCdcTestSlotsDatesMap({
         [CdcTestsService.PRIVATE_TP_TEST]: privateTpTest
@@ -442,6 +444,9 @@ export function useGetCdcTestSlotsDatesMap() {
           : "-",
         [CdcTestsService.MANUAL_CAR_TEST]: manualCarTest
           ? formatDateTime(manualCarTest)
+          : "-",
+        [CdcTestsService.CLASS_2B_TEST]: class2BTest
+          ? formatDateTime(class2BTest)
           : "-",
       });
       setFetchStatus(FetchStatus.Success);

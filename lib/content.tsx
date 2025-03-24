@@ -524,6 +524,19 @@ export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     topicRoute: Routes.CdcPracticalTestSlots,
   },
   {
+    id: TelegramChannel.CdcTestsClass2B,
+    title: TopicTitle.CdcPracticalTestSlotsClass2B,
+    description: (
+      <>
+        Receive notifications when there are new traffic police practical
+        driving test slot(s) for{" "}
+        <strong className="font-medium">Class 2B Motorcycle</strong> at
+        ComfortDelGro Driving Centre.
+      </>
+    ),
+    topicRoute: Routes.CdcPracticalTestSlots,
+  },
+  {
     id: TelegramChannel.CdcEyesightTest,
     title: TopicTitle.CdcEyesightTest,
     description: (

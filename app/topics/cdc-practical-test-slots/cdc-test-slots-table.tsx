@@ -48,6 +48,13 @@ export function CdcTestSlotsTable() {
       telegramChannel: TelegramChannel.CdcTestsManualCar,
       topicTitle: TopicTitle.CdcPracticalTestSlotsManual,
     },
+    {
+      service: CdcTestsService.CLASS_2B_TEST,
+      title: "Class 2B Motorcycle",
+      lastAvailableDate: cdcSlotsDatesMap[CdcTestsService.CLASS_2B_TEST],
+      telegramChannel: TelegramChannel.CdcTestsClass2B,
+      topicTitle: TopicTitle.CdcPracticalTestSlotsClass2B,
+    },
   ];
   const topicOnClick = (title: string, linkUrl: string, linkText?: string) => {
     trackEvent({

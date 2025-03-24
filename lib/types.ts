@@ -220,11 +220,13 @@ export type CdcTestSlotsInfo = {
   telegramChannel:
     | TelegramChannel.CdcTestsPrivate
     | TelegramChannel.CdcTestsAutoCar
-    | TelegramChannel.CdcTestsManualCar;
+    | TelegramChannel.CdcTestsManualCar
+    | TelegramChannel.CdcTestsClass2B;
   topicTitle:
     | TopicTitle.CdcPracticalTestSlotsPrivate
     | TopicTitle.CdcPracticalTestSlotsAuto
-    | TopicTitle.CdcPracticalTestSlotsManual;
+    | TopicTitle.CdcPracticalTestSlotsManual
+    | TopicTitle.CdcPracticalTestSlotsClass2B;
 };
 export type CdcTestSlotsInfoItems = Array<CdcTestSlotsInfo>;
 

@@ -118,12 +118,21 @@ export default function CdcPracticalTestSlots() {
             />
           </div>
         </div>
-        <div className="mt-4 text-center">
-          <TelegramLinkButton
-            channel={TelegramChannel.CdcTestsManualCar}
-            linkText="Class 3 Motorcar"
-            topicTitle={TopicTitle.CdcPracticalTestSlotsManual}
-          />
+        <div className="mt-4 flex flex-col justify-center gap-4 text-center sm:flex-row">
+          <div>
+            <TelegramLinkButton
+              channel={TelegramChannel.CdcTestsManualCar}
+              linkText="Class 3 Motorcar"
+              topicTitle={TopicTitle.CdcPracticalTestSlotsManual}
+            />
+          </div>
+          <div>
+            <TelegramLinkButton
+              channel={TelegramChannel.CdcTestsClass2B}
+              linkText="Class 2B Motorcycle"
+              topicTitle={TopicTitle.CdcPracticalTestSlotsClass2B}
+            />
+          </div>
         </div>
       </PageScroller>
     </Container>
