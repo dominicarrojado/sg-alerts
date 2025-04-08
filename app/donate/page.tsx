@@ -56,12 +56,12 @@ export default function Donate() {
         long way. Leave a message with your donation and I will add your name to
         the list of supporters below. Thank you very much for your support ~
       </Paragraph>
-      <div className="flex flex-col gap-4 mt-6 sm:flex-row">
-        <Card className="w-72 max-w-full mx-auto sm:w-1/2">
+      <div className="mt-6 flex flex-col gap-4 sm:flex-row">
+        <Card className="mx-auto w-72 max-w-full sm:w-1/2">
           <CardContent className="flex aspect-square items-center justify-center p-4">
             <img
               src={getAssetUrl("paylah.jpg")}
-              className="w-full h-auto aspect-square"
+              className="aspect-square h-auto w-full"
               alt="DBS PayLah! QR code"
               width="540"
               height="540"
@@ -82,7 +82,7 @@ export default function Donate() {
             </Paragraph>
           </CardFooter>
         </Card>
-        <Card className="w-72 max-w-full mx-auto sm:w-1/2">
+        <Card className="mx-auto w-72 max-w-full sm:w-1/2">
           <Anchor
             href="https://www.paypal.com/paypalme/DominicArrojado"
             className="no-underline"
@@ -91,7 +91,7 @@ export default function Donate() {
             <CardContent className="flex aspect-square items-center justify-center p-4">
               <img
                 src={getAssetUrl("paypal.svg")}
-                className="w-full h-auto aspect-square bg-white p-10"
+                className="aspect-square h-auto w-full bg-white p-10"
                 alt="PayPal"
                 width="540"
                 height="540"
@@ -101,7 +101,7 @@ export default function Donate() {
             <CardFooter className="justify-center">
               <Paragraph className="text-center">
                 Click to donate via PayPal <br />
-                (For International Supporters)
+                (for International Supporters)
               </Paragraph>
             </CardFooter>
           </Anchor>
