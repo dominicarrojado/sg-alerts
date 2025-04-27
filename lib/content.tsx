@@ -1114,7 +1114,7 @@ export const DONATION_TESTIMONIALS: DonationTestimonials = [
   {
     firstName: "Eugene",
     lastName: "U",
-    message: "Thanks for the SG Alerts for driving lesson slots availability!",
+    message: "Thanks for SG Alerts for the driving lesson slots availability!",
     date: "27 April 2025",
   },
   {
@@ -1122,6 +1122,12 @@ export const DONATION_TESTIMONIALS: DonationTestimonials = [
     lastName: "K",
     message: "",
     date: "27 April 2025",
+  },
+  {
+    firstName: "Bervyn",
+    lastName: "E",
+    message: "Thank you so much!",
+    date: "24 April 2025",
   },
   {
     firstName: "Hossain Md",
