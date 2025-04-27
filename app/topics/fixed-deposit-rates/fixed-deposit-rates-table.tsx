@@ -16,7 +16,6 @@ import { useGetDepositRatesInfo } from "@/lib/api-hooks";
 import { formatMoney } from "@/lib/number";
 import { cn } from "@/lib/utils";
 import { FetchStatus } from "@/lib/enums";
-import { FIXED_DEPOSIT_BANKS } from "@/lib/content";
 
 export function FixedDepositRatesTable() {
   const [fetchState, depositRatesInfo, getDepositRatesInfo] =
@@ -41,13 +40,14 @@ export function FixedDepositRatesTable() {
           <b className="font-medium">*</b>{" "}
           <abbr title="Singapore Savings Bond" className="no-underline">
             SSB
-          </abbr>{" "}
-          and{" "}
+          </abbr>
+          ,{" "}
           <abbr title="Treasury Bills" className="no-underline">
             T-bills
-          </abbr>{" "}
-          are not fixed deposit rates, but they are included here for comparison
-          purposes.
+          </abbr>
+          , GXS, MariBank and Syfe are not fixed deposit rates,{" "}
+          <br className="hidden sm:block" />
+          but they are included here for comparison purposes.
         </small>
       </TableCaption>
       <TableHeader>
@@ -66,25 +66,27 @@ export function FixedDepositRatesTable() {
       </TableHeader>
       <TableBody>
         {depositRates.map((depositRate) => {
-          const { rate, previousRate } = depositRate;
-          const tenure = `${depositRate.tenure}-month`;
+          const { bank, rate, previousRate, tenure, minDeposit } = depositRate;
+          const tenureText = tenure !== 0 ? `${depositRate.tenure}-month` : "-";
           const diff = previousRate
             ? Number((rate - previousRate).toFixed(2))
             : 0;
           const isNegative = diff < 0;
 
           return (
-            <TableRow key={depositRate.bank}>
+            <TableRow key={bank}>
               <TableCell>
                 <Anchor href={depositRate.link} isExternal>
-                  {depositRate.bank}
+                  {bank}
                 </Anchor>
               </TableCell>
               <TableCell>
-                {formatMoney(depositRate.minDeposit)}
+                {minDeposit ? formatMoney(minDeposit) : "-"}
                 <div className="sm:hidden">{tenure}</div>
               </TableCell>
-              <TableCell className="hidden sm:table-cell">{tenure}</TableCell>
+              <TableCell className="hidden sm:table-cell">
+                {tenureText}
+              </TableCell>
               <TableCell className="text-right font-medium">
                 {rate}%
                 {previousRate && diff !== 0 && (
@@ -107,7 +109,11 @@ export function FixedDepositRatesTable() {
   ) : (
     <Table className="my-6">
       <TableCaption>
-        <Skeleton className="h-5 w-1/2" />
+        <div className="flex flex-col items-center gap-3">
+          <Skeleton className="h-3.5 w-1/2" />
+          <Skeleton className="h-3 w-3/5" />
+          <Skeleton className="h-3 w-1/2" />
+        </div>
       </TableCaption>
       <TableHeader>
         <TableRow>
@@ -126,8 +132,8 @@ export function FixedDepositRatesTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {FIXED_DEPOSIT_BANKS.map((bank) => (
-          <TableRow key={bank.title}>
+        {Array.from({ length: 18 }).map((_, index) => (
+          <TableRow key={index}>
             <TableCell>
               <Skeleton className="h-5 w-full" />
             </TableCell>

@@ -95,6 +95,7 @@ export type DepositRate = {
   minDeposit: number;
   endDate: string;
   link: string;
+  isNotFixedDeposit?: boolean;
 };
 
 export type DepositRates = Array<DepositRate>;
