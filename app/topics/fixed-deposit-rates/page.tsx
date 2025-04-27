@@ -40,8 +40,8 @@ export default function FixedDepositRates() {
       <div className="space-y-2">
         <Heading>{title}</Heading>
         <Subheading>
-          Receive email notifications when the fixed deposit rates goes up
-          across major banks in Singapore.
+          Receive notifications when the fixed deposit rates goes up across
+          major banks in Singapore.
         </Subheading>
       </div>
       <FixedDepositRatesTable />
