@@ -755,12 +755,12 @@ export const MONEY_TELEGRAM_CHANNELS: TelegramPublicChannels = [
           (including{" "}
           <abbr title="Singapore Savings Bonds" className="no-underline">
             SSB
-          </abbr>{" "}
-          and{" "}
+          </abbr>
+          ,{" "}
           <abbr title="Treasury Bills" className="no-underline">
             T-Bills
-          </abbr>{" "}
-          for comparison purposes)
+          </abbr>
+          , GXS, MariBank and Syfe for comparison purposes)
         </small>
       </>
     ),
