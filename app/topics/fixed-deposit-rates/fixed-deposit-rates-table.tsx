@@ -82,7 +82,7 @@ export function FixedDepositRatesTable() {
               </TableCell>
               <TableCell>
                 {minDeposit ? formatMoney(minDeposit) : "-"}
-                <div className="sm:hidden">{tenure}</div>
+                <div className="sm:hidden">{tenureText}</div>
               </TableCell>
               <TableCell className="hidden sm:table-cell">
                 {tenureText}
