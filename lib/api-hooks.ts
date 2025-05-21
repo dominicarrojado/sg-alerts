@@ -299,6 +299,7 @@ export function useGetCdcLessonSlotsDatesMap() {
   const [cdcLessonSlotsDatesMap, setCdcLessonSlotsDatesMap] =
     useState<CdcLessonSlotsDatesMap>({
       [CdcLessonsService.AUTO_CAR]: "",
+      [CdcLessonsService.AUTO_CAR_TAMPINES]: "",
       [CdcLessonsService.MANUAL_CAR]: "",
       [CdcLessonsService.CLASS_2_L1]: "",
       [CdcLessonsService.CLASS_2_L2]: "",
@@ -330,6 +331,7 @@ export function useGetCdcLessonSlotsDatesMap() {
       }
 
       const autoCar = resData[CdcLessonsService.AUTO_CAR];
+      const autoCarTampines = resData[CdcLessonsService.AUTO_CAR_TAMPINES];
       const manualCar = resData[CdcLessonsService.MANUAL_CAR];
       const class2L1 = resData[CdcLessonsService.CLASS_2_L1];
       const class2L2 = resData[CdcLessonsService.CLASS_2_L2];
@@ -348,6 +350,9 @@ export function useGetCdcLessonSlotsDatesMap() {
 
       setCdcLessonSlotsDatesMap({
         [CdcLessonsService.AUTO_CAR]: autoCar ? formatDateTime(autoCar) : "-",
+        [CdcLessonsService.AUTO_CAR_TAMPINES]: autoCarTampines
+          ? formatDateTime(autoCarTampines)
+          : "-",
         [CdcLessonsService.MANUAL_CAR]: manualCar
           ? formatDateTime(manualCar)
           : "-",

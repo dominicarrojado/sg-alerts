@@ -35,6 +35,13 @@ export function CdcLessonSlotsTable() {
       topicTitle: TopicTitle.CdcPracticalLessonSlotsAuto,
     },
     {
+      service: CdcLessonsService.AUTO_CAR_TAMPINES,
+      title: "Class 3A Motorcar (Tampines)",
+      lastAvailableDate: cdcSlotsDatesMap[CdcLessonsService.AUTO_CAR_TAMPINES],
+      telegramChannel: TelegramChannel.CdcLessonsAutoCarTampines,
+      topicTitle: TopicTitle.CdcPracticalLessonSlotsAutoTampines,
+    },
+    {
       service: CdcLessonsService.MANUAL_CAR,
       title: "Class 3 Motorcar",
       lastAvailableDate: cdcSlotsDatesMap[CdcLessonsService.MANUAL_CAR],

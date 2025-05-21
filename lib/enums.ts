@@ -117,6 +117,7 @@ export enum CdcService {
 
 export enum CdcLessonsService {
   AUTO_CAR = "auto-car",
+  AUTO_CAR_TAMPINES = "auto-car-tampines",
   MANUAL_CAR = "manual-car",
   CLASS_2_L1 = "class-2-l1",
   CLASS_2_L2 = "class-2-l2",
@@ -188,6 +189,7 @@ export enum TopicTitle {
   CdcEyesightTest = "🚘 CDC Appointment Slots (Eyesight Test)",
   CdcCounterServices = "🚘 CDC Appointment Slots (Counter Services)",
   CdcPracticalLessonSlotsAuto = "🚘 CDC Practical Lesson Slots (Class 3A Motorcar)",
+  CdcPracticalLessonSlotsAutoTampines = "🚘 CDC Practical Lesson Slots (Class 3A Motorcar - Tampines)",
   CdcPracticalLessonSlotsManual = "🚘 CDC Practical Lesson Slots (Class 3 Motorcar)",
   CdcPracticalLessonSlotsClass2 = "🚘 CDC Practical Lesson Slots (Class 2 Motorcycle)",
   CdcPracticalLessonSlotsClass2A = "🚘 CDC Practical Lesson Slots (Class 2A Motorcycle)",
@@ -221,6 +223,7 @@ export enum TopicTitle {
 export enum TelegramChannel {
   SgAlerts = "SGAlertsOfficial",
   CdcLessonsAutoCar = "SGAlertsCDCLessonsAutoCar",
+  CdcLessonsAutoCarTampines = "SGAlertsCDCLessonsC3ATampines",
   CdcLessonsManualCar = "SGAlertsCDCLessonsManualCar",
   CdcLessonsClass2 = "SGAlertsCDCLessonsClass2",
   CdcLessonsClass2A = "SGAlertsCDCLessonsClass2A",

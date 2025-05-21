@@ -347,6 +347,18 @@ export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     topicRoute: Routes.CdcPracticalLessonSlots,
   },
   {
+    id: TelegramChannel.CdcLessonsAutoCarTampines,
+    title: TopicTitle.CdcPracticalLessonSlotsAutoTampines,
+    description: (
+      <>
+        Receive notifications when there are new practical lessons slot(s) for{" "}
+        <strong className="font-medium">Class 3A Motorcar (Tampines)</strong> at
+        ComfortDelGro Driving Centre.
+      </>
+    ),
+    topicRoute: Routes.CdcPracticalLessonSlots,
+  },
+  {
     id: TelegramChannel.CdcLessonsManualCar,
     title: TopicTitle.CdcPracticalLessonSlotsManual,
     description: (

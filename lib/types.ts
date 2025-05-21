@@ -198,9 +198,11 @@ export type CdcLessonSlotsInfo = {
   lastAvailableDate: string;
   telegramChannel:
     | TelegramChannel.CdcLessonsAutoCar
+    | TelegramChannel.CdcLessonsAutoCarTampines
     | TelegramChannel.CdcLessonsManualCar;
   topicTitle:
     | TopicTitle.CdcPracticalLessonSlotsAuto
+    | TopicTitle.CdcPracticalLessonSlotsAutoTampines
     | TopicTitle.CdcPracticalLessonSlotsManual;
 };
 export type CdcLessonSlotsInfoItems = Array<CdcLessonSlotsInfo>;
