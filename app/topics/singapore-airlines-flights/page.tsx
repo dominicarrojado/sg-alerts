@@ -47,7 +47,10 @@ export default function SingaporeAirlinesFlights() {
         <Heading>{title}</Heading>
         <Subheading>{description}</Subheading>
       </div>
-      <FlightsTable airline={FlightAirline.SINGAPORE_AIRLINES} />
+      <FlightsTable
+        airline={FlightAirline.SINGAPORE_AIRLINES}
+        withTravelBy={false}
+      />
       <Paragraph>
         <span className="font-medium">Singapore Airlines (SQ)</span> is the flag
         carrier airline of Singapore. It is one of the most popular airlines in
