@@ -1058,6 +1058,12 @@ export const TRAIN_SCHEDULE_ITEMS = [
 
 export const DONATION_TESTIMONIALS: DonationTestimonials = [
   {
+    firstName: "Irwin",
+    lastName: "R",
+    message: "Super helpful!!",
+    date: "25 July 2025",
+  },
+  {
     firstName: "Kimmy",
     lastName: "I",
     message: "",
