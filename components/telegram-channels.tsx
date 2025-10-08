@@ -15,7 +15,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Anchor } from "@/components/ui/anchor";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import InternalLink from "@/components/internal-anchor";
 import { getTelegramChannelUrl } from "@/lib/telegram";
@@ -51,7 +50,7 @@ export default function TelegramChannels({ channels, backButtonRoute }: Props) {
     <Card className="w-full">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          Telegram Channels <Badge>NEW</Badge>
+          Telegram Channels
         </CardTitle>
         <CardDescription>
           Subscribe to the channels below if you want to receive notifications
