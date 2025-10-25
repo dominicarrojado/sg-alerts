@@ -115,30 +115,17 @@ export default function CdcPracticalLessonSlots() {
         To get started, simply click the button below to join the Telegram
         channel and start receiving notifications.
       </Paragraph>
-      <PageScroller>
-        <div className="mt-8 flex flex-col justify-center gap-4 text-center sm:flex-row">
-          <div>
-            <TelegramLinkButton
-              channel={TelegramChannel.CdcLessonsAutoCar}
-              linkText="Subscribe for Class 3A Motorcar"
-              topicTitle={TopicTitle.CdcPracticalLessonSlotsAuto}
-            />
-          </div>
-          <div>
-            <TelegramLinkButton
-              channel={TelegramChannel.CdcLessonsAutoCarTampines}
-              linkText="Subscribe for Class 3A (Tampines)"
-              topicTitle={TopicTitle.CdcPracticalLessonSlotsAutoTampines}
-            />
-          </div>
-        </div>
-        <div className="mt-4 text-center">
-          <TelegramLinkButton
-            channel={TelegramChannel.CdcLessonsManualCar}
-            linkText="Subscribe for Class 3 Motorcar"
-            topicTitle={TopicTitle.CdcPracticalLessonSlotsManual}
-          />
-        </div>
+      <PageScroller className="mt-8 flex flex-col items-center gap-4">
+        <TelegramLinkButton
+          channel={TelegramChannel.CdcLessonsAutoCar}
+          linkText="Subscribe for Class 3A Motorcar"
+          topicTitle={TopicTitle.CdcPracticalLessonSlotsAuto}
+        />
+        <TelegramLinkButton
+          channel={TelegramChannel.CdcLessonsManualCar}
+          linkText="Subscribe for Class 3 Motorcar"
+          topicTitle={TopicTitle.CdcPracticalLessonSlotsManual}
+        />
       </PageScroller>
     </Container>
   );
