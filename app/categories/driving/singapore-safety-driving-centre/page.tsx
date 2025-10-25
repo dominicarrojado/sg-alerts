@@ -15,7 +15,7 @@ import {
 
 const title = "Singapore Safety Driving Centre";
 const description =
-  "Subscribe to get notified to topics related to Singapore Safety Driving Centre such as appointment slots, practical tests and more.";
+  "Subscribe to get notified to topics related to Singapore Safety Driving Centre such as practical tests and announcements.";
 const url = Routes.SingaporeSafetyDrivingCentre;
 
 export const metadata: Metadata = {
@@ -44,10 +44,8 @@ export default function SingaporeSafetyDrivingCentre() {
         <Heading>{title}</Heading>
         <Subheading>{description}</Subheading>
       </div>
-      <TelegramChannels channels={SSDC_TELEGRAM_CHANNELS} />
-      <PageSeparator>OR</PageSeparator>
-      <SubscribeForm
-        defaultTopics={SSDC_NOTIFICATION_SETTINGS}
+      <TelegramChannels
+        channels={SSDC_TELEGRAM_CHANNELS}
         backButtonRoute={Routes.DrivingCategory}
       />
     </Container>

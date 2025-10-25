@@ -19,6 +19,7 @@ import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-inter",
 });
 
@@ -46,6 +47,8 @@ export const metadata: Metadata = {
     ...NOTIFICATION_SETTINGS.map((setting) => {
       // remove emojis
       let { title } = setting;
+
+      // @ts-ignore-next-line ts(1501)
       title = title.replace(/[\u{2708}-\u{1F9FF}]/gu, "").trim();
 
       return title;

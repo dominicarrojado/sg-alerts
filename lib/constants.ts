@@ -32,10 +32,41 @@ export const NOW_AVAILABLE_TEXT = "now available";
 
 export const SUBSCRIPTION_TOPICS = Object.values(SubscriptionTopic);
 
+export const INACTIVE_SUBSCRIPTION_TOPICS_INACTIVE = [
+  SubscriptionTopic.JapanVisaBusiness,
+  SubscriptionTopic.MoviesTheProjector,
+  SubscriptionTopic.MoviesCathayCineplexes,
+  SubscriptionTopic.SsdcEnrolmentWeekend,
+  SubscriptionTopic.SsdcForeignLicenceWeekend,
+  SubscriptionTopic.SsdcOtherCoursesEnrolment,
+];
+
 export const TELEGRAM_CHANNELS = Object.values(TelegramChannel);
 
+export const INACTIVE_TELEGRAM_CHANNELS = [
+  TelegramChannel.CdcLessonsAutoCarTampines,
+  TelegramChannel.CdcLessonsClass2,
+  TelegramChannel.CdcLessonsClass2A,
+  TelegramChannel.CdcLessonsClass2B,
+  TelegramChannel.CdcSimulatorBike,
+  TelegramChannel.CdcSimulatorCar,
+  TelegramChannel.CdcTestsAutoCar,
+  TelegramChannel.CdcTestsClass2B,
+  TelegramChannel.CdcTestsManualCar,
+  TelegramChannel.CdcTestsPrivate,
+  TelegramChannel.JapanVisaOthers,
+  TelegramChannel.JapanVisaTourism,
+  TelegramChannel.JetstarFlights,
+  TelegramChannel.SsdcPracticalLessonBooking,
+  TelegramChannel.SsdcPrivateLearners,
+];
+
 export const TOPICS_COUNT =
-  SUBSCRIPTION_TOPICS.length + TELEGRAM_CHANNELS.length - 2; // exclude SG Alerts new features topic
+  SUBSCRIPTION_TOPICS.length +
+  TELEGRAM_CHANNELS.length -
+  INACTIVE_SUBSCRIPTION_TOPICS_INACTIVE.length -
+  INACTIVE_TELEGRAM_CHANNELS.length -
+  2; // exclude SG Alerts new features topic (both email and telegram)
 
 export const TOAST_DURATION = 60000; // 1 minute
 

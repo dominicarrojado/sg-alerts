@@ -21,7 +21,7 @@ export default function StatsCard(props: Props) {
   const { finalCount, description, isLoading, Icon } = props;
   const [count, setCount] = useState(0);
   const intervalMs = useMemo(
-    () => Math.max(1500 / finalCount, 10),
+    () => Math.max(1000 / finalCount, 10),
     [finalCount],
   );
 

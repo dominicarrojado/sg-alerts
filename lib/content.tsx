@@ -52,12 +52,6 @@ export const CATEGORY_ITEMS = [
     href: Routes.DrivingCategory,
   },
   {
-    emoji: "🇯🇵",
-    title: "Japan Visa",
-    description: "Tourism, Business, Long-term Stay",
-    href: Routes.JapanVisaCategory,
-  },
-  {
     emoji: "✈️",
     title: "Travel",
     description: <>Train Tickets, Flights Prices, Promotions</>,
@@ -121,15 +115,7 @@ export const DRIVING_CATEGORY_ITEMS = [
         SSDC
       </abbr>
     ),
-    description: (
-      <>
-        <abbr title="Appointment" className="no-underline">
-          Appt.
-        </abbr>{" "}
-        Slots, <br className="hidden sm:block" />
-        Practical Tests
-      </>
-    ),
+    description: "Practical Tests, Announcements",
     href: Routes.SingaporeSafetyDrivingCentre,
   },
   {
@@ -169,76 +155,10 @@ export const TOPICS_MENU_ITEMS = [
         <abbr title="ComfortDelGro Driving Centre" className="no-underline">
           CDC
         </abbr>{" "}
-        Class 2B Practical Slots
-      </>
-    ),
-    href: Routes.CdcClass2BPracticalLessonSlots,
-  },
-  {
-    title: (
-      <>
-        <abbr title="ComfortDelGro Driving Centre" className="no-underline">
-          CDC
-        </abbr>{" "}
-        Class 2A Practical Slots
-      </>
-    ),
-    href: Routes.CdcClass2APracticalLessonSlots,
-  },
-  {
-    title: (
-      <>
-        <abbr title="ComfortDelGro Driving Centre" className="no-underline">
-          CDC
-        </abbr>{" "}
-        Class 2 Practical Slots
-      </>
-    ),
-    href: Routes.CdcClass2PracticalLessonSlots,
-  },
-  {
-    title: (
-      <>
-        <abbr title="ComfortDelGro Driving Centre" className="no-underline">
-          CDC
-        </abbr>{" "}
-        Simulator Course Slots
-      </>
-    ),
-    href: Routes.CdcSimulatorCourseSlots,
-  },
-  {
-    title: (
-      <>
-        <abbr title="ComfortDelGro Driving Centre" className="no-underline">
-          CDC
-        </abbr>{" "}
-        Practical Test Slots
-      </>
-    ),
-    href: Routes.CdcPracticalTestSlots,
-  },
-  {
-    title: (
-      <>
-        <abbr title="ComfortDelGro Driving Centre" className="no-underline">
-          CDC
-        </abbr>{" "}
         Appointment Slots
       </>
     ),
     href: Routes.CdcAppointmentSlots,
-  },
-  {
-    title: (
-      <>
-        <abbr title="Singapore Safety Driving Centre" className="no-underline">
-          SSDC
-        </abbr>{" "}
-        Appointment Slots
-      </>
-    ),
-    href: Routes.SsdcAppointmentSlots,
   },
   {
     title: (
@@ -274,10 +194,6 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.KtmTrainTickets,
   },
   {
-    title: "Japan Visa Appointment Slots",
-    href: Routes.JapanVisa,
-  },
-  {
     title: "Fixed Deposit Rates",
     href: Routes.FixedDepositRates,
   },
@@ -288,10 +204,6 @@ export const TOPICS_MENU_ITEMS = [
   {
     title: "Scoot Flights",
     href: Routes.ScootFlights,
-  },
-  {
-    title: "Jetstar Flights",
-    href: Routes.JetstarFlights,
   },
   {
     title: (
@@ -347,18 +259,6 @@ export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     topicRoute: Routes.CdcPracticalLessonSlots,
   },
   {
-    id: TelegramChannel.CdcLessonsAutoCarTampines,
-    title: TopicTitle.CdcPracticalLessonSlotsAutoTampines,
-    description: (
-      <>
-        Receive notifications when there are new practical lessons slot(s) for{" "}
-        <strong className="font-medium">Class 3A Motorcar (Tampines)</strong> at
-        ComfortDelGro Driving Centre.
-      </>
-    ),
-    topicRoute: Routes.CdcPracticalLessonSlots,
-  },
-  {
     id: TelegramChannel.CdcLessonsManualCar,
     title: TopicTitle.CdcPracticalLessonSlotsManual,
     description: (
@@ -369,118 +269,6 @@ export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
       </>
     ),
     topicRoute: Routes.CdcPracticalLessonSlots,
-  },
-  {
-    id: TelegramChannel.CdcLessonsClass2B,
-    title: TopicTitle.CdcPracticalLessonSlotsClass2B,
-    description: (
-      <>
-        Receive notifications when there are new practical lessons slot(s) for{" "}
-        <strong className="font-medium">Class 2B Motorcycle</strong> at
-        ComfortDelGro Driving Centre.
-      </>
-    ),
-    topicRoute: Routes.CdcClass2BPracticalLessonSlots,
-  },
-  {
-    id: TelegramChannel.CdcLessonsClass2A,
-    title: TopicTitle.CdcPracticalLessonSlotsClass2A,
-    description: (
-      <>
-        Receive notifications when there are new practical lessons slot(s) for{" "}
-        <strong className="font-medium">Class 2A Motorcycle</strong> at
-        ComfortDelGro Driving Centre.
-      </>
-    ),
-    topicRoute: Routes.CdcClass2APracticalLessonSlots,
-  },
-  {
-    id: TelegramChannel.CdcLessonsClass2,
-    title: TopicTitle.CdcPracticalLessonSlotsClass2,
-    description: (
-      <>
-        Receive notifications when there are new practical lessons slot(s) for{" "}
-        <strong className="font-medium">Class 2 Motorcycle</strong> at
-        ComfortDelGro Driving Centre.
-      </>
-    ),
-    topicRoute: Routes.CdcClass2PracticalLessonSlots,
-  },
-  {
-    id: TelegramChannel.CdcSimulatorBike,
-    title: TopicTitle.CdcSimulatorCourseSlotsBike,
-    description: (
-      <>
-        Receive notifications when there are new session slot(s) for{" "}
-        <strong className="font-medium">Simulator Course (Bike)</strong> at
-        ComfortDelGro Driving Centre.
-      </>
-    ),
-    topicRoute: Routes.CdcSimulatorCourseSlots,
-  },
-  {
-    id: TelegramChannel.CdcSimulatorCar,
-    title: TopicTitle.CdcSimulatorCourseSlotsCar,
-    description: (
-      <>
-        Receive notifications when there are new session slot(s) for{" "}
-        <strong className="font-medium">Simulator Course (Car)</strong> at
-        ComfortDelGro Driving Centre.
-      </>
-    ),
-    topicRoute: Routes.CdcSimulatorCourseSlots,
-  },
-  {
-    id: TelegramChannel.CdcTestsPrivate,
-    title: TopicTitle.CdcPracticalTestSlotsPrivate,
-    description: (
-      <>
-        Receive notifications when there are new traffic police practical
-        driving test slot(s) for{" "}
-        <strong className="font-medium">Private Account</strong> at
-        ComfortDelGro Driving Centre.
-      </>
-    ),
-    topicRoute: Routes.CdcPracticalTestSlots,
-  },
-  {
-    id: TelegramChannel.CdcTestsAutoCar,
-    title: TopicTitle.CdcPracticalTestSlotsAuto,
-    description: (
-      <>
-        Receive notifications when there are new traffic police practical
-        driving test slot(s) for{" "}
-        <strong className="font-medium">Class 3A Motorcar</strong> at
-        ComfortDelGro Driving Centre.
-      </>
-    ),
-    topicRoute: Routes.CdcPracticalTestSlots,
-  },
-  {
-    id: TelegramChannel.CdcTestsManualCar,
-    title: TopicTitle.CdcPracticalTestSlotsManual,
-    description: (
-      <>
-        Receive notifications when there are new traffic police practical
-        driving test slot(s) for{" "}
-        <strong className="font-medium">Class 3 Motorcar</strong> at
-        ComfortDelGro Driving Centre.
-      </>
-    ),
-    topicRoute: Routes.CdcPracticalTestSlots,
-  },
-  {
-    id: TelegramChannel.CdcTestsClass2B,
-    title: TopicTitle.CdcPracticalTestSlotsClass2B,
-    description: (
-      <>
-        Receive notifications when there are new traffic police practical
-        driving test slot(s) for{" "}
-        <strong className="font-medium">Class 2B Motorcycle</strong> at
-        ComfortDelGro Driving Centre.
-      </>
-    ),
-    topicRoute: Routes.CdcPracticalTestSlots,
   },
   {
     id: TelegramChannel.CdcEyesightTest,
@@ -523,32 +311,6 @@ export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
 ];
 
 export const SSDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
-  {
-    id: TelegramChannel.SsdcPracticalLessonBooking,
-    title: TopicTitle.SsdcPracticalLessonBooking,
-    description: (
-      <>
-        Receive notifications when there are new appointment date(s) for the{" "}
-        <strong className="font-medium">
-          Class 3 / 3A Practical Lesson Booking
-        </strong>{" "}
-        at Singapore Safety Driving Centre.
-      </>
-    ),
-    topicRoute: Routes.SsdcAppointmentSlots,
-  },
-  {
-    id: TelegramChannel.SsdcPrivateLearners,
-    title: TopicTitle.SsdcPrivateLearners,
-    description: (
-      <>
-        Receive notifications when there are new appointment date(s) for the{" "}
-        <strong className="font-medium">Private Learners</strong> at Singapore
-        Safety Driving Centre.
-      </>
-    ),
-    topicRoute: Routes.SsdcAppointmentSlots,
-  },
   {
     id: TelegramChannel.SsdcTestsPrivate,
     title: TopicTitle.SsdcPracticalTestSlotsPrivate,
@@ -601,6 +363,7 @@ export const SSDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
       </>
     ),
   },
+  NEW_FEATURES_TELEGRAM_CHANNEL,
 ];
 
 export const BBDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
@@ -712,18 +475,6 @@ export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
       </>
     ),
     topicRoute: Routes.ScootFlights,
-  },
-  {
-    id: TelegramChannel.JetstarFlights,
-    title: TopicTitle.JetstarFlights,
-    description: (
-      <>
-        Receive notifications when the flight prices goes down for{" "}
-        <strong className="font-medium">Jetstar flights</strong> departing from
-        Singapore.
-      </>
-    ),
-    topicRoute: Routes.JetstarFlights,
   },
   {
     id: TelegramChannel.TripComTravelDeals,
@@ -995,33 +746,6 @@ export const ENTERTAINMENT_NOTIFICATION_SETTINGS: NotificationSettings = [
           Shaw Theatres
         </Anchor>
         . <br />
-        <small>(supported languages: English, Chinese, Korean, Japanese)</small>
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.MoviesCathayCineplexes,
-    title: "🎬 Movies with English Subtitles (Cathay Cineplexes)",
-    description: (
-      <>
-        Receive email notifications when there are new movies with English
-        subtitles at{" "}
-        <Anchor href="https://www.cathaycineplexes.com.sg/" isExternal>
-          Cathay Cineplexes
-        </Anchor>
-        . <br />
-        <small>(supported languages: English, Chinese, Korean, Japanese)</small>
-      </>
-    ),
-  },
-  {
-    id: SubscriptionTopic.MoviesTheProjector,
-    title: "🎬 Movies with English Subtitles (The Projector)",
-    description: (
-      <>
-        Receive email notifications when there are new movies with English
-        subtitles at{" "}
-        <Anchor href="https://theprojector.sg/">The Projector</Anchor>. <br />
         <small>(supported languages: English, Chinese, Korean, Japanese)</small>
       </>
     ),
