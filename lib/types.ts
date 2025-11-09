@@ -192,6 +192,11 @@ export type CdcSlotsInfoItems = Array<CdcSlotsInfo>;
 
 export type CdcLessonSlotsDatesMap = Record<CdcLessonsService, string>;
 
+export type CdcLessonSlotsDatesInfo = {
+  datesMap: CdcLessonSlotsDatesMap;
+  updatedAt: string;
+};
+
 export type CdcLessonSlotsInfo = {
   service: CdcLessonsService;
   title: string;

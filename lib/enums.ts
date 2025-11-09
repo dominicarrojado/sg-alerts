@@ -59,7 +59,7 @@ export enum ApiEndpoint {
   SubscriptionTopics = "/subscriptions/:id/topics",
   JapanVisaLastSlotsInfo = "/japan-visa-checker/slots-last-available-dates",
   CdcSlotsInfo = "/cdc-checker/slots-last-available-dates",
-  CdcLessonLastSlotsInfo = "/cdc-lessons-checker/slots-last-available-dates",
+  CdcLessonLastSlotsInfo = "/cdc-lessons-checker/slots-info",
   FixedDepositRatesInfo = "/deposit-rates-checker/deposit-rates-info",
   FlightsInfo = "/flight-checker/flights-info",
   CoeBiddingsInfo = "/coe-checker/biddings-info",

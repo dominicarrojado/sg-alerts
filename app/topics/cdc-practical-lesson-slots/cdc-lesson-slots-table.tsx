@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import {
   Table,
   TableBody,
+  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -11,7 +12,7 @@ import {
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Anchor } from "@/components/ui/anchor";
-import { useGetCdcLessonSlotsDatesMap } from "@/lib/api-hooks";
+import { useGetCdcLessonSlotsDatesInfo } from "@/lib/api-hooks";
 import { getTelegramChannelUrl } from "@/lib/telegram";
 import { trackEvent } from "@/lib/google-analytics";
 import {
@@ -24,8 +25,9 @@ import {
 import type { CdcLessonSlotsInfoItems } from "@/lib/types";
 
 export function CdcLessonSlotsTable() {
-  const [fetchState, cdcSlotsDatesMap, getCdcSlotsDatesMap] =
-    useGetCdcLessonSlotsDatesMap();
+  const [fetchState, cdcSlotsInfo, getCdcSlotsDatesInfo] =
+    useGetCdcLessonSlotsDatesInfo();
+  const { datesMap: cdcSlotsDatesMap, updatedAt } = cdcSlotsInfo;
   const cdcLessonSlotsInfoItems: CdcLessonSlotsInfoItems = [
     {
       service: CdcLessonsService.AUTO_CAR,
@@ -52,7 +54,7 @@ export function CdcLessonSlotsTable() {
   };
 
   useEffect(() => {
-    getCdcSlotsDatesMap();
+    getCdcSlotsDatesInfo();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -63,6 +65,7 @@ export function CdcLessonSlotsTable() {
 
   return fetchState === FetchStatus.Success ? (
     <Table className="my-6" data-clarity-unmask="true">
+      <TableCaption>Last updated on {updatedAt}.</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead>Motorcar Licensing Course</TableHead>

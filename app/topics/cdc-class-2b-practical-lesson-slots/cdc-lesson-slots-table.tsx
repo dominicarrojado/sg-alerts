@@ -10,13 +10,14 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useGetCdcLessonSlotsDatesMap } from "@/lib/api-hooks";
+import { useGetCdcLessonSlotsDatesInfo } from "@/lib/api-hooks";
 import { CdcLessonsService, FetchStatus } from "@/lib/enums";
 import type { CdcClass2SlotsInfoItems } from "@/lib/types";
 
 export function CdcLessonSlotsTable() {
-  const [fetchState, cdcSlotsDatesMap, getCdcSlotsDatesMap] =
-    useGetCdcLessonSlotsDatesMap();
+  const [fetchState, cdcSlotsInfo, getCdcSlotsDatesInfo] =
+    useGetCdcLessonSlotsDatesInfo();
+  const { datesMap: cdcSlotsDatesMap } = cdcSlotsInfo;
   const cdcLessonSlotsInfoItems: CdcClass2SlotsInfoItems = [
     {
       service: CdcLessonsService.CLASS_2B_L1,
@@ -61,7 +62,7 @@ export function CdcLessonSlotsTable() {
   ];
 
   useEffect(() => {
-    getCdcSlotsDatesMap();
+    getCdcSlotsDatesInfo();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

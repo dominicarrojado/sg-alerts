@@ -3,6 +3,7 @@ import { useState } from "react";
 import { formatDateTime } from "./date";
 import {
   BbdcSlotsDatesMap,
+  CdcLessonSlotsDatesInfo,
   CdcLessonSlotsDatesMap,
   CdcSimulatorSlotsDatesMap,
   CdcSlotsDatesMap,
@@ -294,29 +295,14 @@ export function useGetCdcSlotsDatesMap() {
   return [fetchStatus, cdcSlotsDatesMap, getCdcSlotsDatesMap] as const;
 }
 
-export function useGetCdcLessonSlotsDatesMap() {
+export function useGetCdcLessonSlotsDatesInfo() {
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
-  const [cdcLessonSlotsDatesMap, setCdcLessonSlotsDatesMap] =
-    useState<CdcLessonSlotsDatesMap>({
-      [CdcLessonsService.AUTO_CAR]: "",
-      [CdcLessonsService.AUTO_CAR_TAMPINES]: "",
-      [CdcLessonsService.MANUAL_CAR]: "",
-      [CdcLessonsService.CLASS_2_L1]: "",
-      [CdcLessonsService.CLASS_2_L2]: "",
-      [CdcLessonsService.CLASS_2_L3]: "",
-      [CdcLessonsService.CLASS_2A_L1]: "",
-      [CdcLessonsService.CLASS_2A_L2]: "",
-      [CdcLessonsService.CLASS_2A_L3]: "",
-      [CdcLessonsService.CLASS_2B_L1]: "",
-      [CdcLessonsService.CLASS_2B_L2]: "",
-      [CdcLessonsService.CLASS_2B_L3]: "",
-      [CdcLessonsService.CLASS_2B_L4]: "",
-      [CdcLessonsService.CLASS_2B_L5]: "",
-      [CdcLessonsService.CLASS_2B_L6]: "",
-      [CdcLessonsService.CLASS_2B_L7]: "",
-      [CdcLessonsService.CLASS_2B_L8]: "",
+  const [cdcLessonSlotsInfo, setCdcLessonSlotsInfo] =
+    useState<CdcLessonSlotsDatesInfo>({
+      datesMap: {} as CdcLessonSlotsDatesMap,
+      updatedAt: "",
     });
-  const getCdcLessonSlotsDatesMap = async () => {
+  const getCdcLessonSlotsDatesInfo = async () => {
     try {
       setFetchStatus(FetchStatus.Loading);
 
@@ -324,80 +310,84 @@ export function useGetCdcLessonSlotsDatesMap() {
       const res = await axios.get(
         `${API_URL}${ApiEndpoint.CdcLessonLastSlotsInfo}`,
       );
-      const resData = res.data;
+      const resData = res.data as CdcLessonSlotsDatesInfo;
 
       if (!resData || typeof resData !== "object") {
         throw new Error("Invalid data");
       }
 
-      const autoCar = resData[CdcLessonsService.AUTO_CAR];
-      const autoCarTampines = resData[CdcLessonsService.AUTO_CAR_TAMPINES];
-      const manualCar = resData[CdcLessonsService.MANUAL_CAR];
-      const class2L1 = resData[CdcLessonsService.CLASS_2_L1];
-      const class2L2 = resData[CdcLessonsService.CLASS_2_L2];
-      const class2L3 = resData[CdcLessonsService.CLASS_2_L3];
-      const class2AL1 = resData[CdcLessonsService.CLASS_2A_L1];
-      const class2AL2 = resData[CdcLessonsService.CLASS_2A_L2];
-      const class2AL3 = resData[CdcLessonsService.CLASS_2A_L3];
-      const class2BL1 = resData[CdcLessonsService.CLASS_2B_L1];
-      const class2BL2 = resData[CdcLessonsService.CLASS_2B_L2];
-      const class2BL3 = resData[CdcLessonsService.CLASS_2B_L3];
-      const class2BL4 = resData[CdcLessonsService.CLASS_2B_L4];
-      const class2BL5 = resData[CdcLessonsService.CLASS_2B_L5];
-      const class2BL6 = resData[CdcLessonsService.CLASS_2B_L6];
-      const class2BL7 = resData[CdcLessonsService.CLASS_2B_L7];
-      const class2BL8 = resData[CdcLessonsService.CLASS_2B_L8];
+      const { datesMap } = resData;
+      const autoCar = datesMap[CdcLessonsService.AUTO_CAR];
+      const autoCarTampines = datesMap[CdcLessonsService.AUTO_CAR_TAMPINES];
+      const manualCar = datesMap[CdcLessonsService.MANUAL_CAR];
+      const class2L1 = datesMap[CdcLessonsService.CLASS_2_L1];
+      const class2L2 = datesMap[CdcLessonsService.CLASS_2_L2];
+      const class2L3 = datesMap[CdcLessonsService.CLASS_2_L3];
+      const class2AL1 = datesMap[CdcLessonsService.CLASS_2A_L1];
+      const class2AL2 = datesMap[CdcLessonsService.CLASS_2A_L2];
+      const class2AL3 = datesMap[CdcLessonsService.CLASS_2A_L3];
+      const class2BL1 = datesMap[CdcLessonsService.CLASS_2B_L1];
+      const class2BL2 = datesMap[CdcLessonsService.CLASS_2B_L2];
+      const class2BL3 = datesMap[CdcLessonsService.CLASS_2B_L3];
+      const class2BL4 = datesMap[CdcLessonsService.CLASS_2B_L4];
+      const class2BL5 = datesMap[CdcLessonsService.CLASS_2B_L5];
+      const class2BL6 = datesMap[CdcLessonsService.CLASS_2B_L6];
+      const class2BL7 = datesMap[CdcLessonsService.CLASS_2B_L7];
+      const class2BL8 = datesMap[CdcLessonsService.CLASS_2B_L8];
 
-      setCdcLessonSlotsDatesMap({
-        [CdcLessonsService.AUTO_CAR]: autoCar ? formatDateTime(autoCar) : "-",
-        [CdcLessonsService.AUTO_CAR_TAMPINES]: autoCarTampines
-          ? formatDateTime(autoCarTampines)
-          : "-",
-        [CdcLessonsService.MANUAL_CAR]: manualCar
-          ? formatDateTime(manualCar)
-          : "-",
-        [CdcLessonsService.CLASS_2_L1]: class2L1
-          ? formatDateTime(class2L1)
-          : "-",
-        [CdcLessonsService.CLASS_2_L2]: class2L2
-          ? formatDateTime(class2L2)
-          : "-",
-        [CdcLessonsService.CLASS_2_L3]: class2L3
-          ? formatDateTime(class2L3)
-          : "-",
-        [CdcLessonsService.CLASS_2A_L1]: class2AL1
-          ? formatDateTime(class2AL1)
-          : "-",
-        [CdcLessonsService.CLASS_2A_L2]: class2AL2
-          ? formatDateTime(class2AL2)
-          : "-",
-        [CdcLessonsService.CLASS_2A_L3]: class2AL3
-          ? formatDateTime(class2AL3)
-          : "-",
-        [CdcLessonsService.CLASS_2B_L1]: class2BL1
-          ? formatDateTime(class2BL1)
-          : "-",
-        [CdcLessonsService.CLASS_2B_L2]: class2BL2
-          ? formatDateTime(class2BL2)
-          : "-",
-        [CdcLessonsService.CLASS_2B_L3]: class2BL3
-          ? formatDateTime(class2BL3)
-          : "-",
-        [CdcLessonsService.CLASS_2B_L4]: class2BL4
-          ? formatDateTime(class2BL4)
-          : "-",
-        [CdcLessonsService.CLASS_2B_L5]: class2BL5
-          ? formatDateTime(class2BL5)
-          : "-",
-        [CdcLessonsService.CLASS_2B_L6]: class2BL6
-          ? formatDateTime(class2BL6)
-          : "-",
-        [CdcLessonsService.CLASS_2B_L7]: class2BL7
-          ? formatDateTime(class2BL7)
-          : "-",
-        [CdcLessonsService.CLASS_2B_L8]: class2BL8
-          ? formatDateTime(class2BL8)
-          : "-",
+      setCdcLessonSlotsInfo({
+        datesMap: {
+          [CdcLessonsService.AUTO_CAR]: autoCar ? formatDateTime(autoCar) : "-",
+          [CdcLessonsService.AUTO_CAR_TAMPINES]: autoCarTampines
+            ? formatDateTime(autoCarTampines)
+            : "-",
+          [CdcLessonsService.MANUAL_CAR]: manualCar
+            ? formatDateTime(manualCar)
+            : "-",
+          [CdcLessonsService.CLASS_2_L1]: class2L1
+            ? formatDateTime(class2L1)
+            : "-",
+          [CdcLessonsService.CLASS_2_L2]: class2L2
+            ? formatDateTime(class2L2)
+            : "-",
+          [CdcLessonsService.CLASS_2_L3]: class2L3
+            ? formatDateTime(class2L3)
+            : "-",
+          [CdcLessonsService.CLASS_2A_L1]: class2AL1
+            ? formatDateTime(class2AL1)
+            : "-",
+          [CdcLessonsService.CLASS_2A_L2]: class2AL2
+            ? formatDateTime(class2AL2)
+            : "-",
+          [CdcLessonsService.CLASS_2A_L3]: class2AL3
+            ? formatDateTime(class2AL3)
+            : "-",
+          [CdcLessonsService.CLASS_2B_L1]: class2BL1
+            ? formatDateTime(class2BL1)
+            : "-",
+          [CdcLessonsService.CLASS_2B_L2]: class2BL2
+            ? formatDateTime(class2BL2)
+            : "-",
+          [CdcLessonsService.CLASS_2B_L3]: class2BL3
+            ? formatDateTime(class2BL3)
+            : "-",
+          [CdcLessonsService.CLASS_2B_L4]: class2BL4
+            ? formatDateTime(class2BL4)
+            : "-",
+          [CdcLessonsService.CLASS_2B_L5]: class2BL5
+            ? formatDateTime(class2BL5)
+            : "-",
+          [CdcLessonsService.CLASS_2B_L6]: class2BL6
+            ? formatDateTime(class2BL6)
+            : "-",
+          [CdcLessonsService.CLASS_2B_L7]: class2BL7
+            ? formatDateTime(class2BL7)
+            : "-",
+          [CdcLessonsService.CLASS_2B_L8]: class2BL8
+            ? formatDateTime(class2BL8)
+            : "-",
+        },
+        updatedAt: formatDateTime(resData.updatedAt),
       });
       setFetchStatus(FetchStatus.Success);
     } catch (err) {
@@ -405,11 +395,7 @@ export function useGetCdcLessonSlotsDatesMap() {
     }
   };
 
-  return [
-    fetchStatus,
-    cdcLessonSlotsDatesMap,
-    getCdcLessonSlotsDatesMap,
-  ] as const;
+  return [fetchStatus, cdcLessonSlotsInfo, getCdcLessonSlotsDatesInfo] as const;
 }
 
 export function useGetCdcTestSlotsDatesMap() {
