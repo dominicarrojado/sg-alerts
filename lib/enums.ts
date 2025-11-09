@@ -41,6 +41,7 @@ export enum Routes {
   BbdcAppointmentSlots = "/topics/bbdc-appointment-slots/",
   TokyoDisneylandAttractionUpdates = "/topics/tokyo-disneyland-attraction-updates/",
   TokyoDisneySeaAttractionUpdates = "/topics/tokyo-disneysea-attraction-updates/",
+  TotoSnowballs = "/topics/toto-snowballs/",
 }
 
 export enum FetchStatus {
@@ -69,6 +70,7 @@ export enum ApiEndpoint {
   BbdcSlotsInfo = "/bbdc-checker/slots-last-available-dates",
   TravelDealsInfo = "/travel-deals-checker/travel-deals-info",
   ThemeParkInfo = "/theme-park-checker/theme-park-info",
+  LotteryInfo = "/lottery-checker/last-snowball-info",
 }
 
 export enum SubscriptionTopic {
@@ -184,6 +186,10 @@ export enum ThemeParkService {
   TokyoDisneySeaAttractions = "tokyo-disneysea-attractions",
 }
 
+export enum LotteryService {
+  TOTO = "toto",
+}
+
 export enum TopicTitle {
   BbdcAppointmentSlots = "🚘 BBDC Appointment Slots",
   CdcEyesightTest = "🚘 CDC Appointment Slots (Eyesight Test)",
@@ -218,6 +224,7 @@ export enum TopicTitle {
   SingaporeAirlinesFlights = "✈️ Flight Prices (Singapore Airlines)",
   ScootFlights = "✈️ Flight Prices (Scoot)",
   JetstarFlights = "✈️ Flight Prices (Jetstar)",
+  TotoSnowballs = "💰 TOTO Snowballs",
 }
 
 export enum TelegramChannel {

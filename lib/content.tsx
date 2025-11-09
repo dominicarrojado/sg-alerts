@@ -198,6 +198,10 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.FixedDepositRates,
   },
   {
+    title: "TOTO Snowballs",
+    href: Routes.TotoSnowballs,
+  },
+  {
     title: "Singapore Airlines Flights",
     href: Routes.SingaporeAirlinesFlights,
   },
@@ -534,17 +538,12 @@ export const MONEY_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     title: "💰 TOTO Snowballs",
     description: (
       <>
-        Receive notifications when the top prize for the next draw has
-        snowballed from the{" "}
-        <Anchor
-          href="https://www.singaporepools.com.sg/en/product/Pages/toto_results.aspx"
-          isExternal
-        >
-          latest TOTO results
-        </Anchor>{" "}
-        from Singapore Pools.
+        Receive notifications when the top prize for the next draw has{" "}
+        <strong className="font-medium">snowballed</strong> from the latest TOTO
+        results from Singapore Pools.
       </>
     ),
+    topicRoute: Routes.TotoSnowballs,
   },
   NEW_FEATURES_TELEGRAM_CHANNEL,
 ];

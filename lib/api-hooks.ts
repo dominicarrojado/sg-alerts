@@ -1,6 +1,6 @@
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { formatDateTime } from "./date";
+import { formatDate, formatDateTime } from "./date";
 import {
   BbdcSlotsDatesMap,
   CdcLessonSlotsDatesInfo,
@@ -14,6 +14,7 @@ import {
   Flights,
   FlightsInfo,
   JapanVisaSlotsDatesMap,
+  LotteryJackpotInfo,
   SsdcSlotsDatesMap,
   SsdcTestSlotsDatesInfo,
   SsdcTestSlotsDatesMap,
@@ -33,6 +34,7 @@ import {
   FetchStatus,
   FlightAirline,
   JapanVisaType,
+  LotteryService,
   SsdcService,
   SsdcTestsService,
   ThemeParkService,
@@ -849,4 +851,41 @@ export function useGetThemeParkInfo(service: ThemeParkService) {
   };
 
   return [fetchStatus, themeParkInfo, getThemeParkInfo] as const;
+}
+
+export function useGetTotoSnowballInfo() {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [totoSnowballInfo, setTotoSnowballInfo] = useState<LotteryJackpotInfo>({
+    drawDate: "",
+    prize: 0,
+    resultsLink: "",
+  });
+  const getTotoSnowballsInfo = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(
+        `${API_URL}${ApiEndpoint.LotteryInfo}?service=${LotteryService.TOTO}`,
+      );
+      const resData = res.data as LotteryJackpotInfo;
+
+      if (!resData || typeof resData !== "object") {
+        throw new Error("Invalid data");
+      }
+
+      const [, date] = resData.drawDate.split(", ");
+
+      setTotoSnowballInfo({
+        ...resData,
+        drawDate: formatDate(date),
+      });
+
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, totoSnowballInfo, getTotoSnowballsInfo] as const;
 }

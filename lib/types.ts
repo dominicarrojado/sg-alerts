@@ -349,3 +349,9 @@ export type ThemeParkInfo = {
   items: Facilities;
   updatedAt: string;
 };
+
+export type LotteryJackpotInfo = {
+  prize: number;
+  drawDate: string;
+  resultsLink: string;
+};
