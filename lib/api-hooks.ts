@@ -6,6 +6,7 @@ import {
   CdcLessonSlotsDatesInfo,
   CdcLessonSlotsDatesMap,
   CdcSimulatorSlotsDatesMap,
+  CdcSlotsDatesInfo,
   CdcSlotsDatesMap,
   CdcTestSlotsDatesMap,
   CoeBiddingsInfo,
@@ -14,6 +15,7 @@ import {
   FlightsInfo,
   JapanVisaSlotsDatesMap,
   SsdcSlotsDatesMap,
+  SsdcTestSlotsDatesInfo,
   SsdcTestSlotsDatesMap,
   Subscription,
   SubscriptionTopics,
@@ -257,34 +259,40 @@ export function useGetJapanVisaSlotsDatesMap() {
   ] as const;
 }
 
-export function useGetCdcSlotsDatesMap() {
+export function useGetCdcSlotsDatesInfo() {
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
-  const [cdcSlotsDatesMap, setCdcSlotsDatesMap] = useState<CdcSlotsDatesMap>({
-    [CdcService.EYESIGHT_TEST]: "",
-    [CdcService.COUNTER_SERVICES]: "",
-  });
-  const getCdcSlotsDatesMap = async () => {
+  const [cdcSlotsDatesInfo, setCdcSlotsDatesInfo] = useState<CdcSlotsDatesInfo>(
+    {
+      datesMap: {} as CdcSlotsDatesMap,
+      updatedAt: "",
+    },
+  );
+  const getCdcSlotsDatesInfo = async () => {
     try {
       setFetchStatus(FetchStatus.Loading);
 
       const axios = (await import("axios")).default;
       const res = await axios.get(`${API_URL}${ApiEndpoint.CdcSlotsInfo}`);
-      const resData = res.data;
+      const resData = res.data as CdcSlotsDatesInfo;
 
       if (!resData || typeof resData !== "object") {
         throw new Error("Invalid data");
       }
 
-      const eyesightTest = resData[CdcService.EYESIGHT_TEST];
-      const counterServices = resData[CdcService.COUNTER_SERVICES];
+      const { datesMap } = resData;
+      const eyesightTest = datesMap[CdcService.EYESIGHT_TEST];
+      const counterServices = datesMap[CdcService.COUNTER_SERVICES];
 
-      setCdcSlotsDatesMap({
-        [CdcService.EYESIGHT_TEST]: eyesightTest
-          ? formatDateTime(eyesightTest)
-          : "-",
-        [CdcService.COUNTER_SERVICES]: counterServices
-          ? formatDateTime(counterServices)
-          : "-",
+      setCdcSlotsDatesInfo({
+        datesMap: {
+          [CdcService.EYESIGHT_TEST]: eyesightTest
+            ? formatDateTime(eyesightTest)
+            : "-",
+          [CdcService.COUNTER_SERVICES]: counterServices
+            ? formatDateTime(counterServices)
+            : "-",
+        },
+        updatedAt: formatDateTime(resData.updatedAt),
       });
       setFetchStatus(FetchStatus.Success);
     } catch (err) {
@@ -292,7 +300,7 @@ export function useGetCdcSlotsDatesMap() {
     }
   };
 
-  return [fetchStatus, cdcSlotsDatesMap, getCdcSlotsDatesMap] as const;
+  return [fetchStatus, cdcSlotsDatesInfo, getCdcSlotsDatesInfo] as const;
 }
 
 export function useGetCdcLessonSlotsDatesInfo() {
@@ -686,38 +694,41 @@ export function useGetSsdcSlotsDatesMap() {
   return [fetchStatus, ssdcSlotsDatesMap, getSsdcSlotsDatesMap] as const;
 }
 
-export function useGetSsdcTestSlotsDatesMap() {
+export function useGetSsdcTestSlotsDatesInfo() {
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
-  const [ssdcTestSlotsDatesMap, setSsdcTestSlotsDatesMap] =
-    useState<SsdcTestSlotsDatesMap>({
-      [SsdcTestsService.PRIVATE_MANUAL_CAR]: "",
-      [SsdcTestsService.AUTO_CAR]: "",
-      [SsdcTestsService.MANUAL_CAR]: "",
+  const [ssdcTestSlotsDatesInfo, setSsdcTestSlotsDatesInfo] =
+    useState<SsdcTestSlotsDatesInfo>({
+      datesMap: {} as SsdcTestSlotsDatesMap,
+      updatedAt: "",
     });
-  const getSsdcTestSlotsDatesMap = async () => {
+  const getSsdcTestSlotsDatesInfo = async () => {
     try {
       setFetchStatus(FetchStatus.Loading);
 
       const axios = (await import("axios")).default;
       const res = await axios.get(`${API_URL}${ApiEndpoint.SsdcTestSlotsInfo}`);
-      const resData = res.data;
+      const resData = res.data as SsdcTestSlotsDatesInfo;
 
       if (!resData || typeof resData !== "object") {
         throw new Error("Invalid data");
       }
 
-      const privateManualCar = resData[SsdcTestsService.PRIVATE_MANUAL_CAR];
-      const autoCar = resData[SsdcTestsService.AUTO_CAR];
-      const manualCar = resData[SsdcTestsService.MANUAL_CAR];
+      const datesMap = resData.datesMap;
+      const privateManualCar = datesMap[SsdcTestsService.PRIVATE_MANUAL_CAR];
+      const autoCar = datesMap[SsdcTestsService.AUTO_CAR];
+      const manualCar = datesMap[SsdcTestsService.MANUAL_CAR];
 
-      setSsdcTestSlotsDatesMap({
-        [SsdcTestsService.PRIVATE_MANUAL_CAR]: privateManualCar
-          ? formatDateTime(privateManualCar)
-          : "-",
-        [SsdcTestsService.AUTO_CAR]: autoCar ? formatDateTime(autoCar) : "-",
-        [SsdcTestsService.MANUAL_CAR]: manualCar
-          ? formatDateTime(manualCar)
-          : "-",
+      setSsdcTestSlotsDatesInfo({
+        datesMap: {
+          [SsdcTestsService.PRIVATE_MANUAL_CAR]: privateManualCar
+            ? formatDateTime(privateManualCar)
+            : "-",
+          [SsdcTestsService.AUTO_CAR]: autoCar ? formatDateTime(autoCar) : "-",
+          [SsdcTestsService.MANUAL_CAR]: manualCar
+            ? formatDateTime(manualCar)
+            : "-",
+        },
+        updatedAt: formatDateTime(resData.updatedAt),
       });
       setFetchStatus(FetchStatus.Success);
     } catch (err) {
@@ -727,8 +738,8 @@ export function useGetSsdcTestSlotsDatesMap() {
 
   return [
     fetchStatus,
-    ssdcTestSlotsDatesMap,
-    getSsdcTestSlotsDatesMap,
+    ssdcTestSlotsDatesInfo,
+    getSsdcTestSlotsDatesInfo,
   ] as const;
 }
 

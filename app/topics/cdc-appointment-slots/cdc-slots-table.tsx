@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import {
   Table,
   TableBody,
+  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -11,7 +12,7 @@ import {
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Anchor } from "@/components/ui/anchor";
-import { useGetCdcSlotsDatesMap } from "@/lib/api-hooks";
+import { useGetCdcSlotsDatesInfo } from "@/lib/api-hooks";
 import { getTelegramChannelUrl } from "@/lib/telegram";
 import { trackEvent } from "@/lib/google-analytics";
 import {
@@ -24,8 +25,9 @@ import {
 import type { CdcSlotsInfoItems } from "@/lib/types";
 
 export function CdcSlotsTable() {
-  const [fetchState, cdcSlotsDatesMap, getCdcSlotsDatesMap] =
-    useGetCdcSlotsDatesMap();
+  const [fetchState, cdcSlotsDatesInfo, getCdcSlotsDatesInfo] =
+    useGetCdcSlotsDatesInfo();
+  const { datesMap: cdcSlotsDatesMap, updatedAt } = cdcSlotsDatesInfo;
   const cdcSlotsInfoItems: CdcSlotsInfoItems = [
     {
       service: CdcService.EYESIGHT_TEST,
@@ -52,7 +54,7 @@ export function CdcSlotsTable() {
   };
 
   useEffect(() => {
-    getCdcSlotsDatesMap();
+    getCdcSlotsDatesInfo();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -63,6 +65,7 @@ export function CdcSlotsTable() {
 
   return fetchState === FetchStatus.Success ? (
     <Table className="my-6" data-clarity-unmask="true">
+      <TableCaption>Last updated on {updatedAt}.</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead>Type of Service</TableHead>

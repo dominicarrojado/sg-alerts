@@ -179,6 +179,11 @@ export type JapanVisaSlotsInfoItems = Array<JapanVisaSlotsInfoItem>;
 
 export type CdcSlotsDatesMap = Record<CdcService, string>;
 
+export type CdcSlotsDatesInfo = {
+  datesMap: CdcSlotsDatesMap;
+  updatedAt: string;
+};
+
 export type CdcSlotsInfo = {
   service: CdcService;
   title: string;
@@ -270,6 +275,11 @@ export type SsdcSlotsInfo = {
 export type SsdcSlotsInfoItems = Array<SsdcSlotsInfo>;
 
 export type SsdcTestSlotsDatesMap = Record<SsdcTestsService, string>;
+
+export type SsdcTestSlotsDatesInfo = {
+  datesMap: SsdcTestSlotsDatesMap;
+  updatedAt: string;
+};
 
 export type SsdcTestSlotsInfo = {
   service: SsdcTestsService;

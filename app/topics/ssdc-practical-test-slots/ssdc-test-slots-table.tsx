@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import {
   Table,
   TableBody,
+  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -11,7 +12,7 @@ import {
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Anchor } from "@/components/ui/anchor";
-import { useGetSsdcTestSlotsDatesMap } from "@/lib/api-hooks";
+import { useGetSsdcTestSlotsDatesInfo } from "@/lib/api-hooks";
 import { getTelegramChannelUrl } from "@/lib/telegram";
 import { trackEvent } from "@/lib/google-analytics";
 import {
@@ -24,8 +25,9 @@ import {
 import type { SsdcTestSlotsInfoItems } from "@/lib/types";
 
 export function SsdcTestSlotsTable() {
-  const [fetchState, ssdcSlotsDatesMap, getSsdcSlotsDatesMap] =
-    useGetSsdcTestSlotsDatesMap();
+  const [fetchState, ssdcSlotsDatesInfo, getSsdcSlotsDatesInfo] =
+    useGetSsdcTestSlotsDatesInfo();
+  const { datesMap: ssdcSlotsDatesMap, updatedAt } = ssdcSlotsDatesInfo;
   const ssdcTestsSlotsInfoItems: SsdcTestSlotsInfoItems = [
     {
       service: SsdcTestsService.PRIVATE_MANUAL_CAR,
@@ -59,7 +61,7 @@ export function SsdcTestSlotsTable() {
   };
 
   useEffect(() => {
-    getSsdcSlotsDatesMap();
+    getSsdcSlotsDatesInfo();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -70,6 +72,7 @@ export function SsdcTestSlotsTable() {
 
   return fetchState === FetchStatus.Success ? (
     <Table className="my-6" data-clarity-unmask="true">
+      <TableCaption>Last updated on {updatedAt}.</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead>Motorcar Licensing Course</TableHead>
