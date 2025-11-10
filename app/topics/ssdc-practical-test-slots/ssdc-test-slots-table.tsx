@@ -112,6 +112,11 @@ export function SsdcTestSlotsTable() {
     </Table>
   ) : (
     <Table className="my-6">
+      <TableCaption>
+        <div className="flex flex-col items-center gap-3">
+          <Skeleton className="h-5 w-1/2" />
+        </div>
+      </TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead>
@@ -129,8 +134,9 @@ export function SsdcTestSlotsTable() {
               <TableCell>
                 <Skeleton className="h-5 w-full" />
               </TableCell>
-              <TableCell>
+              <TableCell className="flex flex-col items-end gap-1">
                 <Skeleton className="h-5 w-full" />
+                <Skeleton className="h-4 w-4/12 sm:hidden" />
               </TableCell>
             </TableRow>
           ),
