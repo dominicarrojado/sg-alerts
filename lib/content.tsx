@@ -229,6 +229,10 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.TokyoDisneySeaAttractionUpdates,
   },
   {
+    title: "Shanghai Disneyland",
+    href: Routes.ShanghaiDisneylandAttractionUpdates,
+  },
+  {
     title: "and more...",
     href: "",
   },

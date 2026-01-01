@@ -20,7 +20,7 @@ import { Anchor } from "./ui/anchor";
 
 type Props = {
   service: ThemeParkService;
-  facilityUrlAffix: string;
+  facilityUrlAffix?: string;
 };
 
 export function ThemeParkFacilitiesTable({ service, facilityUrlAffix }: Props) {
@@ -54,6 +54,7 @@ export function ThemeParkFacilitiesTable({ service, facilityUrlAffix }: Props) {
         {facilities.map((facility) => {
           const {
             id,
+            name,
             isOperating,
             fsStatus,
             dpaStatus,
@@ -111,12 +112,16 @@ export function ThemeParkFacilitiesTable({ service, facilityUrlAffix }: Props) {
           return (
             <TableRow key={id}>
               <TableCell className="align-top">
-                <Anchor
-                  href={`https://www.tokyodisneyresort.jp/en/${facilityUrlAffix}/attraction/detail/${id}/`}
-                  isExternal
-                >
-                  <Balancer className="font-medium">{facility.name}</Balancer>
-                </Anchor>
+                {facilityUrlAffix ? (
+                  <Anchor
+                    href={`https://www.tokyodisneyresort.jp/en/${facilityUrlAffix}/attraction/detail/${id}/`}
+                    isExternal
+                  >
+                    <Balancer className="font-medium">{name}</Balancer>
+                  </Anchor>
+                ) : (
+                  <Balancer className="font-medium">{name}</Balancer>
+                )}
                 <div className="mt-1 sm:hidden">{statusAndPasses}</div>
               </TableCell>
               <TableCell className="hidden align-top sm:table-cell">

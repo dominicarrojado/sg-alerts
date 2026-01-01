@@ -41,6 +41,7 @@ export enum Routes {
   BbdcAppointmentSlots = "/topics/bbdc-appointment-slots/",
   TokyoDisneylandAttractionUpdates = "/topics/tokyo-disneyland-attraction-updates/",
   TokyoDisneySeaAttractionUpdates = "/topics/tokyo-disneysea-attraction-updates/",
+  ShanghaiDisneylandAttractionUpdates = "/topics/shanghai-disneyland-attraction-updates/",
   TotoSnowballs = "/topics/toto-snowballs/",
 }
 
@@ -184,6 +185,7 @@ export enum TravelDealsService {
 export enum ThemeParkService {
   TokyoDisneylandAttractions = "tokyo-disneyland-attractions",
   TokyoDisneySeaAttractions = "tokyo-disneysea-attractions",
+  ShanghaiDisneylandAttractions = "shanghai-disneyland-attractions",
 }
 
 export enum LotteryService {
