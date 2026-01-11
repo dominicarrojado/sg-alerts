@@ -5,9 +5,15 @@ import { Container } from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
+import TelegramLinkButton from "@/components/telegram-link-button";
 import { ThemeParkFacilitiesTable } from "@/components/theme-park-facilities-table";
 import AdUnit from "@/components/ad-unit";
-import { Routes, ThemeParkService } from "@/lib/enums";
+import {
+  Routes,
+  TelegramChannel,
+  ThemeParkService,
+  TopicTitle,
+} from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "Shanghai Disneyland Attraction Updates";
@@ -60,6 +66,24 @@ export default function ShanghaiDisneylandAttractionUpdates() {
         Shanghai Disneyland.
       </Paragraph>
       <AdUnit />
+      <Paragraph>
+        <span className="font-medium">SG Alerts</span> provides real-time
+        updates on the availability of Disney Premier Access and attraction
+        operations at Shanghai Disneyland. By subscribing to our Telegram
+        channel, you can receive instant notifications about attraction status
+        changes and access availability, ensuring you never miss out on the fun.
+      </Paragraph>
+      <Paragraph>
+        To get started, simply click the button below to join the Telegram
+        channel and start receiving notifications.
+      </Paragraph>
+      <div className="sticky bottom-6 z-50 mt-8 text-center">
+        <TelegramLinkButton
+          channel={TelegramChannel.ShanghaiDisneylandAttractions}
+          linkText="Subscribe Now"
+          topicTitle={TopicTitle.ShanghaiDisneylandAttractions}
+        />
+      </div>
     </Container>
   );
 }

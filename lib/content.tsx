@@ -84,7 +84,7 @@ export const CATEGORY_ITEMS = [
   {
     emoji: "🎢",
     title: "Theme Parks",
-    description: "Tokyo Disneyland, Tokyo DisneySea",
+    description: "Tokyo Disney Parks, Shanghai Disneyland",
     href: Routes.ThemeParksCategory,
   },
 ];
@@ -576,6 +576,17 @@ export const THEME_PARK_TELEGRAM_CHANNELS: TelegramPublicChannels = [
       </>
     ),
     topicRoute: Routes.TokyoDisneySeaAttractionUpdates,
+  },
+  {
+    id: TelegramChannel.ShanghaiDisneylandAttractions,
+    title: TopicTitle.ShanghaiDisneylandAttractions,
+    description: (
+      <>
+        Receive notifications on Disney Premier Access availability during the
+        day and when attractions resume operations.
+      </>
+    ),
+    topicRoute: Routes.ShanghaiDisneylandAttractionUpdates,
   },
   NEW_FEATURES_TELEGRAM_CHANNEL,
 ];
