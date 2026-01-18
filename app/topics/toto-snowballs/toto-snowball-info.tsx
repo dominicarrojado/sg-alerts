@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { CheckCircle } from "lucide-react";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -10,6 +10,8 @@ import { FetchStatus } from "@/lib/enums";
 export default function TotoSnowballInfo() {
   const [fetchState, totoSnowballInfo, getTotoSnowballInfo] =
     useGetTotoSnowballInfo();
+  const { hasDrawn, drawDate, prize } = totoSnowballInfo;
+  const formattedPrize = prize.toLocaleString();
 
   useEffect(() => {
     getTotoSnowballInfo();
@@ -25,8 +27,11 @@ export default function TotoSnowballInfo() {
     <Alert className="my-6" data-clarity-unmask="true">
       <CheckCircle className="mt-1 h-4 w-4" />
       <AlertTitle className="leading-normal">
-        Last TOTO snowball was on {totoSnowballInfo.drawDate} with the first
-        prize amount of S$ {totoSnowballInfo.prize.toLocaleString()}.
+        {hasDrawn
+          ? `Last TOTO snowball was on ${drawDate} with the first
+        prize amount of S$ ${formattedPrize}.`
+          : `Next TOTO draw on ${drawDate} has a snowball
+        prize of S$ ${formattedPrize}.`}
       </AlertTitle>
     </Alert>
   ) : (

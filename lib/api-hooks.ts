@@ -857,10 +857,11 @@ export function useGetTotoSnowballInfo() {
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
   const [totoSnowballInfo, setTotoSnowballInfo] = useState<LotteryJackpotInfo>({
     drawDate: "",
+    hasDrawn: false,
     prize: 0,
     resultsLink: "",
   });
-  const getTotoSnowballsInfo = async () => {
+  const getTotoSnowballInfo = async () => {
     try {
       setFetchStatus(FetchStatus.Loading);
 
@@ -879,6 +880,7 @@ export function useGetTotoSnowballInfo() {
       setTotoSnowballInfo({
         ...resData,
         drawDate: formatDate(date),
+        hasDrawn: new Date(resData.drawDate) < new Date(),
       });
 
       setFetchStatus(FetchStatus.Success);
@@ -887,5 +889,5 @@ export function useGetTotoSnowballInfo() {
     }
   };
 
-  return [fetchStatus, totoSnowballInfo, getTotoSnowballsInfo] as const;
+  return [fetchStatus, totoSnowballInfo, getTotoSnowballInfo] as const;
 }

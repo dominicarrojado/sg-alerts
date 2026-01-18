@@ -353,5 +353,6 @@ export type ThemeParkInfo = {
 export type LotteryJackpotInfo = {
   prize: number;
   drawDate: string;
+  hasDrawn: boolean;
   resultsLink: string;
 };
