@@ -880,7 +880,7 @@ export function useGetTotoSnowballInfo() {
       setTotoSnowballInfo({
         ...resData,
         drawDate: formatDate(date),
-        hasDrawn: new Date(resData.drawDate) < new Date(),
+        hasDrawn: new Date(date) < new Date(),
       });
 
       setFetchStatus(FetchStatus.Success);
