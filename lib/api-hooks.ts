@@ -875,12 +875,27 @@ export function useGetTotoSnowballInfo() {
         throw new Error("Invalid data");
       }
 
-      const [, date] = resData.drawDate.split(", ");
+      const [, date, time] = resData.drawDate.split(", ");
+      const drawDate = new Date(date);
+      const [hoursStr, minutesStr] = time.split(":");
+      const hours = parseInt(hoursStr);
+      const minutes = parseInt(minutesStr.slice(0, 2));
+      const isPm = time.toLowerCase().includes("pm");
+
+      if (isPm && hours !== 12) {
+        drawDate.setHours(hours + 12);
+      } else if (!isPm && hours === 12) {
+        drawDate.setHours(0);
+      } else {
+        drawDate.setHours(hours);
+      }
+
+      drawDate.setMinutes(minutes);
 
       setTotoSnowballInfo({
         ...resData,
         drawDate: formatDate(date),
-        hasDrawn: new Date(date) < new Date(),
+        hasDrawn: drawDate.getTime() < new Date().getTime(),
       });
 
       setFetchStatus(FetchStatus.Success);
