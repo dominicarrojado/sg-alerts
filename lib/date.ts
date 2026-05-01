@@ -37,17 +37,10 @@ export function formatTime(time: string): string {
 
 export function formatDepositRatesChartTickDate(
   date: string,
-  range: DepositRatesChartRange,
+  _range: DepositRatesChartRange,
 ): string {
   const [year, month, day] = date.split("-").map(Number);
   const dateObj = new Date(year, month - 1, day);
-
-  if (range === "1m") {
-    return new Intl.DateTimeFormat("en-GB", {
-      day: "numeric",
-      month: "short",
-    }).format(dateObj);
-  }
 
   return new Intl.DateTimeFormat("en-GB", {
     month: "short",

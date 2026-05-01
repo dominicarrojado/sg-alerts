@@ -1,4 +1,9 @@
-import { Routes, SubscriptionTopic, TelegramChannel } from "./enums";
+import {
+  DepositRateBank,
+  Routes,
+  SubscriptionTopic,
+  TelegramChannel,
+} from "./enums";
 import type { DepositRatesChartRange } from "./types";
 
 export const OWNER_NAME = "Dominic Arrojado";
@@ -86,11 +91,34 @@ export const DEPOSIT_RATES_CHART_COLORS = [
   "hsl(84, 81%, 44%)",
 ];
 
+export const DEPOSIT_RATES_BANK_PRIMARY_COLORS: Record<
+  DepositRateBank,
+  string
+> = {
+  [DepositRateBank.DBS]: "#EE1C18",
+  [DepositRateBank.OCBC]: "#CB2D3E",
+  [DepositRateBank.UOB]: "#005EB8",
+  [DepositRateBank.STANDARD_CHARTERED]: "#38D200",
+  [DepositRateBank.HSBC]: "#DB0011",
+  [DepositRateBank.CITIBANK]: "#007AFF",
+  [DepositRateBank.MAYBANK]: "#FFC83D",
+  [DepositRateBank.CIMB]: "#C4161C",
+  [DepositRateBank.BANK_OF_CHINA]: "#A71930",
+  [DepositRateBank.ICBC]: "#CB0202",
+  [DepositRateBank.MARIBANK]: "#EA5F00",
+  [DepositRateBank.GXS]: "#771FFF",
+  [DepositRateBank.SYFE]: "#263159",
+  [DepositRateBank.SSB]: "#D9B173",
+  [DepositRateBank.T_BILLS]: "#08457E",
+  [DepositRateBank.HONG_LEONG_FINANCE]: "#910B03",
+  [DepositRateBank.SIF]: "#151D4F",
+  [DepositRateBank.RHB]: "#5BC2E7",
+};
+
 export const DEPOSIT_RATES_CHART_RANGE_LABELS: Record<
   DepositRatesChartRange,
   string
 > = {
-  "1m": "Last Month",
   "6m": "Last 6 Months",
   "1y": "Last Year",
   "2y": "Last 2 Years",

@@ -290,3 +290,24 @@ export enum GoogleAdSenseUnitLayout {
 export enum GoogleAdSenseUnitFormat {
   FLUID = "fluid",
 }
+
+export enum DepositRateBank {
+  HSBC = "HSBC",
+  UOB = "UOB",
+  STANDARD_CHARTERED = "Standard Chartered",
+  DBS = "DBS",
+  OCBC = "OCBC",
+  CITIBANK = "Citibank",
+  MAYBANK = "Maybank",
+  CIMB = "CIMB",
+  RHB = "RHB",
+  ICBC = "ICBC",
+  HONG_LEONG_FINANCE = "Hong Leong Finance",
+  SIF = "Sing Investments & Finance",
+  BANK_OF_CHINA = "Bank of China",
+  SSB = "Singapore Savings Bonds*",
+  T_BILLS = "Treasury Bills (T-Bills)*",
+  GXS = "GXS (Boost Pocket)*",
+  MARIBANK = "MariBank*",
+  SYFE = "Syfe (Cash+ Guaranteed)*",
+}
