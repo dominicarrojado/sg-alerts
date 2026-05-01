@@ -105,6 +105,29 @@ export type DepositRatesInfo = {
   updatedAt: string;
 };
 
+export type DepositRatesChartDataPoint = {
+  date: string;
+  [bank: string]: string | number;
+};
+
+export type DepositRatesChartConfigEntry = {
+  label: string;
+};
+
+export type DepositRatesChartData = {
+  chartData: Array<DepositRatesChartDataPoint>;
+  chartConfig: Record<string, DepositRatesChartConfigEntry>;
+};
+
+export type DepositRatesChartRange = "1m" | "6m" | "1y" | "2y";
+
+export type DepositRatesChartTooltipPayloadItem = {
+  value?: number | string;
+  dataKey?: string | number;
+  color?: string;
+  name?: string;
+};
+
 export type Flight = {
   id: string;
   shareUrl: string;

@@ -1,4 +1,5 @@
 import { Routes, SubscriptionTopic, TelegramChannel } from "./enums";
+import type { DepositRatesChartRange } from "./types";
 
 export const OWNER_NAME = "Dominic Arrojado";
 export const OWNER_WEBSITE = "https://dominicarrojado.com";
@@ -71,3 +72,26 @@ export const TOPICS_COUNT =
 export const TOAST_DURATION = 60000; // 1 minute
 
 export const GOOGLE_ADSENSE_CLIENT_ID = "ca-pub-3632473845121107";
+
+export const DEPOSIT_RATES_CHART_COLORS = [
+  "hsl(217, 91%, 60%)",
+  "hsl(0, 84%, 60%)",
+  "hsl(158, 64%, 52%)",
+  "hsl(38, 92%, 50%)",
+  "hsl(258, 90%, 66%)",
+  "hsl(330, 81%, 60%)",
+  "hsl(174, 84%, 40%)",
+  "hsl(25, 95%, 53%)",
+  "hsl(192, 91%, 45%)",
+  "hsl(84, 81%, 44%)",
+];
+
+export const DEPOSIT_RATES_CHART_RANGE_LABELS: Record<
+  DepositRatesChartRange,
+  string
+> = {
+  "1m": "Last Month",
+  "6m": "Last 6 Months",
+  "1y": "Last Year",
+  "2y": "Last 2 Years",
+};

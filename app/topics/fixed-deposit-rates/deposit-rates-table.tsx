@@ -17,7 +17,7 @@ import { formatMoney } from "@/lib/number";
 import { cn } from "@/lib/utils";
 import { FetchStatus } from "@/lib/enums";
 
-export function FixedDepositRatesTable() {
+export function DepositRatesTable() {
   const [fetchState, depositRatesInfo, getDepositRatesInfo] =
     useGetDepositRatesInfo();
   const { items: depositRates, updatedAt } = depositRatesInfo;

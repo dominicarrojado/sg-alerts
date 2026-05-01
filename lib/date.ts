@@ -1,3 +1,5 @@
+import type { DepositRatesChartRange } from "./types";
+
 export function formatDate(date: string): string {
   const dateObj = new Date(date);
   const formattedDate = new Intl.DateTimeFormat("en-GB", {
@@ -31,4 +33,24 @@ export function formatTime(time: string): string {
   hours = hours % 12 || 12;
 
   return `${hours}:${minutes} ${period}`;
+}
+
+export function formatDepositRatesChartTickDate(
+  date: string,
+  range: DepositRatesChartRange,
+): string {
+  const [year, month, day] = date.split("-").map(Number);
+  const dateObj = new Date(year, month - 1, day);
+
+  if (range === "1m") {
+    return new Intl.DateTimeFormat("en-GB", {
+      day: "numeric",
+      month: "short",
+    }).format(dateObj);
+  }
+
+  return new Intl.DateTimeFormat("en-GB", {
+    month: "short",
+    year: "numeric",
+  }).format(dateObj);
 }

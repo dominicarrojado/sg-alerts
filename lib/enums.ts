@@ -63,6 +63,7 @@ export enum ApiEndpoint {
   CdcSlotsInfo = "/cdc-checker/slots-info",
   CdcLessonLastSlotsInfo = "/cdc-lessons-checker/slots-info",
   FixedDepositRatesInfo = "/deposit-rates-checker/deposit-rates-info",
+  DepositRatesChartData = "/deposit-rates-snapshots/chart-data",
   FlightsInfo = "/flight-checker/flights-info",
   CoeBiddingsInfo = "/coe-checker/biddings-info",
   TrainTimeSlotsInfo = "/train-tickets-checker/slots-info",
