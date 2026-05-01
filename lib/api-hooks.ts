@@ -10,6 +10,8 @@ import {
   CdcSlotsDatesMap,
   CdcTestSlotsDatesMap,
   CoeBiddingsInfo,
+  DepositRatesChartData,
+  DepositRatesChartRange,
   DepositRatesInfo,
   Flights,
   FlightsInfo,
@@ -905,4 +907,37 @@ export function useGetTotoSnowballInfo() {
   };
 
   return [fetchStatus, totoSnowballInfo, getTotoSnowballInfo] as const;
+}
+
+export function useGetDepositRatesChartData() {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [chartData, setChartData] = useState<DepositRatesChartData | null>(
+    null,
+  );
+  const getDepositRatesChartData = async (range: DepositRatesChartRange) => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(
+        `${API_URL}${ApiEndpoint.DepositRatesChartData}?range=${range}`,
+      );
+      const resData = res.data;
+
+      if (
+        !resData ||
+        !Array.isArray(resData?.chartData) ||
+        typeof resData?.chartConfig !== "object"
+      ) {
+        throw new Error("Invalid data");
+      }
+
+      setChartData(resData);
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, chartData, getDepositRatesChartData] as const;
 }
