@@ -1,0 +1,31 @@
+name: Add Donation Testimonial
+description: Add a new entry to DONATION_TESTIMONIALS in lib/content.tsx
+assignees:
+  - Copilot
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Prepend a new testimonial entry to `DONATION_TESTIMONIALS` in `lib/content.tsx`. The date should be set to today's date.
+  - type: input
+    id: first-name
+    attributes:
+      label: First Name
+      placeholder: e.g. John
+    validations:
+      required: true
+  - type: input
+    id: last-name
+    attributes:
+      label: Last Name Initial
+      placeholder: e.g. D
+    validations:
+      required: true
+  - type: input
+    id: message
+    attributes:
+      label: Message
+      description: Leave blank if there is no message.
+      placeholder: e.g. Thank you so much!
+    validations:
+      required: false
