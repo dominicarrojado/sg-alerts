@@ -47,7 +47,6 @@ export default function FixedDepositRates() {
       </div>
       <DepositRatesTable />
       <DepositRatesChart />
-      <AdUnit />
       <Paragraph>
         Fixed deposit rates are one of the most popular ways to earn interest on
         your money. However, the interest rates offered by banks in Singapore

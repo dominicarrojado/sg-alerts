@@ -89,6 +89,9 @@ export function DepositRatesChart() {
     selectedBanks === null
       ? bankKeys
       : bankKeys.filter((bank) => selectedBanks.includes(bank));
+  const visibleSortedBankKeys = sortedBankKeys.filter((bank) =>
+    visibleBankKeys.includes(bank),
+  );
   const allBanksChecked =
     bankKeys.length > 0 && visibleBankKeys.length === bankKeys.length;
 
@@ -157,7 +160,8 @@ export function DepositRatesChart() {
 
   return (
     <Card className="my-6">
-      <CardHeader className="pb-4">
+      <CardHeader className="space-y-2 pb-4">
+        <h3 className="text-base font-semibold">Fixed Deposit Rates Trend</h3>
         <div className="flex flex-wrap items-center justify-between gap-2">
           <DropdownMenu
             open={isBanksMenuOpen}
@@ -236,51 +240,64 @@ export function DepositRatesChart() {
             Select at least one bank to display rate trends.
           </div>
         ) : fetchStatus === FetchStatus.Failure || !chartData ? null : (
-          <ChartContainer
-            config={chartContainerConfig}
-            className="h-[350px] w-full"
-          >
-            <LineChart
-              data={chartData.chartData}
-              margin={{ top: 5, right: 10, left: 0, bottom: 5 }}
+          <div className="space-y-3">
+            <ChartContainer
+              config={chartContainerConfig}
+              className="h-[350px] w-full"
             >
-              <CartesianGrid strokeDasharray="3 3" vertical={false} />
-              <XAxis
-                dataKey="date"
-                tick={{ fontSize: 11 }}
-                tickFormatter={(value) =>
-                  formatDepositRatesChartTickDate(String(value), range)
-                }
-                tickLine={false}
-                axisLine={false}
-              />
-              <YAxis
-                domain={[yAxisMin, yAxisMax]}
-                tickFormatter={(value) => `${value}%`}
-                tick={{ fontSize: 11 }}
-                tickLine={false}
-                axisLine={false}
-                width={45}
-              />
-              <Tooltip
-                content={<DepositRatesChartTooltip range={range} />}
-                cursor={{ stroke: "hsl(var(--border))", strokeWidth: 1 }}
-              />
-              {visibleBankKeys.map((bank) => (
-                <Line
-                  key={bank}
-                  type="monotone"
-                  dataKey={bank}
-                  name={chartData.chartConfig[bank].label}
-                  stroke={bankColors[bank]}
-                  strokeWidth={2}
-                  dot={false}
-                  connectNulls
-                  isAnimationActive={false}
+              <LineChart
+                data={chartData.chartData}
+                margin={{ top: 5, right: 10, left: 0, bottom: 5 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <XAxis
+                  dataKey="date"
+                  tick={{ fontSize: 11 }}
+                  tickFormatter={(value) =>
+                    formatDepositRatesChartTickDate(String(value), range)
+                  }
+                  tickLine={false}
+                  axisLine={false}
                 />
+                <YAxis
+                  domain={[yAxisMin, yAxisMax]}
+                  tickFormatter={(value) => `${value}%`}
+                  tick={{ fontSize: 11 }}
+                  tickLine={false}
+                  axisLine={false}
+                  width={45}
+                />
+                <Tooltip
+                  content={<DepositRatesChartTooltip range={range} />}
+                  cursor={{ stroke: "hsl(var(--border))", strokeWidth: 1 }}
+                />
+                {visibleBankKeys.map((bank) => (
+                  <Line
+                    key={bank}
+                    type="monotone"
+                    dataKey={bank}
+                    name={chartData.chartConfig[bank].label}
+                    stroke={bankColors[bank]}
+                    strokeWidth={2}
+                    dot={false}
+                    connectNulls
+                    isAnimationActive={false}
+                  />
+                ))}
+              </LineChart>
+            </ChartContainer>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 px-2 text-xs text-muted-foreground">
+              {visibleSortedBankKeys.map((bank) => (
+                <div key={bank} className="flex items-center gap-1.5">
+                  <span
+                    className="h-2 w-2 shrink-0 rounded-[2px]"
+                    style={{ backgroundColor: bankColors[bank] }}
+                  />
+                  <span>{chartData.chartConfig[bank].label}</span>
+                </div>
               ))}
-            </LineChart>
-          </ChartContainer>
+            </div>
+          </div>
         )}
       </CardContent>
     </Card>
