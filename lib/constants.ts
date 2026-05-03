@@ -130,4 +130,5 @@ export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<
   KUL: Routes.SingaporeAirlinesFlightsKualaLumpur,
   PEN: Routes.SingaporeAirlinesFlightsPenang,
   HKT: Routes.SingaporeAirlinesFlightsPhuket,
+  CGK: Routes.SingaporeAirlinesFlightsJakarta,
 };
