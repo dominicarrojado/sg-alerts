@@ -232,11 +232,11 @@ export function DepositRatesChart() {
           </Select>
         </div>
       </CardHeader>
-      <CardContent className="pb-4 pl-2 pr-4">
+      <CardContent className="px-4 pb-4">
         {isLoading ? (
-          <Skeleton className="h-[350px] w-full" />
+          <Skeleton className="h-[450px] w-full" />
         ) : visibleBankKeys.length === 0 ? (
-          <div className="flex h-[350px] items-center justify-center rounded-md border border-dashed text-sm text-muted-foreground">
+          <div className="flex h-[450px] items-center justify-center rounded-md border border-dashed text-sm text-muted-foreground">
             Select at least one bank to display rate trends.
           </div>
         ) : fetchStatus === FetchStatus.Failure || !chartData ? null : (
@@ -247,7 +247,7 @@ export function DepositRatesChart() {
             >
               <LineChart
                 data={chartData.chartData}
-                margin={{ top: 5, right: 10, left: 0, bottom: 5 }}
+                margin={{ top: 5, right: 10, left: -20, bottom: 5 }}
               >
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis

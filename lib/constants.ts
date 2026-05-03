@@ -123,3 +123,9 @@ export const DEPOSIT_RATES_CHART_RANGE_LABELS: Record<
   "1y": "Last Year",
   "2y": "Last 2 Years",
 };
+
+export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<
+  Record<string, string>
+> = {
+  KUL: Routes.SingaporeAirlinesFlightsKualaLumpur,
+};

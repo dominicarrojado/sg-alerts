@@ -148,6 +148,22 @@ export type FlightsInfo = {
   updatedAt: string;
 };
 
+export type FlightPriceChartDataPoint = {
+  date: string;
+  price: number;
+};
+
+export type FlightPriceChartConfigEntry = {
+  label: string;
+};
+
+export type FlightPriceChartData = {
+  chartData: Array<FlightPriceChartDataPoint>;
+  chartConfig: Record<string, FlightPriceChartConfigEntry>;
+  destinationCityName: string;
+  currency: string;
+};
+
 export type CoeBidding = {
   category: string;
   title: string;

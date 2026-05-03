@@ -14,6 +14,7 @@ import {
   TelegramChannel,
   TopicTitle,
 } from "@/lib/enums";
+import { SINGAPORE_AIRLINES_DESTINATION_LINKS } from "@/lib/constants";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "Singapore Airlines Flights";
@@ -49,6 +50,7 @@ export default function SingaporeAirlinesFlights() {
       </div>
       <FlightsTable
         airline={FlightAirline.SINGAPORE_AIRLINES}
+        destinationLinks={SINGAPORE_AIRLINES_DESTINATION_LINKS}
         withTravelBy={false}
       />
       <Paragraph>

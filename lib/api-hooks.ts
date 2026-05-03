@@ -12,6 +12,7 @@ import {
   CoeBiddingsInfo,
   DepositRatesChartData,
   DepositRatesChartRange,
+  FlightPriceChartData,
   DepositRatesInfo,
   Flights,
   FlightsInfo,
@@ -517,9 +518,7 @@ export function useGetDepositRatesInfo() {
       setFetchStatus(FetchStatus.Loading);
 
       const axios = (await import("axios")).default;
-      const res = await axios.get(
-        `${API_URL}${ApiEndpoint.FixedDepositRatesInfo}`,
-      );
+      const res = await axios.get(`${API_URL}${ApiEndpoint.DepositRatesInfo}`);
       const resData = res.data;
 
       if (!resData || !resData?.updatedAt || !Array.isArray(resData?.items)) {
@@ -940,4 +939,40 @@ export function useGetDepositRatesChartData() {
   };
 
   return [fetchStatus, chartData, getDepositRatesChartData] as const;
+}
+
+export function useGetFlightSnapshotsChartData(
+  airline: FlightAirline,
+  destinationCityCode: string,
+) {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [chartData, setChartData] = useState<FlightPriceChartData | null>(null);
+  const getFlightSnapshotsChartData = async (range: DepositRatesChartRange) => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(
+        `${API_URL}${ApiEndpoint.FlightSnapshotsChartData}?airline=${airline}&destinationCityCode=${destinationCityCode}&range=${range}`,
+      );
+      const resData = res.data;
+
+      if (
+        !resData ||
+        !Array.isArray(resData?.chartData) ||
+        typeof resData?.chartConfig !== "object" ||
+        typeof resData?.destinationCityName !== "string" ||
+        typeof resData?.currency !== "string"
+      ) {
+        throw new Error("Invalid data");
+      }
+
+      setChartData(resData);
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, chartData, getFlightSnapshotsChartData] as const;
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import {
   Table,
   TableBody,
@@ -22,6 +23,7 @@ type Props = {
   airline: FlightAirline;
   destinationLabel?: string;
   displayCityCode?: boolean;
+  destinationLinks?: Partial<Record<string, string>>;
   pricesLabel?: string;
   currency?: string;
   usePercentDiff?: boolean;
@@ -32,6 +34,7 @@ export function FlightsTable({
   airline,
   destinationLabel = "Destination",
   displayCityCode = true,
+  destinationLinks,
   pricesLabel = "Price",
   currency = Currency.SGD,
   usePercentDiff = true,
@@ -65,6 +68,10 @@ export function FlightsTable({
       <TableBody>
         {flights.map((flight) => {
           const { price, previousPrice, destinationCityCode } = flight;
+          const destinationLink =
+            destinationLinks?.[destinationCityCode] ?? flight.shareUrl;
+          const isDestinationExternal =
+            !destinationLinks?.[destinationCityCode];
           const diff = previousPrice ? Number(price - previousPrice) : 0;
           const percentDiff =
             usePercentDiff && previousPrice ? (diff / previousPrice) * 100 : 0;
@@ -74,10 +81,20 @@ export function FlightsTable({
           return (
             <TableRow key={flight.id}>
               <TableCell>
-                <Anchor href={flight.shareUrl} isExternal>
-                  {flight.destinationCityName}
-                  {displayCityCode && ` (${destinationCityCode})`}
-                </Anchor>
+                {isDestinationExternal ? (
+                  <Anchor href={destinationLink} isExternal>
+                    {flight.destinationCityName}
+                    {displayCityCode && ` (${destinationCityCode})`}
+                  </Anchor>
+                ) : (
+                  <Link
+                    href={destinationLink}
+                    className="font-medium underline underline-offset-4"
+                  >
+                    {flight.destinationCityName}
+                    {displayCityCode && ` (${destinationCityCode})`}
+                  </Link>
+                )}
               </TableCell>
               {withTravelBy && (
                 <TableCell className="hidden sm:table-cell">
