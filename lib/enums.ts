@@ -32,6 +32,7 @@ export enum Routes {
   FixedDepositRates = "/topics/fixed-deposit-rates/",
   SingaporeAirlinesFlights = "/topics/singapore-airlines-flights/",
   SingaporeAirlinesFlightsKualaLumpur = "/topics/singapore-airlines-flights/kuala-lumpur/",
+  SingaporeAirlinesFlightsPenang = "/topics/singapore-airlines-flights/penang/",
   ScootFlights = "/topics/scoot-flights/",
   JetstarFlights = "/topics/jetstar-flights/",
   CebuPacificFlights = "/topics/cebu-pacific-flights/",

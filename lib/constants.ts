@@ -128,4 +128,5 @@ export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<
   Record<string, string>
 > = {
   KUL: Routes.SingaporeAirlinesFlightsKualaLumpur,
+  PEN: Routes.SingaporeAirlinesFlightsPenang,
 };
