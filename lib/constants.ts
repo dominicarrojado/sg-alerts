@@ -203,4 +203,5 @@ export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<
   CPT: Routes.SingaporeAirlinesFlightsCapeTown,
   NYC: Routes.SingaporeAirlinesFlightsNewYork,
   IAH: Routes.SingaporeAirlinesFlightsHouston,
+  RUH: Routes.SingaporeAirlinesFlightsRiyadh,
 };
