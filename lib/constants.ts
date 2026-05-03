@@ -132,4 +132,5 @@ export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<
   HKT: Routes.SingaporeAirlinesFlightsPhuket,
   CGK: Routes.SingaporeAirlinesFlightsJakarta,
   KNO: Routes.SingaporeAirlinesFlightsMedan,
+  SGN: Routes.SingaporeAirlinesFlightsHoChiMinhCity,
 };
