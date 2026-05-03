@@ -38,6 +38,7 @@ export enum Routes {
   SingaporeAirlinesFlightsMedan = "/topics/singapore-airlines-flights/medan/",
   SingaporeAirlinesFlightsHoChiMinhCity = "/topics/singapore-airlines-flights/ho-chi-minh-city/",
   SingaporeAirlinesFlightsDenpasarBali = "/topics/singapore-airlines-flights/denpasar-bali/",
+  SingaporeAirlinesFlightsSurabaya = "/topics/singapore-airlines-flights/surabaya/",
   ScootFlights = "/topics/scoot-flights/",
   JetstarFlights = "/topics/jetstar-flights/",
   CebuPacificFlights = "/topics/cebu-pacific-flights/",

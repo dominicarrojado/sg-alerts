@@ -134,4 +134,5 @@ export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<
   KNO: Routes.SingaporeAirlinesFlightsMedan,
   SGN: Routes.SingaporeAirlinesFlightsHoChiMinhCity,
   DPS: Routes.SingaporeAirlinesFlightsDenpasarBali,
+  SUB: Routes.SingaporeAirlinesFlightsSurabaya,
 };
