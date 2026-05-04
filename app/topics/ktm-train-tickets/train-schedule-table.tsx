@@ -15,7 +15,9 @@ export function TrainScheduleTable() {
   return (
     <Table className="my-6" data-clarity-unmask="true">
       <TableCaption>
-        We monitor these days and time slots from now till the next 38 days.
+        We monitor these days and time slots from now till the next 38 days{" "}
+        <br className="hidden md:block" />
+        including Public Holidays and Public Holiday eves.
       </TableCaption>
 
       <TableHeader>
