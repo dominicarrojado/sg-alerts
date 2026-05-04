@@ -1,5 +1,8 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import React from "react";
+import { ArrowLeftIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
@@ -80,6 +83,14 @@ export default function SingaporeAirlinesFlightsFukuoka() {
           linkText="Subscribe Now"
           topicTitle={TopicTitle.SingaporeAirlinesFlights}
         />
+      </div>
+      <div className="mt-4 text-center">
+        <Button variant="secondary" asChild>
+          <Link href={Routes.SingaporeAirlinesFlights}>
+            <ArrowLeftIcon className="mr-2 h-4 w-4" />
+            Go Back
+          </Link>
+        </Button>
       </div>
     </Container>
   );
