@@ -1,0 +1,92 @@
+import { Metadata } from "next";
+import Link from "next/link";
+import React from "react";
+import { ArrowLeftIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Container } from "@/components/ui/container";
+import Heading from "@/components/ui/heading";
+import Subheading from "@/components/ui/subheading";
+import Paragraph from "@/components/ui/paragraph";
+import TelegramLinkButton from "@/components/telegram-link-button";
+import { DepositRateAnchor } from "@/components/deposit-rate-anchor";
+import { DepositRatesChart } from "@/components/deposit-rates-chart";
+import AdUnit from "@/components/ad-unit";
+import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
+import {
+  DepositRateBank,
+  Routes,
+  TelegramChannel,
+  TopicTitle,
+} from "@/lib/enums";
+
+const title = "Singapore Savings Bonds (SSB) Rates";
+const description =
+  "Track Singapore Savings Bonds (SSB) rate trends over the past 6 months, 1 year and 2 years.";
+const url = Routes.FixedDepositRatesSsb;
+
+export const metadata: Metadata = {
+  title,
+  description,
+  alternates: {
+    canonical: url,
+  },
+  openGraph: {
+    ...META_OPEN_GRAPH,
+    title,
+    description,
+    url,
+  },
+  twitter: {
+    ...META_TWITTER,
+    title,
+    description,
+  },
+};
+
+export default function SingaporeSavingsBondsRates() {
+  return (
+    <Container>
+      <div className="space-y-2">
+        <Heading>{title}</Heading>
+        <Subheading>{description}</Subheading>
+      </div>
+      <DepositRatesChart
+        bank={DepositRateBank.SSB}
+        title="Singapore Savings Bonds (SSB) Rate Trend"
+      />
+      <Paragraph>
+        The chart above shows recent Singapore Savings Bonds (SSB) rate trend
+        movement. You can use this to decide when to{" "}
+        <DepositRateAnchor bank={DepositRateBank.SSB} linkText="invest in" />{" "}
+        SSB based on current yields.
+      </Paragraph>
+      <AdUnit />
+      <Paragraph>
+        <span className="font-medium">SG Alerts</span> is a free notification
+        service that monitors fixed deposit rates and related low-risk
+        alternatives in Singapore, including SSB, and sends Telegram
+        notifications when rates go up.
+      </Paragraph>
+      <Paragraph>
+        To get started, click the button below to join the Telegram channel and
+        receive updates.
+      </Paragraph>
+      <div className="sticky bottom-6 z-50 mt-8 text-center">
+        <TelegramLinkButton
+          channel={TelegramChannel.FixedDepositRates}
+          linkText="Subscribe Now"
+          className="shadow-md"
+          topicTitle={TopicTitle.FixedDepositRates}
+        />
+      </div>
+      <div className="mt-4 text-center">
+        <Button variant="secondary" asChild>
+          <Link href={Routes.FixedDepositRates}>
+            <ArrowLeftIcon className="mr-2 h-4 w-4" />
+            Go Back
+          </Link>
+        </Button>
+      </div>
+    </Container>
+  );
+}

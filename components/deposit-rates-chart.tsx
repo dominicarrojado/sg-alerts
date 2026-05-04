@@ -39,9 +39,10 @@ import { DepositRatesChartTooltip } from "@/components/deposit-rates-chart-toolt
 
 type Props = {
   bank?: string;
+  title?: string;
 };
 
-export function DepositRatesChart({ bank }: Props) {
+export function DepositRatesChart({ bank, title }: Props) {
   const [range, setRange] = useState<DepositRatesChartRange>("6m");
   const [selectedBanks, setSelectedBanks] = useState<Array<string> | null>(
     null,
@@ -164,9 +165,9 @@ export function DepositRatesChart({ bank }: Props) {
     : visibleBankKeys.length === 0
       ? "No banks selected"
       : `${visibleBankKeys.length} banks selected`;
-  const chartTitle = bank
-    ? `${bank} Deposit Rates Trend`
-    : "Fixed Deposit Rates Trend";
+  const chartTitle =
+    title ??
+    (bank ? `${bank} Deposit Rates Trend` : "Fixed Deposit Rates Trend");
 
   return (
     <Card className="my-6">

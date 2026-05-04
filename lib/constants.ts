@@ -132,12 +132,16 @@ export const DEPOSIT_RATES_BANK_LINKS: Partial<Record<string, string>> = {
   [DepositRateBank.ICBC]: Routes.FixedDepositRatesIcbc,
   [DepositRateBank.CIMB]: Routes.FixedDepositRatesCimb,
   [DepositRateBank.SIF]: Routes.FixedDepositRatesSif,
-  [DepositRateBank.HONG_LEONG_FINANCE]: Routes.FixedDepositRatesHongLeongFinance,
+  [DepositRateBank.HONG_LEONG_FINANCE]:
+    Routes.FixedDepositRatesHongLeongFinance,
   [DepositRateBank.UOB]: Routes.FixedDepositRatesUob,
-  [DepositRateBank.STANDARD_CHARTERED]: Routes.FixedDepositRatesStandardChartered,
+  [DepositRateBank.STANDARD_CHARTERED]:
+    Routes.FixedDepositRatesStandardChartered,
   [DepositRateBank.OCBC]: Routes.FixedDepositRatesOcbc,
   [DepositRateBank.HSBC]: Routes.FixedDepositRatesHsbc,
   [DepositRateBank.CITIBANK]: Routes.FixedDepositRatesCitibank,
+  [DepositRateBank.T_BILLS]: Routes.FixedDepositRatesTBills,
+  [DepositRateBank.SSB]: Routes.FixedDepositRatesSsb,
 };
 
 export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<

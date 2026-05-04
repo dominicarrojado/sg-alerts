@@ -43,6 +43,8 @@ export enum Routes {
   FixedDepositRatesOcbc = "/topics/fixed-deposit-rates/ocbc/",
   FixedDepositRatesHsbc = "/topics/fixed-deposit-rates/hsbc/",
   FixedDepositRatesCitibank = "/topics/fixed-deposit-rates/citibank/",
+  FixedDepositRatesTBills = "/topics/fixed-deposit-rates/treasury-bills/",
+  FixedDepositRatesSsb = "/topics/fixed-deposit-rates/singapore-savings-bonds/",
   SingaporeAirlinesFlights = "/topics/singapore-airlines-flights/",
   SingaporeAirlinesFlightsKualaLumpur = "/topics/singapore-airlines-flights/kuala-lumpur/",
   SingaporeAirlinesFlightsPenang = "/topics/singapore-airlines-flights/penang/",
