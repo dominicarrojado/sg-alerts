@@ -57,8 +57,8 @@ export default function GxsBoostPocketRates() {
       <Paragraph>
         The chart above shows recent GXS Boost Pocket rate trend movement. You
         can use this to decide when to{" "}
-        <DepositRateAnchor bank={DepositRateBank.GXS} linkText="stash in" />{" "}
-        GXS Boost Pocket for your savings goals based on current yields.
+        <DepositRateAnchor bank={DepositRateBank.GXS} linkText="stash in" /> GXS
+        Boost Pocket for your savings goals based on current yields.
       </Paragraph>
       <AdUnit />
       <Paragraph>

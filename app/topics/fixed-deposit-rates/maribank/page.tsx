@@ -57,7 +57,10 @@ export default function MariBankRates() {
       <Paragraph>
         The chart above shows recent MariBank rate trend movement. You can use
         this to decide when to{" "}
-        <DepositRateAnchor bank={DepositRateBank.MARIBANK} linkText="save with" />{" "}
+        <DepositRateAnchor
+          bank={DepositRateBank.MARIBANK}
+          linkText="save with"
+        />{" "}
         MariBank based on current yields and your savings plans.
       </Paragraph>
       <AdUnit />

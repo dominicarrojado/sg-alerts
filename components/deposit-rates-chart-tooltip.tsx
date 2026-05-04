@@ -11,6 +11,7 @@ type Props = {
   payload?: Array<DepositRatesChartTooltipPayloadItem>;
   label?: string;
   range: DepositRatesChartRange;
+  hideColorIndicator?: boolean;
 };
 
 export function DepositRatesChartTooltip({
@@ -18,6 +19,7 @@ export function DepositRatesChartTooltip({
   payload,
   label,
   range,
+  hideColorIndicator,
 }: Props) {
   if (!active || !payload?.length) {
     return null;
@@ -47,10 +49,12 @@ export function DepositRatesChartTooltip({
               className="flex items-center justify-between gap-4"
             >
               <div className="flex items-center gap-1.5">
-                <div
-                  className="h-2 w-2 shrink-0 rounded-[2px]"
-                  style={{ backgroundColor: entry.color }}
-                />
+                {!hideColorIndicator && (
+                  <div
+                    className="h-2 w-2 shrink-0 rounded-[2px]"
+                    style={{ backgroundColor: entry.color }}
+                  />
+                )}
                 <span className="text-muted-foreground">{entry.name}</span>
               </div>
               {shouldShowRate ? (

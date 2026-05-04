@@ -105,7 +105,9 @@ export function DepositRatesChart({ bank, title }: Props) {
   const chartContainerConfig: ChartConfig = visibleBankKeys.reduce(
     (acc, selectedBank) => ({
       ...acc,
-      [selectedBank]: { label: chartConfig![selectedBank].label },
+      [selectedBank]: {
+        label: bank ? "Rate" : chartConfig![selectedBank].label,
+      },
     }),
     {},
   );
@@ -113,11 +115,13 @@ export function DepositRatesChart({ bank, title }: Props) {
   const bankColors: Record<string, string> = bankKeys.reduce(
     (acc, selectedBank, index) => ({
       ...acc,
-      [selectedBank]: getDepositRatesChartBankColor(
-        selectedBank,
-        String(chartConfig?.[selectedBank].label ?? selectedBank),
-        index,
-      ),
+      [selectedBank]: bank
+        ? "hsl(var(--primary))"
+        : getDepositRatesChartBankColor(
+            selectedBank,
+            String(chartConfig?.[selectedBank].label ?? selectedBank),
+            index,
+          ),
     }),
     {},
   );
@@ -166,8 +170,7 @@ export function DepositRatesChart({ bank, title }: Props) {
       ? "No banks selected"
       : `${visibleBankKeys.length} banks selected`;
   const chartTitle =
-    title ??
-    (bank ? `${bank} Deposit Rates Trend` : "Fixed Deposit Rates Trend");
+    title ?? (bank ? `${bank} Rate Trend` : "Fixed Deposit Rates Trend");
 
   return (
     <Card className="my-6">
@@ -311,7 +314,12 @@ export function DepositRatesChart({ bank, title }: Props) {
                   width={56}
                 />
                 <Tooltip
-                  content={<DepositRatesChartTooltip range={range} />}
+                  content={
+                    <DepositRatesChartTooltip
+                      range={range}
+                      hideColorIndicator={!!bank}
+                    />
+                  }
                   cursor={{ stroke: "hsl(var(--border))", strokeWidth: 1 }}
                 />
                 {visibleBankKeys.map((selectedBank) => (
@@ -319,7 +327,9 @@ export function DepositRatesChart({ bank, title }: Props) {
                     key={selectedBank}
                     type="monotone"
                     dataKey={selectedBank}
-                    name={chartData.chartConfig[selectedBank].label}
+                    name={
+                      bank ? "Rate" : chartData.chartConfig[selectedBank].label
+                    }
                     stroke={bankColors[selectedBank]}
                     strokeWidth={2}
                     dot={false}
