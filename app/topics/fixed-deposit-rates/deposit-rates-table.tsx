@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import {
   Table,
   TableBody,
@@ -17,7 +18,11 @@ import { formatMoney } from "@/lib/number";
 import { cn } from "@/lib/utils";
 import { FetchStatus } from "@/lib/enums";
 
-export function DepositRatesTable() {
+type Props = {
+  bankLinks?: Partial<Record<string, string>>;
+};
+
+export function DepositRatesTable({ bankLinks }: Props) {
   const [fetchState, depositRatesInfo, getDepositRatesInfo] =
     useGetDepositRatesInfo();
   const { items: depositRates, updatedAt } = depositRatesInfo;
@@ -72,13 +77,23 @@ export function DepositRatesTable() {
             ? Number((rate - previousRate).toFixed(2))
             : 0;
           const isNegative = diff < 0;
+          const internalLink = bankLinks?.[bank];
 
           return (
             <TableRow key={bank}>
               <TableCell>
-                <Anchor href={depositRate.link} isExternal>
-                  {bank}
-                </Anchor>
+                {internalLink ? (
+                  <Link
+                    href={internalLink}
+                    className="font-medium underline underline-offset-4"
+                  >
+                    {bank}
+                  </Link>
+                ) : (
+                  <Anchor href={depositRate.link} isExternal>
+                    {bank}
+                  </Anchor>
+                )}
               </TableCell>
               <TableCell>
                 {minDeposit ? formatMoney(minDeposit) : "-"}

@@ -67,11 +67,13 @@ export function FlightsTable({
       </TableHeader>
       <TableBody>
         {flights.map((flight) => {
-          const { price, previousPrice, destinationCityCode } = flight;
-          const destinationLink =
-            destinationLinks?.[destinationCityCode] ?? flight.shareUrl;
-          const isDestinationExternal =
-            !destinationLinks?.[destinationCityCode];
+          const {
+            price,
+            previousPrice,
+            destinationCityCode,
+            destinationCityName,
+          } = flight;
+          const destinationLink = destinationLinks?.[destinationCityCode];
           const diff = previousPrice ? Number(price - previousPrice) : 0;
           const percentDiff =
             usePercentDiff && previousPrice ? (diff / previousPrice) * 100 : 0;
@@ -81,19 +83,19 @@ export function FlightsTable({
           return (
             <TableRow key={flight.id}>
               <TableCell>
-                {isDestinationExternal ? (
-                  <Anchor href={destinationLink} isExternal>
-                    {flight.destinationCityName}
-                    {displayCityCode && ` (${destinationCityCode})`}
-                  </Anchor>
-                ) : (
+                {destinationLink ? (
                   <Link
                     href={destinationLink}
                     className="font-medium underline underline-offset-4"
                   >
-                    {flight.destinationCityName}
+                    {destinationCityName}
                     {displayCityCode && ` (${destinationCityCode})`}
                   </Link>
+                ) : (
+                  <Anchor href={flight.shareUrl} isExternal>
+                    {destinationCityName}
+                    {displayCityCode && ` (${destinationCityCode})`}
+                  </Anchor>
                 )}
               </TableCell>
               {withTravelBy && (

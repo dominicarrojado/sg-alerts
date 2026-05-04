@@ -124,6 +124,10 @@ export const DEPOSIT_RATES_CHART_RANGE_LABELS: Record<
   "2y": "Last 2 Years",
 };
 
+export const DEPOSIT_RATES_BANK_LINKS: Partial<Record<string, string>> = {
+  [DepositRateBank.DBS]: Routes.FixedDepositRatesDbs,
+};
+
 export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<
   Record<string, string>
 > = {

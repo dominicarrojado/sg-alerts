@@ -30,6 +30,7 @@ export enum Routes {
   CdcSimulatorCourseSlots = "/topics/cdc-simulator-course-slots/",
   CdcAppointmentSlots = "/topics/cdc-appointment-slots/",
   FixedDepositRates = "/topics/fixed-deposit-rates/",
+  FixedDepositRatesDbs = "/topics/fixed-deposit-rates/dbs/",
   SingaporeAirlinesFlights = "/topics/singapore-airlines-flights/",
   SingaporeAirlinesFlightsKualaLumpur = "/topics/singapore-airlines-flights/kuala-lumpur/",
   SingaporeAirlinesFlightsPenang = "/topics/singapore-airlines-flights/penang/",

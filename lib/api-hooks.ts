@@ -913,13 +913,22 @@ export function useGetDepositRatesChartData() {
   const [chartData, setChartData] = useState<DepositRatesChartData | null>(
     null,
   );
-  const getDepositRatesChartData = async (range: DepositRatesChartRange) => {
+  const getDepositRatesChartData = async (
+    range: DepositRatesChartRange,
+    bank?: string,
+  ) => {
     try {
       setFetchStatus(FetchStatus.Loading);
 
       const axios = (await import("axios")).default;
+      const searchParams = new URLSearchParams({ range });
+
+      if (bank) {
+        searchParams.set("bank", bank);
+      }
+
       const res = await axios.get(
-        `${API_URL}${ApiEndpoint.DepositRatesChartData}?range=${range}`,
+        `${API_URL}${ApiEndpoint.DepositRatesChartData}?${searchParams.toString()}`,
       );
       const resData = res.data;
 

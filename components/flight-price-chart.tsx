@@ -105,7 +105,7 @@ export function FlightPriceChart({
           >
             <LineChart
               data={chartData.chartData}
-              margin={{ top: 5, right: 10, left: -20, bottom: 5 }}
+              margin={{ top: 5, right: 10, left: 0, bottom: 5 }}
             >
               <CartesianGrid strokeDasharray="3 3" vertical={false} />
               <XAxis

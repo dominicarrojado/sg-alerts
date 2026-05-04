@@ -6,10 +6,11 @@ import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import TelegramLinkButton from "@/components/telegram-link-button";
 import AdUnit from "@/components/ad-unit";
+import { DepositRatesChart } from "@/components/deposit-rates-chart";
 import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
+import { DEPOSIT_RATES_BANK_LINKS } from "@/lib/constants";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { DepositRatesTable } from "./deposit-rates-table";
-import { DepositRatesChart } from "./deposit-rates-chart";
 
 const title = "Fixed Deposit Rates";
 const description =
@@ -45,7 +46,7 @@ export default function FixedDepositRates() {
           major banks in Singapore.
         </Subheading>
       </div>
-      <DepositRatesTable />
+      <DepositRatesTable bankLinks={DEPOSIT_RATES_BANK_LINKS} />
       <DepositRatesChart />
       <Paragraph>
         Fixed deposit rates are one of the most popular ways to earn interest on
