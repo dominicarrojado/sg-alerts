@@ -140,6 +140,9 @@ export const DEPOSIT_RATES_BANK_LINKS: Partial<Record<string, string>> = {
   [DepositRateBank.OCBC]: Routes.FixedDepositRatesOcbc,
   [DepositRateBank.HSBC]: Routes.FixedDepositRatesHsbc,
   [DepositRateBank.CITIBANK]: Routes.FixedDepositRatesCitibank,
+  [DepositRateBank.GXS]: Routes.FixedDepositRatesGxs,
+  [DepositRateBank.SYFE]: Routes.FixedDepositRatesSyfe,
+  [DepositRateBank.MARIBANK]: Routes.FixedDepositRatesMaribank,
   [DepositRateBank.T_BILLS]: Routes.FixedDepositRatesTBills,
   [DepositRateBank.SSB]: Routes.FixedDepositRatesSsb,
 };
