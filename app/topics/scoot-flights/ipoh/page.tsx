@@ -1,26 +1,28 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import React from "react";
-import { Anchor } from "@/components/ui/anchor";
+import { ArrowLeftIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
 import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
-import { FlightsTable } from "@/components/flights-table";
+import { FlightPriceChart } from "@/components/flight-price-chart";
+import { FlightShareUrlAnchor } from "@/components/flight-share-url-anchor";
 import TelegramLinkButton from "@/components/telegram-link-button";
 import AdUnit from "@/components/ad-unit";
+import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import {
   FlightAirline,
   Routes,
   TelegramChannel,
   TopicTitle,
 } from "@/lib/enums";
-import { SCOOT_DESTINATION_LINKS } from "@/lib/constants";
-import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
-const title = "Scoot Flights";
+const title = "Scoot Flights to Ipoh";
 const description =
-  "Subscribe to SG Alerts to get notified when flight prices goes down for Scoot flights departing from Singapore.";
-const url = Routes.ScootFlights;
+  "Analyse Scoot fare trends from Singapore to Ipoh for the past 6 months, 1 year and 2 years.";
+const url = Routes.ScootFlightsIpoh;
 
 export const metadata: Metadata = {
   title,
@@ -41,40 +43,35 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ScootFlights() {
+export default function ScootFlightsIpoh() {
   return (
     <Container>
       <div className="space-y-2">
         <Heading>{title}</Heading>
         <Subheading>{description}</Subheading>
       </div>
-      <FlightsTable
+      <FlightPriceChart
         airline={FlightAirline.SCOOT}
-        destinationLinks={SCOOT_DESTINATION_LINKS}
+        destinationCityCode="IPH"
+        chartTitle="Ipoh Price Trend"
       />
       <Paragraph>
-        <span className="font-medium">Scoot</span> is a Singapore-based low-cost
-        airline owned by Singapore Airlines. It is known for offering affordable
-        flights to various destinations around the world. Scoot operates a fleet
-        of Airbus A320, Boeing 787 Dreamliners and the new Embraer E190-E2
-        aircraft. It was was named the world&apos;s best long-haul low-cost
-        airline in 2024 at Skytrax&apos;s World Airline Awards.
-      </Paragraph>
-      <Paragraph>
-        <Anchor href="https://www.flyscoot.com/en" isExternal>
-          Fare deals offered by Scoot
-        </Anchor>{" "}
-        are highly sought after by Singapore residents. However, it can be
-        difficult to keep track of sale prices and discounts. While there are
-        many flight deal websites out there, nothing beats booking directly with
-        the airline itself.
+        The above chart shows the fare trends for Scoot flights from Singapore
+        to Ipoh (IPH) for the past 6 months, 1 year and 2 years. You can use
+        this information to decide when to{" "}
+        <FlightShareUrlAnchor
+          airline={FlightAirline.SCOOT}
+          destinationCityCode="IPH"
+          linkText="book your flight"
+        />{" "}
+        for the best price.
       </Paragraph>
       <AdUnit />
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification
-        service that monitors Scoot flight sales departing from Singapore. It
+        service that monitors Scoot flight fare deals from Singapore to Ipoh. It
         sends you a Telegram notification when the prices go down so that you
-        can take advantage of the discounts.
+        can take advantage of the lower prices.
       </Paragraph>
       <Paragraph>
         To get started, simply click the button below to join the Telegram
@@ -86,6 +83,14 @@ export default function ScootFlights() {
           linkText="Subscribe Now"
           topicTitle={TopicTitle.ScootFlights}
         />
+      </div>
+      <div className="mt-4 text-center">
+        <Button variant="secondary" asChild>
+          <Link href={Routes.ScootFlights}>
+            <ArrowLeftIcon className="mr-2 h-4 w-4" />
+            Go Back
+          </Link>
+        </Button>
       </div>
     </Container>
   );
