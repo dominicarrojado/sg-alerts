@@ -254,4 +254,5 @@ export const SCOOT_DESTINATION_LINKS: Partial<Record<string, string>> = {
   SYD: Routes.ScootFlightsSydney,
   CJU: Routes.ScootFlightsJeju,
   TYO: Routes.ScootFlightsTokyo,
+  CRK: Routes.ScootFlightsClark,
 };
