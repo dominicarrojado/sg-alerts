@@ -378,7 +378,7 @@ export const BBDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
       <>
         Receive notifications when there are new appointment date(s) for{" "}
         <strong className="font-medium">
-          account opening and counter services
+          counter enrolments and counter services for non-members
         </strong>{" "}
         at Bukit Batok Driving Centre.
       </>

@@ -61,12 +61,12 @@ export default function BBDCAppointmentSlots() {
           BBDC
         </abbr>
         , you may need to{" "}
-        <Anchor href="https://info.bbdc.sg/visitors-appointment/" isExternal>
+        <Anchor href="https://bbdcbooking.youcanbook.me/" isExternal>
           book an appointment
         </Anchor>{" "}
-        for opening of new account and other counter services. The appointment
-        slots for these services are sometimes fully booked and you will need to
-        constantly check the{" "}
+        for opening of counter enrolments and counter services for non-members.
+        The appointment slots for these services are sometimes fully booked and
+        you will need to constantly check the{" "}
         <abbr title="Bukit Batok Driving Centre" className="no-underline">
           BBDC
         </abbr>{" "}

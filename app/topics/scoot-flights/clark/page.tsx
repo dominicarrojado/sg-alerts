@@ -70,8 +70,8 @@ export default function ScootFlightsClark() {
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification
         service that monitors Scoot flight fare deals from Singapore to Clark.
-        It sends you a Telegram notification when the prices go down so that
-        you can take advantage of the lower prices.
+        It sends you a Telegram notification when the prices go down so that you
+        can take advantage of the lower prices.
       </Paragraph>
       <Paragraph>
         To get started, simply click the button below to join the Telegram
