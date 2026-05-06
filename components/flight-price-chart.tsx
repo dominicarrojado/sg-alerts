@@ -20,11 +20,11 @@ import {
 } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGetFlightSnapshotsChartData } from "@/lib/api-hooks";
-import { DEPOSIT_RATES_CHART_RANGE_LABELS } from "@/lib/constants";
-import { formatDepositRatesChartTickDate } from "@/lib/date";
+import { CHART_RANGE_LABELS } from "@/lib/constants";
+import { formatChartTickDate } from "@/lib/date";
 import { Currency, FetchStatus, FlightAirline } from "@/lib/enums";
 import { formatMoney, formatMoneyPeso } from "@/lib/number";
-import type { DepositRatesChartRange } from "@/lib/types";
+import type { ChartRange } from "@/lib/types";
 import { FlightPriceChartTooltip } from "@/components/flight-price-chart-tooltip";
 
 type Props = {
@@ -38,7 +38,7 @@ export function FlightPriceChart({
   destinationCityCode,
   chartTitle,
 }: Props) {
-  const [range, setRange] = useState<DepositRatesChartRange>("6m");
+  const [range, setRange] = useState<ChartRange>("6m");
   const [fetchStatus, chartData, getFlightSnapshotsChartData] =
     useGetFlightSnapshotsChartData(airline, destinationCityCode);
 
@@ -76,15 +76,15 @@ export function FlightPriceChart({
           </h3>
           <Select
             value={range}
-            onValueChange={(v) => setRange(v as DepositRatesChartRange)}
+            onValueChange={(v) => setRange(v as ChartRange)}
           >
             <SelectTrigger className="w-[160px]">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
               {(
-                Object.entries(DEPOSIT_RATES_CHART_RANGE_LABELS) as Array<
-                  [DepositRatesChartRange, string]
+                Object.entries(CHART_RANGE_LABELS) as Array<
+                  [ChartRange, string]
                 >
               ).map(([value, label]) => (
                 <SelectItem key={value} value={value}>
@@ -112,7 +112,7 @@ export function FlightPriceChart({
                 dataKey="date"
                 tick={{ fontSize: 11 }}
                 tickFormatter={(value) =>
-                  formatDepositRatesChartTickDate(String(value), range)
+                  formatChartTickDate(String(value), range)
                 }
                 tickLine={false}
                 axisLine={false}

@@ -1,4 +1,4 @@
-import type { DepositRatesChartRange } from "./types";
+import type { ChartRange } from "./types";
 
 export function formatDate(date: string): string {
   const dateObj = new Date(date);
@@ -35,10 +35,7 @@ export function formatTime(time: string): string {
   return `${hours}:${minutes} ${period}`;
 }
 
-export function formatDepositRatesChartTickDate(
-  date: string,
-  _range: DepositRatesChartRange,
-): string {
+export function formatChartTickDate(date: string, _range: ChartRange): string {
   const [year, month, day] = date.split("-").map(Number);
   const dateObj = new Date(year, month - 1, day);
 

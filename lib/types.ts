@@ -119,9 +119,9 @@ export type DepositRatesChartData = {
   chartConfig: Record<string, DepositRatesChartConfigEntry>;
 };
 
-export type DepositRatesChartRange = "6m" | "1y" | "2y";
+export type ChartRange = "6m" | "1y" | "2y";
 
-export type DepositRatesChartTooltipPayloadItem = {
+export type ChartTooltipPayloadItem = {
   value?: number | string;
   dataKey?: string | number;
   color?: string;

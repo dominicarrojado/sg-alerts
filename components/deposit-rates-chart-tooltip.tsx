@@ -1,16 +1,13 @@
 "use client";
 
-import type {
-  DepositRatesChartRange,
-  DepositRatesChartTooltipPayloadItem,
-} from "@/lib/types";
-import { formatDepositRatesChartTickDate } from "@/lib/date";
+import type { ChartRange, ChartTooltipPayloadItem } from "@/lib/types";
+import { formatChartTickDate } from "@/lib/date";
 
 type Props = {
   active?: boolean;
-  payload?: Array<DepositRatesChartTooltipPayloadItem>;
+  payload?: Array<ChartTooltipPayloadItem>;
   label?: string;
-  range: DepositRatesChartRange;
+  range: ChartRange;
   hideColorIndicator?: boolean;
 };
 
@@ -32,9 +29,7 @@ export function DepositRatesChartTooltip({
   return (
     <div className="grid min-w-[8rem] items-start gap-1.5 rounded-lg border border-border/50 bg-background px-2.5 py-1.5 text-xs shadow-xl">
       <div className="font-medium">
-        {typeof label === "string"
-          ? formatDepositRatesChartTickDate(label, range)
-          : ""}
+        {typeof label === "string" ? formatChartTickDate(label, range) : ""}
       </div>
       <div className="grid gap-1.5">
         {sorted.map((entry, index) => {

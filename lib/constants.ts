@@ -4,7 +4,7 @@ import {
   SubscriptionTopic,
   TelegramChannel,
 } from "./enums";
-import type { DepositRatesChartRange } from "./types";
+import type { ChartRange } from "./types";
 
 export const OWNER_NAME = "Dominic Arrojado";
 export const OWNER_WEBSITE = "https://dominicarrojado.com";
@@ -115,10 +115,7 @@ export const DEPOSIT_RATES_BANK_PRIMARY_COLORS: Record<
   [DepositRateBank.RHB]: "#5BC2E7",
 };
 
-export const DEPOSIT_RATES_CHART_RANGE_LABELS: Record<
-  DepositRatesChartRange,
-  string
-> = {
+export const CHART_RANGE_LABELS: Record<ChartRange, string> = {
   "6m": "Last 6 Months",
   "1y": "Last Year",
   "2y": "Last 2 Years",

@@ -30,11 +30,11 @@ import {
 } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGetDepositRatesChartData } from "@/lib/api-hooks";
-import { DEPOSIT_RATES_CHART_RANGE_LABELS } from "@/lib/constants";
-import { formatDepositRatesChartTickDate } from "@/lib/date";
+import { CHART_RANGE_LABELS } from "@/lib/constants";
+import { formatChartTickDate } from "@/lib/date";
 import { FetchStatus } from "@/lib/enums";
 import { getDepositRatesChartBankColor } from "@/lib/fixed-deposit-rates";
-import type { DepositRatesChartRange } from "@/lib/types";
+import type { ChartRange } from "@/lib/types";
 import { DepositRatesChartTooltip } from "@/components/deposit-rates-chart-tooltip";
 
 type Props = {
@@ -43,7 +43,7 @@ type Props = {
 };
 
 export function DepositRatesChart({ bank, title }: Props) {
-  const [range, setRange] = useState<DepositRatesChartRange>("6m");
+  const [range, setRange] = useState<ChartRange>("6m");
   const [selectedBanks, setSelectedBanks] = useState<Array<string> | null>(
     null,
   );
@@ -180,15 +180,15 @@ export function DepositRatesChart({ bank, title }: Props) {
             <h3 className="text-base font-semibold">{chartTitle}</h3>
             <Select
               value={range}
-              onValueChange={(v) => setRange(v as DepositRatesChartRange)}
+              onValueChange={(v) => setRange(v as ChartRange)}
             >
               <SelectTrigger className="w-[160px]">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
                 {(
-                  Object.entries(DEPOSIT_RATES_CHART_RANGE_LABELS) as Array<
-                    [DepositRatesChartRange, string]
+                  Object.entries(CHART_RANGE_LABELS) as Array<
+                    [ChartRange, string]
                   >
                 ).map(([value, label]) => (
                   <SelectItem key={value} value={value}>
@@ -255,15 +255,15 @@ export function DepositRatesChart({ bank, title }: Props) {
               </DropdownMenu>
               <Select
                 value={range}
-                onValueChange={(v) => setRange(v as DepositRatesChartRange)}
+                onValueChange={(v) => setRange(v as ChartRange)}
               >
                 <SelectTrigger className="w-[160px]">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
                   {(
-                    Object.entries(DEPOSIT_RATES_CHART_RANGE_LABELS) as Array<
-                      [DepositRatesChartRange, string]
+                    Object.entries(CHART_RANGE_LABELS) as Array<
+                      [ChartRange, string]
                     >
                   ).map(([value, label]) => (
                     <SelectItem key={value} value={value}>
@@ -300,7 +300,7 @@ export function DepositRatesChart({ bank, title }: Props) {
                   dataKey="date"
                   tick={{ fontSize: 11 }}
                   tickFormatter={(value) =>
-                    formatDepositRatesChartTickDate(String(value), range)
+                    formatChartTickDate(String(value), range)
                   }
                   tickLine={false}
                   axisLine={false}

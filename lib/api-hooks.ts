@@ -11,7 +11,7 @@ import {
   CdcTestSlotsDatesMap,
   CoeBiddingsInfo,
   DepositRatesChartData,
-  DepositRatesChartRange,
+  ChartRange,
   FlightPriceChartData,
   DepositRatesInfo,
   Flights,
@@ -913,10 +913,7 @@ export function useGetDepositRatesChartData() {
   const [chartData, setChartData] = useState<DepositRatesChartData | null>(
     null,
   );
-  const getDepositRatesChartData = async (
-    range: DepositRatesChartRange,
-    bank?: string,
-  ) => {
+  const getDepositRatesChartData = async (range: ChartRange, bank?: string) => {
     try {
       setFetchStatus(FetchStatus.Loading);
 
@@ -956,7 +953,7 @@ export function useGetFlightSnapshotsChartData(
 ) {
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
   const [chartData, setChartData] = useState<FlightPriceChartData | null>(null);
-  const getFlightSnapshotsChartData = async (range: DepositRatesChartRange) => {
+  const getFlightSnapshotsChartData = async (range: ChartRange) => {
     try {
       setFetchStatus(FetchStatus.Loading);
 
