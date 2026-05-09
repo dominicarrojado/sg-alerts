@@ -23,7 +23,7 @@ export default function Testimonials() {
         }
         return acc;
       },
-      [[] as DonationTestimonials, [] as DonationTestimonials]
+      [[] as DonationTestimonials, [] as DonationTestimonials],
     );
   }, [isMobile]);
 
@@ -45,9 +45,9 @@ export default function Testimonials() {
         <ul key={index} className="space-y-4">
           {testimonials.map((testimonial, index) => (
             <Card key={index}>
-              <CardContent className="p-4 space-y-2">
+              <CardContent className="space-y-2 p-4">
                 <div className="flex items-center space-x-4">
-                  <Avatar className="w-[48px] h-[48px]">
+                  <Avatar className="h-[48px] w-[48px]">
                     <AvatarFallback>
                       {testimonial.firstName[0]}
                       {testimonial.lastName}

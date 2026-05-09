@@ -52,16 +52,20 @@ export default function HongLeongFinanceFixedDepositRates() {
       </div>
       <DepositRatesChart bank={DepositRateBank.HONG_LEONG_FINANCE} />
       <Paragraph>
-        The chart above shows recent Hong Leong Finance fixed deposit rate trend movement.
-        You can use this to decide when to{" "}
-        <DepositRateAnchor bank={DepositRateBank.HONG_LEONG_FINANCE} linkText="lock in" />{" "}
+        The chart above shows recent Hong Leong Finance fixed deposit rate trend
+        movement. You can use this to decide when to{" "}
+        <DepositRateAnchor
+          bank={DepositRateBank.HONG_LEONG_FINANCE}
+          linkText="lock in"
+        />{" "}
         your Hong Leong Finance fixed deposit for better returns.
       </Paragraph>
       <AdUnit />
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification
         service that monitors fixed deposit rates from major banks in Singapore,
-        including Hong Leong Finance, and sends Telegram notifications when rates go up.
+        including Hong Leong Finance, and sends Telegram notifications when
+        rates go up.
       </Paragraph>
       <Paragraph>
         To get started, click the button below to join the Telegram channel and

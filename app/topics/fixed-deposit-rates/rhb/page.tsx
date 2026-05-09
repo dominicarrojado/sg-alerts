@@ -52,10 +52,10 @@ export default function RhbFixedDepositRates() {
       </div>
       <DepositRatesChart bank={DepositRateBank.RHB} />
       <Paragraph>
-        The chart above shows recent RHB fixed deposit rate trend movement.
-        You can use this to decide when to{" "}
-        <DepositRateAnchor bank={DepositRateBank.RHB} linkText="lock in" />{" "}
-        your RHB fixed deposit for better returns.
+        The chart above shows recent RHB fixed deposit rate trend movement. You
+        can use this to decide when to{" "}
+        <DepositRateAnchor bank={DepositRateBank.RHB} linkText="lock in" /> your
+        RHB fixed deposit for better returns.
       </Paragraph>
       <AdUnit />
       <Paragraph>

@@ -52,16 +52,20 @@ export default function StandardCharteredFixedDepositRates() {
       </div>
       <DepositRatesChart bank={DepositRateBank.STANDARD_CHARTERED} />
       <Paragraph>
-        The chart above shows recent Standard Chartered fixed deposit rate trend movement.
-        You can use this to decide when to{" "}
-        <DepositRateAnchor bank={DepositRateBank.STANDARD_CHARTERED} linkText="lock in" />{" "}
+        The chart above shows recent Standard Chartered fixed deposit rate trend
+        movement. You can use this to decide when to{" "}
+        <DepositRateAnchor
+          bank={DepositRateBank.STANDARD_CHARTERED}
+          linkText="lock in"
+        />{" "}
         your Standard Chartered fixed deposit for better returns.
       </Paragraph>
       <AdUnit />
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification
         service that monitors fixed deposit rates from major banks in Singapore,
-        including Standard Chartered, and sends Telegram notifications when rates go up.
+        including Standard Chartered, and sends Telegram notifications when
+        rates go up.
       </Paragraph>
       <Paragraph>
         To get started, click the button below to join the Telegram channel and

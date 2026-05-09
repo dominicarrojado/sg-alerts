@@ -52,10 +52,10 @@ export default function UobFixedDepositRates() {
       </div>
       <DepositRatesChart bank={DepositRateBank.UOB} />
       <Paragraph>
-        The chart above shows recent UOB fixed deposit rate trend movement.
-        You can use this to decide when to{" "}
-        <DepositRateAnchor bank={DepositRateBank.UOB} linkText="lock in" />{" "}
-        your UOB fixed deposit for better returns.
+        The chart above shows recent UOB fixed deposit rate trend movement. You
+        can use this to decide when to{" "}
+        <DepositRateAnchor bank={DepositRateBank.UOB} linkText="lock in" /> your
+        UOB fixed deposit for better returns.
       </Paragraph>
       <AdUnit />
       <Paragraph>

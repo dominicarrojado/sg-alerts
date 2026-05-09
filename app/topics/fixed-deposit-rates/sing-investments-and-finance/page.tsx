@@ -52,16 +52,17 @@ export default function SifFixedDepositRates() {
       </div>
       <DepositRatesChart bank={DepositRateBank.SIF} />
       <Paragraph>
-        The chart above shows recent Sing Investments & Finance fixed deposit rate trend movement.
-        You can use this to decide when to{" "}
-        <DepositRateAnchor bank={DepositRateBank.SIF} linkText="lock in" />{" "}
-        your Sing Investments & Finance fixed deposit for better returns.
+        The chart above shows recent Sing Investments & Finance fixed deposit
+        rate trend movement. You can use this to decide when to{" "}
+        <DepositRateAnchor bank={DepositRateBank.SIF} linkText="lock in" /> your
+        Sing Investments & Finance fixed deposit for better returns.
       </Paragraph>
       <AdUnit />
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification
         service that monitors fixed deposit rates from major banks in Singapore,
-        including Sing Investments & Finance, and sends Telegram notifications when rates go up.
+        including Sing Investments & Finance, and sends Telegram notifications
+        when rates go up.
       </Paragraph>
       <Paragraph>
         To get started, click the button below to join the Telegram channel and

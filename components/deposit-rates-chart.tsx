@@ -138,6 +138,14 @@ export function DepositRatesChart({ bank, title }: Props) {
   const yAxisMin = Math.max(0, Number((minRate - 0.1).toFixed(2)));
   const yAxisMax = Number((maxRate + 0.1).toFixed(2));
   const dataStateHeightClass = bank ? "h-[350px]" : "h-[450px]";
+  const visibleBankKeysLength = visibleBankKeys.length;
+  const shouldDisplayLoading = isLoading;
+  const shouldDisplayEmptyState = !isLoading && visibleBankKeysLength === 0;
+  const shouldDisplayChart =
+    !isLoading &&
+    visibleBankKeysLength !== 0 &&
+    fetchStatus !== FetchStatus.Failure &&
+    !!chartData;
 
   const handleToggleAllBanks = () => {
     setSelectedBanks((currentSelection) => {
@@ -164,11 +172,17 @@ export function DepositRatesChart({ bank, title }: Props) {
     });
   };
 
-  const bankFilterLabel = allBanksChecked
-    ? "All banks"
-    : visibleBankKeys.length === 0
-      ? "No banks selected"
-      : `${visibleBankKeys.length} banks selected`;
+  const bankFilterLabel = useMemo(() => {
+    if (allBanksChecked) {
+      return "All banks";
+    }
+
+    if (visibleBankKeysLength === 0) {
+      return "No banks selected";
+    }
+
+    return `${visibleBankKeysLength} banks selected`;
+  }, [allBanksChecked, visibleBankKeysLength]);
   const chartTitle =
     title ?? (bank ? `${bank} Rate Trend` : "Fixed Deposit Rates Trend");
 
@@ -277,15 +291,17 @@ export function DepositRatesChart({ bank, title }: Props) {
         )}
       </CardHeader>
       <CardContent className="px-4 pb-4">
-        {isLoading ? (
+        {shouldDisplayLoading && (
           <Skeleton className={`${dataStateHeightClass} w-full`} />
-        ) : visibleBankKeys.length === 0 ? (
+        )}
+        {shouldDisplayEmptyState && (
           <div
             className={`flex ${dataStateHeightClass} items-center justify-center rounded-md border border-dashed text-sm text-muted-foreground`}
           >
             Select at least one bank to display rate trends.
           </div>
-        ) : fetchStatus === FetchStatus.Failure || !chartData ? null : (
+        )}
+        {shouldDisplayChart && (
           <div className="space-y-3">
             <ChartContainer
               config={chartContainerConfig}

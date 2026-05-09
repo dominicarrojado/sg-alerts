@@ -57,8 +57,8 @@ export default function SingaporeAirlinesFlightsBandarSeriBegawan() {
       />
       <Paragraph>
         The above chart shows the fare trends for Singapore Airlines flights
-        from Singapore to Bandar Seri Begawan (BWN) for the past 6 months, 1 year and 2
-        years. You can use this information to decide when to{" "}
+        from Singapore to Bandar Seri Begawan (BWN) for the past 6 months, 1
+        year and 2 years. You can use this information to decide when to{" "}
         <FlightShareUrlAnchor
           airline={FlightAirline.SINGAPORE_AIRLINES}
           destinationCityCode="BWN"
@@ -70,8 +70,9 @@ export default function SingaporeAirlinesFlightsBandarSeriBegawan() {
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification
         service that monitors the Singapore Airlines flight fare deals from
-        Singapore to Bandar Seri Begawan. It sends you a Telegram notification when the
-        prices go down so that you can take advantage of the lower prices.
+        Singapore to Bandar Seri Begawan. It sends you a Telegram notification
+        when the prices go down so that you can take advantage of the lower
+        prices.
       </Paragraph>
       <Paragraph>
         To get started, simply click the button below to join the Telegram

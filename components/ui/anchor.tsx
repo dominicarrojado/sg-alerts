@@ -7,7 +7,7 @@ export type Props = HTMLProps<HTMLAnchorElement> & {
 const Anchor = React.forwardRef(
   (
     { children, className, isExternal, target, ...props }: Props,
-    ref: ForwardedRef<HTMLAnchorElement>
+    ref: ForwardedRef<HTMLAnchorElement>,
   ) => (
     <a
       {...props}
@@ -18,7 +18,7 @@ const Anchor = React.forwardRef(
     >
       {children}
     </a>
-  )
+  ),
 );
 
 Anchor.displayName = "Anchor";

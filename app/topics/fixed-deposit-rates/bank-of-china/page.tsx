@@ -52,16 +52,20 @@ export default function BankOfChinaFixedDepositRates() {
       </div>
       <DepositRatesChart bank={DepositRateBank.BANK_OF_CHINA} />
       <Paragraph>
-        The chart above shows recent Bank of China fixed deposit rate trend movement.
-        You can use this to decide when to{" "}
-        <DepositRateAnchor bank={DepositRateBank.BANK_OF_CHINA} linkText="lock in" />{" "}
+        The chart above shows recent Bank of China fixed deposit rate trend
+        movement. You can use this to decide when to{" "}
+        <DepositRateAnchor
+          bank={DepositRateBank.BANK_OF_CHINA}
+          linkText="lock in"
+        />{" "}
         your Bank of China fixed deposit for better returns.
       </Paragraph>
       <AdUnit />
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification
         service that monitors fixed deposit rates from major banks in Singapore,
-        including Bank of China, and sends Telegram notifications when rates go up.
+        including Bank of China, and sends Telegram notifications when rates go
+        up.
       </Paragraph>
       <Paragraph>
         To get started, click the button below to join the Telegram channel and

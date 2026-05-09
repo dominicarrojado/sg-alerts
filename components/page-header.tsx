@@ -11,7 +11,7 @@ function PageHeader({
     <section
       className={cn(
         "flex max-w-[980px] flex-col items-start gap-2 px-4 py-8 md:pt-12",
-        className
+        className,
       )}
       {...props}
     >
@@ -28,7 +28,7 @@ function PageHeaderHeading({
     <h1
       className={cn(
         "text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]",
-        className
+        className,
       )}
       {...props}
     />
@@ -43,7 +43,7 @@ function PageHeaderDescription({
     <Balance
       className={cn(
         "max-w-[750px] text-lg text-muted-foreground sm:text-xl",
-        className
+        className,
       )}
       {...props}
     />

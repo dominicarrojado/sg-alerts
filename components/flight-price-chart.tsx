@@ -65,6 +65,9 @@ export function FlightPriceChart({
   const maxPrice = allPrices.length ? Math.max(...allPrices) : 1;
   const yAxisMin = Math.max(0, minPrice - 10);
   const yAxisMax = maxPrice + 10;
+  const shouldDisplayLoading = isLoading;
+  const shouldDisplayChart =
+    !isLoading && fetchStatus !== FetchStatus.Failure && !!chartData;
 
   return (
     <Card className="my-6">
@@ -96,9 +99,8 @@ export function FlightPriceChart({
         </div>
       </CardHeader>
       <CardContent className="px-4 pb-4">
-        {isLoading ? (
-          <Skeleton className="h-[350px] w-full" />
-        ) : fetchStatus === FetchStatus.Failure || !chartData ? null : (
+        {shouldDisplayLoading && <Skeleton className="h-[350px] w-full" />}
+        {shouldDisplayChart && (
           <ChartContainer
             config={chartContainerConfig}
             className="h-[350px] w-full"

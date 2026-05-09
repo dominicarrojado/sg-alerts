@@ -57,8 +57,8 @@ export default function SingaporeAirlinesFlightsDelhi() {
       />
       <Paragraph>
         The above chart shows the fare trends for Singapore Airlines flights
-        from Singapore to Delhi (DEL) for the past 6 months, 1 year and 2
-        years. You can use this information to decide when to{" "}
+        from Singapore to Delhi (DEL) for the past 6 months, 1 year and 2 years.
+        You can use this information to decide when to{" "}
         <FlightShareUrlAnchor
           airline={FlightAirline.SINGAPORE_AIRLINES}
           destinationCityCode="DEL"
@@ -70,8 +70,8 @@ export default function SingaporeAirlinesFlightsDelhi() {
       <Paragraph>
         <span className="font-medium">SG Alerts</span> is a free notification
         service that monitors the Singapore Airlines flight fare deals from
-        Singapore to Delhi. It sends you a Telegram notification when the
-        prices go down so that you can take advantage of the lower prices.
+        Singapore to Delhi. It sends you a Telegram notification when the prices
+        go down so that you can take advantage of the lower prices.
       </Paragraph>
       <Paragraph>
         To get started, simply click the button below to join the Telegram
