@@ -253,4 +253,6 @@ export const SCOOT_DESTINATION_LINKS: Partial<Record<string, string>> = {
   TYO: Routes.ScootFlightsTokyo,
   CRK: Routes.ScootFlightsClark,
   SUB: Routes.ScootFlightsSurabaya,
+  YIA: Routes.ScootFlightsYogyakarta,
+  HDY: Routes.ScootFlightsHatYai,
 };
