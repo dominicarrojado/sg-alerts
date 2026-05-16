@@ -155,6 +155,7 @@ export enum Routes {
   ScootFlightsSurabaya = "/topics/scoot-flights/surabaya/",
   ScootFlightsYogyakarta = "/topics/scoot-flights/yogyakarta/",
   ScootFlightsHatYai = "/topics/scoot-flights/hat-yai/",
+  ScootFlightsHangzhou = "/topics/scoot-flights/hangzhou/",
   JetstarFlights = "/topics/jetstar-flights/",
   CebuPacificFlights = "/topics/cebu-pacific-flights/",
   CoeBiddingResults = "/topics/coe-bidding-results/",
