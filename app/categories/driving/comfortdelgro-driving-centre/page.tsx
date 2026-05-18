@@ -10,7 +10,7 @@ import { CDC_TELEGRAM_CHANNELS } from "@/lib/content";
 
 const title = "ComfortDelGro Driving Centre";
 const description =
-  "Subscribe to get notified to topics related to ComfortDelGro Driving Centre such as practical lessons, appointment slots and more.";
+  "Subscribe to get notified on topics related to ComfortDelGro Driving Centre such as practical lessons, appointment slots and more.";
 const url = Routes.ComfortDelGroDrivingCentre;
 
 export const metadata: Metadata = {

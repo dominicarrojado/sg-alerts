@@ -15,6 +15,7 @@ export enum Routes {
   BukitBatokDrivingCentre = "/categories/driving/bukit-batok-driving-centre/",
   JapanVisaCategory = "/categories/japan-visa/",
   TravelCategory = "/categories/travel/",
+  SportsCategory = "/categories/sports/",
   MoneyCategory = "/categories/money/",
   DiningCategory = "/categories/dining/",
   EventsCategory = "/categories/events/",
@@ -167,6 +168,9 @@ export enum Routes {
   TokyoDisneySeaAttractionUpdates = "/topics/tokyo-disneysea-attraction-updates/",
   ShanghaiDisneylandAttractionUpdates = "/topics/shanghai-disneyland-attraction-updates/",
   TotoSnowballs = "/topics/toto-snowballs/",
+  BadmintonCourtSlotsOurTampinesHub = "/topics/badminton-court-slots-our-tampines-hub/",
+  BadmintonCourtSlotsHeartbeatBedok = "/topics/badminton-court-slots-heartbeat-bedok/",
+  BadmintonCourtSlotsPasirRis = "/topics/badminton-court-slots-pasir-ris/",
 }
 
 export enum FetchStatus {
@@ -198,6 +202,7 @@ export enum ApiEndpoint {
   TravelDealsInfo = "/travel-deals-checker/travel-deals-info",
   ThemeParkInfo = "/theme-park-checker/theme-park-info",
   LotteryInfo = "/lottery-checker/last-snowball-info",
+  FacilitySlotsInfo = "/facilities-checker/slots-info",
 }
 
 export enum SubscriptionTopic {
@@ -286,6 +291,12 @@ export enum JapanVisaType {
   OTHERS = "others",
 }
 
+export enum FacilityService {
+  ACTIVE_SG_BADMINTON_COURT_OTH = "active-sg-badminton-court-oth",
+  ACTIVE_SG_BADMINTON_COURT_HEARTBEAT = "active-sg-badminton-court-heartbeat",
+  ACTIVE_SG_BADMINTON_COURT_PASIR_RIS = "active-sg-badminton-court-pasir-ris",
+}
+
 export enum SsdcService {
   OTHER_COURSES_ENROLMENT = "other-courses-enrolment",
   PRIVATE_LEARNERS = "private-learners",
@@ -354,6 +365,9 @@ export enum TopicTitle {
   ScootFlights = "✈️ Flight Prices (Scoot)",
   JetstarFlights = "✈️ Flight Prices (Jetstar)",
   TotoSnowballs = "💰 TOTO Snowballs",
+  BadmintonCourtSlotsOurTampinesHub = "🏸 Badminton Court Slots (Our Tampines Hub)",
+  BadmintonCourtSlotsHeartbeatBedok = "🏸 Badminton Court Slots (Heartbeat @ Bedok)",
+  BadmintonCourtSlotsPasirRis = "🏸 Badminton Court Slots (Pasir Ris Sport Hall)",
 }
 
 export enum TelegramChannel {
@@ -394,6 +408,9 @@ export enum TelegramChannel {
   TripComTravelDeals = "SGAlertsTripComTravelDeals",
   TravelokaTravelDeals = "SGAlertsTravelokaTravelDeals",
   TotoSnowballs = "SGAlertsTOTOSnowballs",
+  BadmintonCourtSlotsOurTampinesHub = "SGAlertsBadmintonCourtSlotsOTH",
+  BadmintonCourtSlotsHeartbeatBedok = "SGAlertsBadmintonCourtSlotsBedok",
+  BadmintonCourtSlotsPasirRis = "SGAlertsBadmintonCourtSlotsPSR",
 }
 
 export enum TelegramChannelLink {

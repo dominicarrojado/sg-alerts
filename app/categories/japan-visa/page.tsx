@@ -15,7 +15,7 @@ import {
 
 const title = "Apply for Japan Visa in Singapore";
 const description =
-  "Subscribe to get notified to topics related to visa applications at the Embassy of Japan in Singapore.";
+  "Subscribe to get notified on topics related to visa applications at the Embassy of Japan in Singapore.";
 const url = Routes.JapanVisaCategory;
 
 export const metadata: Metadata = {

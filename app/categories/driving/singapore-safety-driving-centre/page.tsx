@@ -15,7 +15,7 @@ import {
 
 const title = "Singapore Safety Driving Centre";
 const description =
-  "Subscribe to get notified to topics related to Singapore Safety Driving Centre such as practical tests and announcements.";
+  "Subscribe to get notified on topics related to Singapore Safety Driving Centre such as practical tests and announcements.";
 const url = Routes.SingaporeSafetyDrivingCentre;
 
 export const metadata: Metadata = {

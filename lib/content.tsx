@@ -54,8 +54,19 @@ export const CATEGORY_ITEMS = [
   {
     emoji: "✈️",
     title: "Travel",
-    description: <>Train Tickets, Flights Prices, Promotions</>,
+    description: "Train Tickets, Flights Prices, Promotions",
     href: Routes.TravelCategory,
+  },
+  {
+    emoji: "🏸",
+    title: "Sports",
+    description: (
+      <>
+        Badminton Court <br />
+        Slots
+      </>
+    ),
+    href: Routes.SportsCategory,
   },
   {
     emoji: "💰",
@@ -227,6 +238,18 @@ export const TOPICS_MENU_ITEMS = [
   {
     title: "Tokyo DisneySea",
     href: Routes.TokyoDisneySeaAttractionUpdates,
+  },
+  {
+    title: "Tampines Badminton Court Slots",
+    href: Routes.BadmintonCourtSlotsOurTampinesHub,
+  },
+  {
+    title: "Bedok Badminton Court Slots",
+    href: Routes.BadmintonCourtSlotsHeartbeatBedok,
+  },
+  {
+    title: "Pasir Ris Badminton Court Slots",
+    href: Routes.BadmintonCourtSlotsPasirRis,
   },
   {
     title: "and more...",
@@ -505,6 +528,50 @@ export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
         .
       </>
     ),
+  },
+  NEW_FEATURES_TELEGRAM_CHANNEL,
+];
+
+export const SPORTS_TELEGRAM_CHANNELS: TelegramPublicChannels = [
+  {
+    id: TelegramChannel.BadmintonCourtSlotsOurTampinesHub,
+    title: TopicTitle.BadmintonCourtSlotsOurTampinesHub,
+    description: (
+      <>
+        Receive notifications when badminton court slots at{" "}
+        <strong className="font-medium">
+          Our Tampines Hub - Community Auditorium
+        </strong>{" "}
+        become available for booking.
+      </>
+    ),
+    topicRoute: Routes.BadmintonCourtSlotsOurTampinesHub,
+  },
+  {
+    id: TelegramChannel.BadmintonCourtSlotsHeartbeatBedok,
+    title: TopicTitle.BadmintonCourtSlotsHeartbeatBedok,
+    description: (
+      <>
+        Receive notifications when badminton court slots at{" "}
+        <strong className="font-medium">
+          Heartbeat @ Bedok ActiveSG Sport Hall
+        </strong>{" "}
+        become available for booking.
+      </>
+    ),
+    topicRoute: Routes.BadmintonCourtSlotsHeartbeatBedok,
+  },
+  {
+    id: TelegramChannel.BadmintonCourtSlotsPasirRis,
+    title: TopicTitle.BadmintonCourtSlotsPasirRis,
+    description: (
+      <>
+        Receive notifications when badminton court slots at{" "}
+        <strong className="font-medium">Pasir Ris Sport Hall</strong> become
+        available for booking.
+      </>
+    ),
+    topicRoute: Routes.BadmintonCourtSlotsPasirRis,
   },
   NEW_FEATURES_TELEGRAM_CHANNEL,
 ];

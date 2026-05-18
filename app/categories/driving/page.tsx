@@ -23,7 +23,7 @@ import {
 
 const title = "Driving in Singapore";
 const description =
-  "Subscribe to get notified to topics related to driving in Singapore such as appointment slots, practical lessons and more.";
+  "Subscribe to get notified on topics related to driving in Singapore such as appointment slots, practical lessons and more.";
 const url = Routes.DrivingCategory;
 
 export const metadata: Metadata = {

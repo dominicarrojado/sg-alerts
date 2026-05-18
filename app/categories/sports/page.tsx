@@ -6,12 +6,12 @@ import Subheading from "@/components/ui/subheading";
 import TelegramChannels from "@/components/telegram-channels";
 import { Routes } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
-import { MONEY_TELEGRAM_CHANNELS } from "@/lib/content";
+import { SPORTS_TELEGRAM_CHANNELS } from "@/lib/content";
 
-const title = "Money in Singapore";
+const title = "Sports in Singapore";
 const description =
-  "Subscribe to get notified on topics related to money in Singapore such as fixed deposit rates and TOTO snowballs.";
-const url = Routes.MoneyCategory;
+  "Subscribe to get notified on topics related to sports in Singapore such as badminton court bookings.";
+const url = Routes.SportsCategory;
 
 export const metadata: Metadata = {
   title,
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Money() {
+export default function Sports() {
   return (
     <>
       <Container>
@@ -41,7 +41,7 @@ export default function Money() {
           <Subheading>{description}</Subheading>
         </div>
         <TelegramChannels
-          channels={MONEY_TELEGRAM_CHANNELS}
+          channels={SPORTS_TELEGRAM_CHANNELS}
           backButtonRoute={Routes.Home}
         />
       </Container>

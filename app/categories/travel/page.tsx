@@ -10,7 +10,7 @@ import { TRAVEL_TELEGRAM_CHANNELS } from "@/lib/content";
 
 const title = "Travel in Singapore";
 const description =
-  "Subscribe to get notified to topics related to travel in Singapore such as train tickets, flight prices, travel deals and more.";
+  "Subscribe to get notified on topics related to travel in Singapore such as train tickets, flight prices, travel deals and more.";
 const url = Routes.TravelCategory;
 
 export const metadata: Metadata = {

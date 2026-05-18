@@ -10,7 +10,7 @@ import { EVENTS_NOTIFICATION_SETTINGS } from "@/lib/content";
 
 const title = "Events in Singapore";
 const description =
-  "Subscribe to get notified to topics related to events in Singapore such as community blood donation drives.";
+  "Subscribe to get notified on topics related to events in Singapore such as community blood donation drives.";
 const url = Routes.EventsCategory;
 
 export const metadata: Metadata = {

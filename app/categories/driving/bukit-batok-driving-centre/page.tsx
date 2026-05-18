@@ -10,7 +10,7 @@ import { BBDC_TELEGRAM_CHANNELS } from "@/lib/content";
 
 const title = "Bukit Batok Driving Centre";
 const description =
-  "Subscribe to get notified to topics related to Bukit Batok Driving Centre such as appointment slots and announcements.";
+  "Subscribe to get notified on topics related to Bukit Batok Driving Centre such as appointment slots and announcements.";
 const url = Routes.BukitBatokDrivingCentre;
 
 export const metadata: Metadata = {

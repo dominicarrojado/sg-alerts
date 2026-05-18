@@ -10,7 +10,7 @@ import { ENTERTAINMENT_NOTIFICATION_SETTINGS } from "@/lib/content";
 
 const title = "Entertainment in Singapore";
 const description =
-  "Subscribe to get notified to topics related to entertainment in Singapore such as new movie releases.";
+  "Subscribe to get notified on topics related to entertainment in Singapore such as new movie releases.";
 const url = Routes.EntertainmentCategory;
 
 export const metadata: Metadata = {

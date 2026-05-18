@@ -10,7 +10,7 @@ import { DINING_NOTIFICATION_SETTINGS } from "@/lib/content";
 
 const title = "Dining in Singapore";
 const description =
-  "Subscribe to get notified to topics related to dining in Singapore such as table reservation slots.";
+  "Subscribe to get notified on topics related to dining in Singapore such as table reservation slots.";
 const url = Routes.DiningCategory;
 
 export const metadata: Metadata = {

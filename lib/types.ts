@@ -361,6 +361,21 @@ export type TravelDealInfo = {
   lastAvailableAt: string;
 };
 
+export type FacilitySlot = {
+  id: string;
+  date: string;
+  time: string;
+  bookingLink: string;
+};
+
+export type FacilitySlots = Array<FacilitySlot>;
+
+export type FacilitySlotsInfo = {
+  items: FacilitySlots;
+  updatedAt: string;
+  lastAvailableDate: string;
+};
+
 export type DonationTestimonial = {
   firstName: string;
   lastName: string;

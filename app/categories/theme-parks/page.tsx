@@ -10,7 +10,7 @@ import { THEME_PARK_TELEGRAM_CHANNELS } from "@/lib/content";
 
 const title = "Theme Parks Attraction Updates";
 const description =
-  "Subscribe to get notified to topics related to popular theme parks visited by Singapore residents such as Tokyo Disneyland and Tokyo DisneySea.";
+  "Subscribe to get notified on topics related to popular theme parks visited by Singapore residents such as Tokyo Disneyland and Tokyo DisneySea.";
 const url = Routes.ThemeParksCategory;
 
 export const metadata: Metadata = {

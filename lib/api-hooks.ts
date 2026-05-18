@@ -24,6 +24,7 @@ import {
   Subscription,
   SubscriptionTopics,
   ThemeParkInfo,
+  FacilitySlotsInfo,
   TrainTimeSlotsInfo,
   TravelDealInfo,
 } from "./types";
@@ -36,6 +37,7 @@ import {
   CdcTestsService,
   FetchStatus,
   FlightAirline,
+  FacilityService,
   JapanVisaType,
   LotteryService,
   SsdcService,
@@ -906,6 +908,43 @@ export function useGetTotoSnowballInfo() {
   };
 
   return [fetchStatus, totoSnowballInfo, getTotoSnowballInfo] as const;
+}
+
+export function useGetFacilitySlotsInfo(service: FacilityService) {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [facilitySlotsInfo, setFacilitySlotsInfo] = useState<FacilitySlotsInfo>(
+    {
+      items: [],
+      updatedAt: "",
+      lastAvailableDate: "",
+    },
+  );
+  const getFacilitySlotsInfo = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(
+        `${API_URL}${ApiEndpoint.FacilitySlotsInfo}?service=${service}`,
+      );
+      const resData = res.data;
+
+      if (!resData || !resData?.updatedAt || !Array.isArray(resData?.items)) {
+        throw new Error("Invalid data");
+      }
+
+      setFacilitySlotsInfo({
+        ...resData,
+        updatedAt: formatDateTime(resData.updatedAt),
+        lastAvailableDate: formatDateTime(resData.lastAvailableDate),
+      });
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, facilitySlotsInfo, getFacilitySlotsInfo] as const;
 }
 
 export function useGetDepositRatesChartData() {
