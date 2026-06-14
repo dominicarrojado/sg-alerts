@@ -11,7 +11,9 @@ Minimal instructions for AI coding agents working in this repository.
 
 - Install dependencies: `yarn install`
 - Start dev server: `yarn dev` (runs on port `3001`)
-- Lint: `yarn lint`
+- Lint: `yarn lint` (Next.js ESLint)
+- Test: `yarn test` (Jest)
+- Test watch mode: `yarn test:watch`
 - Production build: `yarn build`
 
 ## Architecture
@@ -26,8 +28,9 @@ Minimal instructions for AI coding agents working in this repository.
 
 - Prefer existing `components/ui/*` primitives and current Tailwind utility patterns before adding new abstractions.
 - Keep styling in Tailwind classes. Variant-heavy reusable components should follow the existing `class-variance-authority` pattern.
-- Follow the ESLint rules in `.eslintrc.json`: use `async`/`await` instead of `.then()`/`.catch()`, avoid nested ternaries, prefer object shorthand, prefer `const`, and keep `console` usage to `console.warn` or `console.error`.
+- Follow the ESLint rules in `.eslintrc.json`: use `async`/`await` instead of `.then()`/`.catch()`, avoid nested ternaries, prefer object shorthand, prefer `const`, and keep `console` usage to `console.warn` or `console.error`, and keep files Prettier-clean because formatting violations fail lint.
 - Preserve the current font/theme setup in `app/layout.tsx` and token-based Tailwind config in `tailwind.config.ts`.
+- Route-level pages use lightweight Jest render tests alongside the page file (`page.test.tsx`). When adding a new route, add or update the matching test.
 
 ## Static Export Constraints
 
@@ -39,4 +42,5 @@ Minimal instructions for AI coding agents working in this repository.
 
 - Many feature pages are assembled from shared enums/constants/content instead of isolated page-local data. If a topic, channel, or category changes, check `lib/content.tsx`, `lib/constants.ts`, and `lib/enums.ts` together.
 - Flight destination pages have extra wiring: add the route in `lib/enums.ts`, add the airline destination mapping in `lib/constants.ts`, and pass `destinationLinks` into the relevant flights table page.
+- New route pages should usually come with a matching `page.test.tsx` so the PR workflow continues to cover render-level regressions.
 - Some topics and Telegram channels are intentionally hidden via inactive lists in `lib/constants.ts`; verify those lists before assuming a missing topic is a bug.
