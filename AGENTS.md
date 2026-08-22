@@ -2,45 +2,42 @@
 
 Minimal instructions for AI coding agents working in this repository.
 
-## Scope
-
-- Use this file for repo-wide guidance.
-- Link to existing docs instead of duplicating them. Start with [README.md](./README.md) for setup.
-
 ## Commands
 
 - Install dependencies: `yarn install`
-- Start dev server: `yarn dev` (runs on port `3001`)
-- Lint: `yarn lint` (Next.js ESLint)
-- Test: `yarn test` (Jest)
-- Test watch mode: `yarn test:watch`
-- Production build: `yarn build`
+- Dev server: `yarn dev` (runs on `http://localhost:3001`)
+- Single test: `yarn test <path/to/file.test.tsx>`
+- Full test suite: `yarn test` (Jest)
+- Lint: `yarn lint` (ESLint + Prettier check)
+- Production build: `yarn build` (`next build`, outputs to `./out`)
+- PR CI validation sequence: `yarn lint && yarn test && yarn build`
 
-## Architecture
+## Architecture & Static Export
 
-- This is a Next.js 13 App Router app using static export.
-- Route files live under `app/`, with many topic-specific pages under `app/topics/` and category landing pages under `app/categories/`.
-- Shared UI lives in `components/`. Low-level shadcn/radix primitives live in `components/ui/`.
-- Shared content, enums, constants, and types live in `lib/`. Start with `lib/content.tsx`, `lib/constants.ts`, `lib/enums.ts`, and `lib/types.ts` when changing navigation, topics, or labels.
-- Client-side API calls are centralized in `lib/api-hooks.ts` and use `API_URL` from `lib/constants.ts`.
+- Next.js 13 App Router configured for static export (`output: "export"`, `trailingSlash: true`, `images.unoptimized: true` in `next.config.js`).
+- No Node runtime or server-side features (no API routes, SSR, or ISR). All pages export to static HTML/JS in `out/`.
+- Path alias `@/*` resolves to root `./*`.
+- Route pages live in `app/` (topics under `app/topics/`, categories under `app/categories/`).
+- Shared UI lives in `components/`; low-level shadcn/Radix primitives live in `components/ui/`.
+- Centralized client API calls live in `lib/api-hooks.ts` using `NEXT_PUBLIC_API_URL` (`API_URL` in `lib/constants.ts`).
 
-## Conventions
+## Code Style & ESLint Rules
 
-- Prefer existing `components/ui/*` primitives and current Tailwind utility patterns before adding new abstractions.
-- Keep styling in Tailwind classes. Variant-heavy reusable components should follow the existing `class-variance-authority` pattern.
-- Follow the ESLint rules in `.eslintrc.json`: use `async`/`await` instead of `.then()`/`.catch()`, avoid nested ternaries, prefer object shorthand, prefer `const`, and keep `console` usage to `console.warn` or `console.error`, and keep files Prettier-clean because formatting violations fail lint.
-- Preserve the current font/theme setup in `app/layout.tsx` and token-based Tailwind config in `tailwind.config.ts`.
-- Route-level pages use lightweight Jest render tests alongside the page file (`page.test.tsx`). When adding a new route, add or update the matching test.
+- `yarn lint` enforces strict ESLint rules in `.eslintrc.json`:
+  - Async code: Banned `.then()` and `.catch()` (use `async`/`await` with `try`/`catch`).
+  - Logic: Banned nested ternaries (`no-nested-ternary`).
+  - Formatting: Prettier violations trigger ESLint errors (`prettier/prettier`).
+  - Logging: Banned `console.log` (only `console.warn` and `console.error` are allowed).
+- Styling: Keep styles in Tailwind CSS utility classes; use `class-variance-authority` (CVA) for component variants.
 
-## Static Export Constraints
+## Testing Rules
 
-- `next.config.js` sets `output: "export"`, `trailingSlash: true`, and `images.unoptimized: true`.
-- Avoid changes that require a Node runtime or server-only features unless the export strategy is also updated.
-- When adding pages or data flows, make sure they work under static export.
+- Route pages must have a colocated render test (`page.test.tsx`).
+- Run targeted tests using `yarn test <path/to/file.test.tsx>` rather than running all 150+ test suites on every edit.
 
-## High-Friction Edits
+## High-Friction Edits & Data Wiring
 
-- Many feature pages are assembled from shared enums/constants/content instead of isolated page-local data. If a topic, channel, or category changes, check `lib/content.tsx`, `lib/constants.ts`, and `lib/enums.ts` together.
-- Flight destination pages have extra wiring: add the route in `lib/enums.ts`, add the airline destination mapping in `lib/constants.ts`, and pass `destinationLinks` into the relevant flights table page.
-- New route pages should usually come with a matching `page.test.tsx` so the PR workflow continues to cover render-level regressions.
-- Some topics and Telegram channels are intentionally hidden via inactive lists in `lib/constants.ts`; verify those lists before assuming a missing topic is a bug.
+- Changing topics, channels, or categories requires synchronized edits across `lib/enums.ts`, `lib/constants.ts`, and `lib/content.tsx`.
+- Flight destination pages require: route enum in `lib/enums.ts`, destination mapping in `lib/constants.ts`, passing `destinationLinks` to flights component, and colocated `page.test.tsx`.
+- Fixed deposit bank pages require: route enum in `lib/enums.ts`, constants in `lib/constants.ts`, rate data in `lib/fixed-deposit-rates.ts`, and colocated `page.test.tsx`.
+- Hidden topics/channels are intentionally filtered via `INACTIVE_SUBSCRIPTION_TOPICS_INACTIVE` and `INACTIVE_TELEGRAM_CHANNELS` in `lib/constants.ts`—check these lists before assuming a missing item is a bug.
