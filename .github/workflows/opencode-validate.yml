@@ -1,0 +1,31 @@
+name: Validate OpenCode Config & Skills
+
+on:
+  push:
+    paths:
+      - ".opencode/**"
+      - "opencode.json"
+      - "AGENTS.md"
+      - "scripts/verify-opencode.mjs"
+  pull_request:
+    paths:
+      - ".opencode/**"
+      - "opencode.json"
+      - "AGENTS.md"
+      - "scripts/verify-opencode.mjs"
+
+jobs:
+  validate-opencode:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+
+      - name: Verify OpenCode Setup
+        run: node scripts/verify-opencode.mjs

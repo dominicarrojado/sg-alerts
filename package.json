@@ -6,7 +6,8 @@
     "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint && yarn lint:opencode",
+    "lint:opencode": "node scripts/verify-opencode.mjs",
     "test": "jest",
     "test:watch": "jest --watch"
   },
