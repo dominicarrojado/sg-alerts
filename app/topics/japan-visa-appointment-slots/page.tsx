@@ -98,6 +98,7 @@ export default function JapanVisa() {
             <SubscribeLinkButton
               route={Routes.JapanVisaCategory}
               linkText="For Business/COE/Spouse"
+              topicTitle={TopicTitle.JapanVisaBusiness}
             />
           </div>
         </div>

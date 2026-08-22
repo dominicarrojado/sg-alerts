@@ -7,7 +7,7 @@ import Paragraph from "@/components/ui/paragraph";
 import { Anchor } from "@/components/ui/anchor";
 import SubscribeLinkButton from "@/components/subscribe-link-button";
 import AdUnit from "@/components/ad-unit";
-import { Routes } from "@/lib/enums";
+import { Routes, TopicTitle } from "@/lib/enums";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { CoeBiddingResultsTable } from "./coe-bidding-results-table";
 
@@ -132,6 +132,7 @@ export default function CoeBiddingResults() {
         <SubscribeLinkButton
           route={Routes.DrivingCategory}
           linkText="Subscribe Now"
+          topicTitle={TopicTitle.CoeBiddingResults}
         />
       </div>
     </Container>

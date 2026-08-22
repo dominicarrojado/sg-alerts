@@ -117,6 +117,7 @@ export default function SsdcAppointmentSlots() {
           <SubscribeLinkButton
             route={Routes.SingaporeSafetyDrivingCentre}
             linkText="For Other Appointment Slots"
+            topicTitle={TopicTitle.SsdcOtherCoursesEnrolment}
           />
         </div>
       </PageScroller>

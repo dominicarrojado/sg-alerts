@@ -410,3 +410,21 @@ export type LotteryJackpotInfo = {
   hasDrawn: boolean;
   resultsLink: string;
 };
+
+export type Movie = {
+  title: string;
+  language: string;
+  genres: Array<string>;
+  link: string;
+  rating: string;
+  year: number;
+  imageUrl: string;
+  imageWidth: number;
+  imageHeight: number;
+};
+export type Movies = Array<Movie>;
+
+export type MoviesInfo = {
+  items: Movies;
+  updatedAt: string;
+};

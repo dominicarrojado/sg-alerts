@@ -171,6 +171,8 @@ export enum Routes {
   BadmintonCourtSlotsOurTampinesHub = "/topics/badminton-court-slots-our-tampines-hub/",
   BadmintonCourtSlotsHeartbeatBedok = "/topics/badminton-court-slots-heartbeat-bedok/",
   BadmintonCourtSlotsPasirRis = "/topics/badminton-court-slots-pasir-ris/",
+  MoviesGv = "/topics/golden-village-movies/",
+  MoviesShaw = "/topics/shaw-theatres-movies/",
 }
 
 export enum FetchStatus {
@@ -203,6 +205,7 @@ export enum ApiEndpoint {
   ThemeParkInfo = "/theme-park-checker/theme-park-info",
   LotteryInfo = "/lottery-checker/last-snowball-info",
   FacilitySlotsInfo = "/facilities-checker/slots-info",
+  MoviesInfo = "/movie-checker/movies-info",
 }
 
 export enum SubscriptionTopic {
@@ -329,6 +332,11 @@ export enum LotteryService {
   TOTO = "toto",
 }
 
+export enum MovieService {
+  GV = "gv",
+  SHAW = "shaw",
+}
+
 export enum TopicTitle {
   BbdcAppointmentSlots = "🚘 BBDC Appointment Slots",
   CdcEyesightTest = "🚘 CDC Appointment Slots (Eyesight Test)",
@@ -353,6 +361,7 @@ export enum TopicTitle {
   SsdcPracticalTestSlotsPrivate = "🚘 SSDC Practical Test Slots (Private Learners)",
   SsdcPracticalTestSlotsAuto = "🚘 SSDC Practical Test Slots (Class 3A Motorcar)",
   SsdcPracticalTestSlotsManual = "🚘 SSDC Practical Test Slots (Class 3 Motorcar)",
+  CoeBiddingResults = "📄 Certificate of Entitlement (COE) Bidding Results",
   FixedDepositRates = "💰 Fixed Deposit Rates",
   JapanVisaTourism = "🇯🇵 Japan Visa Appointment Slots (Tourism)",
   JapanVisaOthers = "🇯🇵 Japan Visa Appointment Slots (Others)",
@@ -368,6 +377,8 @@ export enum TopicTitle {
   BadmintonCourtSlotsOurTampinesHub = "🏸 Badminton Court Slots (Our Tampines Hub)",
   BadmintonCourtSlotsHeartbeatBedok = "🏸 Badminton Court Slots (Heartbeat @ Bedok)",
   BadmintonCourtSlotsPasirRis = "🏸 Badminton Court Slots (Pasir Ris Sport Hall)",
+  MoviesGv = "🎬 Movies with English Subtitles (GV)",
+  MoviesShaw = "🎬 Movies with English Subtitles (Shaw)",
 }
 
 export enum TelegramChannel {

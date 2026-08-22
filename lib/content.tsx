@@ -252,6 +252,14 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.BadmintonCourtSlotsPasirRis,
   },
   {
+    title: "Golden Village (GV) Movies",
+    href: Routes.MoviesGv,
+  },
+  {
+    title: "Shaw Theatres Movies",
+    href: Routes.MoviesShaw,
+  },
+  {
     title: "and more...",
     href: "",
   },
@@ -800,6 +808,7 @@ export const ENTERTAINMENT_NOTIFICATION_SETTINGS: NotificationSettings = [
         <small>(supported languages: English, Chinese, Korean, Japanese)</small>
       </>
     ),
+    topicRoute: Routes.MoviesGv,
   },
   {
     id: SubscriptionTopic.MoviesShaw,
@@ -815,6 +824,7 @@ export const ENTERTAINMENT_NOTIFICATION_SETTINGS: NotificationSettings = [
         <small>(supported languages: English, Chinese, Korean, Japanese)</small>
       </>
     ),
+    topicRoute: Routes.MoviesShaw,
   },
 ];
 

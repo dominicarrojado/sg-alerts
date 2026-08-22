@@ -27,6 +27,7 @@ import {
   FacilitySlotsInfo,
   TrainTimeSlotsInfo,
   TravelDealInfo,
+  MoviesInfo,
 } from "./types";
 import {
   ApiEndpoint,
@@ -40,6 +41,7 @@ import {
   FacilityService,
   JapanVisaType,
   LotteryService,
+  MovieService,
   SsdcService,
   SsdcTestsService,
   ThemeParkService,
@@ -1020,4 +1022,37 @@ export function useGetFlightSnapshotsChartData(
   };
 
   return [fetchStatus, chartData, getFlightSnapshotsChartData] as const;
+}
+
+export function useGetMoviesInfo(service: MovieService) {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [moviesInfo, setMoviesInfo] = useState<MoviesInfo>({
+    items: [],
+    updatedAt: "",
+  });
+  const getMoviesInfo = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(
+        `${API_URL}${ApiEndpoint.MoviesInfo}?service=${service}`,
+      );
+      const resData = res.data;
+
+      if (!resData || !resData?.updatedAt || !Array.isArray(resData?.items)) {
+        throw new Error("Invalid data");
+      }
+
+      setMoviesInfo({
+        ...resData,
+        updatedAt: formatDateTime(resData.updatedAt),
+      });
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, moviesInfo, getMoviesInfo] as const;
 }
