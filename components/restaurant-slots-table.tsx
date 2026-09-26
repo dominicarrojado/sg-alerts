@@ -100,7 +100,9 @@ export function RestaurantSlotsTable({
       <Alert className="my-6" data-clarity-unmask="true">
         <CheckCircle className="mt-1 h-4 w-4" />
         <AlertTitle className="leading-normal">
-          Last available slots were spotted on {lastAvailableDate}.
+          {lastAvailableDate
+            ? `Last available slots were spotted on ${lastAvailableDate}.`
+            : "No table reservation slots currently available."}
         </AlertTitle>
       </Alert>
     );
