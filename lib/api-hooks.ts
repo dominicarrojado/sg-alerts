@@ -28,6 +28,7 @@ import {
   TrainTimeSlotsInfo,
   TravelDealInfo,
   MoviesInfo,
+  RestaurantSlotsInfo,
 } from "./types";
 import {
   ApiEndpoint,
@@ -42,6 +43,7 @@ import {
   JapanVisaType,
   LotteryService,
   MovieService,
+  Restaurant,
   SsdcService,
   SsdcTestsService,
   ThemeParkService,
@@ -1055,4 +1057,38 @@ export function useGetMoviesInfo(service: MovieService) {
   };
 
   return [fetchStatus, moviesInfo, getMoviesInfo] as const;
+}
+
+export function useGetRestaurantSlotsInfo(restaurant: Restaurant) {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [restaurantSlotsInfo, setRestaurantSlotsInfo] =
+    useState<RestaurantSlotsInfo>({
+      items: [],
+      updatedAt: "",
+    });
+  const getRestaurantSlotsInfo = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(
+        `${API_URL}${ApiEndpoint.RestaurantLastSlotsInfo}?restaurant=${restaurant}`,
+      );
+      const resData = res.data;
+
+      if (!resData || !resData?.updatedAt || !Array.isArray(resData?.items)) {
+        throw new Error("Invalid data");
+      }
+
+      setRestaurantSlotsInfo({
+        ...resData,
+        updatedAt: formatDateTime(resData.updatedAt),
+      });
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, restaurantSlotsInfo, getRestaurantSlotsInfo] as const;
 }

@@ -260,6 +260,10 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.MoviesShaw,
   },
   {
+    title: "Burnt Ends Reservation Slots",
+    href: Routes.RestaurantsBurntEnds,
+  },
+  {
     title: "and more...",
     href: "",
   },
@@ -760,7 +764,7 @@ export const JAPAN_VISA_NOTIFICATION_SETTINGS: NotificationSettings = [
 export const DINING_NOTIFICATION_SETTINGS: NotificationSettings = [
   {
     id: SubscriptionTopic.RestaurantsBurntEnds,
-    title: "🍽️ Table Reservation Slots (Burnt Ends)",
+    title: TopicTitle.RestaurantsBurntEnds,
     description: (
       <>
         Receive email notifications when there are new table reservation date(s)
@@ -774,6 +778,7 @@ export const DINING_NOTIFICATION_SETTINGS: NotificationSettings = [
         </small>
       </>
     ),
+    topicRoute: Routes.RestaurantsBurntEnds,
   },
 ];
 

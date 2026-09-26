@@ -179,6 +179,7 @@ export enum Routes {
   BadmintonCourtSlotsPasirRis = "/topics/badminton-court-slots-pasir-ris/",
   MoviesGv = "/topics/golden-village-movies/",
   MoviesShaw = "/topics/shaw-theatres-movies/",
+  RestaurantsBurntEnds = "/topics/burnt-ends-table-reservation-slots/",
 }
 
 export enum FetchStatus {
@@ -212,6 +213,7 @@ export enum ApiEndpoint {
   LotteryInfo = "/lottery-checker/last-snowball-info",
   FacilitySlotsInfo = "/facilities-checker/slots-info",
   MoviesInfo = "/movie-checker/movies-info",
+  RestaurantLastSlotsInfo = "/restaurant-checker/last-slots-info",
 }
 
 export enum SubscriptionTopic {
@@ -343,6 +345,10 @@ export enum MovieService {
   SHAW = "shaw",
 }
 
+export enum Restaurant {
+  BURNT_ENDS = "burnt-ends",
+}
+
 export enum TopicTitle {
   BbdcAppointmentSlots = "🚘 BBDC Appointment Slots",
   CdcEyesightTest = "🚘 CDC Appointment Slots (Eyesight Test)",
@@ -385,6 +391,7 @@ export enum TopicTitle {
   BadmintonCourtSlotsPasirRis = "🏸 Badminton Court Slots (Pasir Ris Sport Hall)",
   MoviesGv = "🎬 Movies with English Subtitles (GV)",
   MoviesShaw = "🎬 Movies with English Subtitles (Shaw)",
+  RestaurantsBurntEnds = "🍽️ Table Reservation Slots (Burnt Ends)",
 }
 
 export enum TelegramChannel {
