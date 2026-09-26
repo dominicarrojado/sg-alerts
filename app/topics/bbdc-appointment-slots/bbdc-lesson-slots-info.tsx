@@ -31,13 +31,11 @@ export default function BbdcLessonSlotsInfo() {
       </AlertTitle>
     </Alert>
   ) : (
-    <Alert className="my-6 flex items-start space-x-3">
-      <Skeleton className="mt-1 h-5 w-5 rounded-full" />
-      <div className="w-full space-y-2 py-1">
-        <Skeleton className="h-5 w-full sm:w-11/12" />
-        <Skeleton className="h-4 w-4/5 sm:hidden" />
-        <Skeleton className="h-3 w-1/2 sm:w-1/4" />
-      </div>
+    <Alert className="my-6">
+      <Skeleton className="absolute left-4 top-4 mt-1 h-4 w-4 rounded-full" />
+      <AlertTitle className="pl-7 leading-normal">
+        <Skeleton className="h-5 w-3/4 sm:w-1/2" />
+      </AlertTitle>
     </Alert>
   );
 }
