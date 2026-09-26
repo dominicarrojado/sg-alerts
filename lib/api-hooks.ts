@@ -30,6 +30,7 @@ import {
   MoviesInfo,
   RestaurantSlotsInfo,
   EventsInfo,
+  AnnouncementsInfo,
 } from "./types";
 import {
   ApiEndpoint,
@@ -46,6 +47,7 @@ import {
   MovieService,
   Restaurant,
   EventService,
+  AnnouncementService,
   SsdcService,
   SsdcTestsService,
   ThemeParkService,
@@ -1130,4 +1132,39 @@ export function useGetEventsInfo(service: EventService) {
   };
 
   return [fetchStatus, eventsInfo, getEventsInfo] as const;
+}
+
+export function useGetAnnouncementsInfo(service: AnnouncementService) {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [announcementsInfo, setAnnouncementsInfo] = useState<AnnouncementsInfo>(
+    {
+      items: [],
+      updatedAt: "",
+    },
+  );
+  const getAnnouncementsInfo = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(
+        `${API_URL}${ApiEndpoint.AnnouncementsInfo}?service=${service}`,
+      );
+      const resData = res.data;
+
+      if (!resData || !resData?.updatedAt || !Array.isArray(resData?.items)) {
+        throw new Error("Invalid data");
+      }
+
+      setAnnouncementsInfo({
+        ...resData,
+        updatedAt: formatDateTime(resData.updatedAt),
+      });
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, announcementsInfo, getAnnouncementsInfo] as const;
 }

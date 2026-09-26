@@ -181,6 +181,9 @@ export enum Routes {
   MoviesShaw = "/topics/shaw-theatres-movies/",
   RestaurantsBurntEnds = "/topics/burnt-ends-table-reservation-slots/",
   EventsBloodDrive = "/topics/community-blood-drives/",
+  CdcAnnouncements = "/topics/cdc-announcements/",
+  SsdcAnnouncements = "/topics/ssdc-announcements/",
+  BbdcAnnouncements = "/topics/bbdc-announcements/",
 }
 
 export enum FetchStatus {
@@ -216,6 +219,7 @@ export enum ApiEndpoint {
   MoviesInfo = "/movie-checker/movies-info",
   RestaurantLastSlotsInfo = "/restaurant-checker/last-slots-info",
   EventsInfo = "/event-checker/events-info",
+  AnnouncementsInfo = "/announcements-checker/announcements-info",
 }
 
 export enum SubscriptionTopic {
@@ -355,6 +359,12 @@ export enum EventService {
   RED_CROSS = "red-cross",
 }
 
+export enum AnnouncementService {
+  CDC = "cdc",
+  SSDC = "ssdc",
+  BBDC = "bbdc",
+}
+
 export enum TopicTitle {
   BbdcAppointmentSlots = "🚘 BBDC Appointment Slots",
   CdcEyesightTest = "🚘 CDC Appointment Slots (Eyesight Test)",
@@ -399,6 +409,9 @@ export enum TopicTitle {
   MoviesShaw = "🎬 Movies with English Subtitles (Shaw)",
   RestaurantsBurntEnds = "🍽️ Table Reservation Slots (Burnt Ends)",
   EventsBloodDrive = "🏥 Community Blood Drives",
+  CdcAnnouncements = "🚘 CDC Announcements",
+  SsdcAnnouncements = "🚘 SSDC Announcements",
+  BbdcAnnouncements = "🚘 BBDC Announcements",
 }
 
 export enum TelegramChannel {
