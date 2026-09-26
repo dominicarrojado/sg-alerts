@@ -33,9 +33,9 @@ export default function BbdcLessonSlotsInfo() {
   ) : (
     <Alert className="my-6">
       <Skeleton className="absolute left-4 top-4 mt-1 h-4 w-4 rounded-full" />
-      <AlertTitle className="space-y-1 pl-7 leading-normal">
-        <Skeleton className="h-6 w-full sm:w-1/2" />
-        <Skeleton className="h-6 w-4/5 sm:hidden" />
+      <AlertTitle className="pl-7 leading-normal">
+        <Skeleton className="h-5 w-full sm:h-6 sm:w-1/2" />
+        <Skeleton className="mt-1 h-6 w-4/5 sm:hidden" />
       </AlertTitle>
     </Alert>
   );
