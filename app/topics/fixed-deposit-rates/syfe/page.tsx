@@ -57,8 +57,11 @@ export default function SyfeCashGuaranteedRates() {
       <Paragraph>
         The chart above shows recent Syfe Cash+ Guaranteed rate trend movement.
         You can use this to decide when to{" "}
-        <DepositRateAnchor bank={DepositRateBank.SYFE} linkText="invest in" />{" "}
-        Syfe Cash+ Guaranteed based on current yields.
+        <DepositRateAnchor
+          bank={DepositRateBank.SYFE}
+          linkText="invest in Syfe Cash+ Guaranteed"
+        />{" "}
+        based on current yields.
       </Paragraph>
       <AdUnit />
       <Paragraph>

@@ -59,9 +59,9 @@ export default function TreasuryBillsRates() {
         trend movement. You can use this to decide when to{" "}
         <DepositRateAnchor
           bank={DepositRateBank.T_BILLS}
-          linkText="invest in"
+          linkText="invest in T-Bills"
         />{" "}
-        T-Bills based on current yields.
+        based on current yields.
       </Paragraph>
       <AdUnit />
       <Paragraph>

@@ -59,9 +59,9 @@ export default function MariBankRates() {
         this to decide when to{" "}
         <DepositRateAnchor
           bank={DepositRateBank.MARIBANK}
-          linkText="save with"
+          linkText="save with MariBank"
         />{" "}
-        MariBank based on current yields and your savings plans.
+        based on current yields and your savings plans.
       </Paragraph>
       <AdUnit />
       <Paragraph>

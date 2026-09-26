@@ -54,8 +54,11 @@ export default function CitibankFixedDepositRates() {
       <Paragraph>
         The chart above shows recent Citibank fixed deposit rate trend movement.
         You can use this to decide when to{" "}
-        <DepositRateAnchor bank={DepositRateBank.CITIBANK} linkText="lock in" />{" "}
-        your Citibank fixed deposit for better returns.
+        <DepositRateAnchor
+          bank={DepositRateBank.CITIBANK}
+          linkText="lock in your Citibank fixed deposit"
+        />{" "}
+        for better returns.
       </Paragraph>
       <AdUnit />
       <Paragraph>

@@ -54,8 +54,11 @@ export default function DbsFixedDepositRates() {
       <Paragraph>
         The chart above shows recent DBS fixed deposit rate trend movement. You
         can use this to decide when to{" "}
-        <DepositRateAnchor bank={DepositRateBank.DBS} linkText="lock in" /> your
-        DBS fixed deposit for better returns.
+        <DepositRateAnchor
+          bank={DepositRateBank.DBS}
+          linkText="lock in your DBS fixed deposit"
+        />{" "}
+        for better returns.
       </Paragraph>
       <AdUnit />
       <Paragraph>

@@ -54,8 +54,11 @@ export default function IcbcFixedDepositRates() {
       <Paragraph>
         The chart above shows recent ICBC fixed deposit rate trend movement. You
         can use this to decide when to{" "}
-        <DepositRateAnchor bank={DepositRateBank.ICBC} linkText="lock in" />{" "}
-        your ICBC fixed deposit for better returns.
+        <DepositRateAnchor
+          bank={DepositRateBank.ICBC}
+          linkText="lock in your ICBC fixed deposit"
+        />{" "}
+        for better returns.
       </Paragraph>
       <AdUnit />
       <Paragraph>

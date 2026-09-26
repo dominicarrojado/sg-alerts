@@ -54,8 +54,11 @@ export default function OcbcFixedDepositRates() {
       <Paragraph>
         The chart above shows recent OCBC fixed deposit rate trend movement. You
         can use this to decide when to{" "}
-        <DepositRateAnchor bank={DepositRateBank.OCBC} linkText="lock in" />{" "}
-        your OCBC fixed deposit for better returns.
+        <DepositRateAnchor
+          bank={DepositRateBank.OCBC}
+          linkText="lock in your OCBC fixed deposit"
+        />{" "}
+        for better returns.
       </Paragraph>
       <AdUnit />
       <Paragraph>

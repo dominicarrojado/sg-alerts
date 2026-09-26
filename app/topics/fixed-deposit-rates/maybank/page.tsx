@@ -54,8 +54,11 @@ export default function MaybankFixedDepositRates() {
       <Paragraph>
         The chart above shows recent Maybank fixed deposit rate trend movement.
         You can use this to decide when to{" "}
-        <DepositRateAnchor bank={DepositRateBank.MAYBANK} linkText="lock in" />{" "}
-        your Maybank fixed deposit for better returns.
+        <DepositRateAnchor
+          bank={DepositRateBank.MAYBANK}
+          linkText="lock in your Maybank fixed deposit"
+        />{" "}
+        for better returns.
       </Paragraph>
       <AdUnit />
       <Paragraph>

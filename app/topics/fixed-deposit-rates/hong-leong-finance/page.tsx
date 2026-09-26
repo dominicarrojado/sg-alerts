@@ -56,9 +56,9 @@ export default function HongLeongFinanceFixedDepositRates() {
         movement. You can use this to decide when to{" "}
         <DepositRateAnchor
           bank={DepositRateBank.HONG_LEONG_FINANCE}
-          linkText="lock in"
+          linkText="lock in your Hong Leong Finance fixed deposit"
         />{" "}
-        your Hong Leong Finance fixed deposit for better returns.
+        for better returns.
       </Paragraph>
       <AdUnit />
       <Paragraph>

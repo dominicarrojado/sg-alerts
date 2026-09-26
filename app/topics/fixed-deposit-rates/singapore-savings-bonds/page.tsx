@@ -57,8 +57,11 @@ export default function SingaporeSavingsBondsRates() {
       <Paragraph>
         The chart above shows recent Singapore Savings Bonds (SSB) rate trend
         movement. You can use this to decide when to{" "}
-        <DepositRateAnchor bank={DepositRateBank.SSB} linkText="invest in" />{" "}
-        SSB based on current yields.
+        <DepositRateAnchor
+          bank={DepositRateBank.SSB}
+          linkText="invest in SSB"
+        />{" "}
+        based on current yields.
       </Paragraph>
       <AdUnit />
       <Paragraph>

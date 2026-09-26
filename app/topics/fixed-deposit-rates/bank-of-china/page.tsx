@@ -56,9 +56,9 @@ export default function BankOfChinaFixedDepositRates() {
         movement. You can use this to decide when to{" "}
         <DepositRateAnchor
           bank={DepositRateBank.BANK_OF_CHINA}
-          linkText="lock in"
+          linkText="lock in your Bank of China fixed deposit"
         />{" "}
-        your Bank of China fixed deposit for better returns.
+        for better returns.
       </Paragraph>
       <AdUnit />
       <Paragraph>
