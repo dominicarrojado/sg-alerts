@@ -428,3 +428,18 @@ export type MoviesInfo = {
   items: Movies;
   updatedAt: string;
 };
+
+export type RestaurantSlot = {
+  tableName: string;
+  mealTypeName: string;
+  slotsCount: number;
+  earliestDate: string;
+  link: string;
+};
+
+export type RestaurantSlots = Array<RestaurantSlot>;
+
+export type RestaurantSlotsInfo = {
+  items: RestaurantSlots;
+  updatedAt: string;
+};
