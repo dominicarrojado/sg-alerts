@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/table";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Anchor } from "@/components/ui/anchor";
 import { Badge } from "@/components/ui/badge";
 import { useGetEventsInfo } from "@/lib/api-hooks";
 import { EventService, FetchStatus } from "@/lib/enums";
@@ -47,16 +46,10 @@ export function BloodDrivesTable({ service }: BloodDrivesTableProps) {
         <TableHeader>
           <TableRow className="h-[48px]">
             <TableHead>
-              <Skeleton className="h-5 w-full" />
+              <Skeleton className="h-5 w-1/2" />
             </TableHead>
-            <TableHead className="hidden sm:table-cell sm:w-[220px]">
-              <Skeleton className="h-5 w-full" />
-            </TableHead>
-            <TableHead className="hidden sm:table-cell">
-              <Skeleton className="h-5 w-full" />
-            </TableHead>
-            <TableHead className="text-right">
-              <Skeleton className="ml-auto h-5 w-20" />
+            <TableHead className="w-1/2 sm:w-[240px]">
+              <Skeleton className="ml-auto h-5 w-2/3" />
             </TableHead>
           </TableRow>
         </TableHeader>
@@ -65,17 +58,10 @@ export function BloodDrivesTable({ service }: BloodDrivesTableProps) {
             <TableRow key={index} className="h-[52px]">
               <TableCell>
                 <Skeleton className="h-5 w-3/4" />
-                <Skeleton className="mt-1 h-4 w-1/2 sm:hidden" />
-              </TableCell>
-              <TableCell className="hidden sm:table-cell">
-                <Skeleton className="h-5 w-28" />
-                <Skeleton className="mt-1 h-4 w-20" />
-              </TableCell>
-              <TableCell className="hidden sm:table-cell">
-                <Skeleton className="h-5 w-full" />
               </TableCell>
               <TableCell className="text-right">
-                <Skeleton className="ml-auto h-5 w-16" />
+                <Skeleton className="ml-auto h-5 w-28" />
+                <Skeleton className="ml-auto mt-1 h-4 w-20" />
               </TableCell>
             </TableRow>
           ))}
@@ -101,18 +87,11 @@ export function BloodDrivesTable({ service }: BloodDrivesTableProps) {
     <Table className="my-6" data-clarity-unmask="true">
       <TableCaption>Last updated on {updatedAt}.</TableCaption>
       <TableHeader>
-        <TableRow>
-          <TableHead className="min-w-[160px]">
-            Location
-            <div className="font-normal text-muted-foreground sm:hidden">
-              Date &amp; Time / Address
-            </div>
-          </TableHead>
-          <TableHead className="hidden sm:table-cell sm:w-[220px]">
+        <TableRow className="h-[48px]">
+          <TableHead>Location</TableHead>
+          <TableHead className="w-1/2 text-right sm:w-[240px]">
             Date &amp; Time
           </TableHead>
-          <TableHead className="hidden sm:table-cell">Address</TableHead>
-          <TableHead className="text-right">Action</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -127,26 +106,12 @@ export function BloodDrivesTable({ service }: BloodDrivesTableProps) {
                   </Badge>
                 )}
               </div>
-              <div className="font-normal text-muted-foreground sm:hidden">
-                {event.date} · {event.startTime} - {event.endTime}
-              </div>
-              <div className="font-normal text-muted-foreground sm:hidden">
-                {event.address}
-              </div>
             </TableCell>
-            <TableCell className="hidden sm:table-cell">
+            <TableCell className="text-right">
               <div className="font-medium">{event.date}</div>
               <div className="text-xs text-muted-foreground">
                 {event.startTime} - {event.endTime}
               </div>
-            </TableCell>
-            <TableCell className="hidden text-muted-foreground sm:table-cell">
-              {event.address}
-            </TableCell>
-            <TableCell className="text-right">
-              <Anchor href={event.link} isExternal>
-                Details
-              </Anchor>
             </TableCell>
           </TableRow>
         ))}
