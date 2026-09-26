@@ -638,7 +638,9 @@ export function useGetTrainSlotsInfo() {
       setTrainSlotsInfo({
         ...resData,
         updatedAt: formatDateTime(resData.updatedAt),
-        lastAvailableDate: formatDateTime(resData.lastAvailableDate),
+        lastAvailableDate: resData.lastAvailableDate
+          ? formatDateTime(resData.lastAvailableDate)
+          : "",
       });
       setFetchStatus(FetchStatus.Success);
     } catch (err) {
@@ -943,7 +945,9 @@ export function useGetFacilitySlotsInfo(service: FacilityService) {
       setFacilitySlotsInfo({
         ...resData,
         updatedAt: formatDateTime(resData.updatedAt),
-        lastAvailableDate: formatDateTime(resData.lastAvailableDate),
+        lastAvailableDate: resData.lastAvailableDate
+          ? formatDateTime(resData.lastAvailableDate)
+          : "",
       });
       setFetchStatus(FetchStatus.Success);
     } catch (err) {
