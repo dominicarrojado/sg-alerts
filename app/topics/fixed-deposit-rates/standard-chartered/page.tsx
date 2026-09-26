@@ -56,9 +56,9 @@ export default function StandardCharteredFixedDepositRates() {
         movement. You can use this to decide when to{" "}
         <DepositRateAnchor
           bank={DepositRateBank.STANDARD_CHARTERED}
-          linkText="lock in"
+          linkText="lock in your Standard Chartered fixed deposit"
         />{" "}
-        your Standard Chartered fixed deposit for better returns.
+        for better returns.
       </Paragraph>
       <AdUnit />
       <Paragraph>

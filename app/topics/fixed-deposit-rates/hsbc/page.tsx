@@ -54,8 +54,11 @@ export default function HsbcFixedDepositRates() {
       <Paragraph>
         The chart above shows recent HSBC fixed deposit rate trend movement. You
         can use this to decide when to{" "}
-        <DepositRateAnchor bank={DepositRateBank.HSBC} linkText="lock in" />{" "}
-        your HSBC fixed deposit for better returns.
+        <DepositRateAnchor
+          bank={DepositRateBank.HSBC}
+          linkText="lock in your HSBC fixed deposit"
+        />{" "}
+        for better returns.
       </Paragraph>
       <AdUnit />
       <Paragraph>

@@ -54,8 +54,11 @@ export default function CimbFixedDepositRates() {
       <Paragraph>
         The chart above shows recent CIMB fixed deposit rate trend movement. You
         can use this to decide when to{" "}
-        <DepositRateAnchor bank={DepositRateBank.CIMB} linkText="lock in" />{" "}
-        your CIMB fixed deposit for better returns.
+        <DepositRateAnchor
+          bank={DepositRateBank.CIMB}
+          linkText="lock in your CIMB fixed deposit"
+        />{" "}
+        for better returns.
       </Paragraph>
       <AdUnit />
       <Paragraph>

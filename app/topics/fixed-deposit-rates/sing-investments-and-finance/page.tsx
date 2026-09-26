@@ -54,8 +54,11 @@ export default function SifFixedDepositRates() {
       <Paragraph>
         The chart above shows recent Sing Investments & Finance fixed deposit
         rate trend movement. You can use this to decide when to{" "}
-        <DepositRateAnchor bank={DepositRateBank.SIF} linkText="lock in" /> your
-        Sing Investments & Finance fixed deposit for better returns.
+        <DepositRateAnchor
+          bank={DepositRateBank.SIF}
+          linkText="lock in your Sing Investments & Finance fixed deposit"
+        />{" "}
+        for better returns.
       </Paragraph>
       <AdUnit />
       <Paragraph>
