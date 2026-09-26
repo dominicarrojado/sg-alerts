@@ -27,7 +27,11 @@ export function RestaurantSlotsTable({
 }: RestaurantSlotsTableProps) {
   const [fetchState, restaurantSlotsInfo, getRestaurantSlotsInfo] =
     useGetRestaurantSlotsInfo(restaurant);
-  const { items: restaurantSlots, updatedAt } = restaurantSlotsInfo;
+  const {
+    items: restaurantSlots,
+    updatedAt,
+    lastAvailableDate,
+  } = restaurantSlotsInfo;
 
   useEffect(() => {
     getRestaurantSlotsInfo();
@@ -96,9 +100,7 @@ export function RestaurantSlotsTable({
       <Alert className="my-6" data-clarity-unmask="true">
         <CheckCircle className="mt-1 h-4 w-4" />
         <AlertTitle className="leading-normal">
-          {updatedAt
-            ? `No table reservation slots currently available. Last checked on ${updatedAt}.`
-            : "No table reservation slots currently available."}
+          Last available slots were spotted on {lastAvailableDate}.
         </AlertTitle>
       </Alert>
     );

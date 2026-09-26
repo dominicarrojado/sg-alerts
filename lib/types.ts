@@ -442,4 +442,5 @@ export type RestaurantSlots = Array<RestaurantSlot>;
 export type RestaurantSlotsInfo = {
   items: RestaurantSlots;
   updatedAt: string;
+  lastAvailableDate: string;
 };
