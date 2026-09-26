@@ -465,7 +465,7 @@ export type EventsInfo = {
 export type Announcement = {
   title: string;
   date: string;
-  description: string;
+  description?: string;
   imageUrl?: string;
   link: string;
 };
