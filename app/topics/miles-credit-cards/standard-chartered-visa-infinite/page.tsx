@@ -55,15 +55,13 @@ export default function StandardCharteredVisaInfinitePage() {
       <MilesCreditCardDetails cardId={MilesCreditCardId.SCB_VISA_INFINITE} />
       <Paragraph>
         The Standard Chartered Visa Infinite Card is one of Singapore&apos;s
-        most established premium travel cards, designed for frequent flyers and
-        high-spending cardholders looking to maximise air miles accumulation on
-        every purchase.
+        established premium travel cards, designed for frequent flyers and
+        travelers looking to maximise air miles accumulation on eligible retail
+        and overseas purchases.
       </Paragraph>
       <Paragraph>
-        With competitive earn rates of 1.4 miles per dollar (mpd) locally and
-        3.0 mpd on foreign currency spend, this card excels when used abroad.
-        Because the first-year annual fee is strictly non-waivable, timing your
-        card application with an elevated sign-up bonus miles campaign ensures
+        Because premium cards typically carry structured annual fee policies,
+        timing your application with an elevated welcome bonus campaign ensures
         you get optimal reward value right from the start.
       </Paragraph>
       <AdUnit />
