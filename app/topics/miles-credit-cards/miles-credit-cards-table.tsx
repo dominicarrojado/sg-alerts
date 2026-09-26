@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Anchor } from "@/components/ui/anchor";
-import { Badge } from "@/components/ui/badge";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { useGetMilesCreditCardsInfo } from "@/lib/api-hooks";
 import { formatMoney } from "@/lib/number";
@@ -127,7 +126,6 @@ export function MilesCreditCardsTable() {
           const {
             id,
             name,
-            tier,
             milesBonus,
             previousMilesBonus,
             milesPerDollar,
@@ -142,18 +140,13 @@ export function MilesCreditCardsTable() {
           return (
             <TableRow key={id}>
               <TableCell>
-                <div className="flex flex-wrap items-center gap-1.5">
-                  <Anchor
-                    href={link}
-                    isExternal
-                    className="font-medium underline underline-offset-4"
-                  >
-                    {name}
-                  </Anchor>
-                  <Badge variant="outline" className="text-[10px]">
-                    {tier}
-                  </Badge>
-                </div>
+                <Anchor
+                  href={link}
+                  isExternal
+                  className="font-medium underline underline-offset-4"
+                >
+                  {name}
+                </Anchor>
               </TableCell>
 
               <TableCell>
