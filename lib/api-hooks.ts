@@ -1190,17 +1190,13 @@ export function useGetMilesCreditCardsInfo() {
       );
       const resData = res.data;
 
-      if (
-        !resData ||
-        typeof resData.updatedAt !== "string" ||
-        !Array.isArray(resData.items)
-      ) {
+      if (!resData || !resData?.updatedAt || !Array.isArray(resData?.items)) {
         throw new Error("Invalid data");
       }
 
       setMilesCreditCardsInfo({
         ...resData,
-        updatedAt: resData.updatedAt ? formatDateTime(resData.updatedAt) : "",
+        updatedAt: formatDateTime(resData.updatedAt),
       });
       setFetchStatus(FetchStatus.Success);
     } catch (err) {

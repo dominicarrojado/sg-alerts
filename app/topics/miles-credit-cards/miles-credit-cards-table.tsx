@@ -140,7 +140,8 @@ export function MilesCreditCardsTable() {
             link,
           } = card;
 
-          const diff = previousMilesBonus ? milesBonus - previousMilesBonus : 0;
+          const hasPreviousBonus = typeof previousMilesBonus === "number";
+          const diff = hasPreviousBonus ? milesBonus - previousMilesBonus : 0;
           const isNegative = diff < 0;
 
           return (
@@ -168,7 +169,7 @@ export function MilesCreditCardsTable() {
                   {milesBonus > 0 ? (
                     <>
                       {milesBonus.toLocaleString()} miles
-                      {previousMilesBonus && diff !== 0 && (
+                      {hasPreviousBonus && diff !== 0 && (
                         <span
                           className={cn(
                             "ml-1 font-normal",
