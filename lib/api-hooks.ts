@@ -791,7 +791,9 @@ export function useGetBbdcSlotsDatesMap() {
   return [fetchStatus, bbdcSlotsDatesMap, getBbdcSlotsDatesMap] as const;
 }
 
-export function useGetTravelDealsInfo() {
+export function useGetTravelDealsInfo(
+  service: TravelDealsService = TravelDealsService.SCOOT,
+) {
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
   const [travelDealsInfo, setTravelDealsInfo] = useState<TravelDealInfo>({
     items: [],
@@ -804,23 +806,20 @@ export function useGetTravelDealsInfo() {
 
       const axios = (await import("axios")).default;
       const res = await axios.get(
-        `${API_URL}${ApiEndpoint.TravelDealsInfo}?service=${TravelDealsService.SCOOT}`,
+        `${API_URL}${ApiEndpoint.TravelDealsInfo}?service=${service}`,
       );
       const resData = res.data;
 
-      if (
-        !resData ||
-        !Array.isArray(resData.items) ||
-        !resData.updatedAt ||
-        !resData.lastAvailableAt
-      ) {
+      if (!resData || !Array.isArray(resData.items) || !resData.updatedAt) {
         throw new Error("Invalid data");
       }
 
       setTravelDealsInfo({
         ...resData,
         updatedAt: formatDateTime(resData.updatedAt),
-        lastAvailableAt: formatDateTime(resData.lastAvailableAt),
+        lastAvailableAt: resData.lastAvailableAt
+          ? formatDateTime(resData.lastAvailableAt)
+          : "",
       });
       setFetchStatus(FetchStatus.Success);
     } catch (err) {
