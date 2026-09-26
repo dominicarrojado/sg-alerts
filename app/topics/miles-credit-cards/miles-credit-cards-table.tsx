@@ -65,7 +65,6 @@ export function MilesCreditCardsTable() {
             <TableRow key={index}>
               <TableCell>
                 <Skeleton className="h-5 w-full" />
-                <Skeleton className="mt-1 h-3 w-2/3" />
               </TableCell>
               <TableCell className="space-y-1">
                 <Skeleton className="h-5 w-3/4" />
@@ -127,16 +126,12 @@ export function MilesCreditCardsTable() {
         {creditCards.map((card) => {
           const {
             id,
-            bank,
             name,
             tier,
             milesBonus,
             previousMilesBonus,
-            milesBonusDescription,
             milesPerDollar,
             annualFee,
-            annualFeeWaiver,
-            promoEndDate,
             link,
           } = card;
 
@@ -146,7 +141,7 @@ export function MilesCreditCardsTable() {
 
           return (
             <TableRow key={id}>
-              <TableCell className="align-top">
+              <TableCell>
                 <div className="flex flex-wrap items-center gap-1.5">
                   <Anchor
                     href={link}
@@ -159,12 +154,9 @@ export function MilesCreditCardsTable() {
                     {tier}
                   </Badge>
                 </div>
-                <div className="mt-0.5 text-xs text-muted-foreground">
-                  {bank}
-                </div>
               </TableCell>
 
-              <TableCell className="align-top">
+              <TableCell>
                 <div className="font-medium">
                   {milesBonus > 0
                     ? `${milesBonus.toLocaleString()} miles`
@@ -181,11 +173,6 @@ export function MilesCreditCardsTable() {
                     </span>
                   )}
                 </div>
-                {milesBonusDescription && (
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    {milesBonusDescription}
-                  </p>
-                )}
 
                 <div className="mt-2 space-y-1 sm:hidden">
                   <div className="text-xs">
@@ -193,48 +180,22 @@ export function MilesCreditCardsTable() {
                     {milesPerDollar.local} local / {milesPerDollar.overseas}{" "}
                     overseas mpd
                   </div>
-                  {milesPerDollar.bonusCategories && (
-                    <div className="text-[11px] text-muted-foreground">
-                      {milesPerDollar.bonusCategories}
-                    </div>
-                  )}
                   <div className="text-xs">
                     <span className="text-muted-foreground">Fee: </span>
                     {formatMoney(annualFee)}
-                    {annualFeeWaiver && ` (${annualFeeWaiver})`}
                   </div>
-                  {promoEndDate && (
-                    <div className="text-[11px] text-muted-foreground">
-                      Valid till: {promoEndDate}
-                    </div>
-                  )}
                 </div>
               </TableCell>
 
-              <TableCell className="hidden align-top sm:table-cell">
+              <TableCell className="hidden sm:table-cell">
                 <div className="font-medium">
                   {milesPerDollar.local} local / {milesPerDollar.overseas}{" "}
                   overseas
                 </div>
-                {milesPerDollar.bonusCategories && (
-                  <div className="mt-1 text-xs text-muted-foreground">
-                    {milesPerDollar.bonusCategories}
-                  </div>
-                )}
               </TableCell>
 
-              <TableCell className="hidden text-right align-top sm:table-cell">
+              <TableCell className="hidden text-right sm:table-cell">
                 <div className="font-medium">{formatMoney(annualFee)}</div>
-                {annualFeeWaiver && (
-                  <div className="mt-0.5 text-xs text-muted-foreground">
-                    {annualFeeWaiver}
-                  </div>
-                )}
-                {promoEndDate && (
-                  <div className="mt-0.5 text-xs text-muted-foreground">
-                    Valid till: {promoEndDate}
-                  </div>
-                )}
               </TableCell>
             </TableRow>
           );
