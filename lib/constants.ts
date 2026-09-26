@@ -1,5 +1,6 @@
 import {
   DepositRateBank,
+  MilesCreditCardId,
   Routes,
   SubscriptionTopic,
   TelegramChannel,
@@ -142,6 +143,11 @@ export const DEPOSIT_RATES_BANK_LINKS: Partial<Record<string, string>> = {
   [DepositRateBank.MARIBANK]: Routes.FixedDepositRatesMaribank,
   [DepositRateBank.T_BILLS]: Routes.FixedDepositRatesTBills,
   [DepositRateBank.SSB]: Routes.FixedDepositRatesSsb,
+};
+
+export const MILES_CREDIT_CARD_LINKS: Partial<Record<string, string>> = {
+  [MilesCreditCardId.SCB_VISA_INFINITE]:
+    Routes.MilesCreditCardsStandardCharteredVisaInfinite,
 };
 
 export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<

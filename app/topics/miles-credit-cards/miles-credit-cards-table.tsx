@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import { CheckCircle } from "lucide-react";
 import {
   Table,
@@ -19,7 +20,11 @@ import { formatMoney } from "@/lib/number";
 import { cn } from "@/lib/utils";
 import { FetchStatus } from "@/lib/enums";
 
-export function MilesCreditCardsTable() {
+type Props = {
+  cardLinks?: Partial<Record<string, string>>;
+};
+
+export function MilesCreditCardsTable({ cardLinks }: Props) {
   const [fetchState, milesCreditCardsInfo, getMilesCreditCardsInfo] =
     useGetMilesCreditCardsInfo();
   const { items: creditCards, updatedAt } = milesCreditCardsInfo;
@@ -136,17 +141,27 @@ export function MilesCreditCardsTable() {
           const hasPreviousBonus = typeof previousMilesBonus === "number";
           const diff = hasPreviousBonus ? milesBonus - previousMilesBonus : 0;
           const isNegative = diff < 0;
+          const internalLink = cardLinks?.[id];
 
           return (
             <TableRow key={id}>
               <TableCell>
-                <Anchor
-                  href={link}
-                  isExternal
-                  className="font-medium underline underline-offset-4"
-                >
-                  {name}
-                </Anchor>
+                {internalLink ? (
+                  <Link
+                    href={internalLink}
+                    className="font-medium underline underline-offset-4"
+                  >
+                    {name}
+                  </Link>
+                ) : (
+                  <Anchor
+                    href={link}
+                    isExternal
+                    className="font-medium underline underline-offset-4"
+                  >
+                    {name}
+                  </Anchor>
+                )}
               </TableCell>
 
               <TableCell>
