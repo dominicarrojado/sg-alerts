@@ -268,6 +268,18 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.EventsBloodDrive,
   },
   {
+    title: "CDC Announcements",
+    href: Routes.CdcAnnouncements,
+  },
+  {
+    title: "SSDC Announcements",
+    href: Routes.SsdcAnnouncements,
+  },
+  {
+    title: "BBDC Announcements",
+    href: Routes.BbdcAnnouncements,
+  },
+  {
     title: "and more...",
     href: "",
   },
@@ -339,7 +351,7 @@ export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   },
   {
     id: TelegramChannel.CdcAnnouncements,
-    title: "🚘 CDC Announcements",
+    title: TopicTitle.CdcAnnouncements,
     description: (
       <>
         Receive notifications when there are{" "}
@@ -349,6 +361,7 @@ export const CDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
         from ComfortDelGro Driving Centre.
       </>
     ),
+    topicRoute: Routes.CdcAnnouncements,
   },
   NEW_FEATURES_TELEGRAM_CHANNEL,
 ];
@@ -395,7 +408,7 @@ export const SSDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   },
   {
     id: TelegramChannel.SsdcAnnouncements,
-    title: "🚘 SSDC Announcements",
+    title: TopicTitle.SsdcAnnouncements,
     description: (
       <>
         Receive notifications when there are{" "}
@@ -405,6 +418,7 @@ export const SSDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
         from Singapore Safety Driving Centre.
       </>
     ),
+    topicRoute: Routes.SsdcAnnouncements,
   },
   NEW_FEATURES_TELEGRAM_CHANNEL,
 ];
@@ -426,7 +440,7 @@ export const BBDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   },
   {
     id: TelegramChannel.BbdcAnnouncements,
-    title: "🚘 BBDC Announcements",
+    title: TopicTitle.BbdcAnnouncements,
     description: (
       <>
         Receive notifications when there are{" "}
@@ -436,6 +450,7 @@ export const BBDC_TELEGRAM_CHANNELS: TelegramPublicChannels = [
         from Bukit Batok Driving Centre.
       </>
     ),
+    topicRoute: Routes.BbdcAnnouncements,
   },
   NEW_FEATURES_TELEGRAM_CHANNEL,
 ];

@@ -461,3 +461,18 @@ export type EventsInfo = {
   items: EventItems;
   updatedAt: string;
 };
+
+export type Announcement = {
+  title: string;
+  date: string;
+  description?: string;
+  imageUrl?: string;
+  link: string;
+};
+
+export type Announcements = Array<Announcement>;
+
+export type AnnouncementsInfo = {
+  items: Announcements;
+  updatedAt: string;
+};
