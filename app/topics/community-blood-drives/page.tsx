@@ -70,10 +70,18 @@ export default function CommunityBloodDrives() {
       </Paragraph>
       <AdUnit />
       <Paragraph>
-        Generally, blood donors must be between 16 and 60 years old (youths aged
-        16 and 17 require parental consent), weigh at least 45 kg, and be in
-        good health. Donors are encouraged to rest well and stay hydrated before
-        visiting a donation drive.
+        Generally, first-time blood donors must be between 16 and 65 years old
+        (youths aged 16 and 17 require parental consent), while regular donors
+        can donate up to age 75. Donors must weigh at least 45 kg, be in good
+        health, and refer to the{" "}
+        <Anchor
+          href="https://www.hsa.gov.sg/blood-donation/can-i-donate"
+          isExternal
+        >
+          HSA eligibility guidelines
+        </Anchor>{" "}
+        for medical history checks. Donors are encouraged to rest well and stay
+        hydrated before visiting a donation drive.
       </Paragraph>
       <Paragraph>
         <span className="font-medium">SG Alerts</span> monitors the Singapore
