@@ -49,7 +49,7 @@ export function TravelDealsTable({ service }: TravelDealsTableProps) {
             <TableHead>
               <Skeleton className="h-5 w-1/2" />
             </TableHead>
-            <TableHead className="w-1/3 sm:w-[220px]">
+            <TableHead className="hidden w-1/3 sm:table-cell sm:w-[220px]">
               <Skeleton className="ml-auto h-5 w-24" />
             </TableHead>
           </TableRow>
@@ -61,7 +61,7 @@ export function TravelDealsTable({ service }: TravelDealsTableProps) {
                 <Skeleton className="h-5 w-3/4" />
                 <Skeleton className="mt-1.5 h-4 w-5/6" />
               </TableCell>
-              <TableCell className="text-right align-top">
+              <TableCell className="hidden text-right align-top sm:table-cell">
                 <Skeleton className="ml-auto h-4 w-28" />
               </TableCell>
             </TableRow>
@@ -90,7 +90,7 @@ export function TravelDealsTable({ service }: TravelDealsTableProps) {
       <TableHeader>
         <TableRow className="h-[48px]">
           <TableHead>Promotion</TableHead>
-          <TableHead className="w-1/3 text-right sm:w-[220px]">
+          <TableHead className="hidden w-1/3 text-right sm:table-cell sm:w-[220px]">
             Validity
           </TableHead>
         </TableRow>
