@@ -166,23 +166,19 @@ export function MilesCreditCardsTable() {
 
               <TableCell className="align-top">
                 <div className="font-medium">
-                  {milesBonus > 0 ? (
-                    <>
-                      {milesBonus.toLocaleString()} miles
-                      {hasPreviousBonus && diff !== 0 && (
-                        <span
-                          className={cn(
-                            "ml-1 font-normal",
-                            isNegative ? "text-primary" : "text-green-500",
-                          )}
-                        >
-                          ({isNegative ? "▾" : "▴"}
-                          {Math.abs(diff).toLocaleString()})
-                        </span>
+                  {milesBonus > 0
+                    ? `${milesBonus.toLocaleString()} miles`
+                    : "-"}
+                  {hasPreviousBonus && diff !== 0 && (
+                    <span
+                      className={cn(
+                        "ml-1 font-normal",
+                        isNegative ? "text-primary" : "text-green-500",
                       )}
-                    </>
-                  ) : (
-                    "-"
+                    >
+                      ({isNegative ? "▾" : "▴"}
+                      {Math.abs(diff).toLocaleString()})
+                    </span>
                   )}
                 </div>
                 {milesBonusDescription && (
