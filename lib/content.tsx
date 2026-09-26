@@ -264,6 +264,10 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.RestaurantsBurntEnds,
   },
   {
+    title: "Community Blood Drives",
+    href: Routes.EventsBloodDrive,
+  },
+  {
     title: "and more...",
     href: "",
   },
@@ -785,7 +789,7 @@ export const DINING_NOTIFICATION_SETTINGS: NotificationSettings = [
 export const EVENTS_NOTIFICATION_SETTINGS: NotificationSettings = [
   {
     id: SubscriptionTopic.EventsBloodDrive,
-    title: "🏥 Community Blood Drives",
+    title: TopicTitle.EventsBloodDrive,
     description: (
       <>
         Receive email notifications when there are new{" "}
@@ -795,6 +799,7 @@ export const EVENTS_NOTIFICATION_SETTINGS: NotificationSettings = [
         organised by the Singapore Red Cross.
       </>
     ),
+    topicRoute: Routes.EventsBloodDrive,
   },
 ];
 

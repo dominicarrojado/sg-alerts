@@ -443,3 +443,20 @@ export type RestaurantSlotsInfo = {
   items: RestaurantSlots;
   updatedAt: string;
 };
+
+export type EventItem = {
+  title: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+  address: string;
+  area: string;
+  link: string;
+};
+
+export type EventItems = Array<EventItem>;
+
+export type EventsInfo = {
+  items: EventItems;
+  updatedAt: string;
+};
