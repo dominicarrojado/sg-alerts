@@ -280,6 +280,14 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.BbdcAnnouncements,
   },
   {
+    title: "Trip.com Travel Deals",
+    href: Routes.TripComTravelDeals,
+  },
+  {
+    title: "Traveloka Travel Deals",
+    href: Routes.TravelokaTravelDeals,
+  },
+  {
     title: "and more...",
     href: "",
   },
@@ -536,7 +544,7 @@ export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
   },
   {
     id: TelegramChannel.TripComTravelDeals,
-    title: "🌏 Travel Deals (Trip.com)",
+    title: TopicTitle.TripComTravelDeals,
     description: (
       <>
         Receive notifications when there are new travel deals from{" "}
@@ -546,10 +554,11 @@ export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
         .
       </>
     ),
+    topicRoute: Routes.TripComTravelDeals,
   },
   {
     id: TelegramChannel.TravelokaTravelDeals,
-    title: "🌏 Travel Deals (Traveloka)",
+    title: TopicTitle.TravelokaTravelDeals,
     description: (
       <>
         Receive notifications when there are new travel deals from{" "}
@@ -559,6 +568,7 @@ export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
         .
       </>
     ),
+    topicRoute: Routes.TravelokaTravelDeals,
   },
   NEW_FEATURES_TELEGRAM_CHANNEL,
 ];

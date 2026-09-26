@@ -184,6 +184,8 @@ export enum Routes {
   CdcAnnouncements = "/topics/cdc-announcements/",
   SsdcAnnouncements = "/topics/ssdc-announcements/",
   BbdcAnnouncements = "/topics/bbdc-announcements/",
+  TripComTravelDeals = "/topics/trip-com-travel-deals/",
+  TravelokaTravelDeals = "/topics/traveloka-travel-deals/",
 }
 
 export enum FetchStatus {
@@ -334,6 +336,8 @@ export enum BbdcService {
 
 export enum TravelDealsService {
   SCOOT = "scoot",
+  TRIP_COM = "trip.com",
+  TRAVELOKA = "traveloka",
 }
 
 export enum ThemeParkService {
@@ -412,6 +416,8 @@ export enum TopicTitle {
   CdcAnnouncements = "🚘 CDC Announcements",
   SsdcAnnouncements = "🚘 SSDC Announcements",
   BbdcAnnouncements = "🚘 BBDC Announcements",
+  TripComTravelDeals = "🌏 Travel Deals (Trip.com)",
+  TravelokaTravelDeals = "🌏 Travel Deals (Traveloka)",
 }
 
 export enum TelegramChannel {
