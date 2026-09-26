@@ -186,6 +186,7 @@ export enum Routes {
   BbdcAnnouncements = "/topics/bbdc-announcements/",
   TripComTravelDeals = "/topics/trip-com-travel-deals/",
   TravelokaTravelDeals = "/topics/traveloka-travel-deals/",
+  MilesCreditCards = "/topics/miles-credit-cards/",
 }
 
 export enum FetchStatus {
@@ -222,6 +223,7 @@ export enum ApiEndpoint {
   RestaurantLastSlotsInfo = "/restaurant-checker/last-slots-info",
   EventsInfo = "/event-checker/events-info",
   AnnouncementsInfo = "/announcements-checker/announcements-info",
+  TravelCreditCardsInfo = "/travel-credit-cards-checker/travel-credit-cards-info",
 }
 
 export enum SubscriptionTopic {
@@ -418,6 +420,7 @@ export enum TopicTitle {
   BbdcAnnouncements = "🚘 BBDC Announcements",
   TripComTravelDeals = "🌏 Travel Deals (Trip.com)",
   TravelokaTravelDeals = "🌏 Travel Deals (Traveloka)",
+  MilesCreditCards = "✈️ Miles Credit Cards",
 }
 
 export enum TelegramChannel {
@@ -461,6 +464,7 @@ export enum TelegramChannel {
   BadmintonCourtSlotsOurTampinesHub = "SGAlertsBadmintonCourtSlotsOTH",
   BadmintonCourtSlotsHeartbeatBedok = "SGAlertsBadmintonCourtSlotsBedok",
   BadmintonCourtSlotsPasirRis = "SGAlertsBadmintonCourtSlotsPSR",
+  MilesCreditCards = "SGAlertsMilesCreditCards",
 }
 
 export enum TelegramChannelLink {
