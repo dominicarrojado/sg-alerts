@@ -224,6 +224,7 @@ export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<
   NYC: Routes.SingaporeAirlinesFlightsNewYork,
   IAH: Routes.SingaporeAirlinesFlightsHouston,
   RUH: Routes.SingaporeAirlinesFlightsRiyadh,
+  MAD: Routes.SingaporeAirlinesFlightsMadrid,
 };
 
 export const SCOOT_DESTINATION_LINKS: Partial<Record<string, string>> = {
