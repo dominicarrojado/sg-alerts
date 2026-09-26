@@ -45,11 +45,12 @@ export function FacilitySlotsTable({ service }: FacilitySlotsTableProps) {
     return (
       <Alert className="my-6">
         <Skeleton className="absolute left-4 top-4 mt-1 h-4 w-4 rounded-full" />
-        <AlertTitle className="pl-7 leading-normal">
-          <Skeleton className="h-5 w-3/4 sm:w-1/2" />
+        <AlertTitle className="space-y-1 pl-7 leading-normal">
+          <Skeleton className="h-6 w-full sm:w-1/2" />
+          <Skeleton className="h-6 w-4/5 sm:hidden" />
         </AlertTitle>
         <AlertDescription className="pl-7 text-muted-foreground">
-          <Skeleton className="h-4 w-1/2 sm:w-1/3" />
+          <Skeleton className="h-5 w-1/2 sm:w-1/3" />
         </AlertDescription>
       </Alert>
     );
