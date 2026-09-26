@@ -1065,6 +1065,7 @@ export function useGetRestaurantSlotsInfo(restaurant: Restaurant) {
     useState<RestaurantSlotsInfo>({
       items: [],
       updatedAt: "",
+      lastAvailableDate: "",
     });
   const getRestaurantSlotsInfo = async () => {
     try {
@@ -1083,6 +1084,9 @@ export function useGetRestaurantSlotsInfo(restaurant: Restaurant) {
       setRestaurantSlotsInfo({
         ...resData,
         updatedAt: formatDateTime(resData.updatedAt),
+        lastAvailableDate: resData.lastAvailableDate
+          ? formatDateTime(resData.lastAvailableDate)
+          : "",
       });
       setFetchStatus(FetchStatus.Success);
     } catch (err) {
