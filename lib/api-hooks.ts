@@ -31,6 +31,7 @@ import {
   RestaurantSlotsInfo,
   EventsInfo,
   AnnouncementsInfo,
+  MilesCreditCardsInfo,
 } from "./types";
 import {
   ApiEndpoint,
@@ -1170,4 +1171,42 @@ export function useGetAnnouncementsInfo(service: AnnouncementService) {
   };
 
   return [fetchStatus, announcementsInfo, getAnnouncementsInfo] as const;
+}
+
+export function useGetMilesCreditCardsInfo() {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [milesCreditCardsInfo, setMilesCreditCardsInfo] =
+    useState<MilesCreditCardsInfo>({
+      items: [],
+      updatedAt: "",
+    });
+  const getMilesCreditCardsInfo = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(
+        `${API_URL}${ApiEndpoint.TravelCreditCardsInfo}`,
+      );
+      const resData = res.data;
+
+      if (
+        !resData ||
+        typeof resData.updatedAt !== "string" ||
+        !Array.isArray(resData.items)
+      ) {
+        throw new Error("Invalid data");
+      }
+
+      setMilesCreditCardsInfo({
+        ...resData,
+        updatedAt: resData.updatedAt ? formatDateTime(resData.updatedAt) : "",
+      });
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, milesCreditCardsInfo, getMilesCreditCardsInfo] as const;
 }

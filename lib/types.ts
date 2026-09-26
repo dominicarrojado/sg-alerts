@@ -476,3 +476,31 @@ export type AnnouncementsInfo = {
   items: Announcements;
   updatedAt: string;
 };
+
+export type MilesPerDollar = {
+  local: number;
+  overseas: number;
+  bonusCategories?: string;
+};
+
+export type MilesCreditCard = {
+  id: string;
+  bank: string;
+  name: string;
+  tier: string;
+  milesBonus: number;
+  previousMilesBonus?: number;
+  milesBonusDescription: string;
+  milesPerDollar: MilesPerDollar;
+  annualFee: number;
+  annualFeeWaiver?: string;
+  promoEndDate: string;
+  link: string;
+};
+
+export type MilesCreditCards = Array<MilesCreditCard>;
+
+export type MilesCreditCardsInfo = {
+  items: MilesCreditCards;
+  updatedAt: string;
+};
