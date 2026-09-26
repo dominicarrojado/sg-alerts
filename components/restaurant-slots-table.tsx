@@ -11,7 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Alert, AlertTitle } from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Anchor } from "@/components/ui/anchor";
 import { useGetRestaurantSlotsInfo } from "@/lib/api-hooks";
@@ -104,6 +104,11 @@ export function RestaurantSlotsTable({
             ? `Last available slots were spotted on ${lastAvailableDate}.`
             : "No table reservation slots currently available."}
         </AlertTitle>
+        {updatedAt && (
+          <AlertDescription className="text-muted-foreground">
+            Last updated on {updatedAt}.
+          </AlertDescription>
+        )}
       </Alert>
     );
   }

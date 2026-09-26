@@ -11,7 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Alert, AlertTitle } from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGetTrainSlotsInfo } from "@/lib/api-hooks";
 import { FetchStatus } from "@/lib/enums";
@@ -49,8 +49,15 @@ export function TrainTicketsTable() {
       <Alert className="my-6" data-clarity-unmask="true">
         <CheckCircle className="mt-1 h-4 w-4" />
         <AlertTitle className="leading-normal">
-          Last available slots were spotted on {lastAvailableDate}.
+          {lastAvailableDate
+            ? `Last available slots were spotted on ${lastAvailableDate}.`
+            : "No train tickets currently available."}
         </AlertTitle>
+        {updatedAt && (
+          <AlertDescription className="text-muted-foreground">
+            Last updated on {updatedAt}.
+          </AlertDescription>
+        )}
       </Alert>
     );
   }
