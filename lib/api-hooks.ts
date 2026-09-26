@@ -29,6 +29,7 @@ import {
   TravelDealInfo,
   MoviesInfo,
   RestaurantSlotsInfo,
+  EventsInfo,
 } from "./types";
 import {
   ApiEndpoint,
@@ -44,6 +45,7 @@ import {
   LotteryService,
   MovieService,
   Restaurant,
+  EventService,
   SsdcService,
   SsdcTestsService,
   ThemeParkService,
@@ -1095,4 +1097,37 @@ export function useGetRestaurantSlotsInfo(restaurant: Restaurant) {
   };
 
   return [fetchStatus, restaurantSlotsInfo, getRestaurantSlotsInfo] as const;
+}
+
+export function useGetEventsInfo(service: EventService) {
+  const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle);
+  const [eventsInfo, setEventsInfo] = useState<EventsInfo>({
+    items: [],
+    updatedAt: "",
+  });
+  const getEventsInfo = async () => {
+    try {
+      setFetchStatus(FetchStatus.Loading);
+
+      const axios = (await import("axios")).default;
+      const res = await axios.get(
+        `${API_URL}${ApiEndpoint.EventsInfo}?service=${service}`,
+      );
+      const resData = res.data;
+
+      if (!resData || !resData?.updatedAt || !Array.isArray(resData?.items)) {
+        throw new Error("Invalid data");
+      }
+
+      setEventsInfo({
+        ...resData,
+        updatedAt: formatDateTime(resData.updatedAt),
+      });
+      setFetchStatus(FetchStatus.Success);
+    } catch (err) {
+      setFetchStatus(FetchStatus.Failure);
+    }
+  };
+
+  return [fetchStatus, eventsInfo, getEventsInfo] as const;
 }

@@ -180,6 +180,7 @@ export enum Routes {
   MoviesGv = "/topics/golden-village-movies/",
   MoviesShaw = "/topics/shaw-theatres-movies/",
   RestaurantsBurntEnds = "/topics/burnt-ends-table-reservation-slots/",
+  EventsBloodDrive = "/topics/community-blood-drives/",
 }
 
 export enum FetchStatus {
@@ -214,6 +215,7 @@ export enum ApiEndpoint {
   FacilitySlotsInfo = "/facilities-checker/slots-info",
   MoviesInfo = "/movie-checker/movies-info",
   RestaurantLastSlotsInfo = "/restaurant-checker/last-slots-info",
+  EventsInfo = "/event-checker/events-info",
 }
 
 export enum SubscriptionTopic {
@@ -349,6 +351,10 @@ export enum Restaurant {
   BURNT_ENDS = "burnt-ends",
 }
 
+export enum EventService {
+  RED_CROSS = "red-cross",
+}
+
 export enum TopicTitle {
   BbdcAppointmentSlots = "🚘 BBDC Appointment Slots",
   CdcEyesightTest = "🚘 CDC Appointment Slots (Eyesight Test)",
@@ -392,6 +398,7 @@ export enum TopicTitle {
   MoviesGv = "🎬 Movies with English Subtitles (GV)",
   MoviesShaw = "🎬 Movies with English Subtitles (Shaw)",
   RestaurantsBurntEnds = "🍽️ Table Reservation Slots (Burnt Ends)",
+  EventsBloodDrive = "🏥 Community Blood Drives",
 }
 
 export enum TelegramChannel {
