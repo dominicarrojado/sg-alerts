@@ -162,6 +162,7 @@ export const MILES_CREDIT_CARD_LINKS: Partial<Record<string, string>> = {
   [MilesCreditCardId.HSBC_TRAVELONE]: Routes.MilesCreditCardsHsbcTravelOne,
   [MilesCreditCardId.AMEX_KRISFLYER]:
     Routes.MilesCreditCardsAmericanExpressSingaporeAirlinesKrisFlyer,
+  [MilesCreditCardId.OCBC_VOYAGE]: Routes.MilesCreditCardsOcbcVoyage,
 };
 
 export const MILES_CREDIT_CARD_EXTERNAL_LINKS: Record<
@@ -190,6 +191,8 @@ export const MILES_CREDIT_CARD_EXTERNAL_LINKS: Record<
     "https://www.hsbc.com.sg/credit-cards/products/travelone/",
   [MilesCreditCardId.AMEX_KRISFLYER]:
     "https://www.americanexpress.com/sg/credit-cards/singapore-airlines-krisflyer-credit-card/",
+  [MilesCreditCardId.OCBC_VOYAGE]:
+    "https://www.ocbc.com/personal-banking/cards/voyage-credit-card.page",
 };
 
 export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<
