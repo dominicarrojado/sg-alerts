@@ -195,6 +195,7 @@ export enum Routes {
   MilesCreditCardsCitiPremierMiles = "/topics/miles-credit-cards/citi-premiermiles/",
   MilesCreditCardsStandardCharteredJourney = "/topics/miles-credit-cards/standard-chartered-journey/",
   MilesCreditCardsOcbc90N = "/topics/miles-credit-cards/ocbc-90n/",
+  MilesCreditCardsDbsVantage = "/topics/miles-credit-cards/dbs-vantage/",
 }
 
 export enum FetchStatus {
@@ -525,4 +526,5 @@ export enum MilesCreditCardId {
   CITI_PREMIERMILES = "citi-premiermiles",
   SCB_JOURNEY = "scb-journey",
   OCBC_90N = "ocbc-90n",
+  DBS_VANTAGE = "dbs-vantage",
 }
