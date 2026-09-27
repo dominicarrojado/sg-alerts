@@ -164,6 +164,7 @@ export const MILES_CREDIT_CARD_LINKS: Partial<Record<string, string>> = {
     Routes.MilesCreditCardsAmericanExpressSingaporeAirlinesKrisFlyer,
   [MilesCreditCardId.OCBC_VOYAGE]: Routes.MilesCreditCardsOcbcVoyage,
   [MilesCreditCardId.UOB_PRVI_MILES]: Routes.MilesCreditCardsUobPrviMiles,
+  [MilesCreditCardId.MAYBANK_HORIZON]: Routes.MilesCreditCardsMaybankHorizon,
 };
 
 export const MILES_CREDIT_CARD_EXTERNAL_LINKS: Record<
@@ -196,6 +197,8 @@ export const MILES_CREDIT_CARD_EXTERNAL_LINKS: Record<
     "https://www.ocbc.com/personal-banking/cards/voyage-credit-card.page",
   [MilesCreditCardId.UOB_PRVI_MILES]:
     "https://www.uob.com.sg/personal/cards/travel/prvi-miles-card.page",
+  [MilesCreditCardId.MAYBANK_HORIZON]:
+    "https://www.maybank2u.com.sg/en/personal/cards/credit/maybank-horizon-visa-signature-card.page",
 };
 
 export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<
