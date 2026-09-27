@@ -68,12 +68,15 @@ export default function OcbcVoyagePage() {
         VOYAGE Exchange concierge services.
       </Paragraph>
       <Paragraph>
-        Cardholders earn VOYAGE Miles that can be redeemed for any flight on any
-        airline with no blackout dates, or transferred directly to partner
-        frequent flyer programmes. The card also features complimentary Plaza
-        Premium airport lounge visits, limo transfer privileges with minimum
-        spend, and annual bonus miles awarded upon payment of the non-waivable
-        annual service fee.
+        Cardholders earn VOYAGE Miles that can be redeemed directly for flights
+        on any airline with no blackout dates, or converted across partner
+        frequent flyer and hotel loyalty programmes. The card features unlimited
+        complimentary access to DragonPass airport lounges worldwide for
+        principal cardmembers, airport limousine transfer privileges with
+        qualifying spend, and bonus miles awarded upon payment of the annual
+        service fee. Because the principal annual fee is strictly non-waivable,
+        timing your application with an elevated welcome bonus campaign ensures
+        you get optimal reward value right from the start.
       </Paragraph>
       <AdUnit />
       <Paragraph>
