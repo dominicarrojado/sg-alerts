@@ -192,7 +192,7 @@ export const MILES_CREDIT_CARD_EXTERNAL_LINKS: Record<
   [MilesCreditCardId.AMEX_KRISFLYER]:
     "https://www.americanexpress.com/sg/credit-cards/singapore-airlines-krisflyer-credit-card/",
   [MilesCreditCardId.OCBC_VOYAGE]:
-    "https://www.ocbc.com/personal-banking/cards/voyage-credit-card.page",
+    "https://www.ocbc.com/personal-banking/cards/voyage-credit-card",
 };
 
 export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<
