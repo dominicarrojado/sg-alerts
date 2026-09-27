@@ -187,6 +187,7 @@ export enum Routes {
   TripComTravelDeals = "/topics/trip-com-travel-deals/",
   TravelokaTravelDeals = "/topics/traveloka-travel-deals/",
   MilesCreditCards = "/topics/miles-credit-cards/",
+  MilesCreditCardsStandardCharteredVisaInfinite = "/topics/miles-credit-cards/standard-chartered-visa-infinite/",
 }
 
 export enum FetchStatus {
@@ -506,4 +507,8 @@ export enum DepositRateBank {
   GXS = "GXS (Boost Pocket)*",
   MARIBANK = "MariBank*",
   SYFE = "Syfe (Cash+ Guaranteed)*",
+}
+
+export enum MilesCreditCardId {
+  SCB_VISA_INFINITE = "scb-visa-infinite",
 }

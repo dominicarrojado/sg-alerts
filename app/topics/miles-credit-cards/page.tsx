@@ -7,6 +7,7 @@ import Paragraph from "@/components/ui/paragraph";
 import TelegramLinkButton from "@/components/telegram-link-button";
 import AdUnit from "@/components/ad-unit";
 import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
+import { MILES_CREDIT_CARD_LINKS } from "@/lib/constants";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { MilesCreditCardsTable } from "./miles-credit-cards-table";
 
@@ -44,7 +45,7 @@ export default function MilesCreditCards() {
           miles credit cards are added across major banks in Singapore.
         </Subheading>
       </div>
-      <MilesCreditCardsTable />
+      <MilesCreditCardsTable cardLinks={MILES_CREDIT_CARD_LINKS} />
       <Paragraph>
         Miles credit cards are one of the most rewarding ways to earn airline
         miles on everyday spending in Singapore. From entry-level general spend
