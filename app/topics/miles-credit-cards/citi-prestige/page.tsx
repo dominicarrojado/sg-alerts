@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
 import { ArrowLeftIcon } from "lucide-react";
+import { Anchor } from "@/components/ui/anchor";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
@@ -16,6 +17,7 @@ import {
   TelegramChannel,
   TopicTitle,
 } from "@/lib/enums";
+import { MILES_CREDIT_CARD_EXTERNAL_LINKS } from "@/lib/constants";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "Citi Prestige Card - Miles, Bonus & Fees";
@@ -54,9 +56,18 @@ export default function CitiPrestigePage() {
       </div>
       <MilesCreditCardDetails cardId={MilesCreditCardId.CITI_PRESTIGE} />
       <Paragraph>
-        The Citi Prestige Card is one of Singapore&apos;s established luxury
-        travel cards, designed for frequent travelers looking to maximise air
-        miles accumulation alongside premium lifestyle and travel benefits.
+        The{" "}
+        <Anchor
+          href={
+            MILES_CREDIT_CARD_EXTERNAL_LINKS[MilesCreditCardId.CITI_PRESTIGE]
+          }
+          isExternal
+        >
+          Citi Prestige Card
+        </Anchor>{" "}
+        is one of Singapore&apos;s established luxury travel cards, designed for
+        frequent travelers looking to maximise air miles accumulation alongside
+        premium lifestyle and travel benefits.
       </Paragraph>
       <Paragraph>
         Cardholders earn reward points on local and overseas spend that never

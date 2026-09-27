@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
 import { ArrowLeftIcon } from "lucide-react";
+import { Anchor } from "@/components/ui/anchor";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
@@ -16,6 +17,7 @@ import {
   TelegramChannel,
   TopicTitle,
 } from "@/lib/enums";
+import { MILES_CREDIT_CARD_EXTERNAL_LINKS } from "@/lib/constants";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title =
@@ -60,8 +62,18 @@ export default function AmericanExpressSingaporeAirlinesKrisFlyerAscendPage() {
         cardId={MilesCreditCardId.AMEX_KRISFLYER_ASCEND}
       />
       <Paragraph>
-        The American Express Singapore Airlines KrisFlyer Ascend Credit Card is
-        an established co-branded travel card designed for Singapore Airlines
+        The{" "}
+        <Anchor
+          href={
+            MILES_CREDIT_CARD_EXTERNAL_LINKS[
+              MilesCreditCardId.AMEX_KRISFLYER_ASCEND
+            ]
+          }
+          isExternal
+        >
+          American Express Singapore Airlines KrisFlyer Ascend Credit Card
+        </Anchor>{" "}
+        is an established co-branded travel card designed for Singapore Airlines
         flyers looking to accumulate KrisFlyer miles directly without transfer
         fees.
       </Paragraph>

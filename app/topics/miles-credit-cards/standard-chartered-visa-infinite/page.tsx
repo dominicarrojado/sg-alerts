@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
 import { ArrowLeftIcon } from "lucide-react";
+import { Anchor } from "@/components/ui/anchor";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import Heading from "@/components/ui/heading";
@@ -16,6 +17,7 @@ import {
   TelegramChannel,
   TopicTitle,
 } from "@/lib/enums";
+import { MILES_CREDIT_CARD_EXTERNAL_LINKS } from "@/lib/constants";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "Standard Chartered Visa Infinite Card - Miles, Bonus & Fees";
@@ -54,10 +56,20 @@ export default function StandardCharteredVisaInfinitePage() {
       </div>
       <MilesCreditCardDetails cardId={MilesCreditCardId.SCB_VISA_INFINITE} />
       <Paragraph>
-        The Standard Chartered Visa Infinite Card is one of Singapore&apos;s
-        established premium travel cards, designed for frequent flyers and
-        travelers looking to maximise air miles accumulation on eligible retail
-        and overseas purchases.
+        The{" "}
+        <Anchor
+          href={
+            MILES_CREDIT_CARD_EXTERNAL_LINKS[
+              MilesCreditCardId.SCB_VISA_INFINITE
+            ]
+          }
+          isExternal
+        >
+          Standard Chartered Visa Infinite Card
+        </Anchor>{" "}
+        is one of Singapore&apos;s established premium travel cards, designed
+        for frequent flyers and travelers looking to maximise air miles
+        accumulation on eligible retail and overseas purchases.
       </Paragraph>
       <Paragraph>
         Because premium cards typically carry structured annual fee policies,
