@@ -157,6 +157,7 @@ export const MILES_CREDIT_CARD_LINKS: Partial<Record<string, string>> = {
     Routes.MilesCreditCardsCitiPremierMiles,
   [MilesCreditCardId.SCB_JOURNEY]:
     Routes.MilesCreditCardsStandardCharteredJourney,
+  [MilesCreditCardId.OCBC_90N]: Routes.MilesCreditCardsOcbc90N,
 };
 
 export const MILES_CREDIT_CARD_EXTERNAL_LINKS: Record<
@@ -177,6 +178,8 @@ export const MILES_CREDIT_CARD_EXTERNAL_LINKS: Record<
     "https://www1.citibank.com.sg/credit-cards/travel/premiermiles-card",
   [MilesCreditCardId.SCB_JOURNEY]:
     "https://www.sc.com/sg/credit-cards/journey-credit-card/",
+  [MilesCreditCardId.OCBC_90N]:
+    "https://www.ocbc.com/personal-banking/cards/90-degrees-travel-credit-card.page",
 };
 
 export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<
