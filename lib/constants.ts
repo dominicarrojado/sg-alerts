@@ -167,6 +167,8 @@ export const MILES_CREDIT_CARD_LINKS: Partial<Record<string, string>> = {
   [MilesCreditCardId.MAYBANK_HORIZON]: Routes.MilesCreditCardsMaybankHorizon,
   [MilesCreditCardId.HSBC_VISA_INFINITE]:
     Routes.MilesCreditCardsHsbcVisaInfinite,
+  [MilesCreditCardId.SCB_PRIORITY_VISA_INFINITE]:
+    Routes.MilesCreditCardsStandardCharteredPriorityVisaInfinite,
 };
 
 export const MILES_CREDIT_CARD_EXTERNAL_LINKS: Record<
@@ -203,6 +205,8 @@ export const MILES_CREDIT_CARD_EXTERNAL_LINKS: Record<
     "https://www.maybank2u.com.sg/en/personal/cards/credit/maybank-horizon-visa-signature-card.page",
   [MilesCreditCardId.HSBC_VISA_INFINITE]:
     "https://www.hsbc.com.sg/credit-cards/products/visa-infinite/",
+  [MilesCreditCardId.SCB_PRIORITY_VISA_INFINITE]:
+    "https://www.sc.com/sg/credit-cards/priority-visa-infinite-card/",
 };
 
 export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<
