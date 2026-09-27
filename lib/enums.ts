@@ -190,6 +190,7 @@ export enum Routes {
   MilesCreditCardsStandardCharteredVisaInfinite = "/topics/miles-credit-cards/standard-chartered-visa-infinite/",
   MilesCreditCardsCitiPrestige = "/topics/miles-credit-cards/citi-prestige/",
   MilesCreditCardsAmericanExpressSingaporeAirlinesKrisFlyerAscend = "/topics/miles-credit-cards/american-express-singapore-airlines-krisflyer-ascend/",
+  MilesCreditCardsDbsAltitude = "/topics/miles-credit-cards/dbs-altitude/",
 }
 
 export enum FetchStatus {
@@ -515,4 +516,5 @@ export enum MilesCreditCardId {
   SCB_VISA_INFINITE = "scb-visa-infinite",
   CITI_PRESTIGE = "citi-prestige",
   AMEX_KRISFLYER_ASCEND = "amex-krisflyer-ascend",
+  DBS_ALTITUDE = "dbs-altitude",
 }
