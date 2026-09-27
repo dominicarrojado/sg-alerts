@@ -196,6 +196,7 @@ export enum Routes {
   MilesCreditCardsStandardCharteredJourney = "/topics/miles-credit-cards/standard-chartered-journey/",
   MilesCreditCardsOcbc90N = "/topics/miles-credit-cards/ocbc-90n/",
   MilesCreditCardsDbsVantage = "/topics/miles-credit-cards/dbs-vantage/",
+  MilesCreditCardsHsbcTravelOne = "/topics/miles-credit-cards/hsbc-travelone/",
 }
 
 export enum FetchStatus {
@@ -527,4 +528,5 @@ export enum MilesCreditCardId {
   SCB_JOURNEY = "scb-journey",
   OCBC_90N = "ocbc-90n",
   DBS_VANTAGE = "dbs-vantage",
+  HSBC_TRAVELONE = "hsbc-travelone",
 }
