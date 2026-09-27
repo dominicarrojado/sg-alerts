@@ -149,6 +149,20 @@ export const MILES_CREDIT_CARD_LINKS: Partial<Record<string, string>> = {
   [MilesCreditCardId.SCB_VISA_INFINITE]:
     Routes.MilesCreditCardsStandardCharteredVisaInfinite,
   [MilesCreditCardId.CITI_PRESTIGE]: Routes.MilesCreditCardsCitiPrestige,
+  [MilesCreditCardId.AMEX_KRISFLYER_ASCEND]:
+    Routes.MilesCreditCardsAmericanExpressSingaporeAirlinesKrisFlyerAscend,
+};
+
+export const MILES_CREDIT_CARD_EXTERNAL_LINKS: Record<
+  MilesCreditCardId,
+  string
+> = {
+  [MilesCreditCardId.SCB_VISA_INFINITE]:
+    "https://www.sc.com/sg/credit-cards/visa-infinite-card/",
+  [MilesCreditCardId.CITI_PRESTIGE]:
+    "https://www.citibank.com.sg/credit-cards/rewards/prestige-credit-card",
+  [MilesCreditCardId.AMEX_KRISFLYER_ASCEND]:
+    "https://www.americanexpress.com/sg/credit-cards/singapore-airlines-krisflyer-ascend-credit-card/",
 };
 
 export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<

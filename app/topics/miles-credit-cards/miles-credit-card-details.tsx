@@ -10,7 +10,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Anchor } from "@/components/ui/anchor";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { useGetMilesCreditCardsInfo } from "@/lib/api-hooks";
 import { formatMoney } from "@/lib/number";
@@ -85,7 +84,6 @@ export function MilesCreditCardDetails({ cardId }: Props) {
     annualFee,
     annualFeeWaiver,
     promoEndDate,
-    link,
   } = card;
 
   const hasPreviousBonus = typeof previousMilesBonus === "number";
@@ -96,15 +94,7 @@ export function MilesCreditCardDetails({ cardId }: Props) {
     <div className="my-6 space-y-6" data-clarity-unmask="true">
       <Card>
         <CardHeader>
-          <CardTitle>
-            <Anchor
-              href={link}
-              isExternal
-              className="underline underline-offset-4"
-            >
-              {name}
-            </Anchor>
-          </CardTitle>
+          <CardTitle>{name}</CardTitle>
           <CardDescription className="mt-1">{bank}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">

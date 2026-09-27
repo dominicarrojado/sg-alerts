@@ -20,10 +20,12 @@ import {
 import { MILES_CREDIT_CARD_EXTERNAL_LINKS } from "@/lib/constants";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
-const title = "Standard Chartered Visa Infinite Card - Miles, Bonus & Fees";
+const title =
+  "American Express Singapore Airlines KrisFlyer Ascend Credit Card - Miles, Bonus & Fees";
 const description =
-  "Track Standard Chartered Visa Infinite Card bonus miles promotions, local & overseas earn rates, annual fee policies, and KrisFlyer air miles rewards in Singapore.";
-const url = Routes.MilesCreditCardsStandardCharteredVisaInfinite;
+  "Track American Express Singapore Airlines KrisFlyer Ascend Credit Card bonus miles promotions, earn rates, annual fee policies, and travel benefits in Singapore.";
+const url =
+  Routes.MilesCreditCardsAmericanExpressSingaporeAirlinesKrisFlyerAscend;
 
 export const metadata: Metadata = {
   title,
@@ -44,34 +46,40 @@ export const metadata: Metadata = {
   },
 };
 
-export default function StandardCharteredVisaInfinitePage() {
+export default function AmericanExpressSingaporeAirlinesKrisFlyerAscendPage() {
   return (
     <Container>
       <div className="space-y-2">
-        <Heading>Standard Chartered Visa Infinite Card</Heading>
+        <Heading>
+          American Express Singapore Airlines KrisFlyer Ascend Credit Card
+        </Heading>
         <Subheading>
           Track sign-up bonus miles, earn rates per dollar, and annual fee terms
           in Singapore.
         </Subheading>
       </div>
-      <MilesCreditCardDetails cardId={MilesCreditCardId.SCB_VISA_INFINITE} />
+      <MilesCreditCardDetails
+        cardId={MilesCreditCardId.AMEX_KRISFLYER_ASCEND}
+      />
       <Paragraph>
         The{" "}
         <Anchor
           href={
             MILES_CREDIT_CARD_EXTERNAL_LINKS[
-              MilesCreditCardId.SCB_VISA_INFINITE
+              MilesCreditCardId.AMEX_KRISFLYER_ASCEND
             ]
           }
           isExternal
         >
-          Standard Chartered Visa Infinite Card
+          American Express Singapore Airlines KrisFlyer Ascend Credit Card
         </Anchor>{" "}
-        is one of Singapore&apos;s established premium travel cards, designed
-        for frequent flyers and travelers looking to maximise air miles
-        accumulation on eligible retail and overseas purchases.
+        is an established co-branded travel card designed for Singapore Airlines
+        flyers looking to accumulate KrisFlyer miles directly without transfer
+        fees.
       </Paragraph>
       <Paragraph>
+        Cardholders enjoy premium travel conveniences including annual
+        complimentary hotel night privileges and airport lounge access vouchers.
         Because premium cards typically carry structured annual fee policies,
         timing your application with an elevated welcome bonus campaign ensures
         you get optimal reward value right from the start.
