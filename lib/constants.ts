@@ -310,4 +310,5 @@ export const SCOOT_DESTINATION_LINKS: Partial<Record<string, string>> = {
   OKA: Routes.ScootFlightsOkinawa,
   DAD: Routes.ScootFlightsDaNang,
   VIE: Routes.ScootFlightsVienna,
+  TRV: Routes.ScootFlightsThiruvananthapuram,
 };
