@@ -73,8 +73,9 @@ export default function UobPrviMilesPage() {
         Cardholders earn UNI$ that can be converted into air miles across major
         frequent flyer programmes including Singapore Airlines KrisFlyer and
         Cathay Pacific Asia Miles. The card features elevated earn rates on
-        overseas and regional purchases, complimentary Priority Pass airport
-        lounge visits for principal cardmembers, travel inconvenience and
+        overseas and regional purchases, four complimentary Priority Pass
+        airport lounge visits per calendar year for principal cardmembers (with
+        additional or guest visits chargeable), travel inconvenience and
         accident insurance coverage, and first-year annual fee waiver options.
       </Paragraph>
       <AdUnit />
