@@ -160,6 +160,8 @@ export const MILES_CREDIT_CARD_LINKS: Partial<Record<string, string>> = {
   [MilesCreditCardId.OCBC_90N]: Routes.MilesCreditCardsOcbc90N,
   [MilesCreditCardId.DBS_VANTAGE]: Routes.MilesCreditCardsDbsVantage,
   [MilesCreditCardId.HSBC_TRAVELONE]: Routes.MilesCreditCardsHsbcTravelOne,
+  [MilesCreditCardId.AMEX_KRISFLYER]:
+    Routes.MilesCreditCardsAmericanExpressSingaporeAirlinesKrisFlyer,
 };
 
 export const MILES_CREDIT_CARD_EXTERNAL_LINKS: Record<
@@ -186,6 +188,8 @@ export const MILES_CREDIT_CARD_EXTERNAL_LINKS: Record<
     "https://www.dbs.com.sg/personal/cards/credit-cards/dbs-vantage-visa-infinite-card",
   [MilesCreditCardId.HSBC_TRAVELONE]:
     "https://www.hsbc.com.sg/credit-cards/products/travelone/",
+  [MilesCreditCardId.AMEX_KRISFLYER]:
+    "https://www.americanexpress.com/sg/credit-cards/singapore-airlines-krisflyer-credit-card/",
 };
 
 export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<
