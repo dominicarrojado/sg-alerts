@@ -149,6 +149,8 @@ export const MILES_CREDIT_CARD_LINKS: Partial<Record<string, string>> = {
   [MilesCreditCardId.SCB_VISA_INFINITE]:
     Routes.MilesCreditCardsStandardCharteredVisaInfinite,
   [MilesCreditCardId.CITI_PRESTIGE]: Routes.MilesCreditCardsCitiPrestige,
+  [MilesCreditCardId.AMEX_KRISFLYER_ASCEND]:
+    Routes.MilesCreditCardsAmericanExpressSingaporeAirlinesKrisFlyerAscend,
 };
 
 export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<
