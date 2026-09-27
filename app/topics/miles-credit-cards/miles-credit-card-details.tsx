@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { CheckCircle, ExternalLink } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -11,8 +11,6 @@ import {
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Anchor } from "@/components/ui/anchor";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { useGetMilesCreditCardsInfo } from "@/lib/api-hooks";
 import { formatMoney } from "@/lib/number";
@@ -42,12 +40,9 @@ export function MilesCreditCardDetails({ cardId }: Props) {
     return (
       <Card className="my-6">
         <CardHeader>
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <div className="space-y-2">
-              <Skeleton className="h-7 w-64" />
-              <Skeleton className="h-4 w-32" />
-            </div>
-            <Skeleton className="h-6 w-16 rounded-full" />
+          <div className="space-y-2">
+            <Skeleton className="h-7 w-64" />
+            <Skeleton className="h-4 w-32" />
           </div>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -60,7 +55,6 @@ export function MilesCreditCardDetails({ cardId }: Props) {
             <Skeleton className="h-20 w-full rounded-md" />
             <Skeleton className="h-20 w-full rounded-md" />
           </div>
-          <Skeleton className="h-10 w-48 rounded-md" />
         </CardContent>
       </Card>
     );
@@ -84,7 +78,6 @@ export function MilesCreditCardDetails({ cardId }: Props) {
   const {
     name,
     bank,
-    tier,
     milesBonus,
     previousMilesBonus,
     milesBonusDescription,
@@ -103,15 +96,16 @@ export function MilesCreditCardDetails({ cardId }: Props) {
     <div className="my-6 space-y-6" data-clarity-unmask="true">
       <Card>
         <CardHeader>
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <div>
-              <CardTitle>{name}</CardTitle>
-              <CardDescription className="mt-1">{bank}</CardDescription>
-            </div>
-            <Badge variant="outline" className="text-xs uppercase">
-              {tier}
-            </Badge>
-          </div>
+          <CardTitle>
+            <Anchor
+              href={link}
+              isExternal
+              className="underline underline-offset-4"
+            >
+              {name}
+            </Anchor>
+          </CardTitle>
+          <CardDescription className="mt-1">{bank}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           {/* Sign-Up Bonus Callout */}
@@ -207,16 +201,6 @@ export function MilesCreditCardDetails({ cardId }: Props) {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Outbound Application Link */}
-          <div className="pt-2">
-            <Button asChild className="w-full sm:w-auto">
-              <Anchor href={link} isExternal>
-                Apply on {bank} Website
-                <ExternalLink className="ml-2 h-4 w-4" />
-              </Anchor>
-            </Button>
           </div>
         </CardContent>
       </Card>
