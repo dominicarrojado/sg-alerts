@@ -203,6 +203,7 @@ export enum Routes {
   MilesCreditCardsOcbcVoyage = "/topics/miles-credit-cards/ocbc-voyage/",
   MilesCreditCardsUobPrviMiles = "/topics/miles-credit-cards/uob-prvi-miles/",
   MilesCreditCardsMaybankHorizon = "/topics/miles-credit-cards/maybank-horizon/",
+  MilesCreditCardsHsbcVisaInfinite = "/topics/miles-credit-cards/hsbc-visa-infinite/",
 }
 
 export enum FetchStatus {
@@ -539,4 +540,5 @@ export enum MilesCreditCardId {
   OCBC_VOYAGE = "ocbc-voyage",
   UOB_PRVI_MILES = "uob-prvi-miles",
   MAYBANK_HORIZON = "maybank-horizon",
+  HSBC_VISA_INFINITE = "hsbc-visa-infinite",
 }
