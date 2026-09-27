@@ -151,6 +151,7 @@ export const MILES_CREDIT_CARD_LINKS: Partial<Record<string, string>> = {
   [MilesCreditCardId.CITI_PRESTIGE]: Routes.MilesCreditCardsCitiPrestige,
   [MilesCreditCardId.AMEX_KRISFLYER_ASCEND]:
     Routes.MilesCreditCardsAmericanExpressSingaporeAirlinesKrisFlyerAscend,
+  [MilesCreditCardId.DBS_ALTITUDE]: Routes.MilesCreditCardsDbsAltitude,
 };
 
 export const MILES_CREDIT_CARD_EXTERNAL_LINKS: Record<
@@ -163,6 +164,8 @@ export const MILES_CREDIT_CARD_EXTERNAL_LINKS: Record<
     "https://www.citibank.com.sg/credit-cards/rewards/prestige-credit-card",
   [MilesCreditCardId.AMEX_KRISFLYER_ASCEND]:
     "https://www.americanexpress.com/sg/credit-cards/singapore-airlines-krisflyer-ascend-credit-card/",
+  [MilesCreditCardId.DBS_ALTITUDE]:
+    "https://www.dbs.com.sg/personal/cards/credit-cards/dbs-altitude-cards",
 };
 
 export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<
