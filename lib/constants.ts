@@ -158,6 +158,7 @@ export const MILES_CREDIT_CARD_LINKS: Partial<Record<string, string>> = {
   [MilesCreditCardId.SCB_JOURNEY]:
     Routes.MilesCreditCardsStandardCharteredJourney,
   [MilesCreditCardId.OCBC_90N]: Routes.MilesCreditCardsOcbc90N,
+  [MilesCreditCardId.DBS_VANTAGE]: Routes.MilesCreditCardsDbsVantage,
 };
 
 export const MILES_CREDIT_CARD_EXTERNAL_LINKS: Record<
@@ -180,6 +181,8 @@ export const MILES_CREDIT_CARD_EXTERNAL_LINKS: Record<
     "https://www.sc.com/sg/credit-cards/journey-credit-card/",
   [MilesCreditCardId.OCBC_90N]:
     "https://www.ocbc.com/personal-banking/cards/90-degrees-travel-credit-card.page",
+  [MilesCreditCardId.DBS_VANTAGE]:
+    "https://www.dbs.com.sg/personal/cards/credit-cards/dbs-vantage-visa-infinite-card",
 };
 
 export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<
