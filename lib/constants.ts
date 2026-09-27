@@ -152,6 +152,7 @@ export const MILES_CREDIT_CARD_LINKS: Partial<Record<string, string>> = {
   [MilesCreditCardId.AMEX_KRISFLYER_ASCEND]:
     Routes.MilesCreditCardsAmericanExpressSingaporeAirlinesKrisFlyerAscend,
   [MilesCreditCardId.DBS_ALTITUDE]: Routes.MilesCreditCardsDbsAltitude,
+  [MilesCreditCardId.KRISFLYER_UOB]: Routes.MilesCreditCardsKrisFlyerUob,
 };
 
 export const MILES_CREDIT_CARD_EXTERNAL_LINKS: Record<
@@ -166,6 +167,8 @@ export const MILES_CREDIT_CARD_EXTERNAL_LINKS: Record<
     "https://www.americanexpress.com/sg/credit-cards/singapore-airlines-krisflyer-ascend-credit-card/",
   [MilesCreditCardId.DBS_ALTITUDE]:
     "https://www.dbs.com.sg/personal/cards/credit-cards/dbs-altitude-cards",
+  [MilesCreditCardId.KRISFLYER_UOB]:
+    "https://www.uob.com.sg/personal/cards/travel/krisflyer-card.page",
 };
 
 export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<
