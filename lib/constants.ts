@@ -163,6 +163,7 @@ export const MILES_CREDIT_CARD_LINKS: Partial<Record<string, string>> = {
   [MilesCreditCardId.AMEX_KRISFLYER]:
     Routes.MilesCreditCardsAmericanExpressSingaporeAirlinesKrisFlyer,
   [MilesCreditCardId.OCBC_VOYAGE]: Routes.MilesCreditCardsOcbcVoyage,
+  [MilesCreditCardId.UOB_PRVI_MILES]: Routes.MilesCreditCardsUobPrviMiles,
 };
 
 export const MILES_CREDIT_CARD_EXTERNAL_LINKS: Record<
@@ -193,6 +194,8 @@ export const MILES_CREDIT_CARD_EXTERNAL_LINKS: Record<
     "https://www.americanexpress.com/sg/credit-cards/singapore-airlines-krisflyer-credit-card/",
   [MilesCreditCardId.OCBC_VOYAGE]:
     "https://www.ocbc.com/personal-banking/cards/voyage-credit-card.page",
+  [MilesCreditCardId.UOB_PRVI_MILES]:
+    "https://www.uob.com.sg/personal/cards/travel/prvi-miles-card.page",
 };
 
 export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<
