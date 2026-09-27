@@ -148,6 +148,7 @@ export const DEPOSIT_RATES_BANK_LINKS: Partial<Record<string, string>> = {
 export const MILES_CREDIT_CARD_LINKS: Partial<Record<string, string>> = {
   [MilesCreditCardId.SCB_VISA_INFINITE]:
     Routes.MilesCreditCardsStandardCharteredVisaInfinite,
+  [MilesCreditCardId.CITI_PRESTIGE]: Routes.MilesCreditCardsCitiPrestige,
 };
 
 export const SINGAPORE_AIRLINES_DESTINATION_LINKS: Partial<
