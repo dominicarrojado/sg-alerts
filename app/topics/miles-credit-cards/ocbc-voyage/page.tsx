@@ -73,10 +73,10 @@ export default function OcbcVoyagePage() {
         frequent flyer and hotel loyalty programmes. The card features unlimited
         complimentary access to DragonPass airport lounges worldwide for
         principal cardmembers, airport limousine transfer privileges with
-        qualifying spend, and bonus renewal miles awarded upon payment of the
-        annual service fee. While the first-year fee is charged upon approval
-        without an automatic waiver, subsequent years offer fee waiver options
-        upon meeting the annual spending requirement.
+        qualifying spend, and bonus renewal miles awarded when opting into the
+        optional Annual Service Fee Option. While the first-year fee is charged
+        upon approval without an automatic waiver, subsequent years offer fee
+        waiver options upon meeting the annual spending requirement.
       </Paragraph>
       <AdUnit />
       <Paragraph>
