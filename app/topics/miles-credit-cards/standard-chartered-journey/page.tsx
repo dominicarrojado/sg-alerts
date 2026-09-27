@@ -67,11 +67,11 @@ export default function StandardCharteredJourneyPage() {
         earn miles quickly on essential daily categories and overseas travel.
       </Paragraph>
       <Paragraph>
-        Cardholders benefit from accelerated earn rates on transport, food
-        delivery, and grocery spending, complimentary airport lounge visits, and
-        flexible first-year fee waiver choices. 360° Rewards Points earned on
-        the card never expire, making it a dependable option for accumulating
-        flexible airline miles.
+        Cardholders benefit from accelerated earn rates on eligible online
+        transport, food delivery, and grocery spending, complimentary airport
+        lounge visits, and flexible first-year fee waiver choices. 360° Rewards
+        Points earned on the card never expire, making it a dependable option
+        for accumulating flexible airline miles.
       </Paragraph>
       <AdUnit />
       <Paragraph>
