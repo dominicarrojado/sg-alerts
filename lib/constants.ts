@@ -329,4 +329,5 @@ export const SCOOT_DESTINATION_LINKS: Partial<Record<string, string>> = {
   VIE: Routes.ScootFlightsVienna,
   TRV: Routes.ScootFlightsThiruvananthapuram,
   CEB: Routes.ScootFlightsCebu,
+  TAO: Routes.ScootFlightsQingdao,
 };
