@@ -561,6 +561,19 @@ export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
     topicRoute: Routes.TripComTravelDeals,
   },
   {
+    id: TelegramChannel.MilesCreditCards,
+    title: TopicTitle.MilesCreditCards,
+    description: (
+      <>
+        Receive notifications when there are new bonus miles promotions or earn
+        rate updates for{" "}
+        <strong className="font-medium">miles credit cards</strong> in
+        Singapore.
+      </>
+    ),
+    topicRoute: Routes.MilesCreditCards,
+  },
+  {
     id: TelegramChannel.TravelokaTravelDeals,
     title: TopicTitle.TravelokaTravelDeals,
     description: (
@@ -573,19 +586,6 @@ export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
       </>
     ),
     topicRoute: Routes.TravelokaTravelDeals,
-  },
-  {
-    id: TelegramChannel.MilesCreditCards,
-    title: TopicTitle.MilesCreditCards,
-    description: (
-      <>
-        Receive notifications when there are new bonus miles promotions or earn
-        rate updates for{" "}
-        <strong className="font-medium">miles credit cards</strong> in
-        Singapore.
-      </>
-    ),
-    topicRoute: Routes.MilesCreditCards,
   },
   NEW_FEATURES_TELEGRAM_CHANNEL,
 ];
