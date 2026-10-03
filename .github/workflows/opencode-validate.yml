@@ -8,6 +8,7 @@ on:
       - "AGENTS.md"
       - "scripts/verify-opencode.mjs"
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, unlabeled]
     paths:
       - ".opencode/**"
       - "opencode.json"
@@ -16,8 +17,11 @@ on:
 
 jobs:
   validate-opencode:
+    if: >-
+      !github.event.pull_request.draft &&
+      !contains(github.event.pull_request.labels.*.name, 'copilot-loop') &&
+      (github.event.action != 'unlabeled' || github.event.label.name == 'copilot-loop')
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v6
