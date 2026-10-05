@@ -331,4 +331,5 @@ export const SCOOT_DESTINATION_LINKS: Partial<Record<string, string>> = {
   CEB: Routes.ScootFlightsCebu,
   TAO: Routes.ScootFlightsQingdao,
   NKG: Routes.ScootFlightsNanjing,
+  NRT: Routes.ScootFlightsTokyo,
 };
