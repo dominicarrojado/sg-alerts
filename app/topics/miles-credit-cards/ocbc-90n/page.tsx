@@ -22,7 +22,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "OCBC 90°N Card - Miles, Bonus & Fees";
 const description =
-  "Track OCBC 90°N Card bonus miles promotions, local & overseas earn rates, annual fee waivers, and Travel$ air miles rewards in Singapore.";
+  "Track OCBC 90°N Card bonus miles promotions, local & overseas earn rates, annual fee waivers and Travel$ air miles rewards in Singapore.";
 const url = Routes.MilesCreditCardsOcbc90N;
 
 export const metadata: Metadata = {
@@ -50,7 +50,7 @@ export default function Ocbc90NPage() {
       <div className="space-y-2">
         <Heading>OCBC 90°N Card</Heading>
         <Subheading>
-          Track sign-up bonus miles, earn rates per dollar, and annual fee terms
+          Track sign-up bonus miles, earn rates per dollar and annual fee terms
           in Singapore.
         </Subheading>
       </div>
@@ -69,7 +69,7 @@ export default function Ocbc90NPage() {
       </Paragraph>
       <Paragraph>
         Cardholders benefit from accelerated earn rates on international hotel
-        and travel platform bookings, non-expiring Travel$ rewards, and
+        and travel platform bookings, non-expiring Travel$ rewards and
         accessible first-year annual fee waiver options. Travel$ can be redeemed
         for airline miles across multiple loyalty programmes or for cashback
         rewards, making it a versatile everyday card.

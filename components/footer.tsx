@@ -25,6 +25,22 @@ export default function Footer() {
           {OWNER_NAME}
         </Anchor>
       </p>
+      <nav
+        aria-label="Footer"
+        className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs"
+      >
+        <Link href={Routes.About} passHref legacyBehavior>
+          <Anchor>About</Anchor>
+        </Link>
+        <span>·</span>
+        <Link href={Routes.HowItWorks} passHref legacyBehavior>
+          <Anchor>How It Works</Anchor>
+        </Link>
+        <span>·</span>
+        <Link href={Routes.Disclaimer} passHref legacyBehavior>
+          <Anchor>Disclaimer</Anchor>
+        </Link>
+      </nav>
     </Container>
   );
 }

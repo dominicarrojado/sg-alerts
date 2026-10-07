@@ -18,7 +18,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "CDC Announcements";
 const description =
-  "Get notified on the latest news, scheduled maintenance, and announcements from ComfortDelGro Driving Centre in Singapore.";
+  "Get notified on the latest news, scheduled maintenance and announcements from ComfortDelGro Driving Centre in Singapore.";
 const url = Routes.CdcAnnouncements;
 
 export const metadata: Metadata = {
@@ -58,7 +58,7 @@ export default function CdcAnnouncements() {
         operates its main driving centre in Ubi alongside pickup outposts across
         Singapore. The centre regularly issues important notices regarding
         portal maintenance, Traffic Police theory test system upgrades,
-        e-learning platforms, and holiday operating hours.
+        e-learning platforms and holiday operating hours.
       </Paragraph>
       <Paragraph>
         Keeping track of these updates helps learner drivers plan their lesson

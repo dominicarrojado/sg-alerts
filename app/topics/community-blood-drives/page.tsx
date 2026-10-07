@@ -59,12 +59,12 @@ export default function CommunityBloodDrives() {
         <Anchor href="https://giveblood.sg/#blood-drive" isExternal>
           community blood drives
         </Anchor>{" "}
-        across community clubs, religious venues, schools, and corporate
+        across community clubs, religious venues, schools and corporate
         locations in Singapore to maintain national blood stock levels.
       </Paragraph>
       <Paragraph>
         Every day, hundreds of units of blood are required in Singapore to
-        support medical treatments, emergency surgeries, trauma care, and
+        support medical treatments, emergency surgeries, trauma care and
         patients suffering from chronic conditions such as leukaemia and
         thalassaemia.
       </Paragraph>
@@ -73,7 +73,7 @@ export default function CommunityBloodDrives() {
         Generally, first-time blood donors must be between 16 and 65 years old
         (youths aged 16 and 17 require parental consent), while regular donors
         can donate up to age 75. Donors must weigh at least 45 kg, be in good
-        health, and refer to the{" "}
+        health and refer to the{" "}
         <Anchor
           href="https://www.hsa.gov.sg/blood-donation/can-i-donate"
           isExternal

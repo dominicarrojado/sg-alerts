@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import React from "react";
 import { Container } from "@/components/ui/container";
 import { Anchor } from "@/components/ui/anchor";
@@ -53,6 +54,18 @@ export default function HowToUse() {
           {OWNER_NAME}
         </Anchor>{" "}
         to help others save time and effort.
+      </Paragraph>
+      <Paragraph>
+        All tracked topics, alerts and financial figures (such as fixed deposit
+        rates and credit card bonus miles) are aggregated via automated web
+        scraping on a best-effort basis. Information is provided for reference
+        only and does not constitute financial, investment, or legal advice.
+        Always verify details directly with official source websites. For more
+        details, please read our{" "}
+        <Link href={Routes.Disclaimer} passHref legacyBehavior>
+          <Anchor>disclaimer</Anchor>
+        </Link>
+        .
       </Paragraph>
       <Paragraph>
         Since most alerts are sent via email, the best way to use{" "}

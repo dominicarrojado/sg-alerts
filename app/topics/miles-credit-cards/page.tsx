@@ -6,7 +6,13 @@ import Subheading from "@/components/ui/subheading";
 import Paragraph from "@/components/ui/paragraph";
 import TelegramLinkButton from "@/components/telegram-link-button";
 import AdUnit from "@/components/ad-unit";
-import { Routes, TelegramChannel, TopicTitle } from "@/lib/enums";
+import FinancialDisclaimer from "@/components/financial-disclaimer";
+import {
+  FinancialDisclaimerType,
+  Routes,
+  TelegramChannel,
+  TopicTitle,
+} from "@/lib/enums";
 import { MILES_CREDIT_CARD_LINKS } from "@/lib/constants";
 import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 import { MilesCreditCardsTable } from "./miles-credit-cards-table";
@@ -46,6 +52,7 @@ export default function MilesCreditCards() {
         </Subheading>
       </div>
       <MilesCreditCardsTable cardLinks={MILES_CREDIT_CARD_LINKS} />
+      <FinancialDisclaimer type={FinancialDisclaimerType.MilesCreditCards} />
       <Paragraph>
         Miles credit cards are one of the most rewarding ways to earn airline
         miles on everyday spending in Singapore. From entry-level general spend
@@ -65,7 +72,7 @@ export default function MilesCreditCards() {
         <span className="font-medium">SG Alerts</span> is a free notification
         service that tracks credit card sign-up bonuses and earn rates across
         major issuers including DBS, UOB, OCBC, Citibank, HSBC, Standard
-        Chartered, and American Express. It sends you a Telegram notification
+        Chartered and American Express. It sends you a Telegram notification
         whenever bonus miles increase so you never miss an elevated welcome
         offer.
       </Paragraph>

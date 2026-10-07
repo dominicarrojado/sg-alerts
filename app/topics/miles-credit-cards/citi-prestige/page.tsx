@@ -22,7 +22,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "Citi Prestige Card - Miles, Bonus & Fees";
 const description =
-  "Track Citi Prestige Card bonus miles promotions, local & overseas earn rates, annual fee policies, and air miles rewards in Singapore.";
+  "Track Citi Prestige Card bonus miles promotions, local & overseas earn rates, annual fee policies and air miles rewards in Singapore.";
 const url = Routes.MilesCreditCardsCitiPrestige;
 
 export const metadata: Metadata = {
@@ -50,7 +50,7 @@ export default function CitiPrestigePage() {
       <div className="space-y-2">
         <Heading>Citi Prestige Card</Heading>
         <Subheading>
-          Track sign-up bonus miles, earn rates per dollar, and annual fee terms
+          Track sign-up bonus miles, earn rates per dollar and annual fee terms
           in Singapore.
         </Subheading>
       </div>

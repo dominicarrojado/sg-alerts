@@ -22,7 +22,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "Maybank Horizon Visa Signature Card - Miles, Bonus & Fees";
 const description =
-  "Track Maybank Horizon Visa Signature Card bonus miles promotions, air tickets & foreign spend earn rates, 3-year annual fee waiver, and travel perks in Singapore.";
+  "Track Maybank Horizon Visa Signature Card bonus miles promotions, air tickets & foreign spend earn rates, 3-year annual fee waiver and travel perks in Singapore.";
 const url = Routes.MilesCreditCardsMaybankHorizon;
 
 export const metadata: Metadata = {
@@ -50,7 +50,7 @@ export default function MaybankHorizonPage() {
       <div className="space-y-2">
         <Heading>Maybank Horizon Visa Signature Card</Heading>
         <Subheading>
-          Track sign-up bonus miles, earn rates per dollar, and annual fee terms
+          Track sign-up bonus miles, earn rates per dollar and annual fee terms
           in Singapore.
         </Subheading>
       </div>
@@ -66,7 +66,7 @@ export default function MaybankHorizonPage() {
           Maybank Horizon Visa Signature Card
         </Anchor>{" "}
         is an entry-level air miles card tailored for travelers seeking elevated
-        miles accumulation on air tickets, overseas transactions, and everyday
+        miles accumulation on air tickets, overseas transactions and everyday
         travel expenses.
       </Paragraph>
       <Paragraph>
@@ -74,9 +74,9 @@ export default function MaybankHorizonPage() {
         across partner airlines including Singapore Airlines KrisFlyer and
         Cathay Pacific Asia Miles. The card features accelerated earn rates on
         flight bookings and foreign currency spend, miles accrual on everyday
-        categories such as insurance, medical, and utilities, complimentary
+        categories such as insurance, medical and utilities, complimentary
         airport lounge access upon meeting qualifying retail spend,
-        comprehensive travel insurance coverage, and an attractive 3-year annual
+        comprehensive travel insurance coverage and an attractive 3-year annual
         fee waiver.
       </Paragraph>
       <AdUnit />

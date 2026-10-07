@@ -22,7 +22,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "KrisFlyer UOB Credit Card - Miles, Bonus & Fees";
 const description =
-  "Track KrisFlyer UOB Credit Card bonus miles promotions, Singapore Airlines earn rates, annual fee waivers, and travel benefits in Singapore.";
+  "Track KrisFlyer UOB Credit Card bonus miles promotions, Singapore Airlines earn rates, annual fee waivers and travel benefits in Singapore.";
 const url = Routes.MilesCreditCardsKrisFlyerUob;
 
 export const metadata: Metadata = {
@@ -50,7 +50,7 @@ export default function KrisFlyerUobPage() {
       <div className="space-y-2">
         <Heading>KrisFlyer UOB Credit Card</Heading>
         <Subheading>
-          Track sign-up bonus miles, earn rates per dollar, and annual fee terms
+          Track sign-up bonus miles, earn rates per dollar and annual fee terms
           in Singapore.
         </Subheading>
       </div>
@@ -71,7 +71,7 @@ export default function KrisFlyerUobPage() {
       </Paragraph>
       <Paragraph>
         Cardholders benefit from accelerated earn rates across Singapore
-        Airlines, Scoot, KrisShop, and Kris+ transactions, along with direct
+        Airlines, Scoot, KrisShop and Kris+ transactions, along with direct
         miles crediting to their KrisFlyer account without conversion fees. The
         card also features exclusive Scoot travel privileges and a pathway to
         KrisFlyer Elite Silver status, making it an ideal choice for frequent

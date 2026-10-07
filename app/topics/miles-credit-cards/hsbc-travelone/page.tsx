@@ -22,7 +22,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "HSBC TravelOne Card - Miles, Bonus & Fees";
 const description =
-  "Track HSBC TravelOne Card bonus miles promotions, local & overseas earn rates, annual fee policies, and air miles partner redemptions in Singapore.";
+  "Track HSBC TravelOne Card bonus miles promotions, local & overseas earn rates, annual fee policies and air miles partner redemptions in Singapore.";
 const url = Routes.MilesCreditCardsHsbcTravelOne;
 
 export const metadata: Metadata = {
@@ -50,7 +50,7 @@ export default function HsbcTravelOnePage() {
       <div className="space-y-2">
         <Heading>HSBC TravelOne Card</Heading>
         <Subheading>
-          Track sign-up bonus miles, earn rates per dollar, and annual fee terms
+          Track sign-up bonus miles, earn rates per dollar and annual fee terms
           in Singapore.
         </Subheading>
       </div>
@@ -72,7 +72,7 @@ export default function HsbcTravelOnePage() {
       <Paragraph>
         Cardholders benefit from instant in-app miles conversions with zero
         transfer fees, competitive overseas spend earn rates, complimentary
-        airport lounge visits, and travel insurance coverage. The card also
+        airport lounge visits and travel insurance coverage. The card also
         features an annual spend waiver threshold for subsequent years, making
         it a flexible choice for frequent travelers.
       </Paragraph>

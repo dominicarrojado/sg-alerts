@@ -23,7 +23,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 const title =
   "Standard Chartered Priority Banking Visa Infinite Credit Card - Miles, Bonus & Fees";
 const description =
-  "Track Standard Chartered Priority Banking Visa Infinite Credit Card bonus miles promotions, relationship earn rates, annual fee policies, and travel benefits in Singapore.";
+  "Track Standard Chartered Priority Banking Visa Infinite Credit Card bonus miles promotions, relationship earn rates, annual fee policies and travel benefits in Singapore.";
 const url = Routes.MilesCreditCardsStandardCharteredPriorityVisaInfinite;
 
 export const metadata: Metadata = {
@@ -53,7 +53,7 @@ export default function StandardCharteredPriorityVisaInfinitePage() {
           Standard Chartered Priority Banking Visa Infinite Credit Card
         </Heading>
         <Subheading>
-          Track sign-up bonus miles, earn rates per dollar, and annual fee terms
+          Track sign-up bonus miles, earn rates per dollar and annual fee terms
           in Singapore.
         </Subheading>
       </div>
@@ -80,9 +80,9 @@ export default function StandardCharteredPriorityVisaInfinitePage() {
         Cardholders earn non-expiring 360° Rewards Points redeemable for airline
         miles across frequent flyer programmes like Singapore Airlines
         KrisFlyer. The card features relationship bonus rewards across savings,
-        investments, and mortgage balances, complimentary Priority Pass airport
+        investments and mortgage balances, complimentary Priority Pass airport
         lounge visits, travel medical insurance coverage, a dedicated 24-hour
-        Priority Banking service line, and first-year annual fee waiver options.
+        Priority Banking service line and first-year annual fee waiver options.
       </Paragraph>
       <AdUnit />
       <Paragraph>

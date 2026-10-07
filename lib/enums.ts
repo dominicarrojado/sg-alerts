@@ -8,6 +8,7 @@ export enum Routes {
   Settings = "/settings/",
   About = "/about/",
   HowItWorks = "/how-it-works/",
+  Disclaimer = "/disclaimer/",
   Donate = "/donate/",
   DrivingCategory = "/categories/driving/",
   ComfortDelGroDrivingCentre = "/categories/driving/comfortdelgro-driving-centre/",
@@ -547,4 +548,9 @@ export enum MilesCreditCardId {
   MAYBANK_HORIZON = "maybank-horizon",
   HSBC_VISA_INFINITE = "hsbc-visa-infinite",
   SCB_PRIORITY_VISA_INFINITE = "scb-priority-visa-infinite",
+}
+
+export enum FinancialDisclaimerType {
+  DepositRates = "deposit-rates",
+  MilesCreditCards = "miles-credit-cards",
 }
