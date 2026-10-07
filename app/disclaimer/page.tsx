@@ -84,7 +84,7 @@ export default function Disclaimer() {
           <Paragraph>
             <span className="font-medium">SG Alerts</span> is not a bank, credit
             broker, financial institution, or licensed financial adviser under
-            the Financial Advisers Act (Cap. 110) or any regulatory framework
+            the Financial Advisers Act 2001 or any regulatory framework
             administered by the Monetary Authority of Singapore (MAS).
           </Paragraph>
           <Paragraph>
