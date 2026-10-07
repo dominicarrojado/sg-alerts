@@ -15,7 +15,7 @@ export default function FinancialDisclaimer({ type, className }: Props) {
   const isDepositRates = type === FinancialDisclaimerType.DepositRates;
 
   return (
-    <Alert className={cn("my-6", className)}>
+    <Alert role="note" className={cn("my-6", className)}>
       <InfoIcon className="h-4 w-4" />
       <AlertTitle>
         {isDepositRates

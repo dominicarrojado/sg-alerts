@@ -25,7 +25,7 @@ export default function Footer() {
           {OWNER_NAME}
         </Anchor>
       </p>
-      <p className="mt-4 text-xs font-normal leading-normal text-muted-foreground/80">
+      <p className="mt-4 text-xs font-normal leading-normal text-muted-foreground">
         <Balancer>
           Disclaimer: SG Alerts is an independent tracking and notification
           service not affiliated with any bank, airline, merchant, or government
