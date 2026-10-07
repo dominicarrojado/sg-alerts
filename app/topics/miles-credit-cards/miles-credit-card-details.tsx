@@ -14,7 +14,12 @@ import { Alert, AlertTitle } from "@/components/ui/alert";
 import { useGetMilesCreditCardsInfo } from "@/lib/api-hooks";
 import { formatMoney } from "@/lib/number";
 import { cn } from "@/lib/utils";
-import { FetchStatus, MilesCreditCardId } from "@/lib/enums";
+import {
+  FetchStatus,
+  FinancialDisclaimerType,
+  MilesCreditCardId,
+} from "@/lib/enums";
+import FinancialDisclaimer from "@/components/financial-disclaimer";
 
 type Props = {
   cardId: MilesCreditCardId | string;
@@ -194,6 +199,7 @@ export function MilesCreditCardDetails({ cardId }: Props) {
           </div>
         </CardContent>
       </Card>
+      <FinancialDisclaimer type={FinancialDisclaimerType.MilesCreditCards} />
       <div className="text-center text-xs text-muted-foreground">
         Last updated on {updatedAt}. Earn rates and sign-up bonus promotions are
         subject to bank terms and conditions.

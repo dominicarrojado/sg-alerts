@@ -32,10 +32,11 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useGetDepositRatesChartData } from "@/lib/api-hooks";
 import { CHART_RANGE_LABELS } from "@/lib/constants";
 import { formatChartTickDate } from "@/lib/date";
-import { FetchStatus } from "@/lib/enums";
+import { FetchStatus, FinancialDisclaimerType } from "@/lib/enums";
 import { getDepositRatesChartBankColor } from "@/lib/fixed-deposit-rates";
 import type { ChartRange } from "@/lib/types";
 import { DepositRatesChartTooltip } from "@/components/deposit-rates-chart-tooltip";
+import FinancialDisclaimer from "@/components/financial-disclaimer";
 
 type Props = {
   bank?: string;
@@ -187,86 +188,12 @@ export function DepositRatesChart({ bank, title }: Props) {
     title ?? (bank ? `${bank} Rate Trend` : "Fixed Deposit Rates Trend");
 
   return (
-    <Card className="my-6">
-      <CardHeader className="space-y-2 pb-4">
-        {bank ? (
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <h3 className="text-base font-semibold">{chartTitle}</h3>
-            <Select
-              value={range}
-              onValueChange={(v) => setRange(v as ChartRange)}
-            >
-              <SelectTrigger className="w-[160px]">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {(
-                  Object.entries(CHART_RANGE_LABELS) as Array<
-                    [ChartRange, string]
-                  >
-                ).map(([value, label]) => (
-                  <SelectItem key={value} value={value}>
-                    {label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-        ) : (
-          <>
-            <h3 className="text-base font-semibold">{chartTitle}</h3>
+    <>
+      <Card className="my-6">
+        <CardHeader className="space-y-2 pb-4">
+          {bank ? (
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <DropdownMenu
-                open={isBanksMenuOpen}
-                onOpenChange={setIsBanksMenuOpen}
-              >
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="outline"
-                    className="min-w-[180px] justify-between"
-                  >
-                    <span className="truncate">{bankFilterLabel}</span>
-                    <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-60" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-[220px] p-0">
-                  <DropdownMenuLabel className="px-2 pb-2 pt-3">
-                    Displayed banks
-                  </DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <div className="relative">
-                    <div className="max-h-80 overflow-y-auto px-1 pb-1">
-                      <DropdownMenuCheckboxItem
-                        checked={allBanksChecked}
-                        onCheckedChange={handleToggleAllBanks}
-                      >
-                        All banks
-                      </DropdownMenuCheckboxItem>
-                      <DropdownMenuSeparator />
-                      {sortedBankKeys.map((selectedBank) => (
-                        <DropdownMenuCheckboxItem
-                          key={selectedBank}
-                          checked={visibleBankKeys.includes(selectedBank)}
-                          onCheckedChange={() => handleToggleBank(selectedBank)}
-                        >
-                          <span className="flex items-center gap-2">
-                            <span
-                              className="h-2 w-2 shrink-0 rounded-[2px]"
-                              style={{
-                                backgroundColor: bankColors[selectedBank],
-                              }}
-                            />
-                            <span>
-                              {chartData?.chartConfig[selectedBank].label ??
-                                selectedBank}
-                            </span>
-                          </span>
-                        </DropdownMenuCheckboxItem>
-                      ))}
-                    </div>
-                  </div>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <h3 className="text-base font-semibold">{chartTitle}</h3>
               <Select
                 value={range}
                 onValueChange={(v) => setRange(v as ChartRange)}
@@ -287,90 +214,174 @@ export function DepositRatesChart({ bank, title }: Props) {
                 </SelectContent>
               </Select>
             </div>
-          </>
-        )}
-      </CardHeader>
-      <CardContent className="px-4 pb-4">
-        {shouldDisplayLoading && (
-          <Skeleton className={`${dataStateHeightClass} w-full`} />
-        )}
-        {shouldDisplayEmptyState && (
-          <div
-            className={`flex ${dataStateHeightClass} items-center justify-center rounded-md border border-dashed text-sm text-muted-foreground`}
-          >
-            Select at least one bank to display rate trends.
-          </div>
-        )}
-        {shouldDisplayChart && (
-          <div className="space-y-3">
-            <ChartContainer
-              config={chartContainerConfig}
-              className="h-[350px] w-full"
-            >
-              <LineChart
-                data={chartData.chartData}
-                margin={{ top: 5, right: 10, left: 0, bottom: 5 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis
-                  dataKey="date"
-                  tick={{ fontSize: 11 }}
-                  tickFormatter={(value) =>
-                    formatChartTickDate(String(value), range)
-                  }
-                  tickLine={false}
-                  axisLine={false}
-                />
-                <YAxis
-                  domain={[yAxisMin, yAxisMax]}
-                  tickFormatter={(value) => `${value}%`}
-                  tick={{ fontSize: 11 }}
-                  tickLine={false}
-                  axisLine={false}
-                  width={56}
-                />
-                <Tooltip
-                  content={
-                    <DepositRatesChartTooltip
-                      range={range}
-                      hideColorIndicator={!!bank}
-                    />
-                  }
-                  cursor={{ stroke: "hsl(var(--border))", strokeWidth: 1 }}
-                />
-                {visibleBankKeys.map((selectedBank) => (
-                  <Line
-                    key={selectedBank}
-                    type="monotone"
-                    dataKey={selectedBank}
-                    name={
-                      bank ? "Rate" : chartData.chartConfig[selectedBank].label
-                    }
-                    stroke={bankColors[selectedBank]}
-                    strokeWidth={2}
-                    dot={false}
-                    connectNulls
-                    isAnimationActive={false}
-                  />
-                ))}
-              </LineChart>
-            </ChartContainer>
-            {!bank && (
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 px-2 text-xs text-muted-foreground">
-                {visibleSortedBankKeys.map((selectedBank) => (
-                  <div key={selectedBank} className="flex items-center gap-1.5">
-                    <span
-                      className="h-2 w-2 shrink-0 rounded-[2px]"
-                      style={{ backgroundColor: bankColors[selectedBank] }}
-                    />
-                    <span>{chartData.chartConfig[selectedBank].label}</span>
-                  </div>
-                ))}
+          ) : (
+            <>
+              <h3 className="text-base font-semibold">{chartTitle}</h3>
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <DropdownMenu
+                  open={isBanksMenuOpen}
+                  onOpenChange={setIsBanksMenuOpen}
+                >
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className="min-w-[180px] justify-between"
+                    >
+                      <span className="truncate">{bankFilterLabel}</span>
+                      <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-60" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start" className="w-[220px] p-0">
+                    <DropdownMenuLabel className="px-2 pb-2 pt-3">
+                      Displayed banks
+                    </DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <div className="relative">
+                      <div className="max-h-80 overflow-y-auto px-1 pb-1">
+                        <DropdownMenuCheckboxItem
+                          checked={allBanksChecked}
+                          onCheckedChange={handleToggleAllBanks}
+                        >
+                          All banks
+                        </DropdownMenuCheckboxItem>
+                        <DropdownMenuSeparator />
+                        {sortedBankKeys.map((selectedBank) => (
+                          <DropdownMenuCheckboxItem
+                            key={selectedBank}
+                            checked={visibleBankKeys.includes(selectedBank)}
+                            onCheckedChange={() =>
+                              handleToggleBank(selectedBank)
+                            }
+                          >
+                            <span className="flex items-center gap-2">
+                              <span
+                                className="h-2 w-2 shrink-0 rounded-[2px]"
+                                style={{
+                                  backgroundColor: bankColors[selectedBank],
+                                }}
+                              />
+                              <span>
+                                {chartData?.chartConfig[selectedBank].label ??
+                                  selectedBank}
+                              </span>
+                            </span>
+                          </DropdownMenuCheckboxItem>
+                        ))}
+                      </div>
+                    </div>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+                <Select
+                  value={range}
+                  onValueChange={(v) => setRange(v as ChartRange)}
+                >
+                  <SelectTrigger className="w-[160px]">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {(
+                      Object.entries(CHART_RANGE_LABELS) as Array<
+                        [ChartRange, string]
+                      >
+                    ).map(([value, label]) => (
+                      <SelectItem key={value} value={value}>
+                        {label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
-            )}
-          </div>
-        )}
-      </CardContent>
-    </Card>
+            </>
+          )}
+        </CardHeader>
+        <CardContent className="px-4 pb-4">
+          {shouldDisplayLoading && (
+            <Skeleton className={`${dataStateHeightClass} w-full`} />
+          )}
+          {shouldDisplayEmptyState && (
+            <div
+              className={`flex ${dataStateHeightClass} items-center justify-center rounded-md border border-dashed text-sm text-muted-foreground`}
+            >
+              Select at least one bank to display rate trends.
+            </div>
+          )}
+          {shouldDisplayChart && (
+            <div className="space-y-3">
+              <ChartContainer
+                config={chartContainerConfig}
+                className="h-[350px] w-full"
+              >
+                <LineChart
+                  data={chartData.chartData}
+                  margin={{ top: 5, right: 10, left: 0, bottom: 5 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                  <XAxis
+                    dataKey="date"
+                    tick={{ fontSize: 11 }}
+                    tickFormatter={(value) =>
+                      formatChartTickDate(String(value), range)
+                    }
+                    tickLine={false}
+                    axisLine={false}
+                  />
+                  <YAxis
+                    domain={[yAxisMin, yAxisMax]}
+                    tickFormatter={(value) => `${value}%`}
+                    tick={{ fontSize: 11 }}
+                    tickLine={false}
+                    axisLine={false}
+                    width={56}
+                  />
+                  <Tooltip
+                    content={
+                      <DepositRatesChartTooltip
+                        range={range}
+                        hideColorIndicator={!!bank}
+                      />
+                    }
+                    cursor={{ stroke: "hsl(var(--border))", strokeWidth: 1 }}
+                  />
+                  {visibleBankKeys.map((selectedBank) => (
+                    <Line
+                      key={selectedBank}
+                      type="monotone"
+                      dataKey={selectedBank}
+                      name={
+                        bank
+                          ? "Rate"
+                          : chartData.chartConfig[selectedBank].label
+                      }
+                      stroke={bankColors[selectedBank]}
+                      strokeWidth={2}
+                      dot={false}
+                      connectNulls
+                      isAnimationActive={false}
+                    />
+                  ))}
+                </LineChart>
+              </ChartContainer>
+              {!bank && (
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 px-2 text-xs text-muted-foreground">
+                  {visibleSortedBankKeys.map((selectedBank) => (
+                    <div
+                      key={selectedBank}
+                      className="flex items-center gap-1.5"
+                    >
+                      <span
+                        className="h-2 w-2 shrink-0 rounded-[2px]"
+                        style={{ backgroundColor: bankColors[selectedBank] }}
+                      />
+                      <span>{chartData.chartConfig[selectedBank].label}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+        </CardContent>
+      </Card>
+      <FinancialDisclaimer type={FinancialDisclaimerType.DepositRates} />
+    </>
   );
 }

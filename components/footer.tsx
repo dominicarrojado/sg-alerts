@@ -25,6 +25,21 @@ export default function Footer() {
           {OWNER_NAME}
         </Anchor>
       </p>
+      <p className="mt-4 text-xs font-normal leading-normal text-muted-foreground/80">
+        <Balancer>
+          Disclaimer: SG Alerts is an independent tracking and notification
+          service not affiliated with any bank, airline, merchant, or government
+          agency. Rates, promotions, and slot data are aggregated on a
+          best-effort basis and provided for informational purposes only without
+          warranty of any kind. Information does not constitute financial,
+          investment, or legal advice. Always verify details with official
+          providers.{" "}
+          <Link href={Routes.Disclaimer} passHref legacyBehavior>
+            <Anchor>Read full disclaimer</Anchor>
+          </Link>
+          .
+        </Balancer>
+      </p>
     </Container>
   );
 }
