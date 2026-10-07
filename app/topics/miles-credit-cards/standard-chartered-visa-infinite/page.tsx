@@ -22,7 +22,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "Standard Chartered Visa Infinite Card - Miles, Bonus & Fees";
 const description =
-  "Track Standard Chartered Visa Infinite Card bonus miles promotions, local & overseas earn rates, annual fee policies, and KrisFlyer air miles rewards in Singapore.";
+  "Track Standard Chartered Visa Infinite Card bonus miles promotions, local & overseas earn rates, annual fee policies and KrisFlyer air miles rewards in Singapore.";
 const url = Routes.MilesCreditCardsStandardCharteredVisaInfinite;
 
 export const metadata: Metadata = {
@@ -50,7 +50,7 @@ export default function StandardCharteredVisaInfinitePage() {
       <div className="space-y-2">
         <Heading>Standard Chartered Visa Infinite Card</Heading>
         <Subheading>
-          Track sign-up bonus miles, earn rates per dollar, and annual fee terms
+          Track sign-up bonus miles, earn rates per dollar and annual fee terms
           in Singapore.
         </Subheading>
       </div>

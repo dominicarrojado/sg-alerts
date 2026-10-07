@@ -18,7 +18,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "Traveloka Travel Deals";
 const description =
-  "Get notified on the latest flight, hotel, and travel promotions from Traveloka.";
+  "Get notified on the latest flight, hotel and travel promotions from Traveloka.";
 const url = Routes.TravelokaTravelDeals;
 
 export const metadata: Metadata = {
@@ -56,9 +56,9 @@ export default function TravelokaTravelDeals() {
           Traveloka
         </Anchor>{" "}
         is a leading Southeast Asian travel platform specializing in flight
-        tickets, hotel accommodations, holiday packages, and attractions across
+        tickets, hotel accommodations, holiday packages and attractions across
         the region. The platform frequently features regional weekend getaway
-        discounts, partner airline seat sales, and accommodation vouchers.
+        discounts, partner airline seat sales and accommodation vouchers.
       </Paragraph>
       <Paragraph>
         Subscribing to travel deal alerts ensures you are among the first to

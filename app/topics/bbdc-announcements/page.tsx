@@ -18,7 +18,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "BBDC Announcements";
 const description =
-  "Get notified on the latest news, scheduled maintenance, and announcements from Bukit Batok Driving Centre.";
+  "Get notified on the latest news, scheduled maintenance and announcements from Bukit Batok Driving Centre.";
 const url = Routes.BbdcAnnouncements;
 
 export const metadata: Metadata = {
@@ -57,7 +57,7 @@ export default function BbdcAnnouncements() {
         </Anchor>
         , located in Bukit Batok West, regularly shares notices regarding online
         enrolment availability, riding simulator safety attire rules, holiday
-        schedules, and counter service arrangements.
+        schedules and counter service arrangements.
       </Paragraph>
       <Paragraph>
         Keeping track of these announcements helps learner drivers and riders

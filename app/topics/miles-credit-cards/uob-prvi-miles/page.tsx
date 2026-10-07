@@ -22,7 +22,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "UOB PRVI Miles Card - Miles, Bonus & Fees";
 const description =
-  "Track UOB PRVI Miles Card bonus miles promotions, local & overseas earn rates, annual fee waivers, and travel benefits in Singapore.";
+  "Track UOB PRVI Miles Card bonus miles promotions, local & overseas earn rates, annual fee waivers and travel benefits in Singapore.";
 const url = Routes.MilesCreditCardsUobPrviMiles;
 
 export const metadata: Metadata = {
@@ -50,7 +50,7 @@ export default function UobPrviMilesPage() {
       <div className="space-y-2">
         <Heading>UOB PRVI Miles Card</Heading>
         <Subheading>
-          Track sign-up bonus miles, earn rates per dollar, and annual fee terms
+          Track sign-up bonus miles, earn rates per dollar and annual fee terms
           in Singapore.
         </Subheading>
       </div>
@@ -66,7 +66,7 @@ export default function UobPrviMilesPage() {
           UOB PRVI Miles Card
         </Anchor>{" "}
         is an entry-level travel credit card designed for fast air miles
-        accumulation across general everyday spending, regional travel, and
+        accumulation across general everyday spending, regional travel and
         overseas purchases.
       </Paragraph>
       <Paragraph>
@@ -76,7 +76,7 @@ export default function UobPrviMilesPage() {
         overseas and regional purchases, four complimentary Priority Pass
         airport lounge visits per calendar year for principal cardmembers (with
         additional or guest visits chargeable), travel inconvenience and
-        accident insurance coverage, and first-year annual fee waiver options.
+        accident insurance coverage and first-year annual fee waiver options.
       </Paragraph>
       <AdUnit />
       <Paragraph>

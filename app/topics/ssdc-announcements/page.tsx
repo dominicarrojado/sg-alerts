@@ -18,7 +18,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "SSDC Announcements";
 const description =
-  "Get notified on the latest news, scheduled maintenance, and announcements from Singapore Safety Driving Centre.";
+  "Get notified on the latest news, scheduled maintenance and announcements from Singapore Safety Driving Centre.";
 const url = Routes.SsdcAnnouncements;
 
 export const metadata: Metadata = {
@@ -57,7 +57,7 @@ export default function SsdcAnnouncements() {
         </Anchor>
         , located in Woodlands, frequently publishes updates regarding
         e-appointment system availability, Traffic Police test fee adjustments,
-        payment gateway maintenance, and practical lesson release schedules.
+        payment gateway maintenance and practical lesson release schedules.
       </Paragraph>
       <Paragraph>
         Staying informed about these notices helps learner drivers plan their

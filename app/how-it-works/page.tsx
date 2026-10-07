@@ -56,7 +56,7 @@ export default function HowToUse() {
         to help others save time and effort.
       </Paragraph>
       <Paragraph>
-        All tracked topics, alerts, and financial figures (such as fixed deposit
+        All tracked topics, alerts and financial figures (such as fixed deposit
         rates and credit card bonus miles) are aggregated via automated web
         scraping on a best-effort basis. Information is provided for reference
         only and does not constitute financial, investment, or legal advice.

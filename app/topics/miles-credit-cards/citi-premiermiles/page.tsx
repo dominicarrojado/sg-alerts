@@ -22,7 +22,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "Citi PremierMiles Card - Miles, Bonus & Fees";
 const description =
-  "Track Citi PremierMiles Card bonus miles promotions, local & overseas earn rates, annual fee waiver options, and Citi Miles rewards in Singapore.";
+  "Track Citi PremierMiles Card bonus miles promotions, local & overseas earn rates, annual fee waiver options and Citi Miles rewards in Singapore.";
 const url = Routes.MilesCreditCardsCitiPremierMiles;
 
 export const metadata: Metadata = {
@@ -50,7 +50,7 @@ export default function CitiPremierMilesPage() {
       <div className="space-y-2">
         <Heading>Citi PremierMiles Card</Heading>
         <Subheading>
-          Track sign-up bonus miles, earn rates per dollar, and annual fee terms
+          Track sign-up bonus miles, earn rates per dollar and annual fee terms
           in Singapore.
         </Subheading>
       </div>
@@ -72,8 +72,8 @@ export default function CitiPremierMilesPage() {
       </Paragraph>
       <Paragraph>
         Cardholders benefit from accelerated earn rates on select travel booking
-        platforms, complimentary airport lounge visits via Priority Pass, and
-        the flexibility to transfer Citi Miles across an extensive range of
+        platforms, complimentary airport lounge visits via Priority Pass and the
+        flexibility to transfer Citi Miles across an extensive range of
         international airline and hotel partner programmes. The card also offers
         flexible first-year fee waiver choices, making it a dependable option
         for building airline rewards.

@@ -22,7 +22,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "DBS Altitude Visa Signature Card - Miles, Bonus & Fees";
 const description =
-  "Track DBS Altitude Visa Signature Card bonus miles promotions, local & overseas earn rates, annual fee waivers, and KrisFlyer air miles rewards in Singapore.";
+  "Track DBS Altitude Visa Signature Card bonus miles promotions, local & overseas earn rates, annual fee waivers and KrisFlyer air miles rewards in Singapore.";
 const url = Routes.MilesCreditCardsDbsAltitude;
 
 export const metadata: Metadata = {
@@ -50,7 +50,7 @@ export default function DbsAltitudePage() {
       <div className="space-y-2">
         <Heading>DBS Altitude Visa Signature Card</Heading>
         <Subheading>
-          Track sign-up bonus miles, earn rates per dollar, and annual fee terms
+          Track sign-up bonus miles, earn rates per dollar and annual fee terms
           in Singapore.
         </Subheading>
       </div>
@@ -73,9 +73,8 @@ export default function DbsAltitudePage() {
         Cardholders benefit from accelerated earn rates on online flight and
         hotel bookings, alongside flexible DBS Points redemption across frequent
         flyer programmes including Singapore Airlines KrisFlyer, Cathay Pacific
-        Asia Miles, and Qantas. The card also offers accessible annual fee
-        waiver options, making it a reliable choice for long-term miles
-        accumulation.
+        Asia Miles and Qantas. The card also offers accessible annual fee waiver
+        options, making it a reliable choice for long-term miles accumulation.
       </Paragraph>
       <AdUnit />
       <Paragraph>

@@ -23,7 +23,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 const title =
   "American Express Singapore Airlines KrisFlyer Ascend Credit Card - Miles, Bonus & Fees";
 const description =
-  "Track American Express Singapore Airlines KrisFlyer Ascend Credit Card bonus miles promotions, earn rates, annual fee policies, and travel benefits in Singapore.";
+  "Track American Express Singapore Airlines KrisFlyer Ascend Credit Card bonus miles promotions, earn rates, annual fee policies and travel benefits in Singapore.";
 const url =
   Routes.MilesCreditCardsAmericanExpressSingaporeAirlinesKrisFlyerAscend;
 
@@ -54,7 +54,7 @@ export default function AmericanExpressSingaporeAirlinesKrisFlyerAscendPage() {
           American Express Singapore Airlines KrisFlyer Ascend Credit Card
         </Heading>
         <Subheading>
-          Track sign-up bonus miles, earn rates per dollar, and annual fee terms
+          Track sign-up bonus miles, earn rates per dollar and annual fee terms
           in Singapore.
         </Subheading>
       </div>

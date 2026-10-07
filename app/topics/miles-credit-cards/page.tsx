@@ -72,7 +72,7 @@ export default function MilesCreditCards() {
         <span className="font-medium">SG Alerts</span> is a free notification
         service that tracks credit card sign-up bonuses and earn rates across
         major issuers including DBS, UOB, OCBC, Citibank, HSBC, Standard
-        Chartered, and American Express. It sends you a Telegram notification
+        Chartered and American Express. It sends you a Telegram notification
         whenever bonus miles increase so you never miss an elevated welcome
         offer.
       </Paragraph>

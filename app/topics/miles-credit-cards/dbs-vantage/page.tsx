@@ -22,7 +22,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "DBS Vantage Visa Infinite Card - Miles, Bonus & Fees";
 const description =
-  "Track DBS Vantage Visa Infinite Card bonus miles promotions, local & overseas earn rates, annual fee policies, and luxury travel benefits in Singapore.";
+  "Track DBS Vantage Visa Infinite Card bonus miles promotions, local & overseas earn rates, annual fee policies and luxury travel benefits in Singapore.";
 const url = Routes.MilesCreditCardsDbsVantage;
 
 export const metadata: Metadata = {
@@ -50,7 +50,7 @@ export default function DbsVantagePage() {
       <div className="space-y-2">
         <Heading>DBS Vantage Visa Infinite Card</Heading>
         <Subheading>
-          Track sign-up bonus miles, earn rates per dollar, and annual fee terms
+          Track sign-up bonus miles, earn rates per dollar and annual fee terms
           in Singapore.
         </Subheading>
       </div>
@@ -65,11 +65,11 @@ export default function DbsVantagePage() {
         </Anchor>{" "}
         is a premium travel and lifestyle credit card designed for high-income
         earners seeking elevated air miles accumulation, luxury hotel dining
-        privileges, and global travel benefits.
+        privileges and global travel benefits.
       </Paragraph>
       <Paragraph>
         Cardholders benefit from generous annual renewal miles, complimentary
-        airport lounge access via Priority Pass, and an Accor Plus membership
+        airport lounge access via Priority Pass and an Accor Plus membership
         offering free hotel night stays and dining discounts across Asia
         Pacific. Because the card carries a structured, non-waivable first-year
         annual fee policy, timing your application with an elevated welcome

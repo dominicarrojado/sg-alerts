@@ -22,7 +22,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "HSBC Visa Infinite Credit Card - Miles, Bonus & Fees";
 const description =
-  "Track HSBC Visa Infinite Credit Card bonus miles promotions, local & overseas earn rates, annual fee policies, and luxury travel benefits in Singapore.";
+  "Track HSBC Visa Infinite Credit Card bonus miles promotions, local & overseas earn rates, annual fee policies and luxury travel benefits in Singapore.";
 const url = Routes.MilesCreditCardsHsbcVisaInfinite;
 
 export const metadata: Metadata = {
@@ -50,7 +50,7 @@ export default function HsbcVisaInfinitePage() {
       <div className="space-y-2">
         <Heading>HSBC Visa Infinite Credit Card</Heading>
         <Subheading>
-          Track sign-up bonus miles, earn rates per dollar, and annual fee terms
+          Track sign-up bonus miles, earn rates per dollar and annual fee terms
           in Singapore.
         </Subheading>
       </div>
@@ -74,7 +74,7 @@ export default function HsbcVisaInfinitePage() {
       <Paragraph>
         Cardholders enjoy unlimited complimentary airport lounge access via
         LoungeKey for both primary and supplementary cardholders, complimentary
-        airport limousine transfers, expedited immigration clearance, and
+        airport limousine transfers, expedited immigration clearance and
         comprehensive worldwide travel insurance coverage. Because the card
         carries a strictly non-waivable annual fee policy, timing your
         application with an active welcome bonus campaign ensures optimal reward

@@ -50,9 +50,9 @@ export default function Disclaimer() {
             <span className="font-medium">SG Alerts</span> is a free,
             independent notification and tracking tool designed to help
             Singapore residents stay updated on publicly available information,
-            including fixed deposit rates, credit card promotions, flight
-            prices, and appointment slots. It is a personal project intended
-            strictly for informational and reference purposes.
+            including fixed deposit rates, credit card promotions, flight prices
+            and appointment slots. It is a personal project intended strictly
+            for informational and reference purposes.
           </Paragraph>
         </div>
 
@@ -65,7 +65,7 @@ export default function Disclaimer() {
             web scraping from publicly accessible third-party websites on a
             best-effort basis. While reasonable efforts are made to ensure data
             is up to date, scraping mechanisms are subject to external website
-            structure changes, network delays, cache latency, and bank or issuer
+            structure changes, network delays, cache latency and bank or issuer
             modifications.
           </Paragraph>
           <Paragraph>
@@ -106,7 +106,7 @@ export default function Disclaimer() {
             Promotional terms, interest rates, sign-up bonus caps, qualifying
             spend requirements, and fee waiver policies change frequently and
             without prior notice. You are strongly advised to independently
-            verify all rates, terms, and conditions directly on the official
+            verify all rates, terms and conditions directly on the official
             websites of the respective banks, card issuers, airlines, or service
             providers before taking any action or committing financial
             resources.
@@ -126,7 +126,7 @@ export default function Disclaimer() {
             site.
           </Paragraph>
           <Paragraph>
-            All product names, logos, bank trademarks, service marks, and
+            All product names, logos, bank trademarks, service marks and
             registered trademarks are the property of their respective owners.
             Their reference on this site is purely for identification and
             comparative purposes.
@@ -157,7 +157,7 @@ export default function Disclaimer() {
             7. Third-Party External Links
           </h2>
           <Paragraph>
-            This website contains outbound links to third-party bank, airline,
+            This website contains outbound links to third-party bank, airline
             and booking websites. These links are provided solely for your
             convenience. SG Alerts exercises no editorial control over
             third-party sites and accepts no responsibility for their content,

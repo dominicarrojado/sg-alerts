@@ -18,7 +18,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "Trip.com Travel Deals";
 const description =
-  "Get notified on the latest flight, hotel, and travel deals and promotion codes from Trip.com.";
+  "Get notified on the latest flight, hotel and travel deals and promotion codes from Trip.com.";
 const url = Routes.TripComTravelDeals;
 
 export const metadata: Metadata = {
@@ -56,9 +56,9 @@ export default function TripComTravelDeals() {
           Trip.com
         </Anchor>{" "}
         is an international online travel agency offering bookings for flights,
-        hotels, trains, and holiday attractions worldwide. The platform
+        hotels, trains and holiday attractions worldwide. The platform
         frequently releases limited-time coupons, bank partner discount codes
-        (such as Citi, DBS, HSBC, OCBC, and UOB), and seasonal campaigns for
+        (such as Citi, DBS, HSBC, OCBC and UOB) and seasonal campaigns for
         destinations across Asia and beyond.
       </Paragraph>
       <Paragraph>

@@ -22,7 +22,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "Standard Chartered Journey Credit Card - Miles, Bonus & Fees";
 const description =
-  "Track Standard Chartered Journey Credit Card bonus miles promotions, local & overseas earn rates, annual fee waiver options, and air miles rewards in Singapore.";
+  "Track Standard Chartered Journey Credit Card bonus miles promotions, local & overseas earn rates, annual fee waiver options and air miles rewards in Singapore.";
 const url = Routes.MilesCreditCardsStandardCharteredJourney;
 
 export const metadata: Metadata = {
@@ -50,7 +50,7 @@ export default function StandardCharteredJourneyPage() {
       <div className="space-y-2">
         <Heading>Standard Chartered Journey Credit Card</Heading>
         <Subheading>
-          Track sign-up bonus miles, earn rates per dollar, and annual fee terms
+          Track sign-up bonus miles, earn rates per dollar and annual fee terms
           in Singapore.
         </Subheading>
       </div>
@@ -68,8 +68,8 @@ export default function StandardCharteredJourneyPage() {
       </Paragraph>
       <Paragraph>
         Cardholders benefit from accelerated earn rates on eligible online
-        transport, food delivery, and grocery spending, complimentary airport
-        lounge visits, and flexible first-year fee waiver choices. 360° Rewards
+        transport, food delivery and grocery spending, complimentary airport
+        lounge visits and flexible first-year fee waiver choices. 360° Rewards
         Points earned on the card never expire, making it a dependable option
         for accumulating flexible airline miles.
       </Paragraph>

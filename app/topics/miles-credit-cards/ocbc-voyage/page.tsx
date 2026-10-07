@@ -22,7 +22,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 
 const title = "OCBC VOYAGE Card - Miles, Bonus & Fees";
 const description =
-  "Track OCBC VOYAGE Card bonus miles promotions, local & overseas earn rates, annual fee policies, and VOYAGE Miles redemption perks in Singapore.";
+  "Track OCBC VOYAGE Card bonus miles promotions, local & overseas earn rates, annual fee policies and VOYAGE Miles redemption perks in Singapore.";
 const url = Routes.MilesCreditCardsOcbcVoyage;
 
 export const metadata: Metadata = {
@@ -50,7 +50,7 @@ export default function OcbcVoyagePage() {
       <div className="space-y-2">
         <Heading>OCBC VOYAGE Card</Heading>
         <Subheading>
-          Track sign-up bonus miles, earn rates per dollar, and annual fee terms
+          Track sign-up bonus miles, earn rates per dollar and annual fee terms
           in Singapore.
         </Subheading>
       </div>
@@ -64,7 +64,7 @@ export default function OcbcVoyagePage() {
           OCBC VOYAGE Card
         </Anchor>{" "}
         is a premium metal travel card offering flexible air miles redemption
-        with no expiry, unlimited airport lounge access, and round-the-clock
+        with no expiry, unlimited airport lounge access and round-the-clock
         VOYAGE Exchange concierge services.
       </Paragraph>
       <Paragraph>
@@ -73,7 +73,7 @@ export default function OcbcVoyagePage() {
         frequent flyer and hotel loyalty programmes. The card features unlimited
         complimentary access to DragonPass airport lounges worldwide for
         principal cardmembers, airport limousine transfer privileges with
-        qualifying spend, and bonus renewal miles awarded when opting into the
+        qualifying spend and bonus renewal miles awarded when opting into the
         optional Annual Service Fee Option. While the first-year fee is charged
         upon approval without an automatic waiver, subsequent years offer fee
         waiver options upon meeting the annual spending requirement.

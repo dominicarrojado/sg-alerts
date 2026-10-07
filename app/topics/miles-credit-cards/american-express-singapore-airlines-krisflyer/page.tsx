@@ -23,7 +23,7 @@ import { META_OPEN_GRAPH, META_TWITTER } from "@/app/shared-metadata";
 const title =
   "American Express Singapore Airlines KrisFlyer Credit Card - Miles, Bonus & Fees";
 const description =
-  "Track American Express Singapore Airlines KrisFlyer Credit Card bonus miles promotions, earn rates, annual fee policies, and travel benefits in Singapore.";
+  "Track American Express Singapore Airlines KrisFlyer Credit Card bonus miles promotions, earn rates, annual fee policies and travel benefits in Singapore.";
 const url = Routes.MilesCreditCardsAmericanExpressSingaporeAirlinesKrisFlyer;
 
 export const metadata: Metadata = {
@@ -53,7 +53,7 @@ export default function AmericanExpressSingaporeAirlinesKrisFlyerPage() {
           American Express Singapore Airlines KrisFlyer Credit Card
         </Heading>
         <Subheading>
-          Track sign-up bonus miles, earn rates per dollar, and annual fee terms
+          Track sign-up bonus miles, earn rates per dollar and annual fee terms
           in Singapore.
         </Subheading>
       </div>
@@ -74,7 +74,7 @@ export default function AmericanExpressSingaporeAirlinesKrisFlyerPage() {
       <Paragraph>
         Cardholders benefit from direct monthly miles crediting into their
         KrisFlyer account, bonus earn rates on Singapore Airlines, Scoot,
-        KrisShop, and Grab spend, a first-year annual fee waiver, and
+        KrisShop and Grab spend, a first-year annual fee waiver and
         complimentary travel inconvenience and accident insurance coverage.
       </Paragraph>
       <AdUnit />
