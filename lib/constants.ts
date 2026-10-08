@@ -334,4 +334,5 @@ export const SCOOT_DESTINATION_LINKS: Partial<Record<string, string>> = {
   NKG: Routes.ScootFlightsNanjing,
   NRT: Routes.ScootFlightsTokyoNarita,
   HND: Routes.ScootFlightsTokyoHaneda,
+  MEL: Routes.ScootFlightsMelbourne,
 };
