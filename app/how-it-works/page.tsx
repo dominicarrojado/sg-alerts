@@ -59,7 +59,7 @@ export default function HowToUse() {
         All tracked topics, alerts and financial figures (such as fixed deposit
         rates and credit card bonus miles) are aggregated via automated web
         scraping on a best-effort basis. Information is provided for reference
-        only and does not constitute financial, investment, or legal advice.
+        only and does not constitute financial, investment or legal advice.
         Always verify details directly with official source websites. For more
         details, please read our{" "}
         <Link href={Routes.Disclaimer} passHref legacyBehavior>

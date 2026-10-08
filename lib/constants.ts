@@ -10,6 +10,7 @@ import type { ChartRange } from "./types";
 export const OWNER_NAME = "Dominic Arrojado";
 export const OWNER_WEBSITE = "https://dominicarrojado.com";
 export const OWNER_EMAIL = "dominicarrojado@gmail.com";
+export const DISCLAIMER_EMAIL = "disclaimer@dominicarrojado.com";
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 

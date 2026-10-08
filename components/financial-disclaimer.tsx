@@ -25,12 +25,10 @@ export default function FinancialDisclaimer({ type, className }: Props) {
       <AlertDescription className="text-muted-foreground">
         {isDepositRates ? (
           <>
-            Interest rates, tenures and minimum deposit requirements are
-            gathered via automated web scraping on a best-effort basis and may
-            not reflect real-time updates or bank terms. Information is for
-            reference only and does not constitute financial or investment
-            advice. Always verify current rates, terms and eligibility directly
-            with the respective bank before committing funds.{" "}
+            Interest rates, tenures and minimum deposits are scraped on a
+            best-effort basis and may be outdated. This is not financial advice.
+            Always verify current rates directly with the bank before depositing
+            funds.{" "}
             <Link href={Routes.Disclaimer} passHref legacyBehavior>
               <Anchor>Read full disclaimer</Anchor>
             </Link>
@@ -38,14 +36,9 @@ export default function FinancialDisclaimer({ type, className }: Props) {
           </>
         ) : (
           <>
-            Sign-up bonus miles, earn rates (mpd) and annual fee policies are
-            gathered via automated web scraping on a best-effort basis and are
-            subject to change without notice. Bonus promotions frequently carry
-            strict bank eligibility criteria (such as new-to-bank status,
-            minimum spend, or annual fee payment) and promotional caps.
-            Information is for reference only and does not constitute financial
-            advice. Always verify terms on the official bank or card issuer
-            website before applying.{" "}
+            Bonus miles, earn rates and fees are scraped on a best-effort basis
+            and subject to bank terms and caps. This is not financial advice.
+            Always check official bank terms before applying.{" "}
             <Link href={Routes.Disclaimer} passHref legacyBehavior>
               <Anchor>Read full disclaimer</Anchor>
             </Link>
