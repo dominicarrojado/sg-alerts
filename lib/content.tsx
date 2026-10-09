@@ -28,6 +28,10 @@ export const MAIN_MENU_ITEMS = [
     href: Routes.HowItWorks,
   },
   {
+    title: "Disclaimer",
+    href: Routes.Disclaimer,
+  },
+  {
     title: "Donate",
     href: Routes.Donate,
   },
