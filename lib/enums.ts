@@ -445,7 +445,7 @@ export enum TopicTitle {
   BbdcAnnouncements = "🚘 BBDC Announcements",
   TripComTravelDeals = "🌏 Travel Deals (Trip.com)",
   TravelokaTravelDeals = "🌏 Travel Deals (Traveloka)",
-  MilesCreditCards = "✈️ Miles Credit Cards",
+  MilesCreditCards = "💳 Miles Credit Cards",
 }
 
 export enum TelegramChannel {
