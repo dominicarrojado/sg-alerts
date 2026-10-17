@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import Balancer from "react-wrap-balancer";
 import {
   Table,
   TableBody,
@@ -76,35 +75,38 @@ export function ThemeParkFacilitiesTable({ service, facilityUrlAffix }: Props) {
                   isOperating && "hidden sm:block",
                 )}
               >
-                <Balancer
-                  className={cn(!isOperating && "text-muted-foreground")}
+                <span
+                  className={cn(
+                    "inline-block [text-wrap:balance]",
+                    !isOperating && "text-muted-foreground",
+                  )}
                 >
                   {facility.operatingStatus}
-                </Balancer>
+                </span>
               </span>
               {isOperating && fsStatus && (
-                <Balancer
+                <span
                   className={cn(
-                    "block",
+                    "block [text-wrap:balance]",
                     isPriorityPassNowAvailable
                       ? "text-green-500"
                       : "text-primary",
                   )}
                 >
                   {fsStatus}
-                </Balancer>
+                </span>
               )}
               {isOperating && dpaStatus && (
-                <Balancer
+                <span
                   className={cn(
-                    "block",
+                    "block [text-wrap:balance]",
                     isPremierAccessNowAvailable
                       ? "text-green-500"
                       : "text-primary",
                   )}
                 >
                   {dpaStatus}
-                </Balancer>
+                </span>
               )}
             </>
           );
@@ -117,10 +119,14 @@ export function ThemeParkFacilitiesTable({ service, facilityUrlAffix }: Props) {
                     href={`https://www.tokyodisneyresort.jp/en/${facilityUrlAffix}/attraction/detail/${id}/`}
                     isExternal
                   >
-                    <Balancer className="font-medium">{name}</Balancer>
+                    <span className="inline-block font-medium [text-wrap:balance]">
+                      {name}
+                    </span>
                   </Anchor>
                 ) : (
-                  <Balancer className="font-medium">{name}</Balancer>
+                  <span className="inline-block font-medium [text-wrap:balance]">
+                    {name}
+                  </span>
                 )}
                 <div className="mt-1 sm:hidden">{statusAndPasses}</div>
               </TableCell>
