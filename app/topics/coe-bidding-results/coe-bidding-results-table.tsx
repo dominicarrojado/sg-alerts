@@ -71,7 +71,7 @@ export function CoeBiddingResultsTable() {
                 <span
                   className={cn(
                     "block font-normal",
-                    pqpDiffIsNegative ? "text-green-500" : "text-primary",
+                    pqpDiffIsNegative ? "text-green-500" : "text-primary-text",
                   )}
                 >
                   ({pqpDiffIsNegative ? "▾" : "▴"}
@@ -93,7 +93,7 @@ export function CoeBiddingResultsTable() {
                   <span
                     className={cn(
                       "block font-normal",
-                      qpDiffIsNegative ? "text-green-500" : "text-primary",
+                      qpDiffIsNegative ? "text-green-500" : "text-primary-text",
                     )}
                   >
                     ({qpDiffIsNegative ? "▾" : "▴"}
