@@ -90,7 +90,7 @@ export function ThemeParkFacilitiesTable({ service, facilityUrlAffix }: Props) {
                     "block [text-wrap:balance]",
                     isPriorityPassNowAvailable
                       ? "text-green-500"
-                      : "text-primary",
+                      : "text-primary-text",
                   )}
                 >
                   {fsStatus}
@@ -102,7 +102,7 @@ export function ThemeParkFacilitiesTable({ service, facilityUrlAffix }: Props) {
                     "block [text-wrap:balance]",
                     isPremierAccessNowAvailable
                       ? "text-green-500"
-                      : "text-primary",
+                      : "text-primary-text",
                   )}
                 >
                   {dpaStatus}

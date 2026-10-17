@@ -108,7 +108,7 @@ export function DepositRatesTable({ bankLinks }: Props) {
                   <span
                     className={cn(
                       "ml-1 font-normal",
-                      isNegative ? "text-primary" : "text-green-500",
+                      isNegative ? "text-primary-text" : "text-green-500",
                     )}
                   >
                     ({isNegative ? "▾" : "▴"}

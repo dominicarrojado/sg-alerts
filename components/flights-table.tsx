@@ -114,7 +114,7 @@ export function FlightsTable({
                     <span
                       className={cn(
                         "ml-1 font-normal",
-                        isPositive ? "text-primary" : "text-green-500",
+                        isPositive ? "text-primary-text" : "text-green-500",
                       )}
                     >
                       ({isPositive && "+"}

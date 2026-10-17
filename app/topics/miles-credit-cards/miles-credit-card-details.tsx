@@ -114,7 +114,7 @@ export function MilesCreditCardDetails({ cardId }: Props) {
                     <span
                       className={cn(
                         "ml-2 text-sm font-normal",
-                        isNegative ? "text-primary" : "text-green-500",
+                        isNegative ? "text-primary-text" : "text-green-500",
                       )}
                     >
                       ({isNegative ? "▾" : "▴"}
