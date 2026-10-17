@@ -5,6 +5,7 @@ export default function TagManager() {
     <>
       <Script
         id="gtm"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
               if (window.location.hostname !== 'localhost') {

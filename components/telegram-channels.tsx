@@ -81,6 +81,7 @@ export default function TelegramChannels({ channels, backButtonRoute }: Props) {
                   <Anchor
                     href={channelUrl}
                     className="shrink-0 px-2 no-underline"
+                    aria-label={`Open ${title} on Telegram`}
                     onClick={() => topicOnClick(title, channelUrl)}
                     isExternal
                   >

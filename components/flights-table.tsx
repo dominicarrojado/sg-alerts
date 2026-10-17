@@ -17,7 +17,6 @@ import { useGetFlightsInfo } from "@/lib/api-hooks";
 import { formatMoney, formatMoneyPeso } from "@/lib/number";
 import { cn } from "@/lib/utils";
 import { Currency, FetchStatus, FlightAirline } from "@/lib/enums";
-import Balancer from "react-wrap-balancer";
 
 type Props = {
   airline: FlightAirline;
@@ -100,9 +99,9 @@ export function FlightsTable({
               </TableCell>
               {withTravelBy && (
                 <TableCell className="hidden sm:table-cell">
-                  <Balancer>
+                  <span className="inline-block [text-wrap:balance]">
                     {flight.departureDate} - {flight.returnDate}
-                  </Balancer>
+                  </span>
                 </TableCell>
               )}
               <TableCell className="text-right font-medium">
