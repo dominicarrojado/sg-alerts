@@ -136,9 +136,9 @@ export function MilesCreditCardDetails({ cardId }: Props) {
 
               {/* Earn Rates Section */}
               <div>
-                <h4 className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                <h3 className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
                   Earn Rates (Miles per Dollar)
-                </h4>
+                </h3>
                 <div className="mt-2 grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <div className="rounded-md border p-3">
                     <div className="text-xs text-muted-foreground">
@@ -177,9 +177,9 @@ export function MilesCreditCardDetails({ cardId }: Props) {
 
               {/* Annual Fee & Waivers */}
               <div>
-                <h4 className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                <h3 className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
                   Annual Fee & Policy
-                </h4>
+                </h3>
                 <div className="mt-2 grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <div className="rounded-md border p-3">
                     <div className="text-xs text-muted-foreground">
