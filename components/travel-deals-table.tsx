@@ -38,28 +38,29 @@ export function TravelDealsTable({ service }: TravelDealsTableProps) {
 
   if (fetchState !== FetchStatus.Success) {
     return (
-      <Table className="my-6">
-        <TableCaption>
-          <div className="flex flex-col items-center gap-3">
-            <Skeleton className="h-5 w-1/2" />
-          </div>
+      <Table
+        className="my-6 table-fixed"
+        aria-busy="true"
+        aria-label="Loading travel deals"
+      >
+        <TableCaption className="h-10 sm:h-5">
+          <Skeleton className="mx-auto h-5 w-1/2" />
         </TableCaption>
         <TableHeader>
           <TableRow className="h-[48px]">
-            <TableHead>
-              <Skeleton className="h-5 w-1/2" />
-            </TableHead>
-            <TableHead className="hidden w-1/3 sm:table-cell sm:w-[220px]">
-              <Skeleton className="ml-auto h-5 w-24" />
+            <TableHead>Promotion</TableHead>
+            <TableHead className="hidden w-1/3 text-right sm:table-cell sm:w-[220px]">
+              Validity
             </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {Array.from({ length: 3 }).map((_, index) => (
-            <TableRow key={index} className="h-[52px]">
+            <TableRow key={index} className="h-[112px] sm:h-[88px]">
               <TableCell>
                 <Skeleton className="h-5 w-3/4" />
-                <Skeleton className="mt-1.5 h-4 w-5/6" />
+                <Skeleton className="mt-1 h-8 w-1/2" />
+                <Skeleton className="mt-1 h-4 w-20 sm:hidden" />
               </TableCell>
               <TableCell className="hidden text-right align-top sm:table-cell">
                 <Skeleton className="ml-auto h-4 w-28" />
@@ -85,8 +86,10 @@ export function TravelDealsTable({ service }: TravelDealsTableProps) {
   }
 
   return (
-    <Table className="my-6" data-clarity-unmask="true">
-      <TableCaption>Last updated on {updatedAt}.</TableCaption>
+    <Table className="my-6 table-fixed" data-clarity-unmask="true">
+      <TableCaption className="h-10 sm:h-5">
+        Last updated on {updatedAt}.
+      </TableCaption>
       <TableHeader>
         <TableRow className="h-[48px]">
           <TableHead>Promotion</TableHead>
@@ -101,13 +104,16 @@ export function TravelDealsTable({ service }: TravelDealsTableProps) {
             deal.description && deal.description.trim() !== "-";
 
           return (
-            <TableRow key={`${deal.title}-${index}`}>
+            <TableRow
+              key={`${deal.title}-${index}`}
+              className="first:h-[112px] sm:first:h-[88px]"
+            >
               <TableCell className="font-medium">
                 <Anchor href={deal.link} isExternal>
                   {deal.title}
                 </Anchor>
                 {hasDescription && (
-                  <p className="mt-1 line-clamp-2 text-xs font-normal text-muted-foreground">
+                  <p className="mt-1 line-clamp-2 whitespace-pre-line text-xs font-normal text-muted-foreground">
                     {deal.description}
                   </p>
                 )}

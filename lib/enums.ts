@@ -195,6 +195,7 @@ export enum Routes {
   BbdcAnnouncements = "/topics/bbdc-announcements/",
   TripComTravelDeals = "/topics/trip-com-travel-deals/",
   TravelokaTravelDeals = "/topics/traveloka-travel-deals/",
+  KlookTravelDeals = "/topics/klook-travel-deals/",
   MilesCreditCards = "/topics/miles-credit-cards/",
   MilesCreditCardsStandardCharteredVisaInfinite = "/topics/miles-credit-cards/standard-chartered-visa-infinite/",
   MilesCreditCardsCitiPrestige = "/topics/miles-credit-cards/citi-prestige/",
@@ -365,6 +366,7 @@ export enum TravelDealsService {
   SCOOT = "scoot",
   TRIP_COM = "trip.com",
   TRAVELOKA = "traveloka",
+  KLOOK = "klook",
 }
 
 export enum ThemeParkService {
@@ -445,6 +447,7 @@ export enum TopicTitle {
   BbdcAnnouncements = "🚘 BBDC Announcements",
   TripComTravelDeals = "🌏 Travel Deals (Trip.com)",
   TravelokaTravelDeals = "🌏 Travel Deals (Traveloka)",
+  KlookTravelDeals = "🌏 Travel Deals (Klook)",
   MilesCreditCards = "💳 Miles Credit Cards",
 }
 
@@ -485,6 +488,7 @@ export enum TelegramChannel {
   FixedDepositRates = "SGAlertsFixedDepositRates",
   TripComTravelDeals = "SGAlertsTripComTravelDeals",
   TravelokaTravelDeals = "SGAlertsTravelokaTravelDeals",
+  KlookTravelDeals = "SGAlertsKlookTravelDeals",
   TotoSnowballs = "SGAlertsTOTOSnowballs",
   BadmintonCourtSlotsOurTampinesHub = "SGAlertsBadmintonCourtSlotsOTH",
   BadmintonCourtSlotsHeartbeatBedok = "SGAlertsBadmintonCourtSlotsBedok",
