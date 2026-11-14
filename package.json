@@ -9,6 +9,8 @@
     "lint": "next lint && yarn lint:opencode",
     "lint:opencode": "node scripts/verify-opencode.mjs",
     "test": "jest",
+    "ui:preview": "node scripts/ui-preview.mjs",
+    "test:ui-preview": "node --test scripts/ui-preview/*.test.mjs",
     "test:watch": "jest --watch"
   },
   "dependencies": {
@@ -57,6 +59,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
+    "playwright": "1.65.1",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
     "ts-node": "^10.9.2"

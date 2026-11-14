@@ -34,10 +34,19 @@ yarn dev
 
 ```bash
 yarn build
-yarn export
 ```
 
 2. The `out` directory can be served by any static hosting service or CDN.
+
+## Deterministic UI Preview And Screenshots
+
+See [the fixture-backed preview recipe](docs/ui-preview.md) for safe worktree
+setup, API configuration prerequisites, production-prefix navigation, bounded
+desktop/mobile capture, content readiness, visual inspection, and cleanup.
+This uses the actual exported pages without relying on production API data.
+Agents supply temporary task-specific fixtures and readiness checks outside the
+repository; do not commit screenshot inputs or change production behavior.
+Fixture-backed images establish rendering, not live API compatibility.
 
 ## VSCode Extensions
 
