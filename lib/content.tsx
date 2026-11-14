@@ -292,6 +292,10 @@ export const TOPICS_MENU_ITEMS = [
     href: Routes.TravelokaTravelDeals,
   },
   {
+    title: "Klook Travel Deals",
+    href: Routes.KlookTravelDeals,
+  },
+  {
     title: "Miles Credit Cards",
     href: Routes.MilesCreditCards,
   },
@@ -590,6 +594,21 @@ export const TRAVEL_TELEGRAM_CHANNELS: TelegramPublicChannels = [
       </>
     ),
     topicRoute: Routes.TravelokaTravelDeals,
+  },
+  {
+    id: TelegramChannel.KlookTravelDeals,
+    title: TopicTitle.KlookTravelDeals,
+    description: (
+      <>
+        Receive notifications when there are new Singapore activity and
+        experience deals from{" "}
+        <Anchor href="https://www.klook.com/en-SG/" isExternal>
+          Klook
+        </Anchor>
+        .
+      </>
+    ),
+    topicRoute: Routes.KlookTravelDeals,
   },
   NEW_FEATURES_TELEGRAM_CHANNEL,
 ];
