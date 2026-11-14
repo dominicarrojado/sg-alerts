@@ -12,6 +12,20 @@ Minimal instructions for AI coding agents working in this repository.
 - Production build: `yarn build` (`next build`, outputs to `./out`)
 - PR CI validation sequence: `yarn lint && yarn test && yarn build`
 
+## UI Preview And Screenshot Recipe
+
+- See [docs/ui-preview.md](docs/ui-preview.md) for deterministic, read-only Klook
+  and miles-card previews using the real exported application, without a live API.
+- Requires Node 24, Yarn, controller dependencies and Playwright Chromium (or
+  explicitly selected installed Chrome). Build only a fresh, clean dedicated
+  worktree with `yarn ui:preview build --worktree <target>`; do not reuse another
+  delivery's outputs or listeners. Configuration is embedded at build time.
+- Use `yarn ui:preview capture --worktree <target> --group klook|miles --output <new-directory>`;
+  open representative images and record visual observations. Fixtures establish
+  rendering, not live API compatibility. See the recipe for diagnostics/cleanup.
+- OpenCode uses recipes from the PR base revision: this recipe becomes eligible
+  for later deliveries after merge, not retroactive acceptance for existing PRs.
+
 ## Architecture & Static Export
 
 - Next.js 13 App Router configured for static export (`output: "export"`, `trailingSlash: true`, `images.unoptimized: true` in `next.config.js`).
