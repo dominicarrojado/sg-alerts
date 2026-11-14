@@ -17,6 +17,11 @@ export function fixtureKey(value) {
   if (url.origin !== "http://fixture" || url.hash) {
     throw new Error("Fixture URL must not contain an origin or fragment.");
   }
+  if (url.pathname === apiBase || url.pathname.startsWith(`${apiBase}/`)) {
+    throw new Error(
+      `Fixture URL must omit the ${apiBase} base prefix; supply the application's API path only.`,
+    );
+  }
   url.searchParams.sort();
   return url.pathname + url.search;
 }

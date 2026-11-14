@@ -138,6 +138,13 @@ test("temporary modules support fixture-free pages, reject malformed input, and 
       /local route/,
     ],
     [good.replace("fixtures: []", "fixtures: {}"), /fixtures must/],
+    ...[apiBase, `${apiBase}/example`].map((url) => [
+      good.replace(
+        "fixtures: []",
+        `fixtures: [{url:${JSON.stringify(url)},status:200,body:{}}]`,
+      ),
+      /must omit the .* base prefix/,
+    ]),
     [
       good.replace(
         "fixtures: []",
