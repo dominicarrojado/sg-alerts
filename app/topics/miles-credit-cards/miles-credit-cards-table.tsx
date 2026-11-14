@@ -107,6 +107,10 @@ export function MilesCreditCardsTable({ cardLinks }: Props) {
         <small>
           Earn rates in miles per dollar (mpd) and sign-up bonus miles
           promotions are subject to bank terms and conditions.
+          <br />
+          Minimum income shown is for Singapore citizens/PRs. See individual
+          card pages for foreigner requirements and additional eligibility
+          conditions.
         </small>
       </TableCaption>
       <TableHeader>
@@ -135,6 +139,7 @@ export function MilesCreditCardsTable({ cardLinks }: Props) {
             previousMilesBonus,
             milesPerDollar,
             annualFee,
+            minimumAnnualIncome,
             link,
           } = card;
 
@@ -161,6 +166,13 @@ export function MilesCreditCardsTable({ cardLinks }: Props) {
                   >
                     {name}
                   </Anchor>
+                )}
+                {typeof minimumAnnualIncome?.locals === "number" && (
+                  <div className="mt-1 text-xs text-muted-foreground">
+                    Min. income (SG/PR):{" "}
+                    {formatMoney(minimumAnnualIncome.locals)}
+                    /year
+                  </div>
                 )}
               </TableCell>
 

@@ -483,6 +483,13 @@ export type MilesPerDollar = {
   bonusCategories?: string;
 };
 
+export type MinimumAnnualIncome = {
+  currency: "SGD";
+  locals?: number;
+  foreigners?: number;
+  notes?: string;
+};
+
 export type MilesCreditCard = {
   id: string;
   bank: string;
@@ -494,6 +501,7 @@ export type MilesCreditCard = {
   milesPerDollar: MilesPerDollar;
   annualFee: number;
   annualFeeWaiver?: string;
+  minimumAnnualIncome?: MinimumAnnualIncome;
   promoEndDate: string;
   link: string;
 };
