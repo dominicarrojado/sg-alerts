@@ -59,7 +59,7 @@ export function TravelDealsTable({ service }: TravelDealsTableProps) {
             <TableRow key={index} className="h-[112px] sm:h-[88px]">
               <TableCell>
                 <Skeleton className="h-5 w-3/4" />
-                <Skeleton className="mt-1 h-8 w-5/6" />
+                <Skeleton className="mt-1 h-8 w-1/2" />
                 <Skeleton className="mt-1 h-4 w-20 sm:hidden" />
               </TableCell>
               <TableCell className="hidden text-right align-top sm:table-cell">
