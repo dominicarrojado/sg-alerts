@@ -59,6 +59,10 @@ export function MilesCreditCardDetails({ cardId }: Props) {
             <Skeleton className="h-20 w-full rounded-md" />
             <Skeleton className="h-20 w-full rounded-md" />
           </div>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <Skeleton className="h-20 w-full rounded-md" />
+            <Skeleton className="h-20 w-full rounded-md" />
+          </div>
         </CardContent>
       </Card>
     );
@@ -86,6 +90,7 @@ export function MilesCreditCardDetails({ cardId }: Props) {
         milesPerDollar,
         annualFee,
         annualFeeWaiver,
+        minimumAnnualIncome,
         promoEndDate,
       } = card;
 
@@ -198,6 +203,43 @@ export function MilesCreditCardDetails({ cardId }: Props) {
                     </div>
                   </div>
                 </div>
+              </div>
+              {/* Minimum Annual Income */}
+              <div>
+                <h3 className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                  Minimum Annual Income
+                </h3>
+                <div className="mt-2 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  <div className="rounded-md border p-3">
+                    <div className="text-xs text-muted-foreground">
+                      Singapore Citizens / PRs
+                    </div>
+                    <div className="mt-1 text-lg font-semibold">
+                      {typeof minimumAnnualIncome?.locals === "number"
+                        ? `${formatMoney(minimumAnnualIncome.locals)} / year`
+                        : "Not available"}
+                    </div>
+                  </div>
+                  <div className="rounded-md border p-3">
+                    <div className="text-xs text-muted-foreground">
+                      Foreigners
+                    </div>
+                    <div className="mt-1 text-lg font-semibold">
+                      {typeof minimumAnnualIncome?.foreigners === "number"
+                        ? `${formatMoney(minimumAnnualIncome.foreigners)} / year`
+                        : "Not available"}
+                    </div>
+                  </div>
+                </div>
+                {minimumAnnualIncome?.notes?.trim() && (
+                  <p className="mt-3 text-sm text-muted-foreground">
+                    {minimumAnnualIncome.notes}
+                  </p>
+                )}
+                <p className="mt-3 text-xs text-muted-foreground">
+                  Income requirements are subject to bank eligibility criteria
+                  and approval.
+                </p>
               </div>
             </CardContent>
           </Card>

@@ -39,46 +39,83 @@ export function MilesCreditCardsTable({ cardLinks }: Props) {
     return null;
   }
 
+  const cardInfoClassName =
+    "flex min-h-[8.25rem] flex-col justify-center min-[360px]:min-h-[4.75rem]";
+
+  const tableColumns = (
+    <colgroup>
+      <col className="w-1/2 sm:w-[40%]" />
+      <col className="w-1/2 sm:w-1/4" />
+      <col className="hidden sm:table-column sm:w-1/5" />
+      <col className="hidden sm:table-column sm:w-[15%]" />
+    </colgroup>
+  );
+  const tableHeader = (
+    <TableHeader>
+      <TableRow>
+        <TableHead>Credit Card</TableHead>
+        <TableHead>
+          Bonus Miles
+          <div className="font-normal text-muted-foreground sm:hidden">
+            / Earn Rate & Fee
+          </div>
+        </TableHead>
+        <TableHead className="hidden sm:table-cell">Earn Rate (mpd)</TableHead>
+        <TableHead className="hidden text-right sm:table-cell">
+          Annual Fee
+        </TableHead>
+      </TableRow>
+    </TableHeader>
+  );
+
   if (fetchState !== FetchStatus.Success) {
     return (
-      <Table className="my-6">
+      <Table className="my-6 table-fixed">
+        {tableColumns}
         <TableCaption>
           <div className="flex flex-col items-center gap-3">
-            <Skeleton className="h-3.5 w-1/2" />
-            <Skeleton className="h-3 w-3/5" />
+            <Skeleton className="h-4 w-1/2" />
+            <Skeleton className="h-4 w-3/5" />
           </div>
         </TableCaption>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="sm:w-[260px]">
-              <Skeleton className="h-5 w-full" />
-            </TableHead>
-            <TableHead>
-              <Skeleton className="h-5 w-full" />
-            </TableHead>
-            <TableHead className="hidden sm:table-cell">
-              <Skeleton className="h-5 w-full" />
-            </TableHead>
-            <TableHead className="hidden text-right sm:table-cell">
-              <Skeleton className="h-5 w-full" />
-            </TableHead>
-          </TableRow>
-        </TableHeader>
+        {tableHeader}
         <TableBody>
           {Array.from({ length: 8 }).map((_, index) => (
             <TableRow key={index}>
               <TableCell>
-                <Skeleton className="h-5 w-full" />
+                <div className={cardInfoClassName}>
+                  <div className="min-h-[5rem] space-y-1 min-[360px]:min-h-[2.5rem]">
+                    <Skeleton className="h-4 w-full" />
+                    <Skeleton className="h-4 w-3/4" />
+                    <div className="space-y-1 min-[360px]:hidden">
+                      <Skeleton className="h-4 w-3/5" />
+                      <Skeleton className="h-4 w-1/2" />
+                    </div>
+                  </div>
+                  <div className="mt-1 min-h-[3rem] min-[360px]:min-h-[2rem]">
+                    <Skeleton className="h-4 w-1/2" />
+                  </div>
+                </div>
               </TableCell>
-              <TableCell className="space-y-1">
-                <Skeleton className="h-5 w-3/4" />
-                <Skeleton className="h-3 w-full sm:hidden" />
+              <TableCell>
+                <div className="min-h-[5.25rem] sm:min-h-0">
+                  <div className="flex h-5 items-center">
+                    <Skeleton className="h-4 w-3/4" />
+                  </div>
+                  <div className="mt-2 space-y-2 sm:hidden">
+                    <Skeleton className="h-4 w-full" />
+                    <Skeleton className="h-4 w-3/4" />
+                  </div>
+                </div>
               </TableCell>
               <TableCell className="hidden sm:table-cell">
-                <Skeleton className="h-5 w-full" />
+                <div className="space-y-1">
+                  <Skeleton className="h-4 w-3/4" />
+                  <Skeleton className="h-4 w-full" />
+                </div>
               </TableCell>
               <TableCell className="hidden sm:table-cell">
-                <Skeleton className="ml-auto h-5 w-24" />
+                <Skeleton className="ml-auto h-4 w-full" />
               </TableCell>
             </TableRow>
           ))}
@@ -101,31 +138,20 @@ export function MilesCreditCardsTable({ cardLinks }: Props) {
   }
 
   return (
-    <Table className="my-6" data-clarity-unmask="true">
+    <Table className="my-6 table-fixed" data-clarity-unmask="true">
+      {tableColumns}
       <TableCaption>
         Last updated on {updatedAt}. <br />
         <small>
           Earn rates in miles per dollar (mpd) and sign-up bonus miles
           promotions are subject to bank terms and conditions.
+          <br />
+          Minimum income shown is for Singapore citizens/PRs. See individual
+          card pages for foreigner requirements and additional eligibility
+          conditions.
         </small>
       </TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead className="sm:w-[260px]">Credit Card</TableHead>
-          <TableHead>
-            Bonus Miles
-            <div className="font-normal text-muted-foreground sm:hidden">
-              / Earn Rate & Fee
-            </div>
-          </TableHead>
-          <TableHead className="hidden sm:table-cell">
-            Earn Rate (mpd)
-          </TableHead>
-          <TableHead className="hidden text-right sm:table-cell">
-            Annual Fee
-          </TableHead>
-        </TableRow>
-      </TableHeader>
+      {tableHeader}
       <TableBody>
         {creditCards.map((card) => {
           const {
@@ -135,6 +161,7 @@ export function MilesCreditCardsTable({ cardLinks }: Props) {
             previousMilesBonus,
             milesPerDollar,
             annualFee,
+            minimumAnnualIncome,
             link,
           } = card;
 
@@ -146,51 +173,62 @@ export function MilesCreditCardsTable({ cardLinks }: Props) {
           return (
             <TableRow key={id}>
               <TableCell>
-                {internalLink ? (
-                  <Link
-                    href={internalLink}
-                    className="font-medium underline underline-offset-4"
-                  >
-                    {name}
-                  </Link>
-                ) : (
-                  <Anchor
-                    href={link}
-                    isExternal
-                    className="font-medium underline underline-offset-4"
-                  >
-                    {name}
-                  </Anchor>
-                )}
+                <div className={cardInfoClassName}>
+                  {internalLink ? (
+                    <Link
+                      href={internalLink}
+                      className="block font-medium underline underline-offset-4"
+                    >
+                      {name}
+                    </Link>
+                  ) : (
+                    <Anchor
+                      href={link}
+                      isExternal
+                      className="block font-medium underline underline-offset-4"
+                    >
+                      {name}
+                    </Anchor>
+                  )}
+                  {typeof minimumAnnualIncome?.locals === "number" && (
+                    <div className="mt-1 text-xs text-muted-foreground">
+                      Min. income (SG/PR):{" "}
+                      {formatMoney(minimumAnnualIncome.locals)}
+                      /year
+                    </div>
+                  )}
+                </div>
               </TableCell>
 
               <TableCell>
-                <div className="font-medium">
-                  {milesBonus > 0
-                    ? `${milesBonus.toLocaleString()} miles`
-                    : "-"}
-                  {hasPreviousBonus && diff !== 0 && (
-                    <span
-                      className={cn(
-                        "ml-1 font-normal",
-                        isNegative ? "text-primary-text" : "text-green-500",
-                      )}
-                    >
-                      ({isNegative ? "▾" : "▴"}
-                      {Math.abs(diff).toLocaleString()})
-                    </span>
-                  )}
-                </div>
-
-                <div className="mt-2 space-y-1 sm:hidden">
-                  <div className="text-xs">
-                    <span className="text-muted-foreground">Earn: </span>
-                    {milesPerDollar.local} local / {milesPerDollar.overseas}{" "}
-                    overseas mpd
+                <div className="min-h-[5.25rem] sm:min-h-0">
+                  <div className="font-medium">
+                    {milesBonus > 0
+                      ? `${milesBonus.toLocaleString()} miles`
+                      : "-"}
+                    {hasPreviousBonus && diff !== 0 && (
+                      <span
+                        className={cn(
+                          "ml-1 font-normal",
+                          isNegative ? "text-primary-text" : "text-green-500",
+                        )}
+                      >
+                        ({isNegative ? "▾" : "▴"}
+                        {Math.abs(diff).toLocaleString()})
+                      </span>
+                    )}
                   </div>
-                  <div className="text-xs">
-                    <span className="text-muted-foreground">Fee: </span>
-                    {formatMoney(annualFee)}
+
+                  <div className="mt-2 space-y-2 sm:hidden">
+                    <div className="text-xs">
+                      <span className="text-muted-foreground">Earn: </span>
+                      {milesPerDollar.local} local / {milesPerDollar.overseas}{" "}
+                      overseas mpd
+                    </div>
+                    <div className="text-xs">
+                      <span className="text-muted-foreground">Fee: </span>
+                      {formatMoney(annualFee)}
+                    </div>
                   </div>
                 </div>
               </TableCell>
