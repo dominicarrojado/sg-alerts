@@ -1,85 +1,38 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { mkdtemp, mkdir, writeFile, rm, symlink } from "node:fs/promises";
+import {
+  mkdtemp,
+  mkdir,
+  realpath,
+  writeFile,
+  rm,
+  symlink,
+} from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import { startServer, staticFile } from "./server.mjs";
-import { exportHash, validateSnapshot, requireSupport } from "./build.mjs";
-import { apiBase, fixtureResponse, scenarios } from "./fixtures/scenarios.mjs";
+import { apiBase, fixtureKey, startServer, staticFile } from "./server.mjs";
+import { exportHash, validateSnapshot } from "./build.mjs";
+import { loadScenarios, outside, unchanged } from "./scenario.mjs";
+import { bounded } from "./capture.mjs";
 
 async function temporary(t) {
-  const root = await mkdtemp(path.join(os.tmpdir(), "sg-ui-preview-test-"));
+  const root = await realpath(
+    await mkdtemp(path.join(os.tmpdir(), "sg-ui-preview-test-")),
+  );
   t.after(() => rm(root, { recursive: true, force: true }));
   return root;
 }
 
-test("fixtures enforce endpoint/query contracts and represent all income states", () => {
-  const endpoint = `${apiBase}/travel-credit-cards-checker/travel-credit-cards-info`;
-  for (const [scenario, config] of Object.entries(scenarios)) {
-    if (config.group !== "miles") {
-      continue;
-    }
-    const result = fixtureResponse(scenario, endpoint, new URLSearchParams());
-    assert.equal(result.status, config.failure ? 503 : 200);
-    if (!config.failure) {
-      assert.equal(result.body.items[0].id, "dbs-altitude");
-      assert.deepEqual(result.body.items[0].minimumAnnualIncome, config.income);
-      assert.equal(result.body.items[1].minimumAnnualIncome, undefined);
-    }
-  }
-  const travel = `${apiBase}/travel-deals-checker/travel-deals-info`;
-  assert.equal(
-    fixtureResponse(
-      "klook-results",
-      travel,
-      new URLSearchParams("service=klook"),
-    ).body.items.length,
-    2,
-  );
-  assert.equal(
-    fixtureResponse("klook-empty", travel, new URLSearchParams("service=klook"))
-      .body.items.length,
-    0,
-  );
-  assert.ok(
-    fixtureResponse(
-      "klook-last-available",
-      travel,
-      new URLSearchParams("service=klook"),
-    ).body.lastAvailableAt,
-  );
-  for (const query of [
-    "",
-    "service=traveloka",
-    "service=klook&extra=1",
-    "service=klook&service=klook",
-  ]) {
-    assert.equal(
-      fixtureResponse("klook-results", travel, new URLSearchParams(query))
-        .status,
-      404,
-    );
-  }
-  assert.equal(
-    fixtureResponse("miles-income", endpoint, new URLSearchParams("extra=1"))
-      .status,
-    404,
-  );
-});
-
-test("static preview supports prefix and root paths, rejects escape/symlinks, no SPA fallback", async (t) => {
+test("static preview supports prefix/root paths and rejects escapes, symlinks and missing routes", async (t) => {
   const root = await temporary(t);
   const out = path.join(root, "out");
-  await mkdir(path.join(out, "topics/example"), { recursive: true });
-  await writeFile(
-    path.join(out, "topics/example/index.html"),
-    "real exported page",
-  );
+  await mkdir(path.join(out, "example"), { recursive: true });
+  await writeFile(path.join(out, "example/index.html"), "exported page");
   await writeFile(path.join(root, "private.txt"), "outside export");
   await symlink(path.join(root, "private.txt"), path.join(out, "escape.txt"));
   assert.equal(
-    await staticFile(out, "/sg-alerts/topics/example/"),
-    await staticFile(out, "/topics/example/"),
+    await staticFile(out, "/sg-alerts/example/"),
+    await staticFile(out, "/example/"),
   );
   for (const url of [
     "/%2e%2e/private.txt",
@@ -92,49 +45,114 @@ test("static preview supports prefix and root paths, rejects escape/symlinks, no
   }
 });
 
-test("owned loopback server is read-only, diagnoses unmatched fixtures and releases its port", async (t) => {
+test("fixture matching is exact and read-only; cleanup leaves other listeners alone", async (t) => {
   const root = await temporary(t);
   await writeFile(path.join(root, "index.html"), "export");
-  const preview = await startServer(root, "klook-results");
+  const fixtures = [
+    { url: "/example?b=2&a=1", status: 200, body: { items: [] } },
+    { url: "/failure", status: 503, body: { error: "controlled" } },
+  ];
+  const preview = await startServer(root, fixtures);
+  const other = await startServer(root, []);
   try {
     assert.equal(
       await (await fetch(`${preview.origin}/sg-alerts/`)).text(),
       "export",
     );
-    assert.equal(
-      (
-        await fetch(
-          `${preview.origin}${apiBase}/travel-deals-checker/travel-deals-info?service=klook`,
-        )
-      ).status,
-      200,
+    assert.deepEqual(
+      await (await fetch(`${preview.origin}${apiBase}/example?a=1&b=2`)).json(),
+      { items: [] },
     );
+    for (const query of ["", "?a=1", "?a=1&b=2&extra=1", "?a=1&a=1&b=2"]) {
+      assert.equal(
+        (await fetch(`${preview.origin}${apiBase}/example${query}`)).status,
+        404,
+      );
+    }
     assert.equal(
-      (await fetch(`${preview.origin}${apiBase}/unknown`)).status,
-      404,
+      (await fetch(`${preview.origin}${apiBase}/failure`)).status,
+      503,
     );
     assert.equal((await fetch(`${preview.origin}/not-a-route/`)).status, 404);
-    assert.equal(
-      (await fetch(`${preview.origin}${apiBase}/unknown`, { method: "POST" }))
-        .status,
-      405,
-    );
-    assert.equal(
-      (await fetch(`${preview.origin}/`, { method: "PUT" })).status,
-      405,
-    );
+    for (const method of ["POST", "PUT", "DELETE"]) {
+      assert.equal(
+        (await fetch(`${preview.origin}${apiBase}/example`, { method })).status,
+        405,
+      );
+    }
     assert.equal(
       (await fetch(`${preview.origin}/`, { method: "HEAD" })).status,
       200,
     );
-    assert.ok(preview.log.some((entry) => entry.status === 405));
   } finally {
     await preview.close();
   }
-  await assert.rejects(fetch(preview.origin));
+  try {
+    await assert.rejects(fetch(preview.origin));
+    assert.equal((await fetch(other.origin)).status, 200);
+  } finally {
+    await other.close();
+  }
+  assert.throws(
+    () => fixtureKey("https://live.invalid/example"),
+    /local API path/,
+  );
 });
 
-test("build snapshot rejects changed SHA, target, configuration and any changed exported asset", async (t) => {
+test("temporary modules support fixture-free pages, reject malformed input, and detect edits", async (t) => {
+  const root = await temporary(t);
+  const controller = path.join(root, "controller");
+  const target = path.join(root, "target");
+  const out = path.join(target, "out");
+  await mkdir(controller);
+  await mkdir(out, { recursive: true });
+  await writeFile(path.join(out, "index.html"), "export");
+  const file = path.join(root, "scenario.mjs");
+  const good =
+    'export default [{ name: "static", route: "/", fixtures: [], async ready(page) { await page.locator("h1").waitFor(); } }];';
+  await writeFile(file, good);
+  const input = await loadScenarios(file, [controller, target], out);
+  assert.equal(input.scenarios[0].fixtures.length, 0);
+  await unchanged(input);
+  await writeFile(file, `${good}\n// changed`);
+  await assert.rejects(unchanged(input), /changed during/);
+  await assert.rejects(loadScenarios(file, [root], out), /outside controller/);
+  await assert.rejects(loadScenarios("relative.mjs", [], out), /absolute path/);
+  assert.throws(
+    () => outside(path.join(target, "evidence"), [target]),
+    /outside/,
+  );
+  await assert.rejects(
+    loadScenarios(file, [], out, "missing"),
+    /Unknown --scenario/,
+  );
+  for (const [source, error] of [
+    ["export default [];", /nonempty array/],
+    [good.replace('name: "static"', 'name: "../escape"'), /slug/],
+    [
+      good.replace('route: "/"', 'route: "/missing/"'),
+      /missing exported route/,
+    ],
+    [
+      good.replace('route: "/"', 'route: "https://remote.invalid"'),
+      /local route/,
+    ],
+    [good.replace("fixtures: []", "fixtures: {}"), /fixtures must/],
+    [
+      good.replace(
+        "fixtures: []",
+        'fixtures: [{url:"/example",status:101,body:{}}]',
+      ),
+      /explicit status/,
+    ],
+    [good.replace("async ready(page)", "async other(page)"), /ready/],
+  ]) {
+    await writeFile(file, source);
+    await assert.rejects(loadScenarios(file, [], out), error);
+  }
+});
+
+test("build snapshot rejects different SHA, target, configuration or exported assets", async (t) => {
   const root = await temporary(t);
   await writeFile(path.join(root, "index.html"), "unchanged index");
   await writeFile(path.join(root, "chunk.js"), "original");
@@ -153,33 +171,15 @@ test("build snapshot rejects changed SHA, target, configuration and any changed 
     );
   }
   await writeFile(path.join(root, "chunk.js"), "changed");
-  assert.throws(
-    () => validateSnapshot(info, current, digest + "changed"),
-    /Stale/,
-  );
   const changed = await exportHash(root);
   assert.notEqual(changed, digest);
   assert.throws(() => validateSnapshot(info, current, changed), /Stale/);
 });
 
-test("missing feature content yields actionable prerequisites, not substituted routes", async (t) => {
-  const root = await temporary(t);
+test("task-supplied asynchronous readiness cannot wait forever", async () => {
   await assert.rejects(
-    requireSupport(root, "klook"),
-    /Target lacks the Klook route/,
+    bounded(() => new Promise(() => {}), 20, "readiness"),
+    /readiness exceeded/,
   );
-  await mkdir(path.join(root, "app/topics/miles-credit-cards"), {
-    recursive: true,
-  });
-  await writeFile(
-    path.join(
-      root,
-      "app/topics/miles-credit-cards/miles-credit-card-details.tsx",
-    ),
-    "old component",
-  );
-  await assert.rejects(
-    requireSupport(root, "miles"),
-    /Target lacks minimumAnnualIncome/,
-  );
+  assert.equal(await bounded(async () => "ready", 100, "readiness"), "ready");
 });

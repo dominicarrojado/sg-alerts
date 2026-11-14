@@ -1,7 +1,25 @@
 import http from "node:http";
 import { readFile, realpath, stat } from "node:fs/promises";
 import path from "node:path";
-import { apiBase, fixtureResponse, scenarios } from "./fixtures/scenarios.mjs";
+export const apiBase = "/__ui-fixtures";
+
+export function fixtureKey(value) {
+  if (
+    typeof value !== "string" ||
+    !value.startsWith("/") ||
+    value.startsWith("//")
+  ) {
+    throw new Error(
+      "Fixture URL must be a local API path with an optional query, without the fixture base prefix.",
+    );
+  }
+  const url = new URL(value, "http://fixture");
+  if (url.origin !== "http://fixture" || url.hash) {
+    throw new Error("Fixture URL must not contain an origin or fragment.");
+  }
+  url.searchParams.sort();
+  return url.pathname + url.search;
+}
 
 const types = {
   ".html": "text/html",
@@ -43,10 +61,7 @@ export async function staticFile(root, rawPath) {
   return file;
 }
 
-export async function startServer(outDir, scenario) {
-  if (!scenarios[scenario]) {
-    throw new Error(`Unknown scenario: ${scenario}`);
-  }
+export async function startServer(outDir, fixtures) {
   const log = [];
   const server = http.createServer(async (req, res) => {
     let status = 500;
@@ -60,11 +75,15 @@ export async function startServer(outDir, scenario) {
         res.writeHead(status);
         res.end("Read-only preview: mutation requests are disabled.");
       } else if (url.pathname.startsWith(`${apiBase}/`)) {
-        const fixture = fixtureResponse(
-          scenario,
-          url.pathname,
-          url.searchParams,
-        );
+        const key = fixtureKey(url.pathname.slice(apiBase.length) + url.search);
+        const fixture = fixtures.find(
+          (item) => fixtureKey(item.url) === key,
+        ) || {
+          status: 404,
+          body: {
+            error: `No fixture for ${key}. Add the exact endpoint/query to the task-local scenario; no live API fallback is allowed.`,
+          },
+        };
         status = fixture.status;
         res.setHeader("Content-Type", "application/json");
         res.writeHead(status);

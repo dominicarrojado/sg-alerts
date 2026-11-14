@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 import { existsSync } from "node:fs";
 import { readFile, readdir, realpath, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { apiBase } from "./fixtures/scenarios.mjs";
+import { apiBase } from "./server.mjs";
 
 const marker = ".ui-preview-build.json";
 export async function exportHash(root) {
@@ -27,30 +27,6 @@ export async function exportHash(root) {
   }
   await visit(root);
   return hash.digest("hex");
-}
-export async function requireSupport(target, group) {
-  if (group === "klook") {
-    if (
-      !existsSync(path.join(target, "app/topics/klook-travel-deals/page.tsx"))
-    ) {
-      throw new Error(
-        "Target lacks the Klook route. Select a current Klook feature head or a base containing the merged feature.",
-      );
-    }
-  } else if (group === "miles") {
-    const source = await readFile(
-      path.join(
-        target,
-        "app/topics/miles-credit-cards/miles-credit-card-details.tsx",
-      ),
-      "utf8",
-    );
-    if (!source.includes("minimumAnnualIncome")) {
-      throw new Error(
-        "Target lacks minimumAnnualIncome rendering. Select a current income feature head or a base containing the merged feature.",
-      );
-    }
-  }
 }
 export function validateSnapshot(info, current, hash) {
   if (

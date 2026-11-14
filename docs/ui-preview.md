@@ -1,254 +1,223 @@
-# Fixture-backed UI preview and screenshots
+# Temporary fixture-backed UI screenshots
 
-This recipe renders the **real statically exported application** with synthetic,
-read-only API responses. Images establish visual rendering, **not live API
-compatibility**, current deals, or bank eligibility requirements. Production
-components, API hooks, contracts, and configuration are unchanged.
+Use the real exported application, not copied components. The repository provides
+the preview/capture machinery; **the agent supplies temporary task-specific data
+and checks**. Any exported page can be inspected without adding a supported group
+to the tool. Images establish **fixture-backed visual rendering—not live API
+compatibility**, current promotions, or bank requirements.
 
-## Prerequisites and worktree safety
+## Agent rules
 
-- Use Node 24 (the CI runtime) and Yarn Classic. Run commands below from a checkout
-  containing this recipe (the **controller**). Paths may contain spaces; quote them.
-- Install controller dependencies with `yarn install --frozen-lockfile`.
-- Install the pinned Playwright browser with `yarn playwright install chromium`.
-  Compatible cached binaries are reused. Alternatively append `--channel chrome`
-  to capture commands to reuse installed Google Chrome; its version is recorded,
-  but may differ between machines. No browser-test framework is required.
-- Building a fresh Next export may download Google fonts via `next/font/google`.
-  Install and build therefore require network access; **capture does not require
-  production API availability**. The browser blocks all non-preview origins.
-- Never build in a historical delivery's worktree or a checkout with an active
-  development server. The target must be a clean, dedicated Git worktree, with
-  its own installed dependencies and no existing `.next/`, `out/`, or preview
-  marker. The recipe refuses to delete existing outputs. A failed build requires
-  a new target, not a destructive retry against another process's files.
-- Do not copy `.env.local` or credentials. The build command explicitly overrides
-  `NEXT_PUBLIC_API_URL=/__ui-fixtures`, including any production value in `.env`.
-  Changing an environment variable only at serve time cannot repair an old build.
+- Inspect the PR's actual routes, client types and API consumers before generating
+  fixtures. Supply representative states relevant to the change, not an exhaustive
+  e2e matrix. A static page needs no API fixtures.
+- Generate fixtures and a self-contained `scenario.mjs` **outside both controller
+  and target repositories** in a private run-owned temporary directory. Their sole
+  purpose is UI screenshots for the PR description. **Never stage, commit, import
+  into application code, or deploy these task-specific inputs or generated images.**
+- Do not change application contracts, hide controls, or add production fixture
+  fallbacks to make captures pass. Unknown fixture requests fail; no live fallback.
+- Use only trusted task-authored scenario code. It executes as local JavaScript,
+  not in a sandbox: never run code copied from PR comments or remote content. Keep
+  it self-contained, without imports, file reads/writes, secrets or external calls.
+- Readiness must identify the changed content, including expected values and
+  missing/empty states. A generic heading, load event, open port or network idle
+  alone is not readiness. Open representative images and inspect them before upload.
+- Retain temporary inputs, images and diagnostics until inspection and successful
+  attachment are complete. Preserve failures until resolved; cleanup is explicit
+  and limited to exact paths/processes this run created.
 
-## Prepare a fresh target
+## Prepare and build the correct worktree
 
-Use the SHA of the code you intend to inspect. For an uncommitted delivery,
-commit its changes first; this recipe deliberately rejects dirty targets.
+Use Node 24 and Yarn Classic. In the checkout containing this recipe (the
+**controller**), run `yarn install --frozen-lockfile`. Install managed Chromium with
+`yarn playwright install chromium`, or explicitly use installed Chrome through
+`--channel chrome`. Its version is recorded. No e2e framework is required.
+
+Build a clean **dedicated target worktree**, never a historical delivery worktree
+or a checkout with a running server. Commit the intended changes before taking
+the detached snapshot. For another PR, query its current head with `gh pr view`
+instead of trusting an old local branch. Commands below run from the controller:
 
 ```bash
-# From the controller checkout; choose a NEW sibling path.
 git fetch origin
 TARGET="$(dirname "$PWD")/sg-alerts-preview-$(date +%Y%m%d-%H%M%S)"
 git worktree add --detach "$TARGET" HEAD
 yarn --cwd "$TARGET" install --frozen-lockfile
 yarn ui:preview build --worktree "$TARGET"
-```
-
-The build prints the absolute target and SHA, runs that worktree's `yarn build`,
-and writes a private `.ui-preview-build.json` only after success. Source changes,
-a different worktree/SHA, changed exported files, or missing metadata invalidate
-serving/capture. Build has a ten-minute deadline; interruption/timeout kills only
-its owned build process group and leaves no success marker. It does not delete
-the target or failed build outputs.
-
-### Checking unmerged Klook and income changes
-
-The recipe does not supply missing pages or income rendering. Until both features
-are merged, check each current PR head independently. Re-query heads immediately
-before making the detached targets; do not use old local feature branches.
-
-```bash
-git fetch origin
-KLOOK_SHA="$(gh pr view 49 --json headRefOid --jq .headRefOid)"
-MILES_SHA="$(gh pr view 50 --json headRefOid --jq .headRefOid)"
-KLOOK_TARGET="$(dirname "$PWD")/sg-alerts-preview-klook-$(date +%Y%m%d-%H%M%S)"
-MILES_TARGET="$(dirname "$PWD")/sg-alerts-preview-miles-$(date +%Y%m%d-%H%M%S)"
-git worktree add --detach "$KLOOK_TARGET" "$KLOOK_SHA"
-git worktree add --detach "$MILES_TARGET" "$MILES_SHA"
-yarn --cwd "$KLOOK_TARGET" install --frozen-lockfile
-yarn --cwd "$MILES_TARGET" install --frozen-lockfile
-yarn ui:preview build --worktree "$KLOOK_TARGET"
-yarn ui:preview build --worktree "$MILES_TARGET"
-```
-
-Run these commands sequentially; builds use the target's application dependencies,
-while capture uses the controller's pinned Playwright. No recipe files need to be
-copied into the target. Agents must run heavyweight builds through their shared
-host validation queue when their workflow requires it.
-
-## Capture and inspect
-
-Create an evidence parent **outside disposable build outputs**. Each capture
-requires a new child directory and will never overwrite an earlier run.
-
-```bash
+umask 077
+RUN="$(mktemp -d "${TMPDIR:-/tmp}/sg-alerts-ui-inputs.XXXXXX")"
 EVIDENCE="$(mktemp -d "${TMPDIR:-/tmp}/sg-alerts-ui-evidence.XXXXXX")"
-yarn ui:preview capture --worktree "$KLOOK_TARGET" --group klook --output "$EVIDENCE/klook"
-yarn ui:preview capture --worktree "$MILES_TARGET" --group miles --output "$EVIDENCE/miles"
 ```
 
-For a target containing both merged features, use `--worktree "$TARGET"` for both
-commands. Add `--channel chrome` if intentionally using installed Chrome instead
-of managed Chromium.
+The build uses the target's dependencies and overrides
+`NEXT_PUBLIC_API_URL=/__ui-fixtures` **at build time**, including production `.env`
+values. Do not copy credentials or `.env.local`. Dependencies and Google fonts
+(`next/font/google`) can require network during setup/build; capture does not
+require the production API. Agent-managed heavyweight builds must use their
+required shared validation queue.
 
-The bounded runner checks:
+Existing `.next/`, `out/`, or `.ui-preview-build.json` cause refusal, not deletion.
+The successful build records target/SHA and export hashes. Dirty sources, changed
+SHA/assets or missing metadata invalidate reuse. Build is bounded to ten minutes;
+interruption stops only its own process group. After failure, inspect diagnostics
+and use a new target rather than deleting another process's outputs.
 
-| Group   | Views/states                                                                                                                                                                                  |
-| ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `klook` | Results, empty, last-available empty, controlled API failure; Travel-category → prefixed Klook link, refresh, browser Back                                                                    |
-| `miles` | Comparison and DBS Altitude detail; both income amounts + notes, local-only, foreigner-only, notes-only, absent income, controlled API failure; card link, refresh, Back to All, browser Back |
+## Supply a task-local scenario
 
-Each state runs at 1366×900 and 375×812 in light theme. Results/income also run
-at the 640px breakpoint in dark theme. Locale is `en-GB`, timezone
-`Asia/Singapore`, reduced motion enabled, and service workers disabled.
+Write `$RUN/scenario.mjs` with your editor/file-write tool. This minimal **static
+page example** is runnable against this repository without invented API data:
 
-Readiness requires the expected API fixture response **and rendered content**:
-fixture promotion title or empty message; income in the correct comparison row;
-detail income heading, amounts/`Not available`, and notes. It does not treat an
-open port, load event, or network idle as readiness. Failure scenarios must reject
-results readiness. Navigation is bounded to 30 seconds, individual readiness waits
-to 15 seconds, and the run to five minutes (plus bounded diagnostic/cleanup time).
+```js
+export default [
+  {
+    name: "about",
+    route: "/about/",
+    fixtures: [],
+    async ready(page) {
+      await page.getByRole("heading", { name: "About", exact: true }).waitFor();
+      await page
+        .getByText("Learn more about SG Alerts and why it was created.", {
+          exact: true,
+        })
+        .waitFor();
+    },
+  },
+];
+```
 
-Outputs include full-page PNGs, focused income PNGs, and `fixture-report.json`
-with SHA, absolute worktree, command, browser version, viewport/theme, request
-logs, intentional external blocks, and errors. Failures retain diagnostic HTML
-and a screenshot when obtainable. A nonzero exit is never screenshot success.
+Each scenario has a unique lowercase slug `name`, an unprefixed application
+`route` (query/fragment allowed), `fixtures`, and `ready(page)`. For API-backed
+pages, populate `fixtures` with objects containing `url` (API path and exact query,
+**without** `/__ui-fixtures`), explicit HTTP `status`, and JSON `body`, derived
+from the actual consuming code. Query-key order is normalized; extra/missing or
+duplicate query values do not silently match. Every declared fixture must be
+consumed with its expected status during initial readiness: list only required
+reads, including shared page reads when needed. Mutation methods are rejected.
 
-**Open representative PNGs, do not just list them.** With an agent, use its image
-reader; locally open them in an image viewer, for example on macOS:
+Supply different named scenarios for relevant results, empty, missing-data or
+error states. Errors must be intentional fixture statuses with checks for their
+actual rendered outcome. Do not let an error screenshot stand in for results.
+
+Optional `navigate(page)` verifies links, refresh, Back and URL restoration using
+normal Playwright APIs; optional `focus` is a CSS/Playwright selector for a focused
+image in addition to the full-page image. Focused capture scrolls the element to
+the top to avoid viewport-bottom sticky controls, without hiding or restyling them.
+Keep callbacks asynchronous/cooperative: no synchronous blocking loops. The runner
+bounds readiness/navigation and closes the browser on the overall deadline; it
+does not sandbox arbitrary executable code.
+
+## Capture, serve, inspect
 
 ```bash
-open "$EVIDENCE/klook/fixture-klook-results-results-375-light.png"
-open "$EVIDENCE/klook/fixture-klook-empty-results-1366-light.png"
-open "$EVIDENCE/miles/fixture-miles-income-results-1366-light.png"
-open "$EVIDENCE/miles/fixture-miles-income-detail-375-light-income.png"
-open "$EVIDENCE/miles/fixture-miles-notes-only-detail-1366-light-income.png"
+yarn ui:preview capture --worktree "$TARGET" --scenario-file "$RUN/scenario.mjs" --output "$EVIDENCE/capture"
+# Optional: append --channel chrome to reuse installed Chrome, or --dark to
+# include a 640px dark breakpoint view. --scenario <name> selects one state.
+yarn ui:preview serve --worktree "$TARGET" --scenario-file "$RUN/scenario.mjs" --scenario about
 ```
 
-Inspect desktop/mobile wrapping, income notes, missing amounts, readable dark
-theme, stacked tiles below 640px, subscription-button overlap, and unintended
-horizontal overflow. Record filenames, exact commands, observed results, and
-limitations in delivery evidence. The runner does **not** assert human visual
-approval or use pixel baselines.
+Capture checks the scenario shape and exported routes before opening a browser.
+Defaults are 1366×900 and 375×812, light theme, `en-GB`, `Asia/Singapore`, reduced
+motion and blocked service workers. Navigation is bounded to 30 seconds, initial
+readiness (task check, fonts/images, fixture responses) to 15 seconds, task
+navigation checks to 30 seconds, and the entire run to five minutes plus bounded
+diagnostics/cleanup. There is no automatic retry or overwrite of evidence.
 
-## Interactive serve and production paths
+Capture blocks non-preview origins and mutation requests, records intentional
+external blocks separately, and fails on unexpected local responses/runtime
+errors. Browser-cancelled requests (`net::ERR_ABORTED`, including Next route/chunk
+prefetches cancelled during navigation) are retained as diagnostics rather than
+network failures; rendered content, required fixtures and assets must still pass
+readiness. It writes full/focused PNGs and `fixture-report.json` with exact invocation,
+target SHA, scenario path/SHA-256, browser, viewport/theme, requests and results.
+Changed scenario inputs reject the run. Failures retain diagnostic HTML and an
+image when obtainable; nonzero exit is never capture success.
+
+Serve prints its OS-assigned loopback URL; Ctrl+C closes only that server. Restart
+after editing the input. Interactive serve does not block external browser
+requests: do not follow external links, submit forms or use it as network-isolated
+evidence. Capture is the isolated path.
+
+Production `InternalAnchor` links prefix `/sg-alerts`; some Next links remain
+root-relative. The server accepts both forms and their assets without rewriting
+hrefs, changing production `basePath`, or using home-page fallbacks. Check the
+actual links/refresh/Back for your changed page; this is not certification of the
+hosting provider's entire routing configuration.
+
+**Open images**, using the agent image reader or an image viewer, for example:
 
 ```bash
-yarn ui:preview serve --worktree "$KLOOK_TARGET" --scenario klook-results
-# Or:
-yarn ui:preview serve --worktree "$MILES_TARGET" --scenario miles-income
+open "$EVIDENCE/capture/fixture-about-1366-light.png"  # macOS example
+open "$EVIDENCE/capture/fixture-about-375-light.png"
 ```
 
-The foreground server prints an OS-assigned loopback URL. Open these paths on
-that exact origin:
+Inspect changed values, wrapping, narrow layouts, empty/error messages, overflow,
+dark contrast and sticky-control overlap. Record exact commands, image filenames,
+scenario hash, observations and limitations. Do not mark a PR visually verified
+merely because the capture command passed.
 
-- `/sg-alerts/topics/klook-travel-deals/`
-- `/sg-alerts/categories/travel/`
-- `/sg-alerts/topics/miles-credit-cards/`
-- `/sg-alerts/topics/miles-credit-cards/dbs-altitude/`
+## Attach to the PR description, then clean up
 
-`InternalAnchor` adds `/sg-alerts` in production; other pages use root-relative
-Next links. This server accepts both existing forms, including local assets,
-without changing hrefs, configuring production `basePath`, or returning the home
-page for missing routes. Following a root-relative Next link may leave the prefix;
-that is existing application behavior, not a preview rewrite. This verifies
-preview navigation, not the hosting provider's entire routing configuration.
-
-Scenarios: `klook-results`, `klook-empty`, `klook-last-available`, `klook-failure`,
-`miles-income`, `miles-local-only`, `miles-foreigner-only`, `miles-notes-only`,
-`miles-missing`, `miles-failure`. Restart serving to change scenario. Only declared
-GET/HEAD fixture endpoints are supported; unknown requests get a diagnostic 404,
-and mutation methods get 405. Synthetic external links use `example.invalid`.
-Interactive serving does not intercept external browser requests: use capture for
-network-isolated rendering and do not follow external links or submit forms.
-
-## Diagnostics and cleanup
-
-- **Missing browser:** install managed Chromium or explicitly use installed Chrome.
-- **Missing feature:** select the appropriate current PR head, not an older base.
-- **Missing data:** inspect fixture request path/query and readiness diagnostics.
-  No live-API fallback occurs.
-- **Font/build failure:** read build output, restore required build network access,
-  and use a fresh target. Do not label it a capture failure.
-- **Stale/dirty build:** create a new clean target and rebuild; do not reuse `out/`
-  from a normal production build.
-- **Port ownership:** no fixed listener is required or reused. Capture always closes
-  its owned browser/server on success/failure/interruption. Ctrl+C stops the
-  foreground serve process. Never use `killall`, port-based killing, or stop an
-  existing development server. No process or temp-file sweeping is performed.
-
-After preserving evidence and confirming you no longer need these dedicated
-targets, remove only the exact worktrees you created. The marker is deliberately
-untracked; remove that exact file first. Git refuses removal if other untracked
-or modified files remain: inspect them rather than add `--force`.
+Label each image **fixture-backed visual rendering—not live API compatibility
+evidence** and identify the route/state. Prepare the complete description in an
+external body file, preserving managed markers and existing content as required
+by the delivery workflow. Reference the chosen PNG in that body and attach it:
 
 ```bash
-rm "$KLOOK_TARGET/.ui-preview-build.json"
-rm "$MILES_TARGET/.ui-preview-build.json"
-git worktree remove "$KLOOK_TARGET"
-git worktree remove "$MILES_TARGET"
+gh pr edit "$PR" --body-file "$EVIDENCE/pr-body.md" --attach "$EVIDENCE/capture/fixture-about-375-light.png#Fixture-backed About mobile rendering; not live API evidence"
+gh pr view "$PR" --json body --jq .body
 ```
 
-For a failed build there may be no marker: skip its `rm` command. Leave evidence
-until its consumer has inspected/copied it; the recipe never deletes screenshots,
-logs, or unrelated temporary files automatically.
+Set `$PR` to the actual PR URL. Verify the body contains hosted image references,
+not temporary local paths. A nonzero upload can still update the PR partially:
+inspect first, retry only missing attachments with a reconciled body, and preserve
+inputs/images/logs if upload is unresolved. Follow the owning workflow's evidence
+phase and safety scans; this utility never posts to GitHub automatically.
 
-## Validation and delivery workflow
+Only after inspection and successful attachment, remove the exact run-owned
+inputs and disposable target if no longer needed. Example for the single-file
+scenario above:
+
+```bash
+rm "$RUN/scenario.mjs"
+rmdir "$RUN"
+rm "$TARGET/.ui-preview-build.json"
+git worktree remove "$TARGET"
+```
+
+Skip missing-marker removal after failed builds. Git refuses dirty worktree
+removal: inspect rather than use `--force`. Retain evidence until its consumer has
+copied/inspected it; remove only individually identified run-created files when
+finished. Never sweep temp directories, use `killall`, kill by port, or interfere
+with an existing listener. The runner always closes its own browser/server.
+
+## Diagnostics and validation
+
+Missing browser: install Chromium or select installed Chrome. Missing route:
+choose the intended current feature SHA and rebuild. Missing fixture: inspect the
+exact endpoint/query and consumer. Stale export: use a fresh clean target. Font
+download failure: restore required build network access. Failed readiness: inspect
+the changed-content check and preserved report/image/HTML, not just server health.
 
 ```bash
 yarn test:ui-preview
 yarn lint && yarn test && yarn build
 ```
 
-This is a small preview/capture utility, not a broad e2e suite. Keep fixtures in
-`scripts/ui-preview/fixtures/` synchronized with consumed client response shapes.
-They are not imported by the application or included in the static export.
-
-OpenCode reads browser recipes from the **PR base revision**. This new recipe is
-eligible for later deliveries **after merge**; introducing it does not retroactively
-verify historical delivery acceptance or authorize resuming those sessions. Its
-own implementation can be explicitly exercised against isolated current PR heads.
-
-### Implementation verification (14 November 2026)
-
-Both PR heads were re-queried before verification: Klook at
-`f64091fe4773607e54330f8c3f377d8071dd6a67`, income at
-`e392eb1a84ceaa9720e566edb06ad82a3dfd08ab`. The commands above were exercised using
-`KLOOK_TARGET=/Users/dominic/dominic/sg-alerts-preview-klook-recipe` and
-`MILES_TARGET=/Users/dominic/dominic/sg-alerts-preview-miles-recipe`, Node 24.22.0,
-Yarn 1.22.22, and installed Chrome 157.0.8103.79. Both fixture builds passed.
-
-```bash
-yarn ui:preview capture --worktree "$KLOOK_TARGET" --group klook --channel chrome --output "$EVIDENCE/klook"
-yarn ui:preview capture --worktree "$MILES_TARGET" --group miles --channel chrome --output "$EVIDENCE/miles-focused"
-```
-
-Both complete groups passed, including prefix/root navigation, reload/Back,
-controlled API failures, and negative results-readiness checks. Representative
-images were **opened and visually inspected**, not merely generated:
-
-- Klook results at 1366px/375px: readable fixture rows, mobile validity placement,
-  update caption and page copy; 640px dark results also readable.
-- Klook empty desktop and last-available mobile: expected messages rendered.
-- Miles comparison desktop/mobile: income under the DBS name, no added column,
-  missing-income row without a summary, readable wrapping.
-- Focused income images: both amounts and notes, local-only, foreigner-only,
-  notes-only, and absent amounts rendered correctly; narrow tiles stack and the
-  640px dark income section is readable.
-
-Full-page images preserve the application's existing sticky Subscribe button,
-which can overlay body copy at the current viewport bottom. The focused capture
-scrolls the income section to the viewport top so that its amounts/notes are not
-covered; it does not hide the button or change application styles. The initial
-overlapped focused image was retained separately and the complete miles group was
-rerun into a new directory. These observations are fixture-backed rendering
-evidence only; they do not certify live API compatibility or retroactively change
-the historical deliveries' acceptance status.
+OpenCode reads browser recipes from the **PR base revision**. This recipe becomes
+eligible for later deliveries after merge; it does not retroactively verify
+historical delivery acceptance. Its own revision is validated explicitly against
+real static and API-backed pages using temporary, uncommitted inputs.
 
 ### Reusable summary for the opencode-config improvement session
 
-SG Alerts now supplies `yarn ui:preview build|serve|capture --worktree <clean target>`.
-Install controller dependencies and Chromium (or select installed Chrome), build
-a fresh dedicated target with the recipe's fixture API override, then capture
-`--group klook|miles --output <new directory>`. The runner waits for actual fixture
-content, checks prefixed/root-relative navigation, and captures desktop/mobile
-plus a dark breakpoint view with bounded waits and owned-resource cleanup. Open
-the PNGs and record observations. Label evidence **fixture-backed visual rendering,
-not live API compatibility**. Read the recipe from the delivery base after merge;
-do not treat newly added recipes as pre-publication acceptance for their own PR.
+Build the correct clean target with `yarn ui:preview build --worktree <target>`.
+Agents generate a self-contained external `.mjs` scenario from the task's actual
+routes/types/API consumers, never commit it, and run `capture --scenario-file
+<file> --output <new external directory>`. The runner supplies safe static/API
+serving, prefix handling, bounded desktop/mobile capture and diagnostics; the
+agent supplies meaningful content readiness/navigation checks. Open images,
+record observations, attach them to the PR description as fixture-backed rendering
+(not live API compatibility), verify hosted references, then clean up only owned
+temporary inputs. Preserve failures until resolved. Use the base-revision recipe
+after merge; no opencode-config changes are included here.

@@ -1,231 +1,54 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, realpath, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { startServer } from "./server.mjs";
-import {
-  apiBase,
-  scenarios,
-  klookRoute,
-  milesRoute,
-  detailRoute,
-  dealTitle,
-  incomeNote,
-} from "./fixtures/scenarios.mjs";
+import { apiBase, fixtureKey, startServer } from "./server.mjs";
+import { outside, unchanged } from "./scenario.mjs";
 
-async function visible(locator) {
-  await locator.waitFor({ state: "visible", timeout: 15000 });
-}
-function requireCheck(condition, message) {
-  if (!condition) {
-    throw new Error(message);
-  }
-}
-async function contentReady(page, scenario, route) {
-  const config = scenarios[scenario];
-  if (config.failure) {
-    await visible(page.getByRole("heading", { level: 1 }));
-    await page
-      .locator(".animate-pulse")
-      .first()
-      .waitFor({ state: "hidden", timeout: 15000 });
-    requireCheck(
-      (await page.locator("table").count()) === 0,
-      "Failure scenario still displays a data table.",
-    );
-    requireCheck(
-      (await page
-        .getByText("Minimum Annual Income", { exact: true })
-        .count()) === 0,
-      "Failure scenario unexpectedly displays income.",
-    );
-    return;
-  }
-  if (config.group === "klook") {
-    await visible(
-      page.getByRole("heading", { name: "Klook Travel Deals", exact: true }),
-    );
-    if (scenario === "klook-results") {
-      await visible(page.getByRole("link", { name: dealTitle, exact: true }));
-      await visible(page.getByText(/^Last updated on /));
-    } else if (scenario === "klook-empty") {
-      await visible(
-        page.getByText("No travel deals currently available.", { exact: true }),
-      );
-    } else {
-      await visible(page.getByText(/^Last travel deal was spotted on /));
-    }
-    await visible(
-      page.getByRole("link", { name: "Subscribe Now", exact: true }),
-    );
-  } else if (route === milesRoute) {
-    const row = page.getByRole("row").filter({
-      has: page.getByRole("link", {
-        name: "DBS Altitude Visa Signature Card",
-        exact: true,
+export async function bounded(task, milliseconds, label) {
+  let timer;
+  try {
+    return await Promise.race([
+      task(),
+      new Promise((_, reject) => {
+        timer = setTimeout(
+          () =>
+            reject(
+              new Error(`${label} exceeded ${milliseconds / 1000} seconds.`),
+            ),
+          milliseconds,
+        );
       }),
-    });
-    await visible(row);
-    const summary = row.getByText(/^Min\. income \(SG\/PR\):/);
-    if (config.income?.locals !== undefined) {
-      await visible(
-        row.getByText(
-          `Min. income (SG/PR): S$${config.income.locals.toLocaleString("en-US")}/year`,
-          { exact: true },
-        ),
-      );
-    } else {
-      requireCheck(
-        (await summary.count()) === 0,
-        "Unexpected local income summary for missing amount.",
-      );
-    }
-    const missingRow = page.getByRole("row").filter({
-      hasText: "Citi PremierMiles Card — synthetic long-name wrapping example",
-    });
-    await visible(missingRow);
-    requireCheck(
-      (await missingRow.getByText(/^Min\. income/).count()) === 0,
-      "Missing-income row has a summary.",
-    );
-    const headers = page.getByRole("columnheader", { includeHidden: true });
-    requireCheck(
-      (await headers.count()) === 4,
-      "Comparison no longer has its four existing columns.",
-    );
-  } else {
-    const heading = page.getByRole("heading", {
-      name: "Minimum Annual Income",
-      exact: true,
-    });
-    await visible(heading);
-    const section = heading.locator("..");
-    for (const [label, amount] of [
-      ["Singapore Citizens / PRs", config.income?.locals],
-      ["Foreigners", config.income?.foreigners],
-    ]) {
-      const tile = section.getByText(label, { exact: true }).locator("..");
-      const expected =
-        typeof amount === "number"
-          ? `S$${amount.toLocaleString("en-US")} / year`
-          : "Not available";
-      await visible(tile.getByText(expected, { exact: true }));
-    }
-    if (config.income?.notes) {
-      await visible(section.getByText(incomeNote, { exact: true }));
-    }
+    ]);
+  } finally {
+    clearTimeout(timer);
   }
 }
 
-async function navigate(page, origin, route, scenario) {
-  const endpoint =
-    scenarios[scenario].group === "klook"
-      ? "/travel-deals-checker/travel-deals-info"
-      : "/travel-credit-cards-checker/travel-credit-cards-info";
-  const [response] = await Promise.all([
-    page.waitForResponse(
-      (response) =>
-        new URL(response.url()).pathname === `${apiBase}${endpoint}`,
-      { timeout: 15000 },
-    ),
-    page.goto(`${origin}/sg-alerts${route}`, {
-      waitUntil: "domcontentloaded",
-      timeout: 30000,
-    }),
-  ]);
-  requireCheck(
-    response.status() === (scenarios[scenario].failure ? 503 : 200),
-    `Unexpected fixture status ${response.status()}`,
-  );
-  // Response completion alone is insufficient: await the React-rendered fixture content.
-  await contentReady(page, scenario, route);
-  await page.waitForFunction(
-    () =>
-      document.fonts.status === "loaded" &&
-      [...document.images].every(
-        (image) =>
-          image.complete &&
-          (image.naturalWidth > 0 || !image.getAttribute("src")),
-      ),
-    undefined,
-    { timeout: 15000 },
-  );
-  requireCheck(
-    await page.evaluate(
-      () => document.documentElement.scrollWidth <= window.innerWidth + 1,
-    ),
-    "Page-level horizontal overflow detected.",
-  );
-}
-
-async function navigationCheck(page, origin, group) {
-  if (group === "klook") {
-    await page.goto(`${origin}/sg-alerts/categories/travel/`, {
-      waitUntil: "domcontentloaded",
-    });
-    const card = page
-      .locator("div.rounded-lg")
-      .filter({
-        has: page.getByText("🌏 Travel Deals (Klook)", { exact: true }),
-      })
-      .last();
-    const link = card.getByRole("link", { name: "View Details", exact: true });
-    await visible(link);
-    requireCheck(
-      (await link.getAttribute("href")) === `/sg-alerts${klookRoute}`,
-      "Klook category link lost its production prefix.",
-    );
-    await link.click();
-    await visible(page.getByRole("link", { name: dealTitle, exact: true }));
-    await page.reload({ waitUntil: "domcontentloaded" });
-    await contentReady(page, "klook-results", klookRoute);
-    await page.goBack({ waitUntil: "domcontentloaded" });
-    await visible(
-      page.getByRole("heading", { name: "Travel in Singapore", exact: true }),
-    );
-  } else {
-    await navigate(page, origin, milesRoute, "miles-income");
-    await page
-      .getByRole("link", {
-        name: "DBS Altitude Visa Signature Card",
-        exact: true,
-      })
-      .click();
-    await contentReady(page, "miles-income", detailRoute);
-    await page.reload({ waitUntil: "domcontentloaded" });
-    await contentReady(page, "miles-income", detailRoute);
-    await page
-      .getByRole("link", {
-        name: "Back to All Miles Credit Cards",
-        exact: true,
-      })
-      .click();
-    await contentReady(page, "miles-income", milesRoute);
-    await page.goBack({ waitUntil: "domcontentloaded" });
-    await contentReady(page, "miles-income", detailRoute);
-  }
-}
-
-export async function capture(info, options) {
+export async function capture(info, input, options, roots) {
   const { chromium } = await import("playwright");
-  const selected = Object.keys(scenarios).filter(
-    (name) => scenarios[name].group === options.group,
+  const requested = path.resolve(options.output);
+  const output = outside(
+    path.join(
+      await realpath(path.dirname(requested)),
+      path.basename(requested),
+    ),
+    roots,
   );
-  requireCheck(selected.length > 0, "--group must be klook or miles.");
-  const output = path.resolve(options.output);
-  // Never replace prior evidence; every invocation owns a fresh directory.
-  await mkdir(output, { recursive: false });
+  await mkdir(output); // Never overwrite an earlier run's evidence.
   const report = {
     label: "Fixture-backed visual rendering only; NOT live API compatibility",
     ...info,
     command: process.argv,
+    scenarioFile: input.file,
+    scenarioSha256: input.sha256,
+    locale: "en-GB",
+    timezone: "Asia/Singapore",
     results: [],
+    status: "failed",
     observations:
-      "Images must be opened and visually inspected; generation alone is not visual acceptance.",
+      "Open representative images and record visual observations before attaching; generation alone is not visual acceptance.",
   };
-  let browser;
-  let activeServer;
-  let activePage;
-  let current;
-  let interrupted;
+  let browser, server, page;
+  let interrupted = false;
   const shutdown = async () => {
     interrupted = true;
     try {
@@ -245,201 +68,233 @@ export async function capture(info, options) {
       timeout: 30000,
     });
     report.browser = browser.version();
-    for (const scenario of selected) {
-      activeServer = await startServer(
+    for (const scenario of input.scenarios) {
+      await unchanged(input);
+      server = await startServer(
         path.join(info.worktree, "out"),
-        scenario,
+        scenario.fixtures,
       );
       const variants = [
         { width: 1366, height: 900, theme: "light" },
         { width: 375, height: 812, theme: "light" },
       ];
-      if (scenario === "miles-income" || scenario === "klook-results") {
+      if (options.dark) {
         variants.push({ width: 640, height: 900, theme: "dark" });
       }
       for (const variant of variants) {
-        requireCheck(
-          !interrupted,
-          "Capture interrupted or exceeded the five-minute deadline.",
-        );
-        const context = await browser.newContext({
-          viewport: { width: variant.width, height: variant.height },
-          colorScheme: variant.theme,
-          locale: "en-GB",
-          timezoneId: "Asia/Singapore",
-          reducedMotion: "reduce",
-          serviceWorkers: "block",
-        });
-        current = {
-          scenario,
+        if (interrupted) {
+          throw new Error(
+            "Capture interrupted or exceeded the five-minute deadline.",
+          );
+        }
+        const result = {
+          name: scenario.name,
+          route: scenario.route,
           ...variant,
           blockedExternal: [],
           errors: [],
-          pageErrors: [],
-          localFailures: [],
-          screenshots: [],
+          requests: [],
+          status: "failed",
         };
-        report.results.push(current);
+        report.results.push(result);
+        const context = await browser.newContext({
+          viewport: { width: variant.width, height: variant.height },
+          colorScheme: variant.theme,
+          locale: report.locale,
+          timezoneId: report.timezone,
+          reducedMotion: "reduce",
+          serviceWorkers: "block",
+        });
         await context.addInitScript(
           (theme) => localStorage.setItem("theme", theme),
           variant.theme,
         );
         await context.route("**/*", async (route) => {
-          const url = new URL(route.request().url());
-          if (url.origin !== activeServer.origin) {
-            if (current.blockedExternal.length < 100) {
-              current.blockedExternal.push(url.origin + url.pathname);
+          const request = route.request();
+          const url = new URL(request.url());
+          if (url.origin !== server.origin) {
+            if (result.blockedExternal.length < 100) {
+              result.blockedExternal.push(url.origin + url.pathname);
             }
             await route.abort();
-          } else if (!["GET", "HEAD"].includes(route.request().method())) {
-            current.errors.push(
-              `Blocked mutation: ${route.request().method()} ${url.pathname}`,
+          } else if (!["GET", "HEAD"].includes(request.method())) {
+            result.errors.push(
+              `Blocked mutation: ${request.method()} ${url.pathname}`,
             );
             await route.abort();
           } else {
             await route.continue();
           }
         });
-        const page = await context.newPage();
-        activePage = page;
+        page = await context.newPage();
         page.setDefaultTimeout(15000);
         page.setDefaultNavigationTimeout(30000);
         page.on("pageerror", (error) => {
-          if (current.pageErrors.length < 100) {
-            current.pageErrors.push(error.message);
+          if (result.errors.length < 100) {
+            result.errors.push(error.message);
           }
         });
+        result.consoleErrors = [];
         page.on("console", (message) => {
-          if (message.type() === "error" && current.errors.length < 100) {
-            current.errors.push(message.text());
+          if (message.type() === "error" && result.consoleErrors.length < 100) {
+            result.consoleErrors.push(message.text());
           }
         });
+        const logStart = server.log.length;
+        const responses = [];
+        result.cancelledRequests = [];
         page.on("response", (response) => {
-          if (
-            response.url().startsWith(activeServer.origin) &&
-            response.status() >= 400 &&
-            current.localFailures.length < 100
-          ) {
-            current.localFailures.push({
-              url: response.url(),
+          const url = new URL(response.url());
+          if (url.origin === server.origin && responses.length < 1000) {
+            responses.push({
+              path: url.pathname,
+              query: url.search,
               status: response.status(),
             });
           }
         });
-        const routes =
-          scenarios[scenario].group === "klook"
-            ? [klookRoute]
-            : [milesRoute, detailRoute];
-        for (const route of routes) {
-          requireCheck(
-            !interrupted,
-            "Capture interrupted or exceeded the five-minute deadline.",
+        page.on("requestfailed", (request) => {
+          if (
+            request.url().startsWith(`${server.origin}/`) &&
+            result.errors.length < 100
+          ) {
+            const error = request.failure()?.errorText;
+            // Navigating cancels in-flight prefetches (RSC and JS chunks).
+            // Record browser cancellations, but still require rendered content,
+            // loaded images/fonts and consumed fixtures for a successful capture.
+            if (error === "net::ERR_ABORTED") {
+              if (result.cancelledRequests.length < 100) {
+                result.cancelledRequests.push(request.url());
+              }
+            } else {
+              result.errors.push(
+                `Local request failed: ${request.url()} ${error}`,
+              );
+            }
+          }
+        });
+        await page.goto(`${server.origin}/sg-alerts${scenario.route}`, {
+          waitUntil: "domcontentloaded",
+        });
+        await bounded(
+          async () => {
+            await scenario.ready(page);
+            await page.waitForFunction(
+              () =>
+                document.fonts.status === "loaded" &&
+                [...document.images].every(
+                  (image) =>
+                    image.complete &&
+                    (image.naturalWidth > 0 || !image.getAttribute("src")),
+                ),
+            );
+            for (const fixture of scenario.fixtures) {
+              const response = responses.find(
+                (item) =>
+                  item.path.startsWith(`${apiBase}/`) &&
+                  fixtureKey(item.path.slice(apiBase.length) + item.query) ===
+                    fixtureKey(fixture.url) &&
+                  item.status === fixture.status,
+              );
+              if (!response) {
+                throw new Error(
+                  `Required fixture was not consumed with status ${fixture.status}: ${fixture.url}`,
+                );
+              }
+            }
+          },
+          15000,
+          `${scenario.name} content readiness`,
+        );
+        await unchanged(input);
+        const name = `fixture-${scenario.name}-${variant.width}-${variant.theme}`;
+        await page.screenshot({
+          path: path.join(output, `${name}.png`),
+          fullPage: true,
+          animations: "disabled",
+          timeout: 15000,
+        });
+        result.screenshots = [`${name}.png`];
+        if (scenario.focus) {
+          const focus = page.locator(scenario.focus);
+          await focus.evaluate((element) =>
+            element.scrollIntoView({ block: "start" }),
           );
-          current.route = route;
-          await navigate(page, activeServer.origin, route, scenario);
-          const name = `fixture-${scenario}-${route === detailRoute ? "detail" : "results"}-${variant.width}-${variant.theme}`;
-          await page.screenshot({
-            path: path.join(output, `${name}.png`),
-            fullPage: true,
+          await focus.screenshot({
+            path: path.join(output, `${name}-focus.png`),
             animations: "disabled",
             timeout: 15000,
           });
-          current.screenshots.push(`${name}.png`);
-          if (route === detailRoute && !scenarios[scenario].failure) {
-            const section = page
-              .getByRole("heading", {
-                name: "Minimum Annual Income",
-                exact: true,
-              })
-              .locator("..");
-            // Put the section above the viewport-bottom sticky subscription button.
-            // Do not hide controls or modify the application to obtain evidence.
-            await section.evaluate((element) =>
-              element.scrollIntoView({ block: "start" }),
-            );
-            await section.screenshot({
-              path: path.join(output, `${name}-income.png`),
-              animations: "disabled",
-              timeout: 15000,
-            });
-            current.screenshots.push(`${name}-income.png`);
+          result.screenshots.push(`${name}-focus.png`);
+        }
+        if (scenario.navigate) {
+          await bounded(
+            () => scenario.navigate(page),
+            30000,
+            `${scenario.name} navigation`,
+          );
+        }
+        result.requests = server.log.slice(logStart);
+        for (const response of responses) {
+          if (response.status < 400) {
+            continue;
           }
-          if (scenarios[scenario].failure) {
-            let rejected = false;
-            try {
-              await contentReady(
-                page,
-                scenarios[scenario].group === "klook"
-                  ? "klook-results"
-                  : "miles-income",
-                route,
-              );
-            } catch {
-              rejected = true;
-            }
-            requireCheck(
-              rejected,
-              "Results readiness incorrectly accepted failed API content.",
+          const expected = scenario.fixtures.some(
+            (fixture) =>
+              response.path.startsWith(`${apiBase}/`) &&
+              fixtureKey(fixture.url) ===
+                fixtureKey(
+                  response.path.slice(apiBase.length) + response.query,
+                ) &&
+              fixture.status === response.status,
+          );
+          if (!expected) {
+            result.errors.push(
+              `Unexpected local response ${response.status}: ${response.path}${response.query}`,
             );
           }
         }
-        if (scenario === "klook-results" || scenario === "miles-income") {
-          await navigationCheck(page, activeServer.origin, options.group);
+        if (result.errors.length) {
+          throw new Error(result.errors.join("\n"));
         }
-        const unexpected = current.localFailures.filter(
-          (item) =>
-            !(
-              scenarios[scenario].failure &&
-              item.status === 503 &&
-              item.url.includes(apiBase)
-            ),
-        );
-        requireCheck(
-          !unexpected.length,
-          `Local requests failed: ${JSON.stringify(unexpected)}`,
-        );
-        requireCheck(
-          !current.pageErrors.length,
-          `Browser runtime errors: ${JSON.stringify(current.pageErrors)}`,
-        );
-        current.status = "passed";
+        await unchanged(input);
+        result.status = "passed";
         await context.close();
-        activePage = undefined;
+        page = undefined;
       }
-      report.results.at(-1).requests = activeServer.log;
-      await activeServer.close();
-      activeServer = undefined;
+      await server.close();
+      server = undefined;
     }
-    requireCheck(
-      !interrupted,
-      "Capture interrupted or exceeded the five-minute deadline.",
-    );
+    await unchanged(input);
+    if (interrupted) {
+      throw new Error(
+        "Capture interrupted or exceeded the five-minute deadline.",
+      );
+    }
     report.status = "passed";
   } catch (error) {
-    report.status = "failed";
-    report.error = `${error.message}\nIf the browser executable is missing, run yarn playwright install chromium, or pass --channel chrome for an installed Google Chrome.`;
-    if (current) {
-      current.status = "failed";
+    report.error = error.message;
+    if (server) {
+      report.failureRequests = server.log;
     }
-    if (activeServer) {
-      report.requests = activeServer.log;
-    }
-    if (activePage) {
+    if (page) {
       try {
-        await activePage.screenshot({
+        await page.screenshot({
           path: path.join(output, "fixture-failure.png"),
           fullPage: true,
           timeout: 5000,
         });
         await writeFile(
           path.join(output, "failure.html"),
-          await activePage.content(),
+          await bounded(() => page.content(), 5000, "diagnostic HTML"),
         );
       } catch (diagnosticError) {
         report.diagnosticError = diagnosticError.message;
       }
     }
-    throw new Error(`${report.error}\nDiagnostics retained in ${output}`);
+    throw new Error(
+      `${error.message}\nDiagnostics: ${output}. Missing browser? Run yarn playwright install chromium or select --channel chrome.`,
+    );
   } finally {
     clearTimeout(deadline);
     process.removeListener("SIGINT", shutdown);
@@ -450,8 +305,8 @@ export async function capture(info, options) {
       }
     } finally {
       try {
-        if (activeServer) {
-          await activeServer.close();
+        if (server) {
+          await server.close();
         }
       } finally {
         await writeFile(

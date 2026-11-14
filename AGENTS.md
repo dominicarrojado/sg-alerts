@@ -14,15 +14,20 @@ Minimal instructions for AI coding agents working in this repository.
 
 ## UI Preview And Screenshot Recipe
 
-- See [docs/ui-preview.md](docs/ui-preview.md) for deterministic, read-only Klook
-  and miles-card previews using the real exported application, without a live API.
+- See [docs/ui-preview.md](docs/ui-preview.md) for reusable, read-only previews
+  of actual exported pages without relying on a live API.
 - Requires Node 24, Yarn, controller dependencies and Playwright Chromium (or
   explicitly selected installed Chrome). Build only a fresh, clean dedicated
   worktree with `yarn ui:preview build --worktree <target>`; do not reuse another
   delivery's outputs or listeners. Configuration is embedded at build time.
-- Use `yarn ui:preview capture --worktree <target> --group klook|miles --output <new-directory>`;
-  open representative images and record visual observations. Fixtures establish
-  rendering, not live API compatibility. See the recipe for diagnostics/cleanup.
+- Agents may generate task-local fixtures/readiness checks solely for PR-description
+  screenshots. Keep the self-contained scenario and images outside repositories;
+  never stage, commit, deploy, or import them into application code. Derive response
+  shapes from actual consumers; never change contracts or add production fallbacks.
+- Use `yarn ui:preview capture --worktree <target> --scenario-file <external.mjs> --output <new-external-directory>`.
+  Wait for changed content, open/inspect desktop/mobile images, and label them
+  fixture-backed rendering, not live API compatibility. Verify attachment before
+  cleaning owned temporary inputs; retain failed-run diagnostics. See the recipe.
 - OpenCode uses recipes from the PR base revision: this recipe becomes eligible
   for later deliveries after merge, not retroactive acceptance for existing PRs.
 
